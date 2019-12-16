@@ -2,8 +2,6 @@ import { LocalObject, FieldSchemaViewModel } from '@skysmack/framework';
 import { Field, FieldTypes } from '@skysmack/ng-dynamic-forms';
 import { IntFieldComponent } from './field-components/components/int-field/int-field.component';
 import { Type } from '@angular/core';
-import { LimitedStringFieldComponent } from './field-components/components/limited-string-field/limited-string-field.component';
-import { GeographyFieldComponent } from './field-components/components/geography-field/geography-field.component';
 import { DoubleFieldComponent } from './field-components/components/double-field/double-field.component';
 import { DecimalFieldComponent } from './field-components/components/decimal-field/decimal-field.component';
 import { DateTimeFieldComponent } from './field-components/components/date-time-field/date-time-field.component';
@@ -13,7 +11,7 @@ import { Observable, combineLatest } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { NgFieldStore, LoadedPackage } from '@skysmack/ng-framework';
 import { FieldProviders } from '@skysmack/ng-fields';
-import { CheckboxFieldComponent, BooleanFieldComponent } from './field-components';
+import { BooleanFieldComponent, GuidFieldComponent } from './field-components';
 
 export abstract class DocumentFieldsConfig<TRecord, TKey> extends FieldsConfig<TRecord, TKey> {
     constructor(
@@ -58,7 +56,7 @@ export abstract class DocumentFieldsConfig<TRecord, TKey> extends FieldsConfig<T
             case 'Decimal': return DecimalFieldComponent;
             case 'Double': return DecimalFieldComponent;
             case 'Single': return DoubleFieldComponent;
-            case 'Guid': return DoubleFieldComponent; // MAKE INTO GUIDFIELDCOMPONENT
+            case 'Guid': return GuidFieldComponent;
             case 'Int16': return IntFieldComponent;
             case 'Int32': return IntFieldComponent;
             case 'Int64': return IntFieldComponent;
