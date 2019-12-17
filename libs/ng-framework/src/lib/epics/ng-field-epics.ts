@@ -172,12 +172,12 @@ export class NgFieldEpics {
             ),
             map(action => ({
                 type: QueueActions.SET_QUEUE_ITEMS,
-                payload: action.meta.queueItems.map(queueItems => {
-                    queueItems.message = `FIELD.QUEUE.ERROR`;
-                    queueItems.localObject.error = true;
-                    queueItems.error = action.payload;
-                    queueItems.localObject.apiError = new ApiError(action.payload);
-                    return queueItems;
+                payload: action.meta.queueItems.map(item => {
+                    item.message = `FIELD.QUEUE.ERROR`;
+                    item.localObject.error = true;
+                    item.error = action.payload;
+                    item.localObject.apiError = new ApiError(action.payload);
+                    return item;
                 })
             }))
         );
@@ -192,7 +192,7 @@ export class NgFieldEpics {
                     new QueueItem({
                         message: ``,
                         packagePath: action.payload.packagePath,
-                        localObject: action.payload.field
+                        localObject: action.payload.record
                     })
                 ]
             }))
