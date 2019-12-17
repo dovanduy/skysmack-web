@@ -1,7 +1,7 @@
 import { LocalObject } from './local-object';
 import { NumIndex } from './indexes';
 import { HttpErrorResponse } from './http-error-response';
-import { CancelAction } from '@skysmack/framework';
+import { CancelAction } from '@skysmack/redux';
 
 export class QueueItem {
     public message: string;

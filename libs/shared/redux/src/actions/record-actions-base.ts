@@ -2,7 +2,7 @@
 import { Store } from 'redux';
 import { PagedQuery, Record, LocalObject, HttpMethod, LocalObjectStatus, HttpResponse, QueueItem, StrIndex, RSQLFilterBuilder, LimitQuery } from '@skysmack/framework';
 import { ReduxAction } from '../action-types/redux-action';
-import { GetPagedEntitiesPayload, GetSingleEntityPayload, CancelActionPayload, } from '../payloads';
+import { GetPagedEntitiesPayload, GetSingleEntityPayload } from '../payloads';
 import { CommitMeta, RollbackMeta, ReduxOfflineMeta, CancelActionMeta, OfflineMeta, CancelAction } from '../metas';
 import { EffectRequest } from '../models/effect-request';
 import { Effect } from './../models/effect';
