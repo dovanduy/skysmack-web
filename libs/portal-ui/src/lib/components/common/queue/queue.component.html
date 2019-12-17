@@ -37,7 +37,7 @@
 
                 <!-- CANCEL -->
                 <ng-container *ngIf="item.localObject.error || !offline.retryScheduled || index !== 0">
-                  <button mat-icon-button (click)="item.cancelAction(item.localObject, item.packagePath)">
+                  <button mat-icon-button (click)="cancelAction(item)">
                     <mat-icon>undo</mat-icon>
                   </button>
                 </ng-container>

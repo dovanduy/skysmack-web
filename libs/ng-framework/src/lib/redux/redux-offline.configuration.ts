@@ -96,6 +96,9 @@ export class ReduxOfflineConfiguration implements Config {
             return false;
         }
 
+        // TEMP!!
+        return true;
+
         // Retry 3 times on 5xx and 0 errors (takes roughly 25 seconds before giving up)
         if (error.status >= 500) {
             // First retry is 0.
@@ -113,6 +116,5 @@ export class ReduxOfflineConfiguration implements Config {
 
         // Don't retry on < 4xx errors
         return true;
-        // return 400 <= error.status && error.status < 500;
     }
 }

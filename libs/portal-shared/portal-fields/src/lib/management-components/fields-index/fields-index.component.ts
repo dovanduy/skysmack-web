@@ -74,7 +74,7 @@ export class FieldsIndexComponent extends RecordIndexComponent<any, any, any> im
     ).subscribe());
   }
 
-  protected delete(_this: FieldsIndexComponent, value: LocalObject<FieldSchemaViewModel, string>) {
+  protected delete = (_this: FieldsIndexComponent, value: LocalObject<FieldSchemaViewModel, string>) => {
     this.subscriptionHandler.register(_this.additionalPaths$.pipe(
       tap(additionalPaths => _this.actions.delete([value], _this.packagePath, additionalPaths)),
       take(1)

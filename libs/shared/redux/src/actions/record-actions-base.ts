@@ -3,7 +3,7 @@ import { Store } from 'redux';
 import { PagedQuery, Record, LocalObject, HttpMethod, LocalObjectStatus, HttpResponse, QueueItem, StrIndex, RSQLFilterBuilder, LimitQuery } from '@skysmack/framework';
 import { ReduxAction } from '../action-types/redux-action';
 import { GetPagedEntitiesPayload, GetSingleEntityPayload, CancelActionPayload, } from '../payloads';
-import { CommitMeta, RollbackMeta, ReduxOfflineMeta, CancelActionMeta, OfflineMeta } from '../metas';
+import { CommitMeta, RollbackMeta, ReduxOfflineMeta, CancelActionMeta, OfflineMeta, CancelAction } from '../metas';
 import { EffectRequest } from '../models/effect-request';
 import { Effect } from './../models/effect';
 import { EntityActions } from '../interfaces/entity-actions';
@@ -39,18 +39,6 @@ export abstract class RecordActionsBase<TStateType, TStore extends Store<TStateT
         protected additionalPaths: string[]
     ) { }
 
-    public cancelAction = <TRecord extends Record<TKey>, TKey>(record: LocalObject<TRecord, TKey>, packagePath: string): void => {
-        this.store.dispatch(Object.assign({}, new ReduxAction<CancelActionPayload<TRecord, TKey>, CancelActionMeta>({
-            type: this.prefix + RecordActionsBase.CANCEL_RECORD_ACTION,
-            payload: {
-                record,
-                packagePath,
-                prefix: this.prefix
-            },
-            meta: new CancelActionMeta()
-        })))
-    }
-
     public getPaged = (packagePath: string, pagedQuery: PagedQuery) => {
         this.store.dispatch(Object.assign({}, new ReduxAction<GetPagedEntitiesPayload>({
             type: this.prefix + RecordActionsBase.GET_PAGED,
@@ -83,7 +71,7 @@ export abstract class RecordActionsBase<TStateType, TStore extends Store<TStateT
                 link: `${this.addAdditionalPaths(packagePath)}/create`,
                 packagePath,
                 localObject: record,
-                cancelAction: this.cancelAction
+                cancelAction: this.cancelAction(record, packagePath)
             });
         });
 
@@ -130,7 +118,7 @@ export abstract class RecordActionsBase<TStateType, TStore extends Store<TStateT
                 link: `${this.addAdditionalPaths(packagePath)}/edit/${record.objectIdentifier}`,
                 packagePath,
                 localObject: record,
-                cancelAction: this.cancelAction
+                cancelAction: this.cancelAction(record, packagePath)
             });
         });
 
@@ -200,7 +188,7 @@ export abstract class RecordActionsBase<TStateType, TStore extends Store<TStateT
                 messageParams: this.getMessageParams(record),
                 packagePath,
                 localObject: record,
-                cancelAction: this.cancelAction,
+                cancelAction: this.cancelAction(record, packagePath),
                 deleteAction: this.delete
             });
         });
@@ -249,5 +237,17 @@ export abstract class RecordActionsBase<TStateType, TStore extends Store<TStateT
 
     protected addAdditionalPaths(url: string): string {
         return this.additionalPaths ? [url, ...this.additionalPaths].join('/') : url;
+    }
+
+    private cancelAction<TRecord extends Record<TKey>, TKey>(record: LocalObject<TRecord, TKey>, packagePath: string): CancelAction {
+        return new CancelAction({
+            type: this.prefix + RecordActionsBase.CANCEL_RECORD_ACTION,
+            payload: {
+                record,
+                packagePath,
+                prefix: this.prefix
+            },
+            meta: new CancelActionMeta()
+        });
     }
 }

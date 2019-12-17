@@ -101,22 +101,4 @@ export class NgSettingsEpics {
             }))
         );
     }
-
-    // TODO: Do we need this?
-    // public cancelRecordActionEpic = (action$: ActionsObservable<ReduxAction<CancelActionPayload<TRecord, TKey>>>): Observable<ReduxAction<QueueItem[]>> => {
-    //     return action$.pipe(
-    //         ofType(SettingsActions.CANCEL_RECORD_ACTION),
-    //         map(action => ({
-    //             type: QueueActions.REMOVE_QUEUE_ITEMS,
-    //             payload: [
-    //                 new QueueItem({
-    //                     message: ``,
-    //                     packagePath: action.payload.packagePath,
-    //                     localObject: action.payload.record
-    //                 })
-    //             ]
-    //         }))
-    //     );
-    // }
-    //#endregion
 }

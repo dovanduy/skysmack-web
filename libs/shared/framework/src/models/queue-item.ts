@@ -1,6 +1,7 @@
 import { LocalObject } from './local-object';
 import { NumIndex } from './indexes';
 import { HttpErrorResponse } from './http-error-response';
+import { CancelAction } from '@skysmack/framework';
 
 export class QueueItem {
     public message: string;
@@ -8,7 +9,7 @@ export class QueueItem {
     public packagePath: string
     public link: string;
     public localObject: LocalObject<any, any>;
-    public cancelAction?: Function;
+    public cancelAction?: CancelAction;
     public deleteAction?: Function;
     public error: HttpErrorResponse;
     constructor(values: Partial<QueueItem>) {

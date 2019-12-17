@@ -5,7 +5,7 @@ import { QueueItem, LocalObjectStatus, OfflineState } from '@skysmack/framework'
 import { Router } from '@angular/router';
 import { NgRedux } from '@angular-redux/store';
 import { QueuesAppState, QueueActions } from '@skysmack/redux';
-import { map, tap } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'ss-queue',
@@ -47,5 +47,9 @@ export class QueueComponent implements OnInit {
     queueItem.localObject.error = false;
     queueItem.localObject.status = LocalObjectStatus.DELETING;
     queueItem.deleteAction([queueItem.localObject], queueItem.packagePath);
+  }
+
+  public cancelAction(item: QueueItem) {
+    this.ngRedux.dispatch(Object.assign({}, item.cancelAction));
   }
 }

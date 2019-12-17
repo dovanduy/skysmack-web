@@ -5,11 +5,11 @@ import { FieldSchemaViewModel, LocalObject, HttpMethod, LocalObjectStatus, Queue
 import { Effect } from '../models/effect';
 import { EffectRequest } from '../models/effect-request';
 import { CancelActionMeta } from '../metas/offline-redux/cancel-action-meta';
-import { CancelFieldActionPayload } from '../payloads/cancel-field-action-payload';
 import { GetPagedEntitiesPayload } from '../payloads/get-paged-entities-payload';
 import { EntityActions } from '../interfaces/entity-actions';
 import { GetSingleEntityPayload } from '../payloads/get-single-entity-payload';
 import { AdditionalPathsMeta } from '../metas/additional-paths-meta';
+import { CancelAction } from '../metas';
 
 export class FieldActions<TStateType, TStore extends Store<TStateType>> implements EntityActions<FieldSchemaViewModel, string> {
     public static CANCEL_FIELD_ACTION = 'CANCEL_FIELD_ACTION';
@@ -39,17 +39,6 @@ export class FieldActions<TStateType, TStore extends Store<TStateType>> implemen
     public static FIELD_DELETE_FAILURE = 'FIELD_DELETE_FAILURE';
 
     constructor(protected store: TStore) { }
-
-    public cancelAction = (field: LocalObject<FieldSchemaViewModel, string>, packagePath: string, addAdditionalPaths: string[]): void => {
-        this.store.dispatch(Object.assign({}, new ReduxAction<CancelFieldActionPayload<FieldSchemaViewModel>>({
-            type: FieldActions.CANCEL_FIELD_ACTION,
-            payload: {
-                field,
-                packagePath: getFieldStateKey(packagePath, addAdditionalPaths)
-            },
-            meta: new CancelActionMeta()
-        })))
-    }
 
     public getPaged(packagePath: string, pagedQuery: PagedQuery, additionalPaths?: string[]) {
         this.store.dispatch(Object.assign({}, new ReduxAction<GetPagedEntitiesPayload, AdditionalPathsMeta>({
@@ -100,7 +89,7 @@ export class FieldActions<TStateType, TStore extends Store<TStateType>> implemen
                 link: `${this.addAdditionalPaths(packagePath, additionalPaths)}/fields/create`,
                 packagePath,
                 localObject: field,
-                cancelAction: this.cancelAction
+                cancelAction: this.cancelAction(field, packagePath, additionalPaths)
             });
         })
 
@@ -149,7 +138,7 @@ export class FieldActions<TStateType, TStore extends Store<TStateType>> implemen
                 link: `${this.addAdditionalPaths(packagePath, additionalPaths)}/fields/edit/${field.object.key}`,
                 packagePath,
                 localObject: field,
-                cancelAction: this.cancelAction
+                cancelAction: this.cancelAction(field, packagePath, additionalPaths)
             });
         });
 
@@ -198,7 +187,7 @@ export class FieldActions<TStateType, TStore extends Store<TStateType>> implemen
                 messageParams: this.getMessageParams(field),
                 packagePath,
                 localObject: field,
-                cancelAction: this.cancelAction,
+                cancelAction: this.cancelAction(field, packagePath, additionalPaths),
                 deleteAction: this.delete
             });
         });
@@ -252,5 +241,16 @@ export class FieldActions<TStateType, TStore extends Store<TStateType>> implemen
 
     protected getStateKey(packagePath: string, additionalPaths: string[]) {
         return `${packagePath}-${additionalPaths.join('-')}`
+    }
+
+    private cancelAction(field: LocalObject<FieldSchemaViewModel, string>, packagePath: string, additionalPaths: string[]): CancelAction {
+        return new CancelAction({
+            type: FieldActions.CANCEL_FIELD_ACTION,
+            payload: {
+                record: field,
+                packagePath: getFieldStateKey(packagePath, additionalPaths)
+            },
+            meta: new CancelActionMeta()
+        })
     }
 }
