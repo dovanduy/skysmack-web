@@ -20,7 +20,7 @@
 
                 <!-- ERROR -->
                 <ng-container
-                  *ngIf="item.localObject.error && !item.deleteAction || !offline.retryScheduled || index !== 0">
+                  *ngIf="item.localObject.error && !item.deleteAction || !offline.retryScheduled && !item.deleteAction  || index !== 0  && !item.deleteAction ">
                   <button mat-icon-button (click)="toEditor(item)">
                     <mat-icon>sync</mat-icon>
                   </button>
