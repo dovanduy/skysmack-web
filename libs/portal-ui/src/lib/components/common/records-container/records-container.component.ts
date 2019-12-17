@@ -93,8 +93,8 @@ export class RecordsContainerComponent implements OnInit, OnDestroy {
 
   public runCancelAction(entity: LocalObject<any, any>) {
     this.subscriptionHandler.register(this.ngRedux.select((state: QueuesAppState) => state.queue).pipe(
-      map(queue => queue.items.find(item => item.localObject.localId === entity.localId)),
-      tap(item => item ? this.ngRedux.dispatch(Object.assign({}, item.cancelAction)) : null),
+      map(queue => queue.items.find(item => item.localObject && item.localObject.localId === entity.localId)),
+      tap(item => item ? this.ngRedux.dispatch(Object.assign({}, item.cancelAction)) : console.log('Could not find queue item. Try checking redux actions.')),
       take(1)
     ).subscribe());
   }
