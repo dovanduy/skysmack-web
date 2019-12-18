@@ -46,7 +46,7 @@ export function usersReducer(state = new UsersState(), action: ReduxAction, pref
             const castedAction = action as ReduxAction<unknown, ReduxOfflineMeta<NumIndex<string[]>, HttpResponse, NumIndex<string[]>>>;
             const commitMeta = castedAction.meta.offline.commit.meta;
             Object.keys(commitMeta.value).forEach(roleId => {
-                const currentUserRoles: string[] = newState.usersRoles[commitMeta.stateKey][roleId];
+                const currentUserRoles: string[] = newState.usersRoles[commitMeta.stateKey][roleId] ? newState.usersRoles[commitMeta.stateKey][roleId] : [];
                 newState.usersRoles[commitMeta.stateKey][roleId] = linq(currentUserRoles.concat(commitMeta.value[roleId])).distinct().ok();
             });
 
