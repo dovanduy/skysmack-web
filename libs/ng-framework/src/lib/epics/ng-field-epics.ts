@@ -185,7 +185,7 @@ export class NgFieldEpics {
 
     public cancelFieldActionEpic = (action$: ActionsObservable<ReduxAction<CancelFieldActionPayload<FieldSchemaViewModel>>>): Observable<ReduxAction<QueueItem[]>> => {
         return action$.pipe(
-            ofType(FieldActions.CANCEL_FIELD_ACTION),
+            ofType('FIELD_' + FieldActions.CANCEL_FIELD_ACTION),
             map(action => ({
                 type: QueueActions.REMOVE_QUEUE_ITEMS,
                 payload: [

@@ -25,7 +25,7 @@ export function fieldsReducer(state: FieldState = new FieldState(), action: any)
     let newState = Object.assign({}, state);
 
     switch (action.type) {
-        case FieldActions.CANCEL_FIELD_ACTION: {
+        case 'FIELD_' + FieldActions.CANCEL_FIELD_ACTION: {
             return cancelFieldAction(newState, action);
         }
         case FieldActions.FIELD_GET_PAGED: {
@@ -114,6 +114,14 @@ export function fieldsReducer(state: FieldState = new FieldState(), action: any)
             setActionError(action, 'Update error: ');
             return newState;
         }
+        case FieldActions.FIELD_DELETE: {
+            const castedAction: ReduxAction<any, ReduxOfflineMeta<FieldSchemaViewModel[], HttpResponse, LocalObject<FieldSchemaViewModel, string>[]>> = action;
+            const stateKey = castedAction.meta.offline.commit.meta.stateKey;
+            const recordsToBeDeleted = castedAction.meta.offline.commit.meta.value;
+            newState.localRecords[stateKey] = LocalObjectExtensions.mergeOrAddLocal(newState.localRecords[stateKey], recordsToBeDeleted, LocalObjectStatus.DELETING);
+            return newState;
+        }
+
         case FieldActions.FIELD_DELETE_SUCCESS: {
             const castedAction: ReduxAction<HttpSuccessResponse<FieldSchemaViewModel[] | FieldSchemaViewModel>, CommitMeta<LocalObject<FieldSchemaViewModel, string>[]>> = action;
             castedAction.meta.value.forEach(record => {

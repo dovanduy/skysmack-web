@@ -21,7 +21,7 @@ export class ReduxOfflineConfiguration implements Config {
             if (action.meta.isCancelAction) {
                 switch (action.type) {
                     case action.payload.prefix + RecordActionsBase.CANCEL_RECORD_ACTION: return cancelRecordActionOutboxFilter(outbox, action);
-                    case FieldActions.CANCEL_FIELD_ACTION: return cancelFieldActionOutboxFilter(outbox, action);
+                    case 'FIELD_' + FieldActions.CANCEL_FIELD_ACTION: return cancelFieldActionOutboxFilter(outbox, action);
                     default:
                         return [...outbox, action];
                 }

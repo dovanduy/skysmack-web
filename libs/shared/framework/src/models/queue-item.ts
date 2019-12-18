@@ -13,6 +13,7 @@ export class QueueItem {
     public deleteAction?: {
         path: string,
         packagePath: string,
+        actionType: string,
         prefix: string,
         records: LocalObject<unknown, unknown>[],
         cancelAction: CancelAction,

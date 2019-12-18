@@ -8,6 +8,8 @@ import { GetPagedEntitiesPayload } from '../payloads/get-paged-entities-payload'
 import { EntityActions } from '../interfaces/entity-actions';
 import { GetSingleEntityPayload } from '../payloads/get-single-entity-payload';
 import { AdditionalPathsMeta } from '../metas/additional-paths-meta';
+import { createCancelAction } from './create-cancel-action';
+import { createDeleteAction } from './create-delete-action';
 
 export class FieldActions<TStateType, TStore extends Store<TStateType>> implements EntityActions<FieldSchemaViewModel, string> {
     public static CANCEL_FIELD_ACTION = 'CANCEL_FIELD_ACTION';
@@ -35,6 +37,8 @@ export class FieldActions<TStateType, TStore extends Store<TStateType>> implemen
     public static FIELD_DELETE = 'FIELD_DELETE';
     public static FIELD_DELETE_SUCCESS = 'FIELD_DELETE_SUCCESS';
     public static FIELD_DELETE_FAILURE = 'FIELD_DELETE_FAILURE';
+
+    private prefix = 'FIELD_';
 
     constructor(protected store: TStore) { }
 
@@ -79,6 +83,7 @@ export class FieldActions<TStateType, TStore extends Store<TStateType>> implemen
     public add = (fields: LocalObject<FieldSchemaViewModel, string>[], packagePath: string, additionalPaths?: string[]) => {
 
         fields.forEach(record => record.error = false);
+        const stateKey = getFieldStateKey(packagePath, additionalPaths);
 
         const queueItems = fields.map(field => {
             return new QueueItem({
@@ -87,11 +92,10 @@ export class FieldActions<TStateType, TStore extends Store<TStateType>> implemen
                 link: `${this.addAdditionalPaths(packagePath, additionalPaths)}/fields/create`,
                 packagePath,
                 localObject: field,
-                cancelAction: this.cancelAction(field, packagePath, additionalPaths)
+                cancelAction: createCancelAction(field, stateKey, FieldActions.CANCEL_FIELD_ACTION, this.prefix)
             });
-        })
+        });
 
-        const stateKey = getFieldStateKey(packagePath, additionalPaths);
 
         this.store.dispatch(Object.assign({}, new ReduxAction<any, any>({
             type: FieldActions.FIELD_ADD,
@@ -128,6 +132,7 @@ export class FieldActions<TStateType, TStore extends Store<TStateType>> implemen
     public update = (fields: LocalObject<FieldSchemaViewModel, string>[], packagePath: string, additionalPaths?: string[]) => {
 
         fields.forEach(record => record.error = false);
+        const stateKey = getFieldStateKey(packagePath, additionalPaths);
 
         const queueItems = fields.map(field => {
             return new QueueItem({
@@ -136,11 +141,10 @@ export class FieldActions<TStateType, TStore extends Store<TStateType>> implemen
                 link: `${this.addAdditionalPaths(packagePath, additionalPaths)}/fields/edit/${field.object.key}`,
                 packagePath,
                 localObject: field,
-                cancelAction: this.cancelAction(field, packagePath, additionalPaths)
+                cancelAction: createCancelAction(field, stateKey, FieldActions.CANCEL_FIELD_ACTION, this.prefix)
             });
         });
 
-        const stateKey = getFieldStateKey(packagePath, additionalPaths);
 
         this.store.dispatch(Object.assign({}, new ReduxAction<any, any>({
             type: FieldActions.FIELD_UPDATE,
@@ -178,53 +182,61 @@ export class FieldActions<TStateType, TStore extends Store<TStateType>> implemen
         fields.forEach(record => record.error = false);
 
         const paths = '?keys=' + fields.map(x => x.object.key).join('&keys=');
-
-        const queueItems = fields.map(field => {
-            return new QueueItem({
-                message: `FIELDS.QUEUE.DELETING`,
-                messageParams: this.getMessageParams(field),
-                packagePath,
-                localObject: field,
-                cancelAction: this.cancelAction(field, packagePath, additionalPaths),
-                deleteAction: this.delete as any
-            });
-        });
-
+        const combinedPaths = this.addAdditionalPaths(packagePath, additionalPaths) + '/fields' + paths;
         const stateKey = getFieldStateKey(packagePath, additionalPaths);
 
-        this.store.dispatch(Object.assign({}, new ReduxAction<any, any>({
-            type: FieldActions.FIELD_DELETE,
-            meta: {
-                offline: {
-                    effect: new Effect<FieldSchemaViewModel[]>(new EffectRequest<FieldSchemaViewModel[]>(
-                        this.addAdditionalPaths(packagePath, additionalPaths) + '/fields' + paths,
-                        HttpMethod.DELETE,
-                        fields.map(x => {
-                            x.status = LocalObjectStatus.DELETING
-                            return x.object
-                        }),
-                    )),
-                    commit: new ReduxAction({
-                        type: FieldActions.FIELD_DELETE_SUCCESS,
-                        meta: {
-                            stateKey,
-                            value: fields,
-                            packagePath,
-                            queueItems
-                        }
-                    }),
-                    rollback: new ReduxAction({
-                        type: FieldActions.FIELD_DELETE_FAILURE,
-                        meta: {
-                            stateKey,
-                            value: fields,
-                            packagePath,
-                            queueItems
-                        }
-                    })
-                }
-            }
-        })));
+
+        const messageParams = fields.map(record => ({
+            localId: record.localId,
+            messageParam: this.getMessageParams(record)
+        }));
+
+        this.store.dispatch(createDeleteAction(combinedPaths, stateKey, FieldActions.CANCEL_FIELD_ACTION, this.prefix, fields, messageParams));
+
+        // const queueItems = fields.map(field => {
+        //     return new QueueItem({
+        //         message: `FIELDS.QUEUE.DELETING`,
+        //         messageParams: this.getMessageParams(field),
+        //         packagePath,
+        //         localObject: field,
+        //         cancelAction: createCancelAction(field, stateKey, FieldActions.CANCEL_FIELD_ACTION),
+        //         deleteAction: this.delete as any
+        //     });
+        // });
+
+        // this.store.dispatch(Object.assign({}, new ReduxAction<any, any>({
+        //     type: FieldActions.FIELD_DELETE,
+        //     meta: {
+        //         offline: {
+        //             effect: new Effect<FieldSchemaViewModel[]>(new EffectRequest<FieldSchemaViewModel[]>(
+        //                 this.addAdditionalPaths(packagePath, additionalPaths) + '/fields' + paths,
+        //                 HttpMethod.DELETE,
+        //                 fields.map(x => {
+        //                     x.status = LocalObjectStatus.DELETING
+        //                     return x.object
+        //                 }),
+        //             )),
+        //             commit: new ReduxAction({
+        //                 type: FieldActions.FIELD_DELETE_SUCCESS,
+        //                 meta: {
+        //                     stateKey,
+        //                     value: fields,
+        //                     packagePath,
+        //                     queueItems
+        //                 }
+        //             }),
+        //             rollback: new ReduxAction({
+        //                 type: FieldActions.FIELD_DELETE_FAILURE,
+        //                 meta: {
+        //                     stateKey,
+        //                     value: fields,
+        //                     packagePath,
+        //                     queueItems
+        //                 }
+        //             })
+        //         }
+        //     }
+        // })));
     }
 
     public getMessageParams(field: LocalObject<FieldSchemaViewModel, string>): StrIndex<string> {
@@ -239,16 +251,5 @@ export class FieldActions<TStateType, TStore extends Store<TStateType>> implemen
 
     protected getStateKey(packagePath: string, additionalPaths: string[]) {
         return `${packagePath}-${additionalPaths.join('-')}`
-    }
-
-    private cancelAction(field: LocalObject<FieldSchemaViewModel, string>, packagePath: string, additionalPaths: string[]): CancelAction {
-        return new CancelAction({
-            type: FieldActions.CANCEL_FIELD_ACTION,
-            payload: {
-                record: field,
-                packagePath: getFieldStateKey(packagePath, additionalPaths)
-            },
-            meta: new CancelActionMeta()
-        })
     }
 }

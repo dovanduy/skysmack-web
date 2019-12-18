@@ -8,16 +8,17 @@ import { CommitMeta } from '../metas/offline-redux/commit-meta';
 import { ReduxAction } from '../action-types/redux-action';
 import { RollbackMeta } from '../metas/offline-redux/rollback-meta';
 
-export const createDeleteAction = <TRecord extends Record<TKey>, TKey>(
+export const createDeleteAction = <TRecord, TKey>(
     path: string,
     packagePath: string,
+    actionType: string,
     prefix: string,
     records: LocalObject<TRecord, TKey>[],
     messageParams: { localId: string, messageParam: StrIndex<string> }[]
 ) => {
     const queueItems = records.map(record => {
         const withQueue = prefix + 'QUEUE';
-        const cancelAction = createCancelAction(record, packagePath, prefix);
+        const cancelAction = createCancelAction(record, packagePath, actionType, prefix);
         const messageParam = messageParams.find(param => param.localId === record.localId);
         record.error = false;
         return new QueueItem({
@@ -29,6 +30,7 @@ export const createDeleteAction = <TRecord extends Record<TKey>, TKey>(
             deleteAction: {
                 path,
                 packagePath,
+                actionType,
                 prefix,
                 records,
                 cancelAction,

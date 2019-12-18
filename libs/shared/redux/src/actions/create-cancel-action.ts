@@ -1,8 +1,9 @@
-import { LocalObject, Record, CancelAction, CancelActionMeta } from '@skysmack/framework';
+import { LocalObject, CancelAction, CancelActionMeta } from '@skysmack/framework';
 
-export const createCancelAction = <TRecord extends Record<TKey>, TKey>(record: LocalObject<TRecord, TKey>, packagePath: string, prefix: string): CancelAction => {
+export const createCancelAction = <TRecord, TKey>(record: LocalObject<TRecord, TKey>, packagePath: string, actionType: string, prefix: string): CancelAction => {
+    const type = `${prefix}${actionType}`;
     return new CancelAction({
-        type: prefix + 'CANCEL_RECORD_ACTION',
+        type,
         payload: {
             record,
             packagePath,

@@ -48,13 +48,13 @@ export class QueueComponent implements OnInit {
   public retryDelete(queueItem: QueueItem) {
     queueItem.localObject.error = false;
     queueItem.localObject.status = LocalObjectStatus.DELETING;
-    const { path, packagePath, prefix, records, messageParams } = queueItem.deleteAction;
+    const { path, packagePath, actionType, prefix, records, messageParams } = queueItem.deleteAction;
 
     // This becomes serialized in state, making local object loose it's methods.
     // Reinstiate here to restore methods.
     const reints = records.map(record => reinstantiateLocalRecord(record));
 
-    const deleteAction = createDeleteAction(path, packagePath, prefix, reints as any, messageParams);
+    const deleteAction = createDeleteAction(path, packagePath, actionType, prefix, reints as any, messageParams);
     this.ngRedux.dispatch(Object.assign({}, deleteAction));
   }
 

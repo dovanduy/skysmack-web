@@ -73,7 +73,7 @@ export abstract class RecordActionsBase<TStateType, TStore extends Store<TStateT
                 link: `${this.addAdditionalPaths(packagePath)}/create`,
                 packagePath,
                 localObject: record,
-                cancelAction: createCancelAction(record, packagePath, this.prefix)
+                cancelAction: createCancelAction(record, packagePath, RecordActionsBase.CANCEL_RECORD_ACTION, this.prefix)
             });
         });
 
@@ -120,7 +120,7 @@ export abstract class RecordActionsBase<TStateType, TStore extends Store<TStateT
                 link: `${this.addAdditionalPaths(packagePath)}/edit/${record.objectIdentifier}`,
                 packagePath,
                 localObject: record,
-                cancelAction: createCancelAction(record, packagePath, this.prefix)
+                cancelAction: createCancelAction(record, packagePath, RecordActionsBase.CANCEL_RECORD_ACTION, this.prefix)
             });
         });
 
@@ -186,7 +186,7 @@ export abstract class RecordActionsBase<TStateType, TStore extends Store<TStateT
             messageParam: this.getMessageParams(record)
         }));
 
-        this.store.dispatch(createDeleteAction(path, packagePath, this.prefix, records, messageParams));
+        this.store.dispatch(createDeleteAction(path, packagePath, RecordActionsBase.CANCEL_RECORD_ACTION, this.prefix, records, messageParams));
     }
 
     public signalRDeleted(packagePath: string, ids: number[]) {
