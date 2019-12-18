@@ -11,7 +11,7 @@ import { setBackButton, getPreviousUrl$ } from '@skysmack/ng-framework';
 @Injectable({ providedIn: 'root' })
 export class NgFieldsMenuProvider implements MenuProvider {
     public id = Guid.create().toString();
-    public translationPrefix = 'FIELDS.INDEX.';
+    public translationPrefix = 'FIELD.INDEX.';
     public previousUrl: string;
 
     constructor(

@@ -2,9 +2,6 @@
   <mat-form-field>
     <input matInput type="text" [attr.id]="fieldKey" [name]="field.label" [formControlName]="fieldKey"
       [placeholder]="field.placeholder | translate">
-
-
-
     <mat-error *ngIf="fh.formErrors[fieldKey]">
       <!-- Frontend errors -->
       <ng-container *ngIf="fh.formErrors[fieldKey]">
@@ -13,7 +10,7 @@
     </mat-error>
   </mat-form-field>
 
-  <button mat-raised-button (click)="generateGuid()">{{ 'FIELDS.MISC.GENERATE_GUID' | translate }}</button>
+  <button mat-raised-button (click)="generateGuid()">{{ 'FIELD.MISC.GENERATE_GUID' | translate }}</button>
 
 
   <ss-backend-errors [field]="field"></ss-backend-errors>

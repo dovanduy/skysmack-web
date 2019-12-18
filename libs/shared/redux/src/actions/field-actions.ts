@@ -1,7 +1,7 @@
 import { Store } from 'redux';
 import { ReduxAction } from './../action-types';
 import { PackagePathPayload } from './../payloads/package-path-payload';
-import { FieldSchemaViewModel, LocalObject, HttpMethod, LocalObjectStatus, QueueItem, StrIndex, PagedQuery, getFieldStateKey, CancelAction, CancelActionMeta } from '@skysmack/framework';
+import { FieldSchemaViewModel, LocalObject, HttpMethod, QueueItem, StrIndex, PagedQuery, getFieldStateKey } from '@skysmack/framework';
 import { Effect } from '../models/effect';
 import { EffectRequest } from '../models/effect-request';
 import { GetPagedEntitiesPayload } from '../payloads/get-paged-entities-payload';
@@ -87,7 +87,7 @@ export class FieldActions<TStateType, TStore extends Store<TStateType>> implemen
 
         const queueItems = fields.map(field => {
             return new QueueItem({
-                message: `FIELDS.QUEUE.ADDING`, // TODO: Remember to rename this if needed.
+                message: `FIELD.QUEUE.ADDING`, // TODO: Remember to rename this if needed.
                 messageParams: this.getMessageParams(field),
                 link: `${this.addAdditionalPaths(packagePath, additionalPaths)}/fields/create`,
                 packagePath,
@@ -136,7 +136,7 @@ export class FieldActions<TStateType, TStore extends Store<TStateType>> implemen
 
         const queueItems = fields.map(field => {
             return new QueueItem({
-                message: `FIELDS.QUEUE.UPDATING`,
+                message: `FIELD.QUEUE.UPDATING`,
                 messageParams: this.getMessageParams(field),
                 link: `${this.addAdditionalPaths(packagePath, additionalPaths)}/fields/edit/${field.object.key}`,
                 packagePath,
@@ -192,51 +192,6 @@ export class FieldActions<TStateType, TStore extends Store<TStateType>> implemen
         }));
 
         this.store.dispatch(createDeleteAction(combinedPaths, stateKey, FieldActions.CANCEL_FIELD_ACTION, this.prefix, fields, messageParams));
-
-        // const queueItems = fields.map(field => {
-        //     return new QueueItem({
-        //         message: `FIELDS.QUEUE.DELETING`,
-        //         messageParams: this.getMessageParams(field),
-        //         packagePath,
-        //         localObject: field,
-        //         cancelAction: createCancelAction(field, stateKey, FieldActions.CANCEL_FIELD_ACTION),
-        //         deleteAction: this.delete as any
-        //     });
-        // });
-
-        // this.store.dispatch(Object.assign({}, new ReduxAction<any, any>({
-        //     type: FieldActions.FIELD_DELETE,
-        //     meta: {
-        //         offline: {
-        //             effect: new Effect<FieldSchemaViewModel[]>(new EffectRequest<FieldSchemaViewModel[]>(
-        //                 this.addAdditionalPaths(packagePath, additionalPaths) + '/fields' + paths,
-        //                 HttpMethod.DELETE,
-        //                 fields.map(x => {
-        //                     x.status = LocalObjectStatus.DELETING
-        //                     return x.object
-        //                 }),
-        //             )),
-        //             commit: new ReduxAction({
-        //                 type: FieldActions.FIELD_DELETE_SUCCESS,
-        //                 meta: {
-        //                     stateKey,
-        //                     value: fields,
-        //                     packagePath,
-        //                     queueItems
-        //                 }
-        //             }),
-        //             rollback: new ReduxAction({
-        //                 type: FieldActions.FIELD_DELETE_FAILURE,
-        //                 meta: {
-        //                     stateKey,
-        //                     value: fields,
-        //                     packagePath,
-        //                     queueItems
-        //                 }
-        //             })
-        //         }
-        //     }
-        // })));
     }
 
     public getMessageParams(field: LocalObject<FieldSchemaViewModel, string>): StrIndex<string> {
