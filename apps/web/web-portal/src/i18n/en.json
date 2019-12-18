@@ -1096,60 +1096,6 @@
       "UPDATING": "Updating {{ displayName }}"
     }
   },
-  "FIELDS": {
-    "CREATE": {
-      "BUTTON_CREATE": "Create",
-      "CREATE": "Create"
-    },
-    "EDIT": {
-      "BUTTON_EDIT": "Update",
-      "EDITING": "Editing"
-    },
-    "FORM": {
-      "LABELS": {
-        "DISPLAY": "Display name",
-        "KEY": "Key",
-        "READPERMISSION": "Read permission",
-        "TYPE": "Type",
-        "VALIDATORS": "Validators",
-        "WRITEPERMISSION": "Write permission"
-      },
-      "PLACEHOLDERS": {
-        "DISPLAY": "Display name",
-        "KEY": "Key",
-        "READPERMISSION": "Read permission",
-        "TYPE": "Type",
-        "VALIDATORS": "Validators",
-        "WRITEPERMISSION": "Write permission"
-      },
-      "VALIDATION": {
-        "DISPLAY": {
-          "REQUIRED": "Display name is required"
-        },
-        "KEY": {
-          "REQUIRED": "Key is required"
-        },
-        "TYPE": {
-          "REQUIRED": "Key is required"
-        }
-      }
-    },
-    "INDEX": {
-      "ACTIONS": "Actions",
-      "BACK": "Back",
-      "CREATE": "Create",
-      "MANAGE": "Manage"
-    },
-    "MISC": {
-      "GENERATE_GUID": "Generate new GUID"
-    },
-    "QUEUE": {
-      "ADDING": "Adding {{ displayName }}",
-      "DELETING": "Deleting {{ displayName }}",
-      "ERROR": "An error occured with {{ displayName }}. Correct and try again.",
-      "UPDATING": "Updating {{ displayName }}"
-    }
-  },
   "FILE_STORAGE": {
     "CREATE": {
       "BUTTON_CREATE": "Create",

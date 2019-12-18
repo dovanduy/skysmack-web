@@ -407,29 +407,32 @@
     "FORM": {
       "LABELS": {
         "ASSIGNMENTTYPEID": "Opgave type",
-        "DUE": "Udløbsdato",
-        "FROM": "Kan startes fra",
-        "STATUS": "Status"
+        "END": "Slut dato",
+        "EXPRESSION": "Ekspression",
+        "START": "Start dato"
       },
       "PLACEHOLDERS": {
         "ASSIGNMENTTYPEID": "Opgave type",
-        "DUE": " Vælg udløbsdato",
-        "FROM": "Vælg hvornår opgaven kan startes",
-        "STATUS": "Vælg status"
+        "END": "Slut dato",
+        "EXPRESSION": "Ekspression",
+        "START": "Start dato"
       },
       "VALIDATION": {
         "ASSIGNMENTTYPEID": {
           "REQUIRED": "Opgave type er påkrævet."
         },
-        "DUE": {
-          "REQUIRED": "Udløbsdato er påkrævet."
+        "DUE": {},
+        "END": {
+          "REQUIRED": "En slut dato er påkrævet."
         },
-        "FROM": {
-          "REQUIRED": "En dato fra hvornår opgaven kan startes er påkrævet."
+        "EXPRESSION": {
+          "REQUIRED": "En ekspression er påkrævet."
         },
-        "STATUS": {
-          "REQUIRED": "Status er påkrævet."
-        }
+        "FROM": {},
+        "START": {
+          "REQUIRED": "En start dato er påkrævet."
+        },
+        "STATUS": {}
       }
     },
     "INDEX": {
@@ -440,7 +443,6 @@
       "EDIT": "Ret",
       "FIELDS": "Felter",
       "MANAGE": "Konfigurer",
-      "STATES": "Tilstande",
       "TITLE_EXTRAS": "(opgaver)"
     },
     "QUEUE": {
@@ -463,38 +465,6 @@
       "CREATE": {
         "ADD": "Tilføj felt"
       },
-      "FORM": {
-        "BUTTONS": {
-          "CREATE": "Opret",
-          "EDIT": "Rediger"
-        },
-        "LABELS": {
-          "DESCRIPTION": "Beskrivelse",
-          "DUEPERIOD": "Due date",
-          "EXPRESSION": "Udtryk",
-          "STATEID": "Tilstand"
-        },
-        "PLACEHOLDERS": {
-          "DESCRIPTION": "Indtast beskrivelse",
-          "DUEPERIOD": "Vælg udløbsdato",
-          "EXPRESSION": "Indtast udtryk",
-          "STATEID": "Vælg tilstand"
-        },
-        "VALIDATION": {
-          "DESCRIPTION": {
-            "REQUIRED": "Beskrivelse er påkrævet."
-          },
-          "DUEPERIOD": {
-            "REQUIRED": "Udløbsdato er påkrævet."
-          },
-          "EXPRESSION": {
-            "REQUIRED": "Udtryk er påkrævet."
-          },
-          "STATEID": {
-            "REQUIRED": "Tilstand er påkrævet."
-          }
-        }
-      },
       "INDEX": {
         "ACTIONS": "Handlinger",
         "ASSIGNMENT_TYPES": "Opgaver",
@@ -512,13 +482,11 @@
       "LABELS": {
         "DESCRIPTION": "Beskrivelse",
         "DUEPERIOD": "Udløbsdato",
-        "EXPRESSION": "Udtryk",
         "STATEID": "Tilstand"
       },
       "PLACEHOLDERS": {
         "DESCRIPTION": "Indtast beskrivelse",
         "DUEPERIOD": "Vælg udløbsdato",
-        "EXPRESSION": "Indtast udtryk",
         "STATEID": "Vælg tilstand"
       },
       "VALIDATION": {
@@ -528,9 +496,7 @@
         "DUEPERIOD": {
           "REQUIRED": "Udløbsdato er påkrævet."
         },
-        "EXPRESSION": {
-          "REQUIRED": "Udtryk er påkrævet."
-        },
+        "EXPRESSION": {},
         "STATEID": {
           "REQUIRED": "Tilstand er påkrævet."
         }
@@ -553,6 +519,42 @@
       "DELETING": "Sletter {{ description }}",
       "ERROR": "Der opstod  en fejl ved {{ description }}. Ret og prøv igen.",
       "UPDATING": "Opdatere {{ description }}"
+    }
+  },
+  "AXIS_PHYSICAL_ACCESS_CONTROL": {
+    "FORM": {
+      "LABELS": {
+        "PASSWORD": "Adgangskode",
+        "ROUTE": "Rute",
+        "USERNAME": "Brugernavn"
+      },
+      "PLACEHOLDERS": {
+        "PASSWORD": "Adganskode",
+        "ROUTE": "Rute",
+        "USERNAME": "Brugernavn"
+      }
+    },
+    "INDEX": {
+      "ACCESS_POINTS": "Adgangspunkter",
+      "ACTIONS": "Handlinger",
+      "MANAGE": "Konfigurer",
+      "SETTINGS": "Indstillinger",
+      "VAPIX_CONNECTION_SETTINGS": "Forbindelsesindstillinger"
+    }
+  },
+  "CALL_DATA_SETTINGS": {
+    "FORM": {
+      "LABELS": {
+        "CURRENCYCODE": "Valutakode",
+        "OUTPUTFIELDS": "Output felter"
+      },
+      "PLACEHOLDERS": {
+        "CURRENCYCODE": "Valutakode",
+        "OUTPUTFIELDS": "Output felter"
+      }
+    },
+    "INDEX": {
+      "SETTINGS": "Indstillinger"
     }
   },
   "CLIENTS": {
@@ -646,6 +648,82 @@
       "DELETING": "Sletter forbindelse {{ id }}",
       "ERROR": "En fejl er opstået med forbindelse {{ id }}. Ret fejlene og prøv igen.",
       "UPDATING": "Opdaterer forbindelse {{ id }}"
+    }
+  },
+  "CORS": {
+    "CREATE": {
+      "BUTTON_CREATE": "Opret",
+      "CREATE": "Opret"
+    },
+    "EDIT": {
+      "BUTTON_EDIT": "Rediger",
+      "EDIT": "Rediger"
+    },
+    "FORM": {
+      "LABELS": {
+        "ALLOWALLORIGINS": "Tillad alle oprindelser",
+        "CUSTOMHEADERS": "Brugerdefinerede overskrifter",
+        "EVENTTYPE": "Begivenhedstype",
+        "HTTPMETHOD": "HTTP metode",
+        "PACKAGEPATH": "Pakke sti",
+        "SOURCE": "Kilde",
+        "URL": "Url"
+      },
+      "PLACEHOLDERS": {
+        "ALLOWALLORIGINS": "Tillad alle oprindelser",
+        "CUSTOMHEADERS": "Brugerdefinerede overskrifter",
+        "EVENTTYPE": "Begivenhedstype",
+        "HTTPMETHOD": "HTTP metode",
+        "PACKAGEPATH": "Pakke sti",
+        "SOURCE": "Kilde",
+        "URL": "Url"
+      }
+    },
+    "INDEX": {
+      "ACTIONS": "Handlinger",
+      "CREATE": "Opret",
+      "DELETE": "Fjern",
+      "EDIT": "Rediger",
+      "MANAGE": "Konfigurer",
+      "SETTINGS": "Indstillinger"
+    }
+  },
+  "DOORWAY_RELATIONS": {
+    "CREATE": {
+      "BUTTON_CREATE": "Opret",
+      "CREATE": "Opret"
+    },
+    "EDIT": {
+      "BUTTON_EDIT": "Opdater",
+      "EDIT": "Rediger"
+    },
+    "FORM": {
+      "LABELS": {
+        "ALLOWCIRCULARRELATIONS": "Tillad cirkulære forhold",
+        "INNERDOORWAYID": "Indvendig døråbning",
+        "OUTERDOORWAYID": "udvendig døråbning"
+      },
+      "PLACEHOLDERS": {
+        "INNERDOORWAYID": "Indvendig døråbning",
+        "OUTERDOORWAYID": "udvendig døråbning"
+      },
+      "VALIDATION": {
+        "INNERDOORWAYID": {
+          "REQUIRED": "En indvendig døråbning er påkrævet."
+        },
+        "OUTERDOORWAYID": {
+          "REQUIRED": "En undvendig døråbning er påkrævet."
+        }
+      }
+    },
+    "INDEX": {
+      "ACTIONS": "Handlinger",
+      "CREATE": "Opret",
+      "DELETE": "Fjern",
+      "EDIT": "Rediger",
+      "MANAGE": "Konfigurer",
+      "SETTINGS": "Indstillinger",
+      "TITLE_EXTRAS": "(Relations)"
     }
   },
   "EMAILS": {
@@ -2113,6 +2191,21 @@
       "UPDATING": "Opdatere {{ displayName }}"
     },
     "UPDATING": "Opdatere {{ name }}"
+  },
+  "PASS_CODES": {
+    "FORM": {
+      "LABELS": {
+        "EXPRESSION": "Ekspression"
+      },
+      "PLACEHOLDERS": {
+        "EXPRESSION": "Ekspression"
+      },
+      "VALIDATION": {
+        "EXPRESSION": {
+          "REQUIRED": "En ekspression er påkrævet."
+        }
+      }
+    }
   },
   "PERSONS": {
     "CREATE": {
