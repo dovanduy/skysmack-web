@@ -50,7 +50,7 @@ export class QueueComponent implements OnInit {
     queueItem.localObject.status = LocalObjectStatus.DELETING;
     const { path, packagePath, actionType, prefix, records, messageParams } = queueItem.deleteAction;
 
-    // This becomes serialized in state, making local object loose it's methods.
+    // This becomes serialized in state, making local object lose it's methods.
     // Reinstiate here to restore methods.
     const reints = records.map(record => reinstantiateLocalRecord(record));
 
