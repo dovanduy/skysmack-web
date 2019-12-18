@@ -1,6 +1,7 @@
 <!-- CURRENT USER ROLES -->
 <ng-container *ngIf="userRoles$ | async as userRoles">
     <mat-list>
+        <h2>Test</h2>
         <h3 matLine>{{ 'Users current roles' | translate }}</h3>
         <p style="font-style: italic;" *ngIf="userRoles.length === 0">
             {{ 'USERS.ROLES.NO_ROLES_APPLIED' | translate }}</p>

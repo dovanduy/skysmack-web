@@ -22,7 +22,7 @@ export class UsersIndexComponent extends RecordIndexComponent<UsersAppState, Use
   public menuItemActions: MenuItem[] = [
     new MenuItem().asUrlAction('edit', MENU_ITEM_ACTIONS_EDIT, 'edit'),
     new MenuItem().asUrlAction('edit/set-password', 'USERS.ENTITY_ACTION.SET_PASSWORD', 'https'),
-    new MenuItem().asUrlAction('edit/roles', 'USERS.ENTITY_ACTION.ROLES', 'android'),
+    new MenuItem().asUrlAction('edit/roles', 'USERS.ENTITY_ACTION.ROLES', 'vpn_key'),
     new MenuItem().asEventAction(MENU_ITEM_ACTIONS_DELETE, this.delete, 'delete', this)
   ];
 
