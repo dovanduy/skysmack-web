@@ -1,7 +1,7 @@
 import { LocalObject } from './local-object';
-import { NumIndex } from './indexes';
+import { NumIndex, StrIndex } from './indexes';
 import { HttpErrorResponse } from './http-error-response';
-import { CancelAction } from '@skysmack/redux';
+import { CancelAction } from './cancel-action';
 
 export class QueueItem {
     public message: string;
@@ -10,7 +10,14 @@ export class QueueItem {
     public link: string;
     public localObject: LocalObject<any, any>;
     public cancelAction?: CancelAction;
-    public deleteAction?: Function;
+    public deleteAction?: {
+        path: string,
+        packagePath: string,
+        prefix: string,
+        records: LocalObject<unknown, unknown>[],
+        cancelAction: CancelAction,
+        messageParams: { localId: string, messageParam: StrIndex<string> }[]
+    };
     public error: HttpErrorResponse;
     constructor(values: Partial<QueueItem>) {
         Object.assign(this, values);

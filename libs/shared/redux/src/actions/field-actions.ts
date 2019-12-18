@@ -1,15 +1,13 @@
 import { Store } from 'redux';
 import { ReduxAction } from './../action-types';
 import { PackagePathPayload } from './../payloads/package-path-payload';
-import { FieldSchemaViewModel, LocalObject, HttpMethod, LocalObjectStatus, QueueItem, StrIndex, PagedQuery, getFieldStateKey } from '@skysmack/framework';
+import { FieldSchemaViewModel, LocalObject, HttpMethod, LocalObjectStatus, QueueItem, StrIndex, PagedQuery, getFieldStateKey, CancelAction, CancelActionMeta } from '@skysmack/framework';
 import { Effect } from '../models/effect';
 import { EffectRequest } from '../models/effect-request';
-import { CancelActionMeta } from '../metas/offline-redux/cancel-action-meta';
 import { GetPagedEntitiesPayload } from '../payloads/get-paged-entities-payload';
 import { EntityActions } from '../interfaces/entity-actions';
 import { GetSingleEntityPayload } from '../payloads/get-single-entity-payload';
 import { AdditionalPathsMeta } from '../metas/additional-paths-meta';
-import { CancelAction } from '../metas';
 
 export class FieldActions<TStateType, TStore extends Store<TStateType>> implements EntityActions<FieldSchemaViewModel, string> {
     public static CANCEL_FIELD_ACTION = 'CANCEL_FIELD_ACTION';
@@ -188,7 +186,7 @@ export class FieldActions<TStateType, TStore extends Store<TStateType>> implemen
                 packagePath,
                 localObject: field,
                 cancelAction: this.cancelAction(field, packagePath, additionalPaths),
-                deleteAction: this.delete
+                deleteAction: this.delete as any
             });
         });
 

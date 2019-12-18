@@ -1,6 +1,5 @@
-import { LocalObjectStatus, FieldSchemaViewModel, LocalObject } from '@skysmack/framework';
+import { LocalObjectStatus, FieldSchemaViewModel, LocalObject, CancelActionMeta } from '@skysmack/framework';
 import { ReduxAction } from './../action-types/redux-action';
-import { CancelActionMeta } from './../metas/offline-redux/cancel-action-meta';
 import { CancelFieldActionPayload } from '../payloads/cancel-field-action-payload';
 import { ReduxOfflineMeta } from '../metas/offline-redux/redux-offline-meta';
 import { FieldState } from './field-reducer';

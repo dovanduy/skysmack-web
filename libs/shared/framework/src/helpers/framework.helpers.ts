@@ -135,10 +135,15 @@ export const deepFreeze = (o: any) => {
     });
 
     return o;
-}
+};
 
 export const getLocalDate = (date: Date): string => {
     return new Date(date.getTime() - (date.getTimezoneOffset() * 60000))
         .toISOString()
         .split("T")[0];
-}
+};
+
+
+export const jsonPrint = (value: any) => {
+    console.log('\n', JSON.stringify(value, undefined, 2), '\n');
+};

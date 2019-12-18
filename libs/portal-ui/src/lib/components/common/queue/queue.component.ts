@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { Observable } from 'rxjs';
-import { QueueItem, LocalObjectStatus, OfflineState } from '@skysmack/framework';
+import { QueueItem, LocalObjectStatus, OfflineState, reinstantiateLocalRecord, jsonPrint } from '@skysmack/framework';
 import { Router } from '@angular/router';
 import { NgRedux } from '@angular-redux/store';
-import { QueuesAppState, QueueActions } from '@skysmack/redux';
+import { QueuesAppState, QueueActions, createDeleteAction } from '@skysmack/redux';
 import { map } from 'rxjs/operators';
 
 @Component({
@@ -33,12 +33,14 @@ export class QueueComponent implements OnInit {
 
   public toEditor(queueItem: QueueItem) {
     queueItem.localObject.error = false;
-    queueItem.localObject.status = LocalObjectStatus.OK;
     queueItem.localObject.isNew = false;
+    queueItem.localObject.status = LocalObjectStatus.OK;
+
     this.ngRedux.dispatch({
       type: QueueActions.REMOVE_QUEUE_ITEMS,
       payload: [queueItem]
     });
+
     this.skysmackStore.setEditorItem(queueItem.localObject);
     this.router.navigate([queueItem.link]);
   }
@@ -46,7 +48,14 @@ export class QueueComponent implements OnInit {
   public retryDelete(queueItem: QueueItem) {
     queueItem.localObject.error = false;
     queueItem.localObject.status = LocalObjectStatus.DELETING;
-    queueItem.deleteAction([queueItem.localObject], queueItem.packagePath);
+    const { path, packagePath, prefix, records, messageParams } = queueItem.deleteAction;
+
+    // This becomes serialized in state, making local object loose it's methods.
+    // Reinstiate here to restore methods.
+    const reints = records.map(record => reinstantiateLocalRecord(record));
+
+    const deleteAction = createDeleteAction(path, packagePath, prefix, reints as any, messageParams);
+    this.ngRedux.dispatch(Object.assign({}, deleteAction));
   }
 
   public cancelAction(item: QueueItem) {

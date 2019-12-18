@@ -1,12 +1,14 @@
 
 import { Store } from 'redux';
-import { PagedQuery, Record, LocalObject, HttpMethod, LocalObjectStatus, HttpResponse, QueueItem, StrIndex, RSQLFilterBuilder, LimitQuery } from '@skysmack/framework';
+import { PagedQuery, Record, LocalObject, HttpMethod, HttpResponse, QueueItem, StrIndex, RSQLFilterBuilder, LimitQuery } from '@skysmack/framework';
 import { ReduxAction } from '../action-types/redux-action';
 import { GetPagedEntitiesPayload, GetSingleEntityPayload } from '../payloads';
-import { CommitMeta, RollbackMeta, ReduxOfflineMeta, CancelActionMeta, OfflineMeta, CancelAction } from '../metas';
+import { CommitMeta, RollbackMeta, ReduxOfflineMeta, OfflineMeta } from '../metas';
 import { EffectRequest } from '../models/effect-request';
 import { Effect } from './../models/effect';
 import { EntityActions } from '../interfaces/entity-actions';
+import { createCancelAction } from './create-cancel-action';
+import { createDeleteAction } from './create-delete-action';
 
 export abstract class RecordActionsBase<TStateType, TStore extends Store<TStateType>> implements EntityActions<unknown, unknown> {
     public static CANCEL_RECORD_ACTION = 'CANCEL_RECORD_ACTION';
@@ -71,7 +73,7 @@ export abstract class RecordActionsBase<TStateType, TStore extends Store<TStateT
                 link: `${this.addAdditionalPaths(packagePath)}/create`,
                 packagePath,
                 localObject: record,
-                cancelAction: this.cancelAction(record, packagePath)
+                cancelAction: createCancelAction(record, packagePath, this.prefix)
             });
         });
 
@@ -118,7 +120,7 @@ export abstract class RecordActionsBase<TStateType, TStore extends Store<TStateT
                 link: `${this.addAdditionalPaths(packagePath)}/edit/${record.objectIdentifier}`,
                 packagePath,
                 localObject: record,
-                cancelAction: this.cancelAction(record, packagePath)
+                cancelAction: createCancelAction(record, packagePath, this.prefix)
             });
         });
 
@@ -179,51 +181,12 @@ export abstract class RecordActionsBase<TStateType, TStore extends Store<TStateT
 
         path = `${path}?query=${query.rsqlFilter.toList().build()}&limit=${query.limit}`;
 
-        records.forEach(record => record.error = false);
+        const messageParams = records.map(record => ({
+            localId: record.localId,
+            messageParam: this.getMessageParams(record)
+        }));
 
-        const queueItems = records.map(record => {
-            const withQueue = this.prefix + 'QUEUE';
-            return new QueueItem({
-                message: `${withQueue.replace('_QUEUE', '.QUEUE')}.DELETING`,
-                messageParams: this.getMessageParams(record),
-                packagePath,
-                localObject: record,
-                cancelAction: this.cancelAction(record, packagePath),
-                deleteAction: this.delete
-            });
-        });
-
-        this.store.dispatch(Object.assign({}, new ReduxAction<any, ReduxOfflineMeta<TRecord[], HttpResponse, LocalObject<TRecord, TKey>[]>>({
-            type: this.prefix + RecordActionsBase.DELETE,
-            meta: new ReduxOfflineMeta(
-                new OfflineMeta<TRecord[], HttpResponse, LocalObject<TRecord, TKey>[]>(
-                    new Effect<TRecord[]>(new EffectRequest<TRecord[]>(
-                        path,
-                        HttpMethod.DELETE,
-                        records.map(x => {
-                            x.status = LocalObjectStatus.DELETING;
-                            return JSON.parse(JSON.stringify(x.object));
-                        }),
-                    )),
-                    new ReduxAction<any, CommitMeta<LocalObject<TRecord, TKey>[]>>({
-                        type: this.prefix + RecordActionsBase.DELETE_SUCCESS,
-                        meta: {
-                            stateKey: packagePath,
-                            value: records,
-                            queueItems
-                        }
-                    }),
-                    new ReduxAction<any, RollbackMeta<LocalObject<TRecord, TKey>[]>>({
-                        type: this.prefix + RecordActionsBase.DELETE_FAILURE,
-                        meta: {
-                            stateKey: packagePath,
-                            value: records,
-                            queueItems
-                        }
-                    })
-                )
-            )
-        })));
+        this.store.dispatch(createDeleteAction(path, packagePath, this.prefix, records, messageParams));
     }
 
     public signalRDeleted(packagePath: string, ids: number[]) {
@@ -237,17 +200,5 @@ export abstract class RecordActionsBase<TStateType, TStore extends Store<TStateT
 
     protected addAdditionalPaths(url: string): string {
         return this.additionalPaths ? [url, ...this.additionalPaths].join('/') : url;
-    }
-
-    private cancelAction<TRecord extends Record<TKey>, TKey>(record: LocalObject<TRecord, TKey>, packagePath: string): CancelAction {
-        return new CancelAction({
-            type: this.prefix + RecordActionsBase.CANCEL_RECORD_ACTION,
-            payload: {
-                record,
-                packagePath,
-                prefix: this.prefix
-            },
-            meta: new CancelActionMeta()
-        });
     }
 }

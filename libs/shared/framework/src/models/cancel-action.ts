@@ -1,4 +1,4 @@
-import { LocalObject } from '@skysmack/framework';
+import { LocalObject } from './local-object';
 import { CancelActionMeta } from './cancel-action-meta';
 
 export class CancelAction {

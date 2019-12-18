@@ -93,6 +93,14 @@ export function recordReducersBase<TState extends RecordState<TRecord, TKey>, TR
             setActionError(action, 'Update error: ');
             return newState;
         }
+        case prefix + RecordActionsBase.DELETE: {
+            const castedAction: ReduxAction<any, ReduxOfflineMeta<TRecord[], HttpResponse, LocalObject<TRecord, TKey>[]>> = action;
+            const stateKey = castedAction.meta.offline.commit.meta.stateKey;
+            const recordsToBeDeleted = castedAction.meta.offline.commit.meta.value;
+            newState.localRecords[stateKey] = LocalObjectExtensions.mergeOrAddLocal(newState.localRecords[stateKey], recordsToBeDeleted, LocalObjectStatus.DELETING);
+
+            return newState;
+        }
         case prefix + RecordActionsBase.DELETE_SUCCESS: {
             const castedAction: ReduxAction<HttpSuccessResponse<TRecord[] | TRecord>, CommitMeta<LocalObject<TRecord, TKey>[]>> = action;
             castedAction.meta.value.forEach(record => {
