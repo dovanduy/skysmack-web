@@ -21,6 +21,7 @@ export class FieldPermissionFieldComponent extends FieldBaseComponent<Field> imp
       this.permission.roles = [];
     } else {
       this.permission.roles = undefined;
+      this.permission.includeRoles = false;
     }
     this.permission.access = accessType;
   }
