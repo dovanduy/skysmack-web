@@ -7,13 +7,22 @@
         <mat-list>
             <!-- Breadcrumbs -->
             <ng-container *ngIf="breadCrumbs$ | async as breadCrumbs">
+                <!-- Home (nonclickable - no breadcrumbs) -->
                 <span class="breadcrumb"
                     *ngIf="breadCrumbs.length === 0">{{ 'FILE_STORAGE.MISC.HOME' | translate }}</span>
+
+                <!-- Home (clickable - breadcrumbs) -->
                 <a class="breadcrumb" *ngIf="breadCrumbs.length !== 0"
                     [routerLink]="['/', packagePath]">{{ 'FILE_STORAGE.MISC.HOME' | translate}}</a>
-                <span *ngFor="let path of breadCrumbs; let first = first; let last = last">
+
+                <!-- Breadcrumb -->
+                <span *ngFor="let path of breadCrumbs; let index = index; let first = first; let last = last">
+
+                    <!-- Clickable breadcrumb -->
                     <span class="breadcrumb separator"> / </span><a class="breadcrumb" *ngIf="!last"
-                        [routerLink]="['/', packagePath, path]">{{ path }}</a>
+                        [routerLink]="['/', packagePath].concat(breadCrumbs.slice(0, index + 1))">{{ path }}</a>
+
+                    <!-- Last breadcrumb: non-clickable -->
                     <span class="breadcrumb last" *ngIf="last">{{ path }}</span>
                 </span>
             </ng-container>
