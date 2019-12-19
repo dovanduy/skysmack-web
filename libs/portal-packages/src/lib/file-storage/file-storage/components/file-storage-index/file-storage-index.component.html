@@ -7,8 +7,10 @@
         <mat-list>
             <!-- Breadcrumbs -->
             <ng-container *ngIf="breadCrumbs$ | async as breadCrumbs">
-                <span class="breadcrumb" *ngIf="breadCrumbs.length === 0">Home</span>
-                <a class="breadcrumb" *ngIf="breadCrumbs.length !== 0" [routerLink]="['/', packagePath]">Home</a>
+                <span class="breadcrumb"
+                    *ngIf="breadCrumbs.length === 0">{{ 'FILE_STORAGE.MISC.HOME' | translate }}</span>
+                <a class="breadcrumb" *ngIf="breadCrumbs.length !== 0"
+                    [routerLink]="['/', packagePath]">{{ 'FILE_STORAGE.MISC.HOME' | translate}}</a>
                 <span *ngFor="let path of breadCrumbs; let first = first; let last = last">
                     <span class="breadcrumb separator"> / </span><a class="breadcrumb" *ngIf="!last"
                         [routerLink]="['/', packagePath, path]">{{ path }}</a>
@@ -19,9 +21,10 @@
             <!-- Folders -->
             <mat-list-item *ngFor="let folder of  folders$ | async">
                 <mat-icon mat-list-icon>folder</mat-icon>
-                <h4 mat-line [routerLink]="[currentLocation, folder.object.name.split('/')[0]]"
+                <h4 mat-line
+                    [routerLink]="[currentLocation, folder.object.name.split('/')[folder.object.name.split('/').length - 2]]"
                     style="cursor: pointer;">
-                    {{ folder.object.name.split('/')[0] }}
+                    {{ (folder.object.name | fileName:currentRequest.prefix).split('/')[0] }}
                 </h4>
 
                 <!-- Menu -->
@@ -39,7 +42,8 @@
             <!-- Items -->
             <mat-list-item *ngFor="let item of items$ | async">
                 <mat-icon mat-list-icon>insert_drive_file</mat-icon>
-                <a mat-line [href]="item.object.mediaLink" target="_blank">{{ item.object.name }}</a>
+                <a mat-line [href]="item.object.mediaLink"
+                    target="_blank">{{ item.object.name | fileName:currentRequest.prefix }}</a>
 
                 <!-- Menu -->
                 <button mat-icon-button [matMenuTriggerFor]="menu">
@@ -54,7 +58,8 @@
             </mat-list-item>
 
             <!-- Empty folder -->
-            <p *ngIf="empty$ | async" style="color: #7A7A7A; font-size: 12px;">Folder is empty</p>
+            <p *ngIf="empty$ | async" style="color: #7A7A7A; font-size: 12px;">
+                {{ 'FILE_STORAGE.MISC.EMPTY_FOLDER' | translate }}</p>
 
         </mat-list>
     </ng-container>

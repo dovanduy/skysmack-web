@@ -4,10 +4,10 @@ import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { NgFileStorageStore, NgFileStorageActions } from '@skysmack/ng-file-storage';
 import { FileStorageAppState, FILE_STORAGE_AREA_KEY, StorageQuery, FileStorageItem } from '@skysmack/packages-file-storage';
-import { MenuItem, LocalPage, LoadingState, linq, LocalObject, defined, SubscriptionHandler } from '@skysmack/framework';
+import { MenuItem, LocalPage, LoadingState, linq, LocalObject, defined, SubscriptionHandler, jsonPrint, cloneLocalObject } from '@skysmack/framework';
 import { BaseComponent } from '@skysmack/portal-fields';
 import { Observable, BehaviorSubject, combineLatest } from 'rxjs';
-import { map, filter, take } from 'rxjs/operators';
+import { map, filter, take, tap } from 'rxjs/operators';
 
 @Component({
   selector: 'ss-file-storage-index',
@@ -81,7 +81,7 @@ export class FileStorageIndexComponent extends BaseComponent<FileStorageAppState
     const splitted = folderPath.split('/');
     const paths = splitted.slice(2, splitted.length);
     const newPath = paths.length === 1 ? paths[0] + '/' : paths.join('/') + '/';
-
+    jsonPrint({ folderPath, splitted, paths, newPath });
     this.currentRequest = new StorageQuery({
       prefix: newPath === '/' ? '' : newPath,
       delimiter: '/',
@@ -157,9 +157,12 @@ export class FileStorageIndexComponent extends BaseComponent<FileStorageAppState
             }
           });
 
-          return linq<string>([]).selectMany(linq<LocalPage<string>>(pages2)
-            .defined()
-            .select(x => x.ids))
+          return linq<string>([])
+            .selectMany(
+              linq<LocalPage<string>>(pages2)
+                .defined()
+                .select(x => x.ids)
+            )
             .distinct()
             .ok();
         }
@@ -172,8 +175,7 @@ export class FileStorageIndexComponent extends BaseComponent<FileStorageAppState
       this.loadPages(),
       this.store.get(this.packagePath)
     ]).pipe(
-      map(values => {
-        const [pages, entities] = values;
+      map(([pages, entities]) => {
         if (pages && entities) {
           return [
             ...entities.filter(entity => entity.isNew && !pages.includes(entity.objectIdentifier)),
@@ -188,12 +190,8 @@ export class FileStorageIndexComponent extends BaseComponent<FileStorageAppState
       }),
       defined(),
       map((entities: LocalObject<FileStorageItem, string>[]) =>
-        entities
-          .map(entity => {
-            entity.object.name = entity.object.name.replace(this.currentRequest.prefix, '');
-            return entity;
-          })
-          .filter(entity => entity.object.name.length !== 0)
+        // Don't show folders in files list.
+        entities.filter(entity => entity.object.name.replace(this.currentRequest.prefix, '').length !== 0)
       )
     );
   }

@@ -69,7 +69,7 @@ export abstract class RecordNotifications<TRecord, TKey> {
         return {
             httpErrorCode: action.payload.status,
             // TODO: Replace this with backend custom error.
-            errorMessage: 'An error occured'
+            errorMessage: this.getErrorMessage(action)
         };
     }
 

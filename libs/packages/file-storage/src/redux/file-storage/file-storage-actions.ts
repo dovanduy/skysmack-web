@@ -1,10 +1,10 @@
-import { ReduxAction, ReduxOfflineMeta, OfflineMeta, CommitMeta, RollbackMeta, EffectRequest, Effect } from '@skysmack/redux';
+import { ReduxAction, EffectRequest, Effect } from '@skysmack/redux';
 import { NgRedux } from '@angular-redux/store';
 import { FileStorageAppState } from './file-storage-reducer';
 import { FILE_STORAGE_REDUX_KEY } from '../../constants/constants';
 import { StorageQuery } from '../../models/storage-query';
 import { GetStorageItemsPayload } from '../../models/get-storage-items-payload';
-import { LocalObject, QueueItem, HttpMethod, HttpResponse, LocalObjectStatus } from '@skysmack/framework';
+import { LocalObject, HttpMethod, LocalObjectStatus } from '@skysmack/framework';
 import { FileStorageItem } from '../../models/file-storage-item';
 
 export class FileStorageActions {

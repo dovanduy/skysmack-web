@@ -6,7 +6,7 @@ import { ReduxAction } from '@skysmack/redux';
 import { Observable } from 'rxjs';
 import { HttpErrorResponse } from '@skysmack/framework';
 import { NgFileStorageActions } from './ng-file-storage-actions';
-import { mergeMap } from 'rxjs/operators';
+import { mergeMap, map } from 'rxjs/operators';
 import { FILE_STORAGE_REDUX_KEY, GetStorageItemsSuccessPayload, GetStorageItemsPayload } from '@skysmack/packages-file-storage';
 
 
@@ -14,11 +14,14 @@ import { FILE_STORAGE_REDUX_KEY, GetStorageItemsSuccessPayload, GetStorageItemsP
 export class NgFileStorageEpics {
     public epics: Epic[];
 
-    constructor(protected requests: NgFileStorageRequests, protected notifications: NgFileStorageNotifications) {
+    constructor(
+        protected requests: NgFileStorageRequests,
+        protected notifications: NgFileStorageNotifications) {
         this.epics = [
             this.getStorageItemsEpic,
             this.getBucketsEpic,
-            this.updateBucketsEpic
+            this.updateBucketsEpic,
+            this.deleteFailedEpic
         ];
     }
 
@@ -40,6 +43,16 @@ export class NgFileStorageEpics {
         return action$.pipe(
             ofType(FILE_STORAGE_REDUX_KEY + NgFileStorageActions.UPDATE_BUCKET),
             mergeMap(action => this.requests.updateBuckets(action))
+        );
+    }
+
+    public deleteFailedEpic = (action$: ActionsObservable<ReduxAction<any>>): Observable<ReduxAction<any> | ReduxAction<HttpErrorResponse>> => {
+        return action$.pipe(
+            ofType(FILE_STORAGE_REDUX_KEY + NgFileStorageActions.DELETE_FAILURE),
+            map(action => {
+                this.notifications.removeError(action as any);
+                return { type: 'NOTIFICATION' };
+            })
         );
     }
 }
