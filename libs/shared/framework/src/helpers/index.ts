@@ -1,4 +1,4 @@
-export * from './array-pipe-operators';
+export * from './pipe-operators';
 export * from './array-helpers';
 export * from './dictionary-helpers';
 export * from './enum-helpers';

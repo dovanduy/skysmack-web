@@ -149,9 +149,3 @@ export const jsonPrint = (value: any) => {
     console.log('\n', JSON.stringify(value, undefined, 2), '\n');
 };
 
-/**
- * Pipes a series of functions. 
- * Note: Value is provided last like this pipeFns(func1, func2)(value)
- * Taken from https://www.freecodecamp.org/news/pipe-and-compose-in-javascript-5b04004ac937/
- */
-export const pipeFns = (...fns) => (x) => fns.reduce((v, f) => f(v), x);

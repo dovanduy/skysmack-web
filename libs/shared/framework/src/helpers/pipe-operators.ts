@@ -1,6 +1,13 @@
 import { jsonPrint } from './framework.helpers';
 
 /**
+ * Pipes a series of functions. 
+ * Note: Value is provided last like this pipeFns(func1, func2)(value)
+ * Taken from https://www.freecodecamp.org/news/pipe-and-compose-in-javascript-5b04004ac937/
+ */
+export const pipeFns = (...fns) => (x) => fns.reduce((v, f) => f(v), x);
+
+/**
  * Flattens a multi-dimensional (jagged) array.
  */
 export const flattenArray = (array: any[][]): any[] => {
@@ -34,3 +41,9 @@ export const print = (value: any) => {
     jsonPrint(value);
     return value;
 };
+
+/**
+ * Returns distinct values.
+ * Note: Only works for primitive values.
+ */
+export const distinct = (array: any[]) => array.filter((value, index, self) => self.indexOf(value) === index);

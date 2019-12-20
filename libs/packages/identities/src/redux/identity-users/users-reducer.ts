@@ -1,4 +1,4 @@
-import { LocalPageTypes, StrIndex, LocalObject, NumIndex, HttpResponse, linq, GlobalProperties, QueueItem, HttpErrorResponse } from '@skysmack/framework';
+import { LocalPageTypes, StrIndex, LocalObject, NumIndex, HttpResponse, linq, GlobalProperties, QueueItem, HttpErrorResponse, pipeFns, getValues, flattenArray } from '@skysmack/framework';
 import { AppState, ReduxAction, RecordState, recordReducersBase, ReduxOfflineMeta, sharedReducer } from '@skysmack/redux';
 import { User } from '../../models/user';
 import { UsersActions } from './users-actions';
@@ -54,12 +54,13 @@ export function usersReducer(state = new UsersState(), action: any, prefix: stri
         }
         case prefix + UsersActions.ADD_ROLES_FAILURE: {
             const castedAction: ReduxAction<HttpErrorResponse, { stateKey: string, value: NumIndex<string[]>, queueItems: QueueItem[] }> = action;
-            // const { stateKey, value } = castedAction.meta;
-            // const rolesToAdd = Object.values(value).reduce((a,))
-            // Object.keys(value).forEach(roleIdKey => {
-            //     const currentUserRoles: string[] = newState.usersRoles[stateKey][roleIdKey] ? newState.usersRoles[stateKey][roleIdKey] : [];
-            //     newState.usersRoles[stateKey][roleIdKey] = currentUserRoles.filter(currentRole => );
-            // });
+            const { stateKey, value } = castedAction.meta;
+            const rolesFailedToAdd: string[] = pipeFns(getValues, flattenArray)(value);
+
+            Object.keys(value).forEach(roleIdKey => {
+                const currentUserRoles: string[] = newState.usersRoles[stateKey][roleIdKey] ? newState.usersRoles[stateKey][roleIdKey] : [];
+                newState.usersRoles[stateKey][roleIdKey] = currentUserRoles.filter(currentRole => !rolesFailedToAdd.includes(currentRole));
+            });
 
             if (!GlobalProperties.production) {
                 console.log('Error. Error Action:', action.payload);
@@ -81,6 +82,15 @@ export function usersReducer(state = new UsersState(), action: any, prefix: stri
             return newState;
         }
         case prefix + UsersActions.REMOVE_ROLES_FAILURE: {
+            const castedAction: ReduxAction<HttpErrorResponse, { stateKey: string, value: NumIndex<string[]>, queueItems: QueueItem[] }> = action;
+            const { stateKey, value } = castedAction.meta;
+            const rolesFailedToRemove: string[] = pipeFns(getValues, flattenArray)(value);
+
+            Object.keys(value).forEach(roleIdKey => {
+                const currentUserRoles: string[] = newState.usersRoles[stateKey][roleIdKey] ? newState.usersRoles[stateKey][roleIdKey] : [];
+                newState.usersRoles[stateKey][roleIdKey] = currentUserRoles.concat(rolesFailedToRemove);
+            });
+
             if (!GlobalProperties.production) {
                 console.log('Error. Error Action:', action.payload);
             }
