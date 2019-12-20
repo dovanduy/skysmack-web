@@ -4,7 +4,7 @@ import { ActionsObservable, ofType } from 'redux-observable';
 import { ReduxAction, ReduxOfflineMeta } from '@skysmack/redux';
 import { Observable } from 'rxjs';
 import { switchMap, map } from 'rxjs/operators';
-import { HttpErrorResponse, NumIndex, HttpResponse, jsonPrint, QueueItem } from '@skysmack/framework';
+import { HttpErrorResponse, NumIndex, HttpResponse, jsonPrint, QueueItem, flattenArray, pipeFns, join, getValues } from '@skysmack/framework';
 import { NgUsersRequests } from './ng-users-requests';
 import { NgUsersActions } from './ng-users-actions';
 import { Injectable } from '@angular/core';
@@ -48,8 +48,11 @@ export class NgUsersEpics extends RecordEpicsBase<User, number> {
         );
     };
 
-
     private getRolesString(roleDic: NumIndex<string[]>): string {
-        return Object.keys(roleDic).map(roleIdKey => (roleDic[roleIdKey] as string[])).reduce((a, b) => a.concat(b), []).join(', ');
+        return pipeFns(
+            getValues,
+            flattenArray,
+            join(', ')
+        )(roleDic);
     }
 }
