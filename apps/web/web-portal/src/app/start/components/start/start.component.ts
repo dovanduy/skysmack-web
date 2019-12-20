@@ -51,17 +51,17 @@ export class StartComponent implements OnInit, OnDestroy {
 
     if (this.swUpdate.isEnabled) {
       this.subscriptionHandler.register(this.swUpdate.available.subscribe(() => {
-        const snackBarRef = this.snackBar.open("New version available! Please refresh to update.", 
-          "Refresh now", 
+        const snackBarRef = this.snackBar.open("New version available! Please refresh to update.",
+          "Refresh now",
           { politeness: 'assertive', duration: 10000, horizontalPosition: 'center', verticalPosition: 'top' } as MatSnackBarConfig);
-          this.subscriptionHandler.register(snackBarRef.onAction().pipe(take(1)).subscribe(() => {
-            this.swUpdate.activateUpdate().then(() => document.location.reload());
-          }));
+        this.subscriptionHandler.register(snackBarRef.onAction().pipe(take(1)).subscribe(() => {
+          this.swUpdate.activateUpdate().then(() => document.location.reload());
+        }));
       }));
-      setTimeout( () => {
+      setTimeout(() => {
         this.swUpdate.checkForUpdate();
       }, 1000);
-    } 
+    }
   }
 
   ngOnDestroy() {

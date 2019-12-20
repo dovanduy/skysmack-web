@@ -17,6 +17,7 @@ export class ProductPriceChangesIndexComponent extends RecordIndexComponent<Prod
   public componentKey = ProductPriceChangesIndexComponent.COMPONENT_KEY;
 
   public areaKey: string = PRODUCT_PRICE_CHANGES_AREA_KEY;
+  public titleExtras = true;
   public menuItemActions: MenuItem[] = [
     new MenuItem().asUrlAction('edit', MENU_ITEM_ACTIONS_EDIT, 'edit'),
     new MenuItem().asEventAction(MENU_ITEM_ACTIONS_DELETE, this.delete, 'delete', this)

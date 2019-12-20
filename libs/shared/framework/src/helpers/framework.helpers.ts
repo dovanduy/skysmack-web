@@ -1,6 +1,7 @@
 import { Guid } from 'guid-typescript';
 import { LocalObject } from '../models/local-object';
 import { LocalObjectStatus } from '../models/local-object-status';
+import { StrIndex } from '../models';
 
 /**
  * TAKEN FROM: https://gist.github.com/jasonrhodes/2321581
@@ -147,3 +148,4 @@ export const getLocalDate = (date: Date): string => {
 export const jsonPrint = (value: any) => {
     console.log('\n', JSON.stringify(value, undefined, 2), '\n');
 };
+

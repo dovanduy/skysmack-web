@@ -5,7 +5,7 @@ import defaultQueue from '@redux-offline/redux-offline/lib/defaults/queue';
 import { Config, OfflineAction, OfflineState } from '@redux-offline/redux-offline/lib/types';
 import { Observable } from 'rxjs';
 import { share } from 'rxjs/operators';
-import { HttpMethod, ApiDomain, HttpSuccessResponse, HttpErrorResponse } from '@skysmack/framework';
+import { HttpMethod, ApiDomain, HttpSuccessResponse, HttpErrorResponse, GlobalProperties } from '@skysmack/framework';
 import { Effect, RecordActionsBase, cancelRecordActionOutboxFilter, cancelFieldActionOutboxFilter, FieldActions, TOOGLE_HYDRATED } from '@skysmack/redux';
 import * as localForage from 'localforage';
 
@@ -94,6 +94,11 @@ export class ReduxOfflineConfiguration implements Config {
         // This isn't an http error! Retry
         if ('status' in error === false) {
             return false;
+        }
+
+        // Don't retry in development
+        if (!GlobalProperties.production) {
+            return true;
         }
 
         // Retry 3 times on 5xx and 0 errors (takes roughly 25 seconds before giving up)

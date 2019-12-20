@@ -4,7 +4,7 @@ import { User, UsersAppState, UsersState, USERS_REDUCER_KEY } from '@skysmack/pa
 import { NgRecordStore } from '@skysmack/ng-framework';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { defined } from '@skysmack/framework';
+import { defined, safeUndefinedTo } from '@skysmack/framework';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 
 @Injectable({ providedIn: 'root' })
@@ -21,7 +21,7 @@ export class NgUsersStore extends NgRecordStore<UsersAppState, User, number> {
             map(usersRoles => usersRoles[packagePath]),
             defined(),
             map(userRolesDictionary => userRolesDictionary[id]),
-            defined()
+            safeUndefinedTo('array')
         );
     }
 }

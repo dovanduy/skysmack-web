@@ -16,9 +16,14 @@ import { fieldcomponents } from './file-storage/fields/field-components';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FileUploadModule } from 'ng2-file-upload';
 import { MatListModule } from '@angular/material/list';
+import { FileNamePipe } from './file-storage/components/file-storage-index/file-name.pipe';
 
 const material = [
   MatListModule
+];
+
+const pipes = [
+  FileNamePipe
 ];
 
 @NgModule({
@@ -37,7 +42,8 @@ const material = [
   exports: [],
   declarations: [
     ...fileStorageComponents,
-    ...fieldcomponents
+    ...fieldcomponents,
+    ...pipes
   ],
   entryComponents: [
     ...fileStorageEntryComponents,
