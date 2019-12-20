@@ -14,7 +14,8 @@
             "DELETE": "Delete",
             "MANAGE": "Manage",
             "FIELDS": "Fields",
-            "BACK": "Back"
+            "BACK": "Back",
+            "TITLE_EXTRAS": "(sales prices)"
         },
         "FORM": {
             "LABELS": {

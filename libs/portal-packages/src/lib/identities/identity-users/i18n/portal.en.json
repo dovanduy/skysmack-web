@@ -82,7 +82,9 @@
             "OBJECT_PRIOORITY": "{{ role.object.name }} - priority",
             "ADD": "Add",
             "ROLES_APPLIED": "All roles have been applied, or no roles exists.",
-            "NO_ROLES_APPLIED": "User has no roles"
+            "NO_ROLES_APPLIED": "User has no roles",
+            "ADD_ROLES_FAILURE": "Failed to add roles: {{ 1 }}.",
+            "REMOVE_ROLES_FAILURE": "Failed to remove roles: {{ 1 }}."
         },
         "SET_PASSWORD": {
             "PASSWORD_FOR": "Set password for {{ object.email }}"

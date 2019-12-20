@@ -1,4 +1,4 @@
-import { LocalObject, HttpErrorResponse, StrIndex } from '@skysmack/framework';
+import { LocalObject, HttpErrorResponse, StrIndex, NumIndex } from '@skysmack/framework';
 import { ReduxAction, CommitMeta } from '@skysmack/redux';
 import { Notifications } from './notifications';
 
@@ -16,6 +16,10 @@ export abstract class RecordNotifications<TRecord, TKey> {
     protected CONNECTION_ERROR = 'CONNECTION_ERROR';
 
     constructor(public notifications: Notifications) { }
+
+    public showMessage(message: string, params?: NumIndex<string>) {
+        this.notifications.showTranslatedSnackbarMessage(message, params, undefined, 2000);
+    }
 
     public getBackendError(action: ReduxAction<HttpErrorResponse, any>) {
         this.checkOfflineStatus(action, () => {
