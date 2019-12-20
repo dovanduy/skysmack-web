@@ -2,7 +2,7 @@ import { Component, OnInit, ViewEncapsulation, OnDestroy } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Router, RouteConfigLoadStart, RouteConfigLoadEnd } from '@angular/router';
 import { PackageRouteConfiguration } from '@skysmack/portal-ui';
-import { SubscriptionHandler, pipeFns, flattenArray } from '@skysmack/framework';
+import { SubscriptionHandler } from '@skysmack/framework';
 import { Skysmack, SkysmackRequestStatus } from '@skysmack/packages-skysmack-core';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { tap, take } from 'rxjs/operators';
