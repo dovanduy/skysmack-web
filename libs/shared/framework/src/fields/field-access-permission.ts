@@ -8,8 +8,8 @@ export class FieldAccessPermission {
     }
 }
 export enum AccessTypes {
-    none,
     both,
     authenticated,
-    anonymous
+    anonymous,
+    none
 }
