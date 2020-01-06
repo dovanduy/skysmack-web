@@ -31,5 +31,6 @@ export const personsComponents: any[] = [
 ];
 
 export const personsEntryComponents: any[] = [
-  PersonsDashboardComponent
+  PersonsDashboardComponent,
+  PersonsDetailsComponent
 ]

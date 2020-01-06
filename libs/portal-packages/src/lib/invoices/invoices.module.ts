@@ -6,7 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgInvoicesModule } from '@skysmack/ng-invoices';
 import { PortalUiModule, NgMenuProviders } from '@skysmack/portal-ui';
 
-import { invoicesComponents } from './invoice/components/invoices-components';
+import { invoicesComponents, invoicesEntryComponents } from './invoice/components/invoices-components';
 import { invoiceItemsComponents } from './invoice-item/components/invoice-items-components';
 import { invoicePaymentsComponents } from './invoice-payment/components/invoice-payments-components';
 import { DynamicFormsModule } from '@skysmack/portal-dynamic-forms';
@@ -28,6 +28,9 @@ import { NgInvoicesMenuProvider } from './invoice/ng-invoices-menu-provider';
     ...invoiceItemsComponents,
     ...invoicePaymentsComponents
   ],
+  entryComponents: [
+    invoicesEntryComponents
+  ],
   providers: []
 })
 export class InvoicesModule {
@@ -36,6 +39,6 @@ export class InvoicesModule {
     ngInvoicesMenuProvider: NgInvoicesMenuProvider,
   ) {
     ngMenuProviders
-    .add(ngInvoicesMenuProvider)
-   }
+      .add(ngInvoicesMenuProvider)
+  }
 }

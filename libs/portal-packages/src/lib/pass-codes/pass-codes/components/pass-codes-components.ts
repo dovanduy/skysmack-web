@@ -16,7 +16,6 @@ export const passCodesRoutes: Routes = [
         path: '', component: PassCodesIndexComponent, children: [
           { path: 'create', component: PassCodesCreateComponent, pathMatch: 'full' },
           { path: 'edit/:id', component: PassCodesEditComponent, pathMatch: 'full' },
-          { path: 'details/:id', component: PassCodesDetailsComponent, pathMatch: 'full' },
           {
             path: 'settings', component: SettingsComponent, pathMatch: 'full', data: {
               fieldsConfigToken: 'NgPassCodeLimitSettingsFieldsConfig'
@@ -38,5 +37,6 @@ export const passCodesComponents: any[] = [
 ];
 
 export const passCodesEntryComponents: any[] = [
+  PassCodesDetailsComponent,
   PassCodesDashboardComponent
 ]

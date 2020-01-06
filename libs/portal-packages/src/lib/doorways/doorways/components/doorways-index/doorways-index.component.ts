@@ -4,10 +4,12 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { NgDoorwaysStore, NgDoorwaysActions, DoorwaysPermissions } from '@skysmack/ng-doorways';
 import { Doorway, DoorwaysAppState, DOORWAYS_AREA_KEY } from '@skysmack/ng-doorways';
-import { MenuItem } from '@skysmack/framework';
+import { MenuItem, LocalObject } from '@skysmack/framework';
 import { NgFieldActions } from '@skysmack/ng-framework';
 import { NgDoorwaysFieldsConfig } from '../../../ng-doorways-fields-config';
 import { DocumentRecordIndexComponent } from '@skysmack/portal-fields';
+import { DoorwaysDetailsComponent } from '../doorways-details/doorways-details.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'ss-doorways-index',
@@ -19,7 +21,12 @@ export class DoorwaysIndexComponent extends DocumentRecordIndexComponent<Doorway
 
   public areaKey: string = DOORWAYS_AREA_KEY;
   public menuItemActions: MenuItem[] = [
-    new MenuItem().asUrlAction('details', MENU_ITEM_ACTION_DETAILS, 'list'),
+    new MenuItem().asEventAction(MENU_ITEM_ACTION_DETAILS, (_this: DoorwaysIndexComponent, value: LocalObject<Doorway, number>) => {
+      _this.dialog.open(DoorwaysDetailsComponent, {
+        width: '500px',
+        data: { entityId: value.object.id }
+      });
+    }, 'list', this),
     new MenuItem().asUrlAction('edit', MENU_ITEM_ACTIONS_EDIT, 'edit').setPermissions([
       DoorwaysPermissions.updateDoorways,
     ]),
@@ -37,7 +44,8 @@ export class DoorwaysIndexComponent extends DocumentRecordIndexComponent<Doorway
     public fieldsConfig: NgDoorwaysFieldsConfig,
     public fieldActions: NgFieldActions,
     public title: EntityComponentPageTitle,
-    public menuItemActionProviders: MenuItemActionProviders
+    public menuItemActionProviders: MenuItemActionProviders,
+    private dialog: MatDialog
   ) {
     super(router, activatedRoute, actions, skysmackStore, store, fieldsConfig, fieldActions, menuItemActionProviders, title);
   }

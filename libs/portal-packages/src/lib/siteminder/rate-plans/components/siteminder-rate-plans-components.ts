@@ -12,8 +12,7 @@ export const siteminderRatePlansRoutes: Routes = [
       {
         path: '', component: SiteMinderRatePlansIndexComponent, children: [
           { path: 'create', component: SiteMinderRatePlansCreateComponent, pathMatch: 'full' },
-          { path: 'edit/:id', component: SiteMinderRatePlansEditComponent, pathMatch: 'full' },
-          { path: 'details/:id', component: SiteMinderRatePlansDetailsComponent, pathMatch: 'full' },
+          { path: 'edit/:id', component: SiteMinderRatePlansEditComponent, pathMatch: 'full' }
         ]
       },
       getFieldsRoutes(SITE_MINDER_RATE_PLANS_AREA_KEY, SITE_MINDER_RATE_PLANS_ADDITIONAL_PATHS)
@@ -29,4 +28,5 @@ export const siteminderRatePlansComponents: any[] = [
 ];
 
 export const siteminderRatePlansEntryComponents: any[] = [
+  SiteMinderRatePlansDetailsComponent
 ]
