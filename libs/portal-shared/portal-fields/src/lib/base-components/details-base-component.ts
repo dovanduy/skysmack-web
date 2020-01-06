@@ -11,6 +11,7 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 export class DetailsBaseComponent<TAppState, TKey> extends BaseComponent<TAppState, TKey> implements OnInit, OnDestroy {
 
+
     constructor(
         public router: Router,
         public activatedRoute: ActivatedRoute,
@@ -19,7 +20,7 @@ export class DetailsBaseComponent<TAppState, TKey> extends BaseComponent<TAppSta
         public store: EntityStore<any, TKey>,
         public fieldsConfig: EntityFieldsConfig<any, TKey>,
         public editorNavService: EditorNavService,
-        @Optional() @Inject(MAT_DIALOG_DATA) public data: { entityId: TKey }
+        @Optional() @Inject(MAT_DIALOG_DATA) public data: { entityId: TKey },
     ) {
         super(router, activatedRoute, skysmackStore);
     }

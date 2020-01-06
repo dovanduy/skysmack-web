@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, ComponentFactoryResolver } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { InvoicesRoutingModule } from './invoices-routing.module';
@@ -12,6 +12,8 @@ import { invoicePaymentsComponents } from './invoice-payment/components/invoice-
 import { DynamicFormsModule } from '@skysmack/portal-dynamic-forms';
 import { PortalFieldsModule } from '@skysmack/portal-fields';
 import { NgInvoicesMenuProvider } from './invoice/ng-invoices-menu-provider';
+import { CoalescingComponentFactoryResolver, NgSummaryProviders } from '@skysmack/ng-framework';
+import { NgInvoicesSummaryProvider } from './invoice/ng-invoices-summary-provider';
 
 @NgModule({
   imports: [
@@ -29,7 +31,7 @@ import { NgInvoicesMenuProvider } from './invoice/ng-invoices-menu-provider';
     ...invoicePaymentsComponents
   ],
   entryComponents: [
-    invoicesEntryComponents
+    ...invoicesEntryComponents
   ],
   providers: []
 })
@@ -37,7 +39,13 @@ export class InvoicesModule {
   constructor(
     ngMenuProviders: NgMenuProviders,
     ngInvoicesMenuProvider: NgInvoicesMenuProvider,
+    invoicesSummaryProvider: NgInvoicesSummaryProvider,
+    summaryProviders: NgSummaryProviders,
+    coalescingResolver: CoalescingComponentFactoryResolver,
+    localResolver: ComponentFactoryResolver,
   ) {
+    coalescingResolver.registerResolver(localResolver);
+    summaryProviders.add(invoicesSummaryProvider);
     ngMenuProviders
       .add(ngInvoicesMenuProvider)
   }

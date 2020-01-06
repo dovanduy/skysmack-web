@@ -2,3 +2,11 @@
   <h5>{{ field.label | translate }}</h5>
   <span>{{ field.value }}</span>
 </ng-container>
+
+<div class="grid">
+  <ng-container *ngFor="let summary of summaries$ | async">
+    <div class="grid-item">
+      <ss-summary-loader [summary]="summary"></ss-summary-loader>
+    </div>
+  </ng-container>
+</div>
