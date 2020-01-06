@@ -13,7 +13,8 @@ import { Router } from '@angular/router';
 })
 export class DetailsComponent implements OnInit {
   @Input() public fields$: Observable<Field[]>;
-  public summaries$: Observable<Summary[]>;
+  @Input() public entityId: unknown;
+  public summaries$: Observable<Summary<unknown>[]>;
   private packagePath: string;
 
 
@@ -30,7 +31,7 @@ export class DetailsComponent implements OnInit {
     if (this.summaryProviders) {
       this.summaries$ = this.summaryProviders.providers$.pipe(
         switchMap(providers => combineLatest(
-          providers.map(provider => provider.getSummaries(this.packagePath))
+          providers.map(provider => provider.getSummaries(this.packagePath, this.entityId))
         )),
         map(summaries => summaries.reduce((a, b) => a.concat(b), []))
       );

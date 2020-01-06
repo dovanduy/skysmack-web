@@ -8,7 +8,7 @@ import { Summary } from '@skysmack/framework';
   styleUrls: ['./summary-loader.component.scss']
 })
 export class SummaryLoaderComponent implements OnInit {
-  @Input() summary: Summary;
+  @Input() summary: Summary<unknown>;
   @ViewChild(DynamicSummaryDirective, { static: true }) dynamicSummary: DynamicSummaryDirective;
 
   constructor(

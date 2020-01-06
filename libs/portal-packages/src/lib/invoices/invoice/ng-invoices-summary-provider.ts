@@ -8,17 +8,18 @@ import { InvoicesTypeId } from '@skysmack/package-types';
 import { InvoicesSummaryComponent } from './components/invoices-summary/invoices-summary.component';
 
 @Injectable({ providedIn: 'root' })
-export class NgInvoicesSummaryProvider extends SummaryProvider {
+export class NgInvoicesSummaryProvider extends SummaryProvider<number> {
     public id = Guid.create().toString();
 
     constructor(private skysmackStore: NgSkysmackStore) { super(); }
 
-    public getSummaries(): Observable<Summary[]> {
+    public getSummaries(packagePath: string, entityId: number): Observable<Summary<number>[]> {
         return this.skysmackStore.getAccessiblePackages().pipe(
             map(packages => packages.filter(_package => _package.object.type === InvoicesTypeId)),
-            map(invoicePackages => invoicePackages.map(invoicePackage => new Summary({
+            map(invoicePackages => invoicePackages.map(invoicePackage => new Summary<number>({
                 packagePath: invoicePackage.object.path,
-                component: InvoicesSummaryComponent
+                component: InvoicesSummaryComponent,
+                entityId
             })))
         );
     }

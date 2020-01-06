@@ -10,7 +10,7 @@ import { EditorNavService } from '@skysmack/portal-ui';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 export class DetailsBaseComponent<TAppState, TKey> extends BaseComponent<TAppState, TKey> implements OnInit, OnDestroy {
-
+    public entityId: TKey;
 
     constructor(
         public router: Router,

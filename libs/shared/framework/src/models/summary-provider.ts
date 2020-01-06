@@ -1,7 +1,7 @@
 import { Observable } from 'rxjs';
 import { Summary } from './summary';
 
-export abstract class SummaryProvider {
+export abstract class SummaryProvider<TKey> {
     public id: string;
-    public abstract getSummaries(packagePath: string): Observable<Summary[]>;
+    public abstract getSummaries(packagePath: string, entityId: unknown): Observable<Summary<TKey>[]>;
 }

@@ -2,11 +2,11 @@ import { BehaviorSubject } from 'rxjs';
 import { SummaryProvider } from '../models/summary-provider';
 
 export class SummaryProviders {
-    public providers: SummaryProvider[] = [];
-    public providers$: BehaviorSubject<SummaryProvider[]> = new BehaviorSubject([]);
+    public providers: SummaryProvider<unknown>[] = [];
+    public providers$: BehaviorSubject<SummaryProvider<unknown>[]> = new BehaviorSubject([]);
     private register = {};
 
-    public add(provider: SummaryProvider): SummaryProviders {
+    public add(provider: SummaryProvider<unknown>): SummaryProviders {
         const registered = this.register[provider.id];
         if (!registered) {
             this.providers.push(provider);
