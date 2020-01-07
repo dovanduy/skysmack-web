@@ -37,7 +37,7 @@ export class InvoicesPersonsModule {
     personsInvoicesSummaryProvider: NgPersonsInvoicesSummaryProvider,
     summaryProviders: NgSummaryProviders,
     coalescingResolver: CoalescingComponentFactoryResolver,
-    localResolver: ComponentFactoryResolver,
+    localResolver: ComponentFactoryResolver
   ) {
     coalescingResolver.registerResolver(localResolver);
     summaryProviders
