@@ -20,8 +20,8 @@ export class NgPersonsInvoicesSummaryProvider extends SummaryProvider<number> {
         return this.skysmackStore.getAccessiblePackages().pipe(
             map(packages => packages.filter(_package => _package.object.type === InvoicesPersonsTypeId)),
             map(packages => packages.filter(_package => _package.object.dependencies[0] === packagePath)),
-            map(invoicePersonsPackages => invoicePersonsPackages.map(invoicePersonsPackages => new Summary<number>({
-                packagePath: invoicePersonsPackages.object.path,
+            map(packages => packages.map(_package => new Summary<number>({
+                packagePath: _package.object.path,
                 component: PersonsInvoicesSummaryComponent,
                 entityId
             })))
