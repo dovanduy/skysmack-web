@@ -4,11 +4,9 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { NgSiteMinderRatePlansStore, NgSiteMinderRatePlansActions } from '@skysmack/ng-siteminder';
 import { RatePlan, SiteMinderRatePlansAppState, SITE_MINDER_RATE_PLANS_AREA_KEY, SiteMinderPermissions } from '@skysmack/packages-siteminder';
-import { MenuItem, LocalObject } from '@skysmack/framework';
+import { MenuItem } from '@skysmack/framework';
 import { RecordIndexComponent } from '@skysmack/portal-fields';
 import { NgSiteMinderRatePlansFieldsConfig } from '../../ng-siteminder-rate-plans-fields-config';
-import { SiteMinderRatePlansDetailsComponent } from '../siteminder-rate-plans-details/siteminder-rate-plans-details.component';
-import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'ss-siteminder-rate-plans-index',
@@ -22,12 +20,7 @@ export class SiteMinderRatePlansIndexComponent extends RecordIndexComponent<Site
   public titleExtras = true;
 
   public menuItemActions: MenuItem[] = [
-    new MenuItem().asEventAction(MENU_ITEM_ACTION_DETAILS, (_this: SiteMinderRatePlansIndexComponent, value: LocalObject<RatePlan, number>) => {
-      _this.dialog.open(SiteMinderRatePlansDetailsComponent, {
-        width: '500px',
-        data: { entityId: value.object.id }
-      });
-    }, 'list', this),
+    new MenuItem().asUrlAction('details', MENU_ITEM_ACTION_DETAILS, 'list').setPermissions([SiteMinderPermissions.findRatePlans]),
     new MenuItem().asUrlAction('edit', MENU_ITEM_ACTIONS_EDIT, 'edit').setPermissions([
       SiteMinderPermissions.updateRatePlans,
     ]),
@@ -44,8 +37,7 @@ export class SiteMinderRatePlansIndexComponent extends RecordIndexComponent<Site
     public store: NgSiteMinderRatePlansStore,
     public fieldsConfig: NgSiteMinderRatePlansFieldsConfig,
     public title: EntityComponentPageTitle,
-    public menuItemActionProviders: MenuItemActionProviders,
-    private dialog: MatDialog
+    public menuItemActionProviders: MenuItemActionProviders
   ) {
     super(router, activatedRoute, actions, skysmackStore, store, fieldsConfig, menuItemActionProviders, title);
   }
