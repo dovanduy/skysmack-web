@@ -10,7 +10,8 @@ import { PortalFieldsModule } from '@skysmack/portal-fields';
 import { CoalescingComponentFactoryResolver, NgSummaryProviders } from '@skysmack/ng-framework';
 import { InvoicesPersonsRoutingModule } from './invoices-persons-routing.module';
 import { invoicesPersonsComponents, invoicesPersonsEntryComponents } from './invoices-persons/components/invoices-persons-components';
-import { NgInvoicesPersonsSummaryProvider } from './invoices-persons/ng-invoices-persons-summary-provider';
+import { NgInvoicesPersonsSummaryProvider } from './invoices-persons/components/invoices-persons-summary/ng-invoices-persons-summary-provider';
+import { NgPersonsInvoicesSummaryProvider } from './invoices-persons/components/persons-invoices-summary/ng-persons-invoice-summary-provider';
 
 @NgModule({
   imports: [
@@ -33,11 +34,14 @@ import { NgInvoicesPersonsSummaryProvider } from './invoices-persons/ng-invoices
 export class InvoicesPersonsModule {
   constructor(
     invoicesPersonsSummaryProvider: NgInvoicesPersonsSummaryProvider,
+    personsInvoicesSummaryProvider: NgPersonsInvoicesSummaryProvider,
     summaryProviders: NgSummaryProviders,
     coalescingResolver: CoalescingComponentFactoryResolver,
     localResolver: ComponentFactoryResolver,
   ) {
     coalescingResolver.registerResolver(localResolver);
-    summaryProviders.add(invoicesPersonsSummaryProvider);
+    summaryProviders
+      .add(invoicesPersonsSummaryProvider)
+      .add(personsInvoicesSummaryProvider);
   }
 }

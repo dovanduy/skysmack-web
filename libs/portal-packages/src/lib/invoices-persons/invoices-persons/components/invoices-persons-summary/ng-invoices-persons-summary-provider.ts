@@ -5,8 +5,11 @@ import { Observable } from 'rxjs';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { map } from 'rxjs/operators';
 import { InvoicesPersonsTypeId } from '@skysmack/package-types';
-import { InvoicesPersonsSummaryComponent } from './components/invoices-persons-summary/invoices-persons-summary.component';
+import { InvoicesPersonsSummaryComponent } from './invoices-persons-summary.component';
 
+/**
+ * Provides an invoice summary shown in details about a person.
+ */
 @Injectable({ providedIn: 'root' })
 export class NgInvoicesPersonsSummaryProvider extends SummaryProvider<number> {
     public id = Guid.create().toString();
