@@ -16,8 +16,8 @@ export class NgPersonsDashboardProvider extends DashboardProvider {
     public getDashboards(): Observable<Dashboard[]> {
         return this.skysmackStore.getAccessiblePackages().pipe(
             map(packages => packages.filter(_package => _package.object.type === PersonsTypeId)),
-            map(personPackages => personPackages.map(personPackage => new Dashboard({
-                packagePath: personPackage.object.path,
+            map(packages => packages.map(_package => new Dashboard({
+                packagePath: _package.object.path,
                 component: PersonsDashboardComponent
             })))
         );
