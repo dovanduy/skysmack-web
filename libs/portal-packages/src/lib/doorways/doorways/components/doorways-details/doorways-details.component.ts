@@ -1,12 +1,12 @@
-import { Component, OnInit, Optional, Inject } from '@angular/core';
-import { EditorNavService } from '@skysmack/portal-ui';
+import { Component, OnInit } from '@angular/core';
+import { EditorNavService, EntityComponentPageTitle } from '@skysmack/portal-ui';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
-import { NgDoorwaysActions, NgDoorwaysStore } from '@skysmack/ng-doorways';
+import { NgDoorwaysActions, NgDoorwaysStore, Doorway } from '@skysmack/ng-doorways';
 import { DoorwaysAppState } from '@skysmack/ng-doorways';
 import { DetailsBaseComponent } from '@skysmack/portal-fields';
 import { NgDoorwaysFieldsConfig } from '../../../ng-doorways-fields-config';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { LocalObject } from '@skysmack/framework';
 
 @Component({
   selector: 'ss-doorways-details',
@@ -21,12 +21,16 @@ export class DoorwaysDetailsComponent extends DetailsBaseComponent<DoorwaysAppSt
     public store: NgDoorwaysStore,
     public fieldsConfig: NgDoorwaysFieldsConfig,
     public editorNavService: EditorNavService,
-    @Optional() @Inject(MAT_DIALOG_DATA) public data: { entityId: number }
+    public title: EntityComponentPageTitle
   ) {
-    super(router, activatedRoute, skysmackStore, actions, store, fieldsConfig, editorNavService, data);
+    super(router, activatedRoute, skysmackStore, actions, store, fieldsConfig, editorNavService, title);
   }
 
   ngOnInit() {
     super.ngOnInit();
+  }
+
+  protected getTitle(record: LocalObject<Doorway, number>): string {
+    return `${record.object.name}`;
   }
 }

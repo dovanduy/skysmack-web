@@ -8,8 +8,6 @@ import { MenuItem, LocalObject } from '@skysmack/framework';
 import { NgFieldActions } from '@skysmack/ng-framework';
 import { NgPersonsFieldsConfig } from '../../../ng-persons-fields-config';
 import { DocumentRecordIndexComponent } from '@skysmack/portal-fields';
-import { PersonsDetailsComponent } from '../persons-details/persons-details.component';
-import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'ss-persons-index',
@@ -21,18 +19,9 @@ export class PersonsIndexComponent extends DocumentRecordIndexComponent<PersonsA
 
   public areaKey: string = PERSONS_AREA_KEY;
   public menuItemActions: MenuItem[] = [
-    new MenuItem().asEventAction(MENU_ITEM_ACTION_DETAILS, (_this: PersonsIndexComponent, value: LocalObject<Person, number>) => {
-      _this.dialog.open(PersonsDetailsComponent, {
-        width: '500px',
-        data: { entityId: value.object.id }
-      });
-    }, 'list', this),
-    new MenuItem().asUrlAction('edit', MENU_ITEM_ACTIONS_EDIT, 'edit').setPermissions([
-      PersonsPermissions.updatePersons,
-    ]),
-    new MenuItem().asEventAction(MENU_ITEM_ACTIONS_DELETE, this.delete, 'delete', this).setPermissions([
-      PersonsPermissions.removePersons
-    ])
+    new MenuItem().asUrlAction('details', MENU_ITEM_ACTION_DETAILS, 'list').setPermissions([PersonsPermissions.findPersons]),
+    new MenuItem().asUrlAction('edit', MENU_ITEM_ACTIONS_EDIT, 'edit').setPermissions([PersonsPermissions.updatePersons]),
+    new MenuItem().asEventAction(MENU_ITEM_ACTIONS_DELETE, this.delete, 'delete', this).setPermissions([PersonsPermissions.removePersons])
   ];
 
   constructor(
@@ -45,7 +34,6 @@ export class PersonsIndexComponent extends DocumentRecordIndexComponent<PersonsA
     public fieldActions: NgFieldActions,
     public title: EntityComponentPageTitle,
     public menuItemActionProviders: MenuItemActionProviders,
-    private dialog: MatDialog
   ) {
     super(router, activatedRoute, actions, skysmackStore, store, fieldsConfig, fieldActions, menuItemActionProviders, title);
   }

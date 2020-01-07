@@ -1,12 +1,18 @@
-<ng-container *ngFor="let field of fields$ | async as fields; trackBy: trackByFieldKey">
-  <h5>{{ field.label | translate }}</h5>
-  <span>{{ field.value }}</span>
-</ng-container>
+<button mat-icon-button matTooltip="Back" [routerLink]="['/', packagePath]" class="close-button">
+  <mat-icon>close</mat-icon>
+</button>
 
-<div class="grid">
-  <ng-container *ngFor="let summary of summaries$ | async">
-    <div class="grid-item">
-      <ss-summary-loader [summary]="summary"></ss-summary-loader>
-    </div>
+<mat-card>
+  <ng-container *ngFor="let field of fields$ | async as fields; trackBy: trackByFieldKey">
+    <h5>{{ field.label | translate }}</h5>
+    <span>{{ field.value }}</span>
   </ng-container>
-</div>
+
+  <div class="grid">
+    <ng-container *ngFor="let summary of summaries$ | async">
+      <div class="grid-item">
+        <ss-summary-loader [summary]="summary"></ss-summary-loader>
+      </div>
+    </ng-container>
+  </div>
+</mat-card>

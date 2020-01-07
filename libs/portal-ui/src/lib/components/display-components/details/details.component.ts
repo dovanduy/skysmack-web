@@ -15,7 +15,7 @@ export class DetailsComponent implements OnInit {
   @Input() public fields$: Observable<Field[]>;
   @Input() public entityId: unknown;
   public summaries$: Observable<Summary<unknown>[]>;
-  private packagePath: string;
+  public packagePath: string;
 
 
   constructor(
@@ -41,5 +41,6 @@ export class DetailsComponent implements OnInit {
   public trackByFieldKey(field: Field) {
     return field ? field.key : undefined;
   }
+
 
 }
