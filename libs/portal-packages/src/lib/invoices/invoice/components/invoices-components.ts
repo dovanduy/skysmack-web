@@ -5,7 +5,6 @@ import { InvoicesEditComponent } from './invoices-edit/invoices-edit.component';
 import { InvoicesDetailsComponent } from './invoices-details/invoices-details.component';
 import { INVOICES_AREA_KEY, INVOICES_ADDITIONAL_PATHS } from '@skysmack/packages-invoices';
 import { getFieldsRoutes } from '@skysmack/portal-fields';
-import { InvoicesSummaryComponent } from './invoices-summary/invoices-summary.component';
 
 export const invoicesRoutes: Routes = [
   {
@@ -26,10 +25,8 @@ export const invoicesComponents: any[] = [
   InvoicesCreateComponent,
   InvoicesEditComponent,
   InvoicesDetailsComponent,
-  InvoicesSummaryComponent
 ];
 
 export const invoicesEntryComponents: any[] = [
   InvoicesDetailsComponent,
-  InvoicesSummaryComponent
 ];

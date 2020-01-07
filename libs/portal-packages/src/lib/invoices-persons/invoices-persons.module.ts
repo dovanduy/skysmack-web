@@ -1,18 +1,16 @@
 import { NgModule, ComponentFactoryResolver } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { InvoicesRoutingModule } from './invoices-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { NgInvoicesModule } from '@skysmack/ng-invoices';
-import { PortalUiModule, NgMenuProviders } from '@skysmack/portal-ui';
+import { PortalUiModule } from '@skysmack/portal-ui';
 
-import { invoicesComponents, invoicesEntryComponents } from './invoice/components/invoices-components';
-import { invoiceItemsComponents } from './invoice-item/components/invoice-items-components';
-import { invoicePaymentsComponents } from './invoice-payment/components/invoice-payments-components';
 import { DynamicFormsModule } from '@skysmack/portal-dynamic-forms';
 import { PortalFieldsModule } from '@skysmack/portal-fields';
-import { NgInvoicesMenuProvider } from './invoice/ng-invoices-menu-provider';
 import { CoalescingComponentFactoryResolver, NgSummaryProviders } from '@skysmack/ng-framework';
+import { InvoicesPersonsRoutingModule } from './invoices-persons-routing.module';
+import { invoicesPersonsComponents, invoicesPersonsEntryComponents } from './invoices-persons/components/invoices-persons-components';
+import { NgInvoicesPersonsSummaryProvider } from './invoices-persons/ng-invoices-persons-summary-provider';
 
 @NgModule({
   imports: [
@@ -20,30 +18,26 @@ import { CoalescingComponentFactoryResolver, NgSummaryProviders } from '@skysmac
     HttpClientModule,
     PortalUiModule,
     DynamicFormsModule,
-    InvoicesRoutingModule,
+    InvoicesPersonsRoutingModule,
     NgInvoicesModule,
     PortalFieldsModule
   ],
   declarations: [
-    ...invoicesComponents,
-    ...invoiceItemsComponents,
-    ...invoicePaymentsComponents
+    ...invoicesPersonsComponents,
   ],
   entryComponents: [
-    ...invoicesEntryComponents
+    ...invoicesPersonsEntryComponents
   ],
   providers: []
 })
-export class InvoicesModule {
+export class InvoicesPersonsModule {
   constructor(
-    ngMenuProviders: NgMenuProviders,
-    ngInvoicesMenuProvider: NgInvoicesMenuProvider,
+    invoicesPersonsSummaryProvider: NgInvoicesPersonsSummaryProvider,
     summaryProviders: NgSummaryProviders,
     coalescingResolver: CoalescingComponentFactoryResolver,
     localResolver: ComponentFactoryResolver,
   ) {
     coalescingResolver.registerResolver(localResolver);
-    ngMenuProviders
-      .add(ngInvoicesMenuProvider)
+    summaryProviders.add(invoicesPersonsSummaryProvider);
   }
 }

@@ -39,6 +39,7 @@ import { loadDoorwaysPassCodesPackage } from '../packages/doorways-pass-codes-pa
 import { loadLodgingsDoorwaysPackage } from '../packages/lodgings-doorways-package-manifest';
 import { loadLodgingsReservationsPassCodePackage } from '../packages/lodgings-reservations-pass-codes-package-manifest';
 import { loadAxisPhysicalAccessControlPackage } from '../packages/axis-physical-access-control-package-manifest';
+import { loadInvoicesPersonsPackage } from '../packages/invoices-persons-package-manifest';
 
 export function configureSkysmack(actions: NgSkysmackActions) {
     return () => actions.getSkysmack();
@@ -58,6 +59,7 @@ export const packageLoaders = [
     loadAccessPoliciesPackage,
     loadIdentitiesPackage,
     loadInvoicePackage,
+    loadInvoicesPersonsPackage,
     loadInvoicesProductsPackage,
     loadInvoicesCashPaymentsPackage,
     loadPersonPackage,
