@@ -6,7 +6,7 @@ import { Observable, of } from 'rxjs';
 @Injectable({ providedIn: 'root' })
 export class NgCommercialTenantsMenuProvider implements MenuProvider {
     public id = Guid.create().toString();
-    private translationPrefix = 'COMMERCIAL_TENANTS.INDEX.';
+    private translationPrefix = 'COMMERCIAL_TENANTS.';
 
     constructor(
     ) { }
@@ -33,7 +33,15 @@ export class NgCommercialTenantsMenuProvider implements MenuProvider {
         return [
             new MenuItem({
                 url: '/tenants',
-                displayName: this.translationPrefix + 'TENANTS',
+                displayName: this.translationPrefix + 'INDEX.TENANTS',
+                area: 'manage',
+                order: 1,
+                icon: 'add',
+                providedIn: ['top']
+            }),
+            new MenuItem({
+                url: '/tenants/packages',
+                displayName: this.translationPrefix + 'PACKAGES',
                 area: 'manage',
                 order: 1,
                 icon: 'add',

@@ -13,45 +13,63 @@
   <!-- Package type selected -->
   <ng-container *ngIf="selectedPackage">
 
-    <!-- Title section -->
-    <div class="flex-container">
-      <h1>{{ selectedPackage.name }}</h1>
-      <mat-chip-list class="state-chip">
-        <mat-chip color="default">{{ getDevelopmentState(selectedPackage.state) }}</mat-chip>
-      </mat-chip-list>
-
-      <button [routerLink]="['/', 'tenants', 'packages']" mat-icon-button>
-        <mat-icon>close</mat-icon>
-      </button>
-    </div>
-
     <!-- Content section -->
     <mat-card>
-      <mat-card-content *ngIf="selectedPackage">
-        <p>Description: {{ selectedPackage.description }}</p>
-        <p>Category: {{ selectedPackage.category }}</p>
-        <p>Required: {{ selectedPackage.required ? 'Yes' : 'No'}}</p>
-        <p>Multiple installs: {{ selectedPackage.multipleInstalls ? 'Yes' : 'No' }}</p>
+      <div class="flex-container" style="float:right">
+        <mat-chip-list>
+          <mat-chip class="link" [routerLink]="['/', 'tenants', 'packages', selectedPackage.category]" color="default">
+            {{ selectedPackage.category }}</mat-chip>
+        </mat-chip-list>
+        <button class="close-button" [routerLink]="['/', 'tenants', 'packages']" mat-icon-button>
 
-        <ng-container *ngIf="dependencies">
-          <h3>Dependencies</h3>
-          <mat-chip-list>
-            <mat-chip [routerLink]="['/', 'tenants', 'packages', dep.category, dep.name]" color="default"
-              *ngFor="let dep of dependencies">{{ dep.name }}</mat-chip>
-          </mat-chip-list>
-        </ng-container>
+          <mat-icon>close</mat-icon>
+        </button>
+      </div>
+
+      <!-- Title section -->
+      <mat-card-title>
+        <div class="flex-container flex-start">
+          {{ selectedPackage.name }}
+          <span class="package-state">{{ getDevelopmentState(selectedPackage.state) }}</span>
+        </div>
+      </mat-card-title>
+
+      <mat-card-content *ngIf="selectedPackage">
+        <p>{{ selectedPackage.description }}</p>
+        <p *ngIf="selectedPackage.required || !selectedPackage.multipleInstalls">
+          <span class="package-property" *ngIf="selectedPackage.required">Required. </span>
+          <span class="package-property" *ngIf="!selectedPackage.multipleInstalls">Single installation only. </span>
+        </p>
+
       </mat-card-content>
     </mat-card>
 
+    <ng-container *ngIf="dependencies && dependencies.length > 0">
+      <h3 class="list-header">Dependencies</h3>
+        
+      <div class="grid">
+        <ng-container *ngFor="let _package of dependencies">
+          <div class="grid-item">
+            <mat-card class="package-card" [routerLink]="['/', 'tenants', 'packages', _package.category, _package.name]">
+              <mat-card-header>
+                <mat-card-title>{{ _package.name }}</mat-card-title>
+              </mat-card-header>
+            </mat-card>
+          </div>
+        </ng-container>
+      </div>
+
+    </ng-container>
+
     <!-- Upgrades -->
     <ng-container *ngIf="getDependentPackages(selectedPackage.type) as packages">
-      <h3 *ngIf="packages && packages.length > 0">Upgrades</h3>
-      <h3 *ngIf="!packages || packages.length === 0">Cannot be upgraded.</h3>
+      <h3 class="list-header" *ngIf="packages && packages.length > 0">Upgrades</h3>
+      <p *ngIf="!packages || packages.length === 0" class="no-upgrades">No upgrades available.</p>
 
       <div class="grid">
         <ng-container *ngFor="let _package of packages">
           <div class="grid-item">
-            <mat-card class="upgrade" [routerLink]="['/', 'tenants', 'packages', _package.category, _package.name]">
+            <mat-card class="package-card" [routerLink]="['/', 'tenants', 'packages', _package.category, _package.name]">
               <mat-card-header>
                 <mat-card-title>{{ _package.name }}</mat-card-title>
               </mat-card-header>
