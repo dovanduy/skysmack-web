@@ -31,7 +31,7 @@ module.exports = {
       default: 'ng serve web-commercial',
 
       // Runs a production build on a local http-server
-      prod: 'ng build web-commercial  --prod --sourceMap=true && http-server ./dist/apps/web/web-commercial -a www.skysmack.com -p 4000 -o',
+      prod: 'ng build web-commercial  --prod --sourceMap=true && http-server ./dist/apps/web/web-commercial -a www.skysmack.test -p 4000 -o',
 
       // Shows a visual analysis of compiled production code.
       analyze: 'ng build --prod web-commercial --stats-json && webpack-bundle-analyzer --port 4202 ./dist/apps/web/web-commercial/stats.json',
