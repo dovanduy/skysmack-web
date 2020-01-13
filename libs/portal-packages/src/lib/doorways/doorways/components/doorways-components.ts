@@ -32,7 +32,8 @@ export const doorwaysComponents: any[] = [
   DoorwaysIndexComponent,
   DoorwaysCreateComponent,
   DoorwaysEditComponent,
-  DoorwaysDashboardComponent
+  DoorwaysDashboardComponent,
+  DoorwaysDetailsComponent
 ];
 
 export const doorwaysEntryComponents: any[] = [
