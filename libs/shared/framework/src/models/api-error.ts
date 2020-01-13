@@ -30,7 +30,6 @@ export class ApiError {
                     errors: response.error.validationErrors[validationErrorKey]
                 } as ValidationError;
             });
-            console.log(this.validationErrors);
         } else {
             this.validationErrors = [];
         }
