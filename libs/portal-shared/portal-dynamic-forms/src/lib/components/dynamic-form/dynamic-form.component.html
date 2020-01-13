@@ -5,8 +5,14 @@
 
 <ng-container *ngIf="editorItem$ | async as editorItem">
   <ng-container *ngIf="editorItem.apiError">
-    <h5 style="color:red;">{{ editorItem.apiError.title }}</h5>
+    <h4 style="color:red;">{{ editorItem.apiError.title }}</h4>
     <p style="color:red;">{{ editorItem.apiError.detail }}</p>
+
+    <!-- Show errors with no keys -->
+    <ng-container *ngFor="let error of editorItem.apiError | fieldErrorsPipe">
+      <p style="color:red">{{ error }}</p>
+    </ng-container>
+
   </ng-container>
 </ng-container>
 

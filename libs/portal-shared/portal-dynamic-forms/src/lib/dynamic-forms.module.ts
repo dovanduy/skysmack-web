@@ -7,6 +7,7 @@ import { PortalUiModule } from '@skysmack/portal-ui';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatInputModule } from '@angular/material/input';
+import { FieldErrorsPipe } from './components/dynamic-form/field-errors.pipe';
 
 const material = [
   MatExpansionModule,
@@ -24,7 +25,8 @@ const material = [
     // DynamicFormsRoutingModule
   ],
   declarations: [
-    ...components
+    ...components,
+    FieldErrorsPipe
   ],
   exports: [
     ReactiveFormsModule,

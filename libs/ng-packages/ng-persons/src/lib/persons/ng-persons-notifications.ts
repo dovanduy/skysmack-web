@@ -67,7 +67,6 @@ export class NgPersonsNotifications extends RecordNotifications<Person, number> 
     }
 
     protected getPersonErrorParams(action: ReduxAction<HttpErrorResponse, RollbackMeta<LocalObject<Person, number>[]>>): StrIndex<any> {
-        jsonPrint(action);
         return {
             displayName: action.meta.value[0].object.displayName,
             httpErrorCode: action.payload.status
