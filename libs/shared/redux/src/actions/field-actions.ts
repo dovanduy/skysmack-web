@@ -1,7 +1,7 @@
 import { Store } from 'redux';
 import { ReduxAction } from './../action-types';
 import { PackagePathPayload } from './../payloads/package-path-payload';
-import { FieldSchemaViewModel, LocalObject, HttpMethod, QueueItem, StrIndex, PagedQuery, getFieldStateKey } from '@skysmack/framework';
+import { FieldSchemaViewModel, LocalObject, HttpMethod, QueueItem, StrIndex, PagedQuery, getFieldStateKey, RSQLFilterBuilder, LimitQuery } from '@skysmack/framework';
 import { Effect } from '../models/effect';
 import { EffectRequest } from '../models/effect-request';
 import { GetPagedEntitiesPayload } from '../payloads/get-paged-entities-payload';
@@ -181,10 +181,31 @@ export class FieldActions<TStateType, TStore extends Store<TStateType>> implemen
     public delete = (fields: LocalObject<FieldSchemaViewModel, string>[], packagePath: string, additionalPaths?: string[]) => {
         fields.forEach(record => record.error = false);
 
-        const paths = '?keys=' + fields.map(x => x.object.key).join('&keys=');
-        const combinedPaths = this.addAdditionalPaths(packagePath, additionalPaths) + '/fields' + paths;
         const stateKey = getFieldStateKey(packagePath, additionalPaths);
+        let combinedPaths = this.addAdditionalPaths(packagePath, additionalPaths) + '/fields';
+        const limit = fields.length;
+        let rsql: RSQLFilterBuilder = new RSQLFilterBuilder();
 
+        for (const item of fields) {
+            const itemFilter = new RSQLFilterBuilder();
+            if (typeof (item.objectIdentifier) === 'object') {
+                const keys = Object.keys(item.objectIdentifier);
+                for (const key of keys) {
+                    itemFilter.column(item.identifier + '.' + key).equalTo(item.objectIdentifier[key]);
+                }
+            } else {
+                itemFilter.column(item.identifier).equalTo(item.objectIdentifier.toString());
+            }
+
+            rsql.or().group(itemFilter);
+        }
+
+        const query = new LimitQuery({
+            rsqlFilter: rsql,
+            limit: limit
+        });
+
+        combinedPaths = `${combinedPaths}?query=${query.rsqlFilter.toList().build()}&limit=${query.limit}`;
 
         const messageParams = fields.map(record => ({
             localId: record.localId,

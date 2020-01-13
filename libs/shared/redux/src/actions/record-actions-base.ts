@@ -174,7 +174,7 @@ export abstract class RecordActionsBase<TStateType, TStore extends Store<TStateT
             rsql.or().group(itemFilter);
         }
 
-        var query = new LimitQuery({
+        const query = new LimitQuery({
             rsqlFilter: rsql,
             limit: limit
         });
