@@ -75,7 +75,7 @@ export class CommercialTenantsPackagesComponent implements OnInit {
       case DevelopmentState.Obsolete:
         return 'Obsolete';
       case DevelopmentState.Stable:
-        return 'Stable';
+        return '';
       default:
         return '';
     }

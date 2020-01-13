@@ -7,6 +7,7 @@ import { CommercialAvailablePackage } from '../../models/commercial-available-pa
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormControl } from '@angular/forms';
 import { MatSelectChange } from '@angular/material/select';
+import { DevelopmentState } from '../../models/development-state';
 
 @Component({
   selector: 'ss-commercial-tenants-packages-index',
@@ -86,6 +87,21 @@ export class CommercialTenantsPackagesIndexComponent implements OnInit, OnDestro
 
   public availablePackageDisplayFn(availablePackage: CommercialAvailablePackage): string {
     return availablePackage ? availablePackage && availablePackage.name : '';
+  }
+  
+  public getDevelopmentState(state: number): string {
+    switch (state) {
+      case DevelopmentState.Alpha:
+        return 'Alpha';
+      case DevelopmentState.Beta:
+        return 'Beta';
+      case DevelopmentState.Obsolete:
+        return 'Obsolete';
+      case DevelopmentState.Stable:
+        return '';
+      default:
+        return '';
+    }
   }
 
   private setCategory(category: string): void {
