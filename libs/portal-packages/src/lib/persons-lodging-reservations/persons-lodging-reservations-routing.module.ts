@@ -7,7 +7,6 @@ import { DefaultComponent } from '@skysmack/portal-ui';
     RouterModule.forChild([
       {
         path: '', component: DefaultComponent, children: [
-
         ]
       }
     ])

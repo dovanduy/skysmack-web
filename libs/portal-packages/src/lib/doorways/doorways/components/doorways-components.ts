@@ -16,7 +16,6 @@ export const doorwaysRoutes: Routes = [
         path: '', component: DoorwaysIndexComponent, children: [
           { path: 'create', component: DoorwaysCreateComponent, pathMatch: 'full' },
           { path: 'edit/:id', component: DoorwaysEditComponent, pathMatch: 'full' },
-          { path: 'details/:id', component: DoorwaysDetailsComponent, pathMatch: 'full' },
           {
             path: 'settings/relations', component: SettingsComponent, pathMatch: 'full', data: {
               fieldsConfigToken: 'NgDoorwaysRelationSettingsFieldsConfig'
@@ -33,10 +32,11 @@ export const doorwaysComponents: any[] = [
   DoorwaysIndexComponent,
   DoorwaysCreateComponent,
   DoorwaysEditComponent,
-  DoorwaysDetailsComponent,
-  DoorwaysDashboardComponent
+  DoorwaysDashboardComponent,
+  DoorwaysDetailsComponent
 ];
 
 export const doorwaysEntryComponents: any[] = [
-  DoorwaysDashboardComponent
+  DoorwaysDashboardComponent,
+  DoorwaysDetailsComponent
 ]

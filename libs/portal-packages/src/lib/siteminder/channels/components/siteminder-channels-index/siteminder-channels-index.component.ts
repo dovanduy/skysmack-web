@@ -20,7 +20,7 @@ export class SiteMinderChannelsIndexComponent extends RecordIndexComponent<SiteM
   public titleExtras = true;
 
   public menuItemActions: MenuItem[] = [
-    new MenuItem().asUrlAction('details', MENU_ITEM_ACTION_DETAILS, 'list'),
+    new MenuItem().asUrlAction('details', MENU_ITEM_ACTION_DETAILS, 'list').setPermissions([SiteMinderPermissions.findChannels]),
     new MenuItem().asUrlAction('edit', MENU_ITEM_ACTIONS_EDIT, 'edit').setPermissions([
       SiteMinderPermissions.updateChannels,
     ]),

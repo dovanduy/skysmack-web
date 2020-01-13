@@ -12,8 +12,7 @@ export const siteminderChannelsRoutes: Routes = [
       {
         path: '', component: SiteMinderChannelsIndexComponent, children: [
           { path: 'create', component: SiteMinderChannelsCreateComponent, pathMatch: 'full' },
-          { path: 'edit/:id', component: SiteMinderChannelsEditComponent, pathMatch: 'full' },
-          { path: 'details/:id', component: SiteMinderChannelsDetailsComponent, pathMatch: 'full' },
+          { path: 'edit/:id', component: SiteMinderChannelsEditComponent, pathMatch: 'full' }
         ]
       },
       getFieldsRoutes(SITE_MINDER_CHANNELS_AREA_KEY, SITE_MINDER_CHANNELS_ADDITIONAL_PATHS)
@@ -29,4 +28,5 @@ export const siteminderChannelsComponents: any[] = [
 ];
 
 export const siteminderChannelsEntryComponents: any[] = [
+  SiteMinderChannelsDetailsComponent
 ]

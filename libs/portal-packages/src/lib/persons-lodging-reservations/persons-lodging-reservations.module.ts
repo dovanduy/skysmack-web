@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, ComponentFactoryResolver } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -10,6 +10,10 @@ import { LodgingReservationsTypeId } from '@skysmack/package-types';
 import { DynamicFormsModule } from '@skysmack/portal-dynamic-forms';
 import { PortalFieldsModule } from '@skysmack/portal-fields';
 import { FieldProviders } from '@skysmack/ng-fields';
+import { personsLodgingReservationsComponents, personsLodgingReservationsEntryComponents } from './components/persons-lodging-reservations-components';
+import { CoalescingComponentFactoryResolver, NgSummaryProviders } from '@skysmack/ng-framework';
+import { NgPersonsLodgingReservationsSummaryProvider } from './components/persons-lodging-reservations-summary/ng-persons-lodging-reservations-summary-provider';
+import { NgLodgingReservationsPersonsSummaryProvider } from './components/lodging-reservations-persons-summary/ng-lodging-reservations-persons-summary-provider';
 
 @NgModule({
   imports: [
@@ -22,14 +26,28 @@ import { FieldProviders } from '@skysmack/ng-fields';
     PortalFieldsModule
   ],
   declarations: [
+    ...personsLodgingReservationsComponents
+  ],
+  entryComponents: [
+    ...personsLodgingReservationsEntryComponents
   ],
   providers: []
 })
 export class PersonsLodgingReservationsModule {
   constructor(
+    personsLodgingReservationsSummaryProvider: NgPersonsLodgingReservationsSummaryProvider,
+    lodgingReservationsPersonsSummaryProvider: NgLodgingReservationsPersonsSummaryProvider,
     fieldProviders: FieldProviders,
     personsLodgingsReservationsFieldProvider: NgPersonsLodgingReservationsFieldProvider,
+    summaryProviders: NgSummaryProviders,
+    coalescingResolver: CoalescingComponentFactoryResolver,
+    localResolver: ComponentFactoryResolver
+
   ) {
     fieldProviders.add(LodgingReservationsTypeId, personsLodgingsReservationsFieldProvider);
+    coalescingResolver.registerResolver(localResolver);
+    summaryProviders
+      .add(personsLodgingReservationsSummaryProvider)
+      .add(lodgingReservationsPersonsSummaryProvider);
   }
 }

@@ -16,8 +16,8 @@ export class NgDoorwaysDashboardProvider extends DashboardProvider {
     public getDashboards(): Observable<Dashboard[]> {
         return this.skysmackStore.getAccessiblePackages().pipe(
             map(packages => packages.filter(_package => _package.object.type === DoorwaysTypeId)),
-            map(doorwayPackages => doorwayPackages.map(doorwayPackage => new Dashboard({
-                packagePath: doorwayPackage.object.path,
+            map(packages => packages.map(_package => new Dashboard({
+                packagePath: _package.object.path,
                 component: DoorwaysDashboardComponent
             })))
         );

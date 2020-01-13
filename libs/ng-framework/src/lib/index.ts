@@ -10,5 +10,6 @@ export * from './dashboard/index';
 export * from './redux/index';
 export * from './directives/index';
 export * from './services/index';
+export * from './summary';
 
 export * from './ng-framework.module';

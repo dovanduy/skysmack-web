@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { EditorNavService } from '@skysmack/portal-ui';
+import { EditorNavService, EntityComponentPageTitle } from '@skysmack/portal-ui';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { NgInvoicesFieldsConfig } from '../../ng-invoices-fields-config';
 import { NgInvoicesActions, NgInvoicesStore } from '@skysmack/ng-invoices';
-import { InvoicesAppState } from '@skysmack/packages-invoices';
+import { InvoicesAppState, Invoice } from '@skysmack/packages-invoices';
 import { DetailsBaseComponent } from '@skysmack/portal-fields';
+import { LocalObject } from '@skysmack/framework';
 
 @Component({
   selector: 'ss-invoices-details',
@@ -19,12 +20,17 @@ export class InvoicesDetailsComponent extends DetailsBaseComponent<InvoicesAppSt
     public actions: NgInvoicesActions,
     public store: NgInvoicesStore,
     public fieldsConfig: NgInvoicesFieldsConfig,
-    public editorNavService: EditorNavService
+    public editorNavService: EditorNavService,
+    public title: EntityComponentPageTitle
   ) {
-    super(router, activatedRoute, skysmackStore, actions, store, fieldsConfig, editorNavService);
+    super(router, activatedRoute, skysmackStore, actions, store, fieldsConfig, editorNavService, title);
   }
 
   ngOnInit() {
     super.ngOnInit();
+  }
+
+  protected getTitle(record: LocalObject<Invoice, number>): string {
+    return `${record.object.description}`;
   }
 }
