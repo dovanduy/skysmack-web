@@ -2,7 +2,7 @@ import { Injectable, Inject } from '@angular/core';
 import { Person } from '@skysmack/packages-persons';
 import { RecordNotifications, Notifications, NOTIFICATIONS_INJECTOR_TOKEN } from '@skysmack/ng-framework';
 import { ReduxAction, CommitMeta, RollbackMeta } from '@skysmack/redux';
-import { LocalObject, FieldSchemaViewModel, HttpErrorResponse, StrIndex } from '@skysmack/framework';
+import { LocalObject, FieldSchemaViewModel, HttpErrorResponse, StrIndex, jsonPrint } from '@skysmack/framework';
 
 @Injectable({ providedIn: 'root' })
 export class NgPersonsNotifications extends RecordNotifications<Person, number> {
@@ -67,9 +67,10 @@ export class NgPersonsNotifications extends RecordNotifications<Person, number> 
     }
 
     protected getPersonErrorParams(action: ReduxAction<HttpErrorResponse, RollbackMeta<LocalObject<Person, number>[]>>): StrIndex<any> {
+        jsonPrint(action);
         return {
-            displayName: action.meta.value[0].object.display,
-            httpError: action.payload.status
+            displayName: action.meta.value[0].object.displayName,
+            httpErrorCode: action.payload.status
         };
     }
 }

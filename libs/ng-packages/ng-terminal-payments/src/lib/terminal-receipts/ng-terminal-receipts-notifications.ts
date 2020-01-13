@@ -62,14 +62,14 @@ export class NgTerminalReceiptsNotifications extends RecordNotifications<Termina
 
     protected getTerminalReceiptParams(action: ReduxAction<unknown, CommitMeta<LocalObject<TerminalReceipt, number>[]>>): StrIndex<any> {
         return {
-            displayName: action.meta.value[0].object.displayName
+            displayName: action.meta.value[0].object.type
         };
     }
 
     protected getTerminalReceiptErrorParams(action: ReduxAction<HttpErrorResponse, RollbackMeta<LocalObject<TerminalReceipt, number>[]>>): StrIndex<any> {
         return {
-            displayName: action.meta.value[0].object.display,
-            httpError: action.payload.status
+            displayName: action.meta.value[0].object.type,
+            httpErrorCode: action.payload.status
         };
     }
 }
