@@ -12,6 +12,7 @@ export class FieldPermissionFieldComponent extends FieldBaseComponent<Field> imp
 
   public accessTypes: SelectFieldOption[];
   public permission: FieldAccessPermission;
+  public accessType = AccessTypes;
 
   public get selectedAccessType(): AccessTypes {
     return this.permission && this.permission.access;
