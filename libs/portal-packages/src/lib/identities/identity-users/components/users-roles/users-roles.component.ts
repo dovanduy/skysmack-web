@@ -54,9 +54,10 @@ export class UsersRolesComponent extends BaseComponent<User, number> implements 
   }
 
   public removeRole(userRole: string): void {
-    const dic = {};
-    dic[this.entityId] = [userRole];
-    this.actions.removeUsersRoles(this.packagePath, dic);
+    this.actions.removeUsersRoles(this.packagePath, [new UserRoles({
+      userId: Number(this.entityId),
+      roleNames: [userRole]
+    })]);
   }
 
   private getRoles() {

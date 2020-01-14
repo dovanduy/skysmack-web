@@ -37,7 +37,6 @@ export function usersReducer(state = new UsersState(), action: any, prefix: stri
                 userRolesState[userRoleId] = userRole.roleNames;
                 newState.usersRoles[packagePath] = userRolesState;
             });
-            // jsonPrint({ packagePath, userRolesState });
 
             return newState;
         }
@@ -82,13 +81,6 @@ export function usersReducer(state = new UsersState(), action: any, prefix: stri
 
             newState.usersRoles[stateKey] = userRoleState;
 
-
-            // Old
-            // Object.keys(value).forEach(roleIdKey => {
-            //     const currentUserRoles: string[] = newState.usersRoles[stateKey][roleIdKey] ? newState.usersRoles[stateKey][roleIdKey] : [];
-            //     newState.usersRoles[stateKey][roleIdKey] = currentUserRoles.filter(currentRole => !rolesFailedToAdd.includes(currentRole));
-            // });
-
             // Log warning
             if (!GlobalProperties.production) {
                 console.log('Error. Error Action:', action.payload);
@@ -98,28 +90,42 @@ export function usersReducer(state = new UsersState(), action: any, prefix: stri
         }
 
         case prefix + UsersActions.REMOVE_ROLES: {
-            const castedAction = action as ReduxAction<unknown, ReduxOfflineMeta<NumIndex<string[]>, HttpResponse, NumIndex<string[]>>>;
+            // Prep data
+            const castedAction = action as ReduxAction<unknown, ReduxOfflineMeta<UserRoles[], HttpResponse, UserRoles[]>>;
             const commitMeta = castedAction.meta.offline.commit.meta;
+            const { value, stateKey } = commitMeta;
+            const userRolesArray = value;
+            const userRoleState = newState.usersRoles[stateKey] ? newState.usersRoles[stateKey] : {};
 
-            Object.keys(commitMeta.value).forEach(roleId => {
-                const currentUserRoles: string[] = newState.usersRoles[commitMeta.stateKey][roleId];
-                newState.usersRoles[commitMeta.stateKey][roleId] = currentUserRoles.filter(currentUserRole => {
-                    return !commitMeta.value[roleId].find(roleToRemove => roleToRemove === currentUserRole);
-                });
+            // Update state
+            userRolesArray.forEach(userRoles => {
+                const userId = userRoles.userId;
+                const rolesToRemove = userRoles.roleNames;
+                const currentRoles = userRoleState[userId] ? userRoleState[userId] : [];
+                userRoleState[userRoles.userId] = currentRoles.filter(role => !rolesToRemove.includes(role));
             });
+
+            newState.usersRoles[stateKey] = userRoleState;
 
             return newState;
         }
         case prefix + UsersActions.REMOVE_ROLES_FAILURE: {
-            const castedAction: ReduxAction<HttpErrorResponse, { stateKey: string, value: NumIndex<string[]>, queueItems: QueueItem[] }> = action;
+            // Prep data
+            const castedAction: ReduxAction<HttpErrorResponse, { stateKey: string, value: UserRoles[], queueItems: QueueItem[] }> = action;
             const { stateKey, value } = castedAction.meta;
-            const rolesFailedToRemove: string[] = pipeFns(getValues, flattenArray)(value);
+            const userRolesArray = value;
+            const userRoleState = newState.usersRoles[stateKey] ? newState.usersRoles[stateKey] : {};
 
-            Object.keys(value).forEach(roleIdKey => {
-                const currentUserRoles: string[] = newState.usersRoles[stateKey][roleIdKey] ? newState.usersRoles[stateKey][roleIdKey] : [];
-                newState.usersRoles[stateKey][roleIdKey] = currentUserRoles.concat(rolesFailedToRemove);
+            // Update state
+            userRolesArray.forEach(userRoles => {
+                const userId = userRoles.userId;
+                const roleNames = userRoles.roleNames;
+                userRoleState[userId] = userRoleState[userId].concat(roleNames);
             });
 
+            newState.usersRoles[stateKey] = userRoleState;
+
+            // Log warning
             if (!GlobalProperties.production) {
                 console.log('Error. Error Action:', action.payload);
             }

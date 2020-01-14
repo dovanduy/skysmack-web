@@ -32,7 +32,7 @@ export class NgUsersRequests extends NgRecordRequests<User, number>  {
         let url = this.addAdditionalPaths(`${this.apiDomain.domain}/${packagePath}`);
         url = this.appendValues(url + '/roles', ids);
 
-        return this.http.get<UserRoles>(url, { observe: 'response' })
+        return this.http.get<UserRoles[]>(url, { observe: 'response' })
             .pipe(
                 map(response => Object.assign({}, new ReduxAction<GetUsersRolesSuccessPayload>({
                     type: this.prefix + NgUsersActions.GET_ROLES_SUCCESS,

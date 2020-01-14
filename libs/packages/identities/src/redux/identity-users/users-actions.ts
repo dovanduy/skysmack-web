@@ -62,21 +62,21 @@ export class UsersActions extends RecordActionsBase<UsersAppState, Store<UsersAp
         })));
     }
 
-    public removeUsersRoles(packagePath: string, userRolesDictionary: NumIndex<string[]>): void {
-        this.store.dispatch(Object.assign({}, new ReduxAction<any, ReduxOfflineMeta<NumIndex<string[]>, HttpResponse, NumIndex<string[]>>>({
+    public removeUsersRoles(packagePath: string, userRoles: UserRoles[]): void {
+        this.store.dispatch(Object.assign({}, new ReduxAction<any, ReduxOfflineMeta<UserRoles[], HttpResponse, UserRoles[]>>({
             type: this.prefix + UsersActions.REMOVE_ROLES,
             meta: new ReduxOfflineMeta(
-                new OfflineMeta<NumIndex<string[]>, HttpResponse, any>(
-                    new Effect<NumIndex<string[]>>(new EffectRequest<NumIndex<string[]>>(
+                new OfflineMeta<UserRoles[], HttpResponse, any>(
+                    new Effect<UserRoles[]>(new EffectRequest<UserRoles[]>(
                         this.addAdditionalPaths(packagePath) + '/roles/remove',
                         HttpMethod.POST,
-                        userRolesDictionary
+                        userRoles
                     )),
                     new ReduxAction({
                         type: this.prefix + UsersActions.REMOVE_ROLES_SUCCESS,
                         meta: {
                             stateKey: packagePath,
-                            value: userRolesDictionary,
+                            value: userRoles,
                             queueItems: [] as any
                         }
                     }),
@@ -84,7 +84,7 @@ export class UsersActions extends RecordActionsBase<UsersAppState, Store<UsersAp
                         type: this.prefix + UsersActions.REMOVE_ROLES_FAILURE,
                         meta: {
                             stateKey: packagePath,
-                            value: userRolesDictionary,
+                            value: userRoles,
                             queueItems: [] as any
                         }
                     })
