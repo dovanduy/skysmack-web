@@ -208,6 +208,10 @@ export class RecordIndexComponent<TAppState, TRecord extends Record<TKey>, TKey>
             this.pagedQuery.pageNumber = index;
             this.subscriptionHandler.register(this.activatedRoute.data.pipe(
                 tap((data: { areaKey: string, additionalPaths: string[] }) => {
+                    if (!this.packagePath) {
+                        this.packagePath = this.router.url.split('/')[1];
+                    }
+
                     if (this.actions instanceof NgFieldActions) {
                         this.actions.getPaged(this.packagePath, this.pagedQuery, data.additionalPaths);
                     } else {
