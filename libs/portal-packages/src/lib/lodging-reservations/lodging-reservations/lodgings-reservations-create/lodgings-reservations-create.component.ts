@@ -8,6 +8,8 @@ import { DocumentRecordFormComponent } from '@skysmack/portal-fields';
 import { NgLodgingReservationsStore, NgLodgingReservationsActions } from '@skysmack/ng-lodging-reservations';
 import { NgLodgingsActions, NgLodgingTypesActions } from '@skysmack/ng-lodgings';
 import { NgFieldActions } from '@skysmack/ng-framework';
+import { FormHelper } from '@skysmack/ng-dynamic-forms';
+import { toLocalObject } from '@skysmack/framework';
 
 @Component({
   selector: 'ss-lodgings-reservations-create',
@@ -33,4 +35,40 @@ export class LodgingsReservationsCreateComponent extends DocumentRecordFormCompo
     super.ngOnInit();
     this.setCreateFields();
   }
+
+  protected create(fh: FormHelper) {
+    fh.formValid(() => {
+      // Remove null values, as the backend currently fails or has strange behavior when included.
+      const clonedValues = JSON.parse(JSON.stringify(fh.form.getRawValue()));
+      Object.keys(clonedValues).forEach(key => {
+        const value = clonedValues[key]
+        if (value === null || value === undefined || value === 'null' || value === 'undefined') {
+          delete clonedValues[key]
+        }
+        this.formatExtendedData(key, clonedValues);
+      });
+
+      const localObject = toLocalObject(clonedValues);
+      localObject.object.extendedData
+      this.editorItem ? localObject.localId = this.editorItem.localId : localObject.localId = localObject.localId;
+      this.actions.add([localObject], this.packagePath);
+      this.editorNavService.hideEditorNav();
+    });
+  }
 }
+
+
+//  {
+//   "checkIn": "2020-01-14",
+//   "checkOut": "2020-01-15",
+//   "lodgingTypeId": 1,
+//   "lodgingId": 2,
+//   "persons": 5,
+//   "status": 0,
+//   "overbook": false,
+//   "extendedData__customers.attach": [
+//     1
+//   ],
+//   "extendedData__customers.add": null,
+//   "extendedData__customers.ids": null
+// } 

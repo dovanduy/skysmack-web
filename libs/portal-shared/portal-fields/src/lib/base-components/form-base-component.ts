@@ -61,7 +61,7 @@ export class FormBaseComponent<TAppState, TRecord extends Record<TKey>, TKey> ex
         }
     }
 
-    private formatExtendedData(key: string, formValues: any): void {
+    protected formatExtendedData(key: string, formValues: any): void {
         // Format extended data
         const extendedDataKey = 'extendedData';
         const extendedDataKeyParts = key.split('__');
@@ -82,7 +82,7 @@ export class FormBaseComponent<TAppState, TRecord extends Record<TKey>, TKey> ex
                 if (!formExtendedData[packagePathAndKey]) {
                     // We havent set any data yet for this package. Create its dictionary.
                     formExtendedData[packagePathAndKey] = {};
-                } 
+                }
 
                 // Set data for the current field
                 formExtendedData[packagePathAndKey] = extendedData;

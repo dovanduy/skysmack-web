@@ -69,7 +69,7 @@ export class NgPersonsLodgingReservationsFieldProvider extends FieldProvider {
                                         value: undefined,
                                         key: 'extendedData__' + personsPackagePath + '.add',
                                         label: personsPackagePath,
-                                        placeholder: personsPackagePath,
+                                        placeholder: personsPackagePath
                                     });
 
                                     const selectField = new SelectField({
@@ -79,7 +79,7 @@ export class NgPersonsLodgingReservationsFieldProvider extends FieldProvider {
                                         optionsData$: this.personsStore.get(personsPackagePath),
                                         displayNameSelector: 'object.displayName',
                                         label: personsPackagePath,
-                                        placeholder: personsPackagePath,
+                                        placeholder: personsPackagePath
                                     });
 
                                     const extendedData = entity ? entity.object['extendedData'] : undefined;
@@ -87,7 +87,7 @@ export class NgPersonsLodgingReservationsFieldProvider extends FieldProvider {
                                     const currentlySelectedIdsField = new Field({
                                         component: HiddenFieldComponent,
                                         value: extendedData ? extendedData[depPackagePath] && extendedData[depPackagePath]['ids'] : undefined,
-                                        key: 'extendedData__' + personsPackagePath + '.ids',
+                                        key: 'extendedData__' + personsPackagePath + '.ids'
                                     });
 
                                     switch (settings.object.shouldBeExistingPersons) {

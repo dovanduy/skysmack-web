@@ -142,6 +142,7 @@ export class NgLodgingReservationsFieldsConfig extends DocumentFieldsConfig<Lodg
             }));
 
             fields.push(new Field({
+                value: entity ? entity.object.overbook : false,
                 component: CheckboxFieldComponent,
                 key: 'overbook',
                 order: 6,
