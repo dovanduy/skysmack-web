@@ -6,3 +6,4 @@ export * from './forgot-password';
 export * from './application';
 export * from './application-descriptor';
 export * from './client';
+export * from './user-roles';

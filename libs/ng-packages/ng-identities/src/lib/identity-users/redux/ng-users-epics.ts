@@ -1,7 +1,7 @@
 import { RecordEpicsBase } from '@skysmack/ng-framework';
-import { User, GetUsersRolesPayload, GetUsersRolesSuccessPayload, USERS_REDUX_KEY } from '@skysmack/packages-identities';
+import { User, GetUsersRolesPayload, GetUsersRolesSuccessPayload, USERS_REDUX_KEY, UserRoles } from '@skysmack/packages-identities';
 import { ActionsObservable, ofType } from 'redux-observable';
-import { ReduxAction, ReduxOfflineMeta } from '@skysmack/redux';
+import { ReduxAction, } from '@skysmack/redux';
 import { Observable } from 'rxjs';
 import { switchMap, map } from 'rxjs/operators';
 import { HttpErrorResponse, NumIndex, HttpResponse, jsonPrint, QueueItem, flattenArray, pipeFns, join, getValues } from '@skysmack/framework';
@@ -28,7 +28,7 @@ export class NgUsersEpics extends RecordEpicsBase<User, number> {
         );
     }
 
-    public addUserRoleFailureEpic = (action$: ActionsObservable<ReduxAction<HttpErrorResponse, { stateKey: string, value: NumIndex<string[]>, queueItems: QueueItem[] }>>): Observable<ReduxAction<any> | ReduxAction<HttpErrorResponse>> => {
+    public addUserRoleFailureEpic = (action$: ActionsObservable<ReduxAction<HttpErrorResponse, { stateKey: string, value: UserRoles[], queueItems: QueueItem[] }>>): Observable<ReduxAction<any> | ReduxAction<HttpErrorResponse>> => {
         return action$.pipe(
             ofType(this.prefix + NgUsersActions.ADD_ROLES_FAILURE),
             map(action => {
@@ -38,7 +38,7 @@ export class NgUsersEpics extends RecordEpicsBase<User, number> {
         );
     };
 
-    public removeUserRoleFailureEpic = (action$: ActionsObservable<ReduxAction<HttpErrorResponse, { stateKey: string, value: NumIndex<string[]>, queueItems: QueueItem[] }>>): Observable<ReduxAction<any> | ReduxAction<HttpErrorResponse>> => {
+    public removeUserRoleFailureEpic = (action$: ActionsObservable<ReduxAction<HttpErrorResponse, { stateKey: string, value: UserRoles[], queueItems: QueueItem[] }>>): Observable<ReduxAction<any> | ReduxAction<HttpErrorResponse>> => {
         return action$.pipe(
             ofType(this.prefix + NgUsersActions.REMOVE_ROLES_FAILURE),
             map(action => {
@@ -48,11 +48,8 @@ export class NgUsersEpics extends RecordEpicsBase<User, number> {
         );
     };
 
-    private getRolesString(roleDic: NumIndex<string[]>): string {
-        return pipeFns(
-            getValues,
-            flattenArray,
-            join(', ')
-        )(roleDic);
+    private getRolesString(userRoles: UserRoles[]): string {
+        const roleNames = userRoles.reduce((a, b) => a.concat(b.roleNames), [] as string[])
+        return roleNames.join(', ');
     }
 }

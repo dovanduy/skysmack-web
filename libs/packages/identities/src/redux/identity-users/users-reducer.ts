@@ -1,9 +1,10 @@
-import { LocalPageTypes, StrIndex, LocalObject, NumIndex, HttpResponse, linq, GlobalProperties, QueueItem, HttpErrorResponse, pipeFns, getValues, flattenArray } from '@skysmack/framework';
+import { LocalPageTypes, StrIndex, LocalObject, NumIndex, HttpResponse, linq, GlobalProperties, QueueItem, HttpErrorResponse, pipeFns, getValues, flattenArray, jsonPrint } from '@skysmack/framework';
 import { AppState, ReduxAction, RecordState, recordReducersBase, ReduxOfflineMeta, sharedReducer } from '@skysmack/redux';
 import { User } from '../../models/user';
 import { UsersActions } from './users-actions';
 import { GetUsersRolesSuccessPayload } from '../../payloads';
 import { USERS_REDUX_KEY, USERS_REDUCER_KEY } from '../../constants';
+import { UserRoles } from '../../models';
 
 /**
  * This is to be used when you want to access users via the GLOBAL state. E.g. state.users (where users is the reducer name.)
@@ -24,14 +25,19 @@ export function usersReducer(state = new UsersState(), action: any, prefix: stri
 
     switch (action.type) {
         case prefix + UsersActions.GET_ROLES_SUCCESS: {
+            // Prep data
             const castedAction = action as ReduxAction<GetUsersRolesSuccessPayload>;
-            if (!newState.usersRoles[castedAction.payload.packagePath]) {
-                newState.usersRoles[castedAction.payload.packagePath] = castedAction.payload.userRoles;
-            } else {
-                Object.keys(castedAction.payload.userRoles).forEach(roleId => {
-                    newState.usersRoles[castedAction.payload.packagePath][roleId] = castedAction.payload.userRoles[roleId];
-                });
-            }
+            const { packagePath, userRoles } = castedAction.payload;
+            const userRolesArray = userRoles;
+            const userRolesState = newState.usersRoles[packagePath] ? newState.usersRoles[packagePath] : {};
+
+            // Update state
+            userRolesArray.forEach(userRole => {
+                const userRoleId = userRole.userId;
+                userRolesState[userRoleId] = userRole.roleNames;
+                newState.usersRoles[packagePath] = userRolesState;
+            });
+            // jsonPrint({ packagePath, userRolesState });
 
             return newState;
         }
@@ -43,29 +49,52 @@ export function usersReducer(state = new UsersState(), action: any, prefix: stri
         }
 
         case prefix + UsersActions.ADD_ROLES: {
-            const castedAction = action as ReduxAction<unknown, ReduxOfflineMeta<NumIndex<string[]>, HttpResponse, NumIndex<string[]>>>;
+            // Prep data
+            const castedAction = action as ReduxAction<unknown, ReduxOfflineMeta<UserRoles[], HttpResponse, UserRoles[]>>;
             const commitMeta = castedAction.meta.offline.commit.meta;
-            Object.keys(commitMeta.value).forEach(roleId => {
-                const currentUserRoles: string[] = newState.usersRoles[commitMeta.stateKey][roleId] ? newState.usersRoles[commitMeta.stateKey][roleId] : [];
-                newState.usersRoles[commitMeta.stateKey][roleId] = linq(currentUserRoles.concat(commitMeta.value[roleId])).distinct().ok();
+            const { value, stateKey } = commitMeta;
+            const userRolesArray = value;
+            const userRoleState = newState.usersRoles[stateKey] ? newState.usersRoles[stateKey] : {};
+
+            // Update state
+            userRolesArray.forEach(userRoles => {
+                const roleNames = userRoleState[userRoles.userId] ? userRoleState[userRoles.userId] : [];
+                userRoleState[userRoles.userId] = roleNames.concat(userRoles.roleNames);
             });
+
+            newState.usersRoles[stateKey] = userRoleState;
 
             return newState;
         }
         case prefix + UsersActions.ADD_ROLES_FAILURE: {
-            const castedAction: ReduxAction<HttpErrorResponse, { stateKey: string, value: NumIndex<string[]>, queueItems: QueueItem[] }> = action;
+            // Prep data
+            const castedAction: ReduxAction<HttpErrorResponse, { stateKey: string, value: UserRoles[], queueItems: QueueItem[] }> = action;
             const { stateKey, value } = castedAction.meta;
-            const rolesFailedToAdd: string[] = pipeFns(getValues, flattenArray)(value);
+            const userRolesArray = value;
+            const userRoleState = newState.usersRoles[stateKey] ? newState.usersRoles[stateKey] : {};
 
-            Object.keys(value).forEach(roleIdKey => {
-                const currentUserRoles: string[] = newState.usersRoles[stateKey][roleIdKey] ? newState.usersRoles[stateKey][roleIdKey] : [];
-                newState.usersRoles[stateKey][roleIdKey] = currentUserRoles.filter(currentRole => !rolesFailedToAdd.includes(currentRole));
+            // Update state
+            userRolesArray.forEach(userRoles => {
+                const userId = userRoles.userId;
+                const roleNames = userRoles.roleNames;
+                userRoleState[userId] = userRoleState[userId].filter(currentRole => !roleNames.includes(currentRole));
             });
 
+            newState.usersRoles[stateKey] = userRoleState;
+
+
+            // Old
+            // Object.keys(value).forEach(roleIdKey => {
+            //     const currentUserRoles: string[] = newState.usersRoles[stateKey][roleIdKey] ? newState.usersRoles[stateKey][roleIdKey] : [];
+            //     newState.usersRoles[stateKey][roleIdKey] = currentUserRoles.filter(currentRole => !rolesFailedToAdd.includes(currentRole));
+            // });
+
+            // Log warning
             if (!GlobalProperties.production) {
                 console.log('Error. Error Action:', action.payload);
             }
-            return state;
+
+            return newState;
         }
 
         case prefix + UsersActions.REMOVE_ROLES: {
