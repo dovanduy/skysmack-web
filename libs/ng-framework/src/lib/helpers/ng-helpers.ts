@@ -101,6 +101,7 @@ export const getConnectedPackageMenuEntries = (packagePath: string, packageTypeI
             switchMap(() => store.getPackages().pipe(
                 map(_packages => _packages
                     .filter(_package => _package.object.type === packageTypeId)
+                    .filter(_package => _package.object.dependencies && _package.object.dependencies.includes(packagePath))
                     .map(_package => new MenuItem({
                         url: '/' + _package.object.path,
                         displayName: _package.object.name,
