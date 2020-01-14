@@ -44,7 +44,7 @@ export class ConfirmReservationDialogComponent extends FormBaseComponent<Lodging
 
   protected onSubmit(fh: FormHelper): void {
     const value = this.extractFormValues(fh);
-    if (value.object.allowOverbooking) {
+    if (value.object.overbook) {
       // Post confirmation
       this.editorNavService.hideEditorNav();
     } else {

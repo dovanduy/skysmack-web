@@ -143,7 +143,7 @@ export class NgLodgingReservationsFieldsConfig extends DocumentFieldsConfig<Lodg
 
             fields.push(new Field({
                 component: CheckboxFieldComponent,
-                key: 'allowOverbooking',
+                key: 'overbook',
                 order: 6,
                 permissions: ['overbooking'],
                 sortable: true

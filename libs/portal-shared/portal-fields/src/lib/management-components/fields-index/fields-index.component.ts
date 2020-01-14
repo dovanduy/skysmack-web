@@ -41,7 +41,10 @@ export class FieldsIndexComponent extends RecordIndexComponent<any, any, any> im
   }
 
   ngOnInit() {
-    this.additionalPaths$ = this.activatedRoute.data.pipe(map(data => data.additionalPaths));
+    this.additionalPaths$ = this.activatedRoute.data.pipe(
+      map(data => data.additionalPaths),
+      tap(x => console.log('start avail paths:', x))
+    );
     super.ngOnInit();
     this.subscriptionHandler.register(combineLatest(
       this.loadedPackage$,
@@ -76,6 +79,7 @@ export class FieldsIndexComponent extends RecordIndexComponent<any, any, any> im
 
   protected delete = (_this: FieldsIndexComponent, value: LocalObject<FieldSchemaViewModel, string>) => {
     this.subscriptionHandler.register(_this.additionalPaths$.pipe(
+      tap(additionalPaths => console.log('end add paths: ', additionalPaths)),
       tap(additionalPaths => _this.actions.delete([value], _this.packagePath, additionalPaths)),
       take(1)
     ).subscribe());
