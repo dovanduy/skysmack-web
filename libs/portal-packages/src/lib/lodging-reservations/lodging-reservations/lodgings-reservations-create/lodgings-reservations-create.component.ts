@@ -56,19 +56,3 @@ export class LodgingsReservationsCreateComponent extends DocumentRecordFormCompo
     });
   }
 }
-
-
-//  {
-//   "checkIn": "2020-01-14",
-//   "checkOut": "2020-01-15",
-//   "lodgingTypeId": 1,
-//   "lodgingId": 2,
-//   "persons": 5,
-//   "status": 0,
-//   "overbook": false,
-//   "extendedData__customers.attach": [
-//     1
-//   ],
-//   "extendedData__customers.add": null,
-//   "extendedData__customers.ids": null
-// } 

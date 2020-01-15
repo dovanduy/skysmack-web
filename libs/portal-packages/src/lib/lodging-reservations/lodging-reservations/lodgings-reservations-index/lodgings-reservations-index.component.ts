@@ -114,7 +114,7 @@ export class LodgingsReservationsIndexComponent extends DocumentRecordIndexCompo
     ).subscribe());
   }
   public undoConfirm(_this: LodgingsReservationsIndexComponent, entity: LocalObject<LodgingReservation, number>) {
-    // _this.actions.undoConfirm(_this.packagePath, entity, [entity.object.id]);
+    _this.actions.undoConfirm(_this.packagePath, entity, [entity.object.id]);
   }
 
   public checkIn(_this: LodgingsReservationsIndexComponent, entity: LocalObject<LodgingReservation, number>) {

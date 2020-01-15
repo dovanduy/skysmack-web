@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { LodgingReservationsAppState, Move, LodgingReservation } from '@skysmack/packages-lodging-reservations';
+import { LodgingReservationsAppState, Move, LodgingReservation, CheckIn } from '@skysmack/packages-lodging-reservations';
 import { EditorNavService } from '@skysmack/portal-ui';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { FormBaseComponent } from '@skysmack/portal-fields';
@@ -45,10 +45,15 @@ export class ConfirmReservationDialogComponent extends FormBaseComponent<Lodging
   protected onSubmit(fh: FormHelper): void {
     const value = this.extractFormValues(fh);
     if (value.object.overbook) {
-      // Post confirmation
-      this.editorNavService.hideEditorNav();
+      // What happens here?
     } else {
-      // ???
+      const { packagePath, reservation } = this.data;
+
+      this.actions.confirm(packagePath, reservation, [new CheckIn({
+        reservation: reservation.object,
+        lodgingId: reservation.object.lodgingId,
+        reservationId: reservation.object.id
+      })]);
     }
   }
 }

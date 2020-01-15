@@ -8,6 +8,13 @@ import { LODGING_RESERVATIONS_REDUX_KEY, LODGING_RESERVATIONS_ADDITIONAL_PATHS }
 import { Move } from '../../models/move';
 
 export class LodgingReservationsActions extends RecordActionsBase<LodgingReservationsAppState, Store<LodgingReservationsAppState>> {
+    public static CONFIRM = 'CONFIRM';
+    public static CONFIRM_SUCCESS = 'CONFIRM_SUCCESS';
+    public static CONFIRM_FAILURE = 'CONFIRM_FAILURE';
+    public static UNDO_CONFIRM = 'UNDO_CONFIRM';
+    public static UNDO_CONFIRM_SUCCESS = 'UNDO_CONFIRM_SUCCESS';
+    public static UNDO_CONFIRM_FAILURE = 'UNDO_CONFIRM_FAILURE';
+
     public static CHECK_IN = 'CHECK_IN';
     public static CHECK_IN_SUCCESS = 'CHECK_IN_SUCCESS';
     public static CHECK_IN_FAILURE = 'CHECK_IN_FAILURE';
@@ -44,6 +51,67 @@ export class LodgingReservationsActions extends RecordActionsBase<LodgingReserva
     public static UNDO_NO_SHOW_FAILURE = 'UNDO_NO_SHOW_FAILURE';
 
     constructor(protected store: Store<LodgingReservationsAppState>) { super(store, LODGING_RESERVATIONS_REDUX_KEY, LODGING_RESERVATIONS_ADDITIONAL_PATHS); }
+
+    public confirm(packagePath: string, entity: LocalObject<LodgingReservation, number>, checkIns: CheckIn[]) {
+        this.store.dispatch(Object.assign({}, new ReduxAction<any, ReduxOfflineMeta<CheckIn[], HttpResponse, CheckIn[]>>({
+            type: this.prefix + LodgingReservationsActions.CHECK_IN,
+            meta: new ReduxOfflineMeta(
+                new OfflineMeta<CheckIn[], HttpResponse, any>(
+                    new Effect<CheckIn[]>(new EffectRequest<CheckIn[]>(
+                        this.addAdditionalPaths(packagePath) + '/confirm',
+                        HttpMethod.POST,
+                        checkIns
+                    )),
+                    new ReduxAction({
+                        type: this.prefix + LodgingReservationsActions.CHECK_IN_SUCCESS,
+                        meta: {
+                            stateKey: packagePath,
+                            value: entity,
+                            queueItems: []
+                        }
+                    }),
+                    new ReduxAction({
+                        type: this.prefix + LodgingReservationsActions.CHECK_IN_FAILURE,
+                        meta: {
+                            stateKey: packagePath,
+                            value: entity,
+                            queueItems: []
+                        }
+                    })
+                )
+            )
+        })));
+    }
+    public undoConfirm(packagePath: string, entity: LocalObject<LodgingReservation, number>, reservationIds: number[]) {
+        this.store.dispatch(Object.assign({}, new ReduxAction<any, ReduxOfflineMeta<number[], HttpResponse, number[]>>({
+            type: this.prefix + LodgingReservationsActions.UNDO_CHECK_IN,
+            meta: new ReduxOfflineMeta(
+                new OfflineMeta<number[], HttpResponse, any>(
+                    new Effect<number[]>(new EffectRequest<number[]>(
+                        this.addAdditionalPaths(packagePath) + '/undoconfirm',
+                        HttpMethod.POST,
+                        reservationIds
+                    )),
+                    new ReduxAction({
+                        type: this.prefix + LodgingReservationsActions.UNDO_CHECK_IN_SUCCESS,
+                        meta: {
+                            stateKey: packagePath,
+                            value: entity,
+                            queueItems: []
+                        }
+                    }),
+                    new ReduxAction({
+                        type: this.prefix + LodgingReservationsActions.UNDO_CHECK_IN_FAILURE,
+                        meta: {
+                            stateKey: packagePath,
+                            value: entity,
+                            queueItems: []
+                        }
+                    })
+                )
+            )
+        })));
+    }
 
     public checkIn(packagePath: string, entity: LocalObject<LodgingReservation, number>, checkIns: CheckIn[]) {
         this.store.dispatch(Object.assign({}, new ReduxAction<any, ReduxOfflineMeta<CheckIn[], HttpResponse, CheckIn[]>>({

@@ -30,6 +30,22 @@ export function lodgingReservationsReducer(state = new LodgingReservationsState(
     const newState = Object.assign({}, state);
 
     switch (action.type) {
+        // CONFIRM
+        case prefix + LodgingReservationsActions.CONFIRM_SUCCESS: {
+            return updateLodgingReservation(action, newState);
+        }
+        case prefix + LodgingReservationsActions.CONFIRM_FAILURE: {
+            console.log('error: ', action);
+            return newState;
+        }
+        case prefix + LodgingReservationsActions.UNDO_CONFIRM_SUCCESS: {
+            return updateLodgingReservation(action, newState);
+        }
+        case prefix + LodgingReservationsActions.UNDO_CONFIRM_FAILURE: {
+            console.log('error: ', action);
+            return newState;
+        }
+
         // CHECK IN
         case prefix + LodgingReservationsActions.CHECK_IN_SUCCESS: {
             return updateLodgingReservation(action, newState);
