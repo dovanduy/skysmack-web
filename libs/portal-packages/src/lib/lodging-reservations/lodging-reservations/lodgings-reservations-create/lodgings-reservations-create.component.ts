@@ -9,7 +9,7 @@ import { NgLodgingReservationsStore, NgLodgingReservationsActions } from '@skysm
 import { NgLodgingsActions, NgLodgingTypesActions } from '@skysmack/ng-lodgings';
 import { NgFieldActions } from '@skysmack/ng-framework';
 import { FormHelper } from '@skysmack/ng-dynamic-forms';
-import { toLocalObject } from '@skysmack/framework';
+import { toLocalObject, LocalObjectStatus } from '@skysmack/framework';
 
 @Component({
   selector: 'ss-lodgings-reservations-create',
@@ -49,7 +49,8 @@ export class LodgingsReservationsCreateComponent extends DocumentRecordFormCompo
       });
 
       const localObject = toLocalObject(clonedValues);
-      localObject.object.extendedData
+      localObject.status = LocalObjectStatus.CREATING;
+      localObject.isNew = true;
       this.editorItem ? localObject.localId = this.editorItem.localId : localObject.localId = localObject.localId;
       this.actions.add([localObject], this.packagePath);
       this.editorNavService.hideEditorNav();

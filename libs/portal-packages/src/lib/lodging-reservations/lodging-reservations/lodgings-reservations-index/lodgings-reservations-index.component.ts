@@ -107,7 +107,7 @@ export class LodgingsReservationsIndexComponent extends DocumentRecordIndexCompo
   ngOnInit() {
     super.ngOnInit();
   }
-
+  //#region MenuItem events
   public confirm(_this: LodgingsReservationsIndexComponent, entity: LocalObject<LodgingReservation, number>) {
     _this.subscriptionHandler.register(_this.dialog.open(ConfirmReservationDialogComponent, { data: { packagePath: _this.packagePath, reservation: entity } }).afterClosed().pipe(
       take(1)
@@ -159,5 +159,6 @@ export class LodgingsReservationsIndexComponent extends DocumentRecordIndexCompo
   public undoNoShow(_this: LodgingsReservationsIndexComponent, entity: LocalObject<LodgingReservation, number>) {
     _this.actions.undoNoShow(_this.packagePath, entity, [entity.object.id]);
   }
+  //#endregion
 }
 
