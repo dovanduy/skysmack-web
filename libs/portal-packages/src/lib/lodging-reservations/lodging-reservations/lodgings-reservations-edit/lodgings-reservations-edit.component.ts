@@ -43,8 +43,9 @@ export class LodgingsReservationsEditComponent extends DocumentRecordFormCompone
       // Remove null values, as the backend currently fails or has strange behavior when included.
       const clonedValues = JSON.parse(JSON.stringify(fh.form.getRawValue()));
       Object.keys(clonedValues).forEach(key => {
-        const value = clonedValues[key]
-        if (value === null || value === undefined || value === 'null' || value === 'undefined') {
+        const value = clonedValues[key];
+        // Remove null values EXCEPT for lodgingId. If it is null, it's because the user wants to remove it.
+        if (!(key === 'lodgingId') && value === null || value === undefined || value === 'null' || value === 'undefined') {
           delete clonedValues[key]
         }
         this.formatExtendedData(key, clonedValues);
