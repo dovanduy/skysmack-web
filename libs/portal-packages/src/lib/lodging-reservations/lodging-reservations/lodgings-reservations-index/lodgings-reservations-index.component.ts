@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { LocalObject, EnumHelpers } from '@skysmack/framework';
-import { LodgingReservationsAppState, LodgingReservation, LODGING_RESERVATIONS_AREA_KEY, CheckIn } from '@skysmack/packages-lodging-reservations';
+import { LodgingReservationsAppState, LodgingReservation, LODGING_RESERVATIONS_AREA_KEY, ReservationsPermissions } from '@skysmack/packages-lodging-reservations';
 import { MenuItem } from '@skysmack/framework';
 import { NgLodgingsStore, NgLodgingTypesStore, NgLodgingsActions, NgLodgingTypesActions } from '@skysmack/ng-lodgings';
-import { EntityComponentPageTitle, MenuItemActionProviders, MENU_ITEM_ACTIONS_EDIT, MENU_ITEM_ACTIONS_DELETE } from '@skysmack/portal-ui';
+import { EntityComponentPageTitle, MenuItemActionProviders, MENU_ITEM_ACTIONS_EDIT, MENU_ITEM_ACTIONS_DELETE, MENU_ITEM_ACTION_DETAILS } from '@skysmack/portal-ui';
 import { NgLodgingReservationsFieldsConfig } from '../../ng-lodging-reservations-fields-config';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { DocumentRecordIndexComponent } from '@skysmack/portal-fields';
@@ -78,8 +78,11 @@ export class LodgingsReservationsIndexComponent extends DocumentRecordIndexCompo
     }),
 
     // Misc
+    new MenuItem().asUrlAction('details', MENU_ITEM_ACTION_DETAILS, 'list').setPermissions([ReservationsPermissions.findReservations]),
     new MenuItem().asUrlAction('edit', MENU_ITEM_ACTIONS_EDIT, 'edit'),
     new MenuItem().asEventAction(MENU_ITEM_ACTIONS_DELETE, this.delete, 'delete', this),
+
+
   ];
 
   public areaKey: string = LODGING_RESERVATIONS_AREA_KEY;
