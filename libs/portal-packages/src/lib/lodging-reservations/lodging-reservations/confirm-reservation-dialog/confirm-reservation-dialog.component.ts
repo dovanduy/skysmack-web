@@ -6,7 +6,7 @@ import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { FormBaseComponent } from '@skysmack/portal-fields';
 import { NgLodgingReservationsActions } from '@skysmack/ng-lodging-reservations';
 import { switchMap } from 'rxjs/operators';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 import { LocalObject, toLocalObject } from '@skysmack/framework';
 import { FormHelper } from '@skysmack/ng-dynamic-forms';
 import { NgConfirmReservationFieldsConfig } from '../../confirm-reservation-fields-config';
@@ -23,6 +23,7 @@ export class ConfirmReservationDialogComponent extends FormBaseComponent<Lodging
     public skysmackStore: NgSkysmackStore,
     public actions: NgLodgingReservationsActions,
     public fieldsConfig: NgConfirmReservationFieldsConfig,
+    private dialog: MatDialog,
     @Inject(MAT_DIALOG_DATA) private data: { packagePath: string, reservation: LocalObject<LodgingReservation, number> }) {
     super(router, activatedRoute, editorNavService, actions, skysmackStore, fieldsConfig);
   }
@@ -55,5 +56,7 @@ export class ConfirmReservationDialogComponent extends FormBaseComponent<Lodging
         reservationId: reservation.object.id
       })]);
     }
+
+    this.dialog.closeAll();
   }
 }

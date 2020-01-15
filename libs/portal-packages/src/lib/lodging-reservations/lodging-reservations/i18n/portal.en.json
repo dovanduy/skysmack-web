@@ -106,7 +106,7 @@
         },
         "CHECKOUT": {
             "TITLE": "Checkout",
-            "BUTTON_MOVE": "Checkout",
+            "BUTTON_CHECKOUT": "Checkout",
             "CANCEL": "Cancel"
         },
         "CONFIRM_RESERVATION": {

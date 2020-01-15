@@ -53,11 +53,11 @@ export class LodgingsReservationsIndexComponent extends DocumentRecordIndexCompo
     }),
 
     // Move
+    // Note: Both move and undo move always shows as the same time, since their show logic is the same.
     new MenuItem().asEventAction(`${this.translationPrefix}MOVE`, this.move, 'compare_arrows', this).setShowLogic((entity: LocalObject<LodgingReservation, number>) => {
       return EnumHelpers.toIndexEnum(LodgingReservation.statusEnum)[entity.object.status] === LodgingReservation.statusEnum.InStay;
     }),
     new MenuItem().asEventAction(`${this.translationPrefix}UNDOMOVE`, this.undoMove, 'undo', this).setShowLogic((entity: LocalObject<LodgingReservation, number>) => {
-      // TODO: This is likely NOT correct...
       return EnumHelpers.toIndexEnum(LodgingReservation.statusEnum)[entity.object.status] === LodgingReservation.statusEnum.InStay;
     }),
 
