@@ -8,6 +8,8 @@ import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { DocumentRecordFormComponent } from '@skysmack/portal-fields';
 import { NgLodgingReservationsStore, NgLodgingReservationsActions } from '@skysmack/ng-lodging-reservations';
 import { NgFieldActions } from '@skysmack/ng-framework';
+import { FormHelper } from '@skysmack/ng-dynamic-forms';
+import { LocalObjectStatus } from '@skysmack/framework';
 
 @Component({
   selector: 'ss-lodgings-reservations-edit',
@@ -32,5 +34,27 @@ export class LodgingsReservationsEditComponent extends DocumentRecordFormCompone
   ngOnInit() {
     super.ngOnInit();
     this.setEditFields();
+  }
+
+  protected update(fh: FormHelper) {
+    fh.formValid(() => {
+      const oldValue = { ...this.selectedEntity };
+
+      // Remove null values, as the backend currently fails or has strange behavior when included.
+      const clonedValues = JSON.parse(JSON.stringify(fh.form.getRawValue()));
+      Object.keys(clonedValues).forEach(key => {
+        const value = clonedValues[key]
+        if (value === null || value === undefined || value === 'null' || value === 'undefined') {
+          delete clonedValues[key]
+        }
+        this.formatExtendedData(key, clonedValues);
+      });
+
+      this.selectedEntity.object = clonedValues;
+      this.selectedEntity.oldObject = oldValue.object;
+      this.selectedEntity.status = LocalObjectStatus.MODIFYING;
+      this.actions.update([this.selectedEntity], this.packagePath);
+      this.editorNavService.hideEditorNav();
+    });
   }
 }

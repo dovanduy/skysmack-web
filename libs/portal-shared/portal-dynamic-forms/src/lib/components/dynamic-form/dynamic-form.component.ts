@@ -3,7 +3,7 @@ import { FormBuilder, Validators, FormGroup, FormControl } from '@angular/forms'
 import { Observable } from 'rxjs';
 import { GlobalProperties, SubscriptionHandler, LocalObject, StrIndex } from '@skysmack/framework';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
-import { map, take } from 'rxjs/operators';
+import { map, take, delay } from 'rxjs/operators';
 import { Field, FormRule, Validation, FormHelper } from '@skysmack/ng-dynamic-forms';
 import { EditorNavService } from '@skysmack/portal-ui';
 
@@ -46,6 +46,7 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
 
     // Update the fields and  form (FormGroup) on field changes
     this.fields$ = this.fields$.pipe(
+      delay(0), // Prevents ExpressionChanged error
       map(fields => {
         this.initForm(fields);
         return fields.filter(field => field.includeInForm);
