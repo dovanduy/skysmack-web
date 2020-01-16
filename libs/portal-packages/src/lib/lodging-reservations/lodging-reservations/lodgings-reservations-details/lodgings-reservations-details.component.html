@@ -1,0 +1,5 @@
+<ss-container (menuItemActionEvent)="actionEvent($event)" [componentKey]="componentKey"
+    *ngIf="loadedPackage$ | async as loadedPackage">
+
+    <ss-details *ngIf="fields$" [fields$]="fields$" [entityId]="entityId"></ss-details>
+</ss-container>

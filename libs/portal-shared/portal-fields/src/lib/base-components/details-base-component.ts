@@ -2,7 +2,7 @@ import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { combineLatest } from 'rxjs';
 import { Router, ActivatedRoute } from '@angular/router';
 import { OnInit, OnDestroy, } from '@angular/core';
-import { switchMap } from 'rxjs/operators';
+import { switchMap, tap, distinctUntilChanged } from 'rxjs/operators';
 import { BaseComponent } from './base-component';
 import { EntityFieldsConfig } from '@skysmack/ng-fields';;
 import { EntityActions, EntityStore } from '@skysmack/redux';
@@ -11,7 +11,6 @@ import { LocalObject } from '@skysmack/framework';
 
 export abstract class DetailsBaseComponent<TAppState, TKey> extends BaseComponent<TAppState, TKey> implements OnInit, OnDestroy {
     public entityId: TKey;
-    public
 
     constructor(
         public router: Router,
@@ -33,7 +32,9 @@ export abstract class DetailsBaseComponent<TAppState, TKey> extends BaseComponen
 
         this.fields$ = combineLatest([
             this.loadedPackage$,
-            this.store.getSingle(this.packagePath, this.entityId)
+            this.store.getSingle(this.packagePath, this.entityId).pipe(
+                distinctUntilChanged((prev, curr) => JSON.stringify(prev) === JSON.stringify(curr)) // Prevents endless loop for some detail components. Loop first observed for LodgingsReservationsDetailsComponent
+            )
         ]).pipe(
             switchMap(([loadedPackage, record]) => {
                 this.title.setTitle(this.getTitle(record));

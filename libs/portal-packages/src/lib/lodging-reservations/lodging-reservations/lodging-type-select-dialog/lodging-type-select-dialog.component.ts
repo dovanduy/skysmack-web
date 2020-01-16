@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { PagedQuery, LocalObject, SubscriptionHandler, jsonPrint } from '@skysmack/framework';
 import { LodgingType, DetailedLodgingType } from '@skysmack/packages-lodgings';
 import { Observable, combineLatest, of } from 'rxjs';
-import { getPackageDendencyAsStream } from '@skysmack/ng-framework';
+import { getPackageDendencyAsStream, toDateString } from '@skysmack/ng-framework';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { map, switchMap, startWith, tap, take } from 'rxjs/operators';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
@@ -76,19 +76,8 @@ export class LodgingTypeSelectDialogComponent implements OnInit {
     ]).pipe(
       switchMap(([lodgingPackage, lodgingTypeIds]) => {
         // CheckIn and CheckOut will be strings on create, Date objects on edit. Be sure to request availability as a string formatted yyyy-mm-dd
-        const checkInValue = this.data.form.get('checkIn').value;
-        const checkOutValue = this.data.form.get('checkOut').value;
-        let checkIn = '';
-        let checkOut = '';
-
-        if (checkInValue instanceof Date) {
-          checkIn = checkInValue.toISOString().split('T')[0];
-          checkOut = checkInValue.toISOString().split('T')[0];
-        } else {
-          checkIn = checkInValue;
-          checkOut = checkOutValue;
-        }
-
+        const checkIn = toDateString(this.data.form.get('checkIn').value);
+        const checkOut = toDateString(this.data.form.get('checkOut').value);
         const packagePath = lodgingPackage.object.path;
 
         if (!once2) {

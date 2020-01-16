@@ -128,7 +128,7 @@ export const getConnectedPackageMenuEntries = (packagePath: string, packageTypeI
  * @param componentKey The one being provided from the current index component
  * @param specificParentPackageComponentKey E.g. LodgingReservations must provide the component key from LodgingsIndexComponent
  * @param store The SkysmackStore
- * @param customMenuItem A method the desired menu item pr. package
+ * @param customMenuItem A method thar returns the desired menu item pr. package
  */
 export const getConnectedPackageCustomMenuEntries = (packagePath: string, packageTypeId: string, parentPageTypeId: string, componentKey: string, specificParentPackageComponentKey: string, store: SkysmackStore, customMenuItem: (_package: LocalObject<Package, string>) => MenuItem): Observable<MenuItem[]> => {
     if (componentKey === specificParentPackageComponentKey) {
@@ -187,3 +187,11 @@ export const convertObservableToBehaviorSubject = <T>(observable: Observable<T>,
 
     return subject;
 }
+
+/**
+ * Returns the date potion of a string or Date object as a string.
+ * Final format will be something like: '2020-12-02'
+ */
+export const toDateString = (date: Date | string): string => {
+    return date instanceof Date ? date.toISOString().split('T')[0] : new Date(date).toISOString().split('T')[0];
+};
