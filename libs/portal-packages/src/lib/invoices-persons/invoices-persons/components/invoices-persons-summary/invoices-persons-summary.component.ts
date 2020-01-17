@@ -14,6 +14,5 @@ export class InvoicesPersonsSummaryComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.summary);
   }
 }

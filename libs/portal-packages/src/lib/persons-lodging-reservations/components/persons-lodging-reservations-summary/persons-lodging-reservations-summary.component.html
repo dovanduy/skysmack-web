@@ -1,7 +1,7 @@
 <!-- Show persons lodgings reservations here -->
-<h2>Person details</h2>
+<ng-container *ngIf="persons$ | async as persons">
+    <h2>Person details</h2>
 
-<ng-container *ngIf="records$ | async as persons">
     <ng-container *ngIf="personsPackagePath$ | async as personsPackagePath">
         <p>Below people is related to this reservation.</p>
         <ng-container *ngFor="let person of persons">

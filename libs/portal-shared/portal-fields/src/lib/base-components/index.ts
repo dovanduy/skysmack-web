@@ -3,3 +3,4 @@ export * from './form-base-component';
 export * from './base-component';
 export * from './details-base-component';
 export * from './dashboard-base';
+export * from './summary-base-component';

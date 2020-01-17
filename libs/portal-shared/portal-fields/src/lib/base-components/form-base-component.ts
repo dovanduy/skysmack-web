@@ -43,7 +43,6 @@ export class FormBaseComponent<TAppState, TRecord extends Record<TKey>, TKey> ex
             this.formatExtendedData(key, formValues);
         });
 
-
         if (entity) {
             // Update existing entity
             entity.object = formValues;
