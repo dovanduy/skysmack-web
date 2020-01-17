@@ -21,7 +21,7 @@ export class NgInvoicesPersonsSummaryProvider extends SummaryProvider<number> {
             map(packages => packages.filter(_package => _package.object.type === InvoicesPersonsTypeId)),
             map(packages => packages.filter(_package => _package.object.dependencies[1] === packagePath)),
             map(packages => packages.map(_package => new Summary<number>({
-                packagePath: _package.object.path,
+                providerPackagePath: _package.object.path,
                 component: InvoicesPersonsSummaryComponent,
                 entityId
             })))

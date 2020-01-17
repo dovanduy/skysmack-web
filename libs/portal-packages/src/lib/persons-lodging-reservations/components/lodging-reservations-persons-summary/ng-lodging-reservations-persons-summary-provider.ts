@@ -21,7 +21,7 @@ export class NgLodgingReservationsPersonsSummaryProvider extends SummaryProvider
             map(packages => packages.filter(_package => _package.object.type === PersonsLodgingReservationsTypeId)),
             map(packages => packages.filter(_package => _package.object.dependencies[0] === packagePath)),
             map(packages => packages.map(_package => new Summary<number>({
-                packagePath: _package.object.path,
+                providerPackagePath: _package.object.path,
                 component: LodgingReservationsPersonsSummaryComponent,
                 entityId
             })))

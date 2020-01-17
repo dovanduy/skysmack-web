@@ -1,5 +1,5 @@
 export class Summary<TKey> {
-    public packagePath: string;
+    public providerPackagePath: string;
     public component: any;
     public entityId: TKey;
 

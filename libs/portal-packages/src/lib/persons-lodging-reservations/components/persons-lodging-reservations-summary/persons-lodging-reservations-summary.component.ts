@@ -14,16 +14,13 @@ import { Observable } from 'rxjs';
   templateUrl: './persons-lodging-reservations-summary.component.html'
 })
 export class PersonsLodgingReservationsSummaryComponent implements OnInit, OnDestroy {
-  /**
-   * PackagePath from the provider package.
-   */
-  @Input() public packagePath: string;
-  @Input() private summary: Summary<number>;
+  @Input() public providerPackagePath: string;
+  @Input() public summary: Summary<number>;
 
   private subscriptionHandler = new SubscriptionHandler();
-  public urlPackagePath: string;
-  public records$: Observable<LocalObject<Person, number>[]>;
+  public packagePath: string;
   public personsPackagePath$: Observable<string>;
+  public records$: Observable<LocalObject<Person, number>[]>;
 
   constructor(
     private router: Router,
@@ -36,17 +33,18 @@ export class PersonsLodgingReservationsSummaryComponent implements OnInit, OnDes
   }
 
   ngOnInit() {
-    this.urlPackagePath = this.router.url.split('/')[1];
-    const personIds$ = this.store.getSingle(this.urlPackagePath, this.summary.entityId).pipe(
+    console.log(this.providerPackagePath);
+    this.packagePath = this.router.url.split('/')[1];
+    const personIds$ = this.store.getSingle(this.packagePath, this.summary.entityId).pipe(
       take(1),
       map(reservation => {
         const extendedData = reservation.object['extendedData'];
-        return extendedData && extendedData[`${this.packagePath}.ids`] as number[];
+        return extendedData && extendedData[`${this.providerPackagePath}.ids`] as number[];
       }),
       filter(x => x !== undefined && x !== null)
     );
 
-    this.personsPackagePath$ = getPackageDendencyAsStream(this.skysmackStore, this.packagePath, [0]).pipe(
+    this.personsPackagePath$ = getPackageDendencyAsStream(this.skysmackStore, this.providerPackagePath, [0]).pipe(
       map(_package => _package.object.path)
     );
 

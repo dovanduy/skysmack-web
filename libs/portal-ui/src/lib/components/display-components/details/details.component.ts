@@ -27,7 +27,6 @@ export class DetailsComponent implements OnInit {
     this.packagePath = this.router.url.split('/')[1];
     this.fields$ = this.fields$.pipe(map(fields => fields.filter(field => field.key !== 'id')));
 
-
     if (this.summaryProviders) {
       this.summaries$ = this.summaryProviders.providers$.pipe(
         switchMap(providers => combineLatest(

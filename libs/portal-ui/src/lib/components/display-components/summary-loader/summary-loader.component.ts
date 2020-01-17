@@ -22,7 +22,7 @@ export class SummaryLoaderComponent implements OnInit {
     viewContainerRef.clear();
 
     const componentRef = viewContainerRef.createComponent(componentFactory);
-    (<any>componentRef.instance).packagePath = this.summary.packagePath;
+    (<any>componentRef.instance).providerPackagePath = this.summary.providerPackagePath;
     (<any>componentRef.instance).summary = this.summary;
   }
 }
