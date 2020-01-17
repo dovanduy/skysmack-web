@@ -7,7 +7,6 @@ import { NgLodgingReservationsActions, NgLodgingReservationsStore } from '@skysm
 import { LodgingReservation } from 'libs/packages/lodging-reservations/src';
 import { LocalObject } from '@skysmack/framework';
 import { Observable } from 'rxjs';
-import { tap } from 'rxjs/operators';
 
 @Component({
   selector: 'ss-lodging-reservations-persons-summary',
@@ -31,9 +30,8 @@ export class LodgingReservationsPersonsSummaryComponent extends SummaryBaseCompo
 
   ngOnInit() {
     super.ngOnInit();
-    const reservationIds$ = this.getExtendedDataIds(this.personsStore);
-    // reservationIds$.pipe(tap(x => console.log(x))).subscribe();
     this.reservationsPackagePath$ = this.getDependencyPackagePath([1]);
+    const reservationIds$ = this.getExtendedDataIds(this.reservationsPackagePath$, this.personsStore);
     this.requestRecords(this.reservationsPackagePath$, reservationIds$, this.actions);
     this.reservations$ = this.getRecords(this.reservationsPackagePath$, reservationIds$, this.store);
   }

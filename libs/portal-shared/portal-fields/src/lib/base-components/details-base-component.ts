@@ -32,7 +32,7 @@ export abstract class DetailsBaseComponent<TAppState, TKey> extends BaseComponen
         this.entityId = this.activatedRoute.snapshot.paramMap.get('id') as unknown as TKey;
         this.actions.getSingle(this.packagePath, this.entityId);
         this.entity$ = this.store.getSingle(this.packagePath, this.entityId).pipe(
-            distinctUntilChanged((prev, curr) => JSON.stringify(prev) === JSON.stringify(curr)) // Prevents endless loop for some detail components. Loop first observed for LodgingsReservationsDetailsComponent
+            distinctUntilChanged((prev, curr) => JSON.stringify(prev) === JSON.stringify(curr)), // Prevents endless loop for some detail components. Loop first observed for LodgingsReservationsDetailsComponent
         );
 
         this.fields$ = combineLatest([

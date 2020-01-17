@@ -27,13 +27,15 @@ export class SummaryBaseComponent<TKey> implements OnInit, OnDestroy {
         this.subscriptionHandler.unsubscribe();
     }
 
-    protected getExtendedDataIds(store: EntityStore<any, TKey>): Observable<number[]> {
+    protected getExtendedDataIds(packagePath$: Observable<string>, store: EntityStore<any, TKey>): Observable<number[]> {
         return store.getSingle(this.packagePath, this.summary.entityId).pipe(
             take(1),
-            map(record => {
-                const extendedData = record.object['extendedData'];
-                return extendedData && extendedData[`${this.providerPackagePath}.ids`] as number[];
-            }),
+            switchMap(record => packagePath$.pipe(
+                map(packagePath => {
+                    const extendedData = record.object['extendedData'];
+                    return extendedData && extendedData[`${packagePath}.ids`] as number[];
+                })
+            )),
             filter(x => x !== undefined && x !== null)
         );
     }
