@@ -31,7 +31,6 @@ export class SummaryBaseComponent<TKey> implements OnInit, OnDestroy {
         return store.getSingle(this.packagePath, this.summary.entityId).pipe(
             take(1),
             map(record => {
-                console.log(record);
                 const extendedData = record.object['extendedData'];
                 return extendedData && extendedData[`${this.providerPackagePath}.ids`] as number[];
             }),

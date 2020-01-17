@@ -1,5 +1,35 @@
 <ss-container (menuItemActionEvent)="actionEvent($event)" [componentKey]="componentKey"
     *ngIf="loadedPackage$ | async as loadedPackage">
 
+    <!-- ENTITY ACTIONS -->
+    <ng-container *ngIf="entity$ | async as entity">
+        <ng-container *ngIf="menuItemActions.length > 0">
+            <button mat-icon-button [matMenuTriggerFor]="menu" class="actions-button">
+                <mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu">
+                <ng-container *ngFor="let menuItemAction of menuItemActions">
+                    <ng-template [inAnyPermission]="menuItemAction.permissions"
+                        (permissionsChecked)="menuItemAction.display = $event">
+                        <!-- ACTION EVENT  -->
+                        <button
+                            *ngIf="menuItemAction.isActionEvent && (menuItemAction | showMenuItemAction:entity) && menuItemAction.display"
+                            mat-menu-item
+                            (click)="actionEvent({ action: menuItemAction.action, value: entity, _this: menuItemAction._this })">
+                            <mat-icon>{{ menuItemAction.icon }}</mat-icon>
+                            <span>{{ menuItemAction.displayName | translate }}</span>
+                        </button>
+                        <!-- URL EVENT -->
+                        <button *ngIf="!menuItemAction.isActionEvent && menuItemAction.display" mat-menu-item
+                            [routerLink]="[menuItemAction.url, entity.objectIdentifier]">
+                            <mat-icon>{{ menuItemAction.icon }}</mat-icon>
+                            <span>{{ menuItemAction.displayName | translate }}</span>
+                        </button>
+                    </ng-template>
+                </ng-container>
+            </mat-menu>
+        </ng-container>
+    </ng-container>
+
     <ss-details *ngIf="fields$" [fields$]="fields$" [entityId]="entityId"></ss-details>
 </ss-container>

@@ -27,6 +27,9 @@ export class LodgingsReservationsIndexComponent extends DocumentRecordIndexCompo
 
   public translationPrefix = 'LODGING_RESERVATIONS.ENTITY_ACTIONS.';
 
+  /**
+   * KEEP IN SYNC WITH SAME ARRAY IN LodgingsReservationsDetailsComponent.
+   */
   public menuItemActions: MenuItem[] = [
     // Checkin
     new MenuItem().asEventAction(`${this.translationPrefix}CHECKIN`, this.checkIn, 'label', this).setShowLogic((entity: LocalObject<LodgingReservation, number>) => {
@@ -110,6 +113,11 @@ export class LodgingsReservationsIndexComponent extends DocumentRecordIndexCompo
   ngOnInit() {
     super.ngOnInit();
   }
+
+
+  /**
+   * KEEP ALL METHODS IN BELOW REGION IN SYNC WITH SAME METHODS IN LodgingsReservationsDetailsComponent.
+   */
   //#region MenuItem events
   public confirm(_this: LodgingsReservationsIndexComponent, entity: LocalObject<LodgingReservation, number>) {
     _this.subscriptionHandler.register(_this.dialog.open(ConfirmReservationDialogComponent, { data: { packagePath: _this.packagePath, reservation: entity } }).afterClosed().pipe(

@@ -1,5 +1,5 @@
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
-import { combineLatest } from 'rxjs';
+import { combineLatest, Observable } from 'rxjs';
 import { Router, ActivatedRoute } from '@angular/router';
 import { OnInit, OnDestroy, } from '@angular/core';
 import { switchMap, tap, distinctUntilChanged } from 'rxjs/operators';
@@ -7,10 +7,12 @@ import { BaseComponent } from './base-component';
 import { EntityFieldsConfig } from '@skysmack/ng-fields';;
 import { EntityActions, EntityStore } from '@skysmack/redux';
 import { EditorNavService, EntityComponentPageTitle } from '@skysmack/portal-ui';
-import { LocalObject } from '@skysmack/framework';
+import { LocalObject, SubscriptionHandler } from '@skysmack/framework';
 
 export abstract class DetailsBaseComponent<TAppState, TKey> extends BaseComponent<TAppState, TKey> implements OnInit, OnDestroy {
     public entityId: TKey;
+    public entity$: Observable<LocalObject<any, TKey>>;
+    protected subscriptionHandler = new SubscriptionHandler();
 
     constructor(
         public router: Router,
@@ -29,12 +31,13 @@ export abstract class DetailsBaseComponent<TAppState, TKey> extends BaseComponen
         super.ngOnInit();
         this.entityId = this.activatedRoute.snapshot.paramMap.get('id') as unknown as TKey;
         this.actions.getSingle(this.packagePath, this.entityId);
+        this.entity$ = this.store.getSingle(this.packagePath, this.entityId).pipe(
+            distinctUntilChanged((prev, curr) => JSON.stringify(prev) === JSON.stringify(curr)) // Prevents endless loop for some detail components. Loop first observed for LodgingsReservationsDetailsComponent
+        );
 
         this.fields$ = combineLatest([
             this.loadedPackage$,
-            this.store.getSingle(this.packagePath, this.entityId).pipe(
-                distinctUntilChanged((prev, curr) => JSON.stringify(prev) === JSON.stringify(curr)) // Prevents endless loop for some detail components. Loop first observed for LodgingsReservationsDetailsComponent
-            )
+            this.entity$
         ]).pipe(
             switchMap(([loadedPackage, record]) => {
                 this.title.setTitle(this.getTitle(record));
@@ -45,6 +48,7 @@ export abstract class DetailsBaseComponent<TAppState, TKey> extends BaseComponen
 
     ngOnDestroy() {
         super.ngOnDestroy();
+        this.subscriptionHandler.unsubscribe();
     }
 
     protected abstract getTitle(record: LocalObject<any, any>): string;

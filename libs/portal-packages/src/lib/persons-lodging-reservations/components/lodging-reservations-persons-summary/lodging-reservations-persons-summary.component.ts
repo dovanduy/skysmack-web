@@ -32,7 +32,7 @@ export class LodgingReservationsPersonsSummaryComponent extends SummaryBaseCompo
   ngOnInit() {
     super.ngOnInit();
     const reservationIds$ = this.getExtendedDataIds(this.personsStore);
-    reservationIds$.pipe(tap(x => console.log(x))).subscribe();
+    // reservationIds$.pipe(tap(x => console.log(x))).subscribe();
     this.reservationsPackagePath$ = this.getDependencyPackagePath([1]);
     this.requestRecords(this.reservationsPackagePath$, reservationIds$, this.actions);
     this.reservations$ = this.getRecords(this.reservationsPackagePath$, reservationIds$, this.store);
