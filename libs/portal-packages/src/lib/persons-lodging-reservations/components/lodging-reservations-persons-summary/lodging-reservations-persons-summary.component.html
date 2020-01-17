@@ -1,12 +1,20 @@
 <!-- Show lodging reservation details here. -->
 <ng-container *ngIf="reservations$ | async as reservations">
-    <h2>Reservation details</h2>
+    <hr />
+    <h2>Reservations</h2>
 
     <ng-container *ngIf="reservationsPackagePath$ | async as reservationsPackagePath">
-        <p>Below reservations is related to this person.</p>
-        <ng-container *ngFor="let reservation of reservations">
-            <a
-                [routerLink]="['/', reservationsPackagePath, 'details', reservation.object.id]">{{ reservation.object.checkIn }}</a>
+        <ng-container *ngFor="let reservation of reservations; let index = index">
+            <h4>{{ index + 1}}: {{ reservation.object.checkIn | date: 'dd-MM-yyyy' }} -
+                {{ reservation.object.checkOut | date: 'dd-MM-yyyy' }}</h4>
+            <p><strong>Checkin:</strong> {{ reservation.object.checkIn | date: 'dd-MM-yyyy hh:mm' }}</p>
+            <p><strong>Checkout:</strong> {{ reservation.object.checkOut | date: 'dd-MM-yyyy hh:mm' }}</p>
+            <p><strong>Room type:</strong> {{ reservation?.object?.lodgingType?.object?.name }}</p>
+            <p><strong>Room:</strong>
+                {{ (reservation?.object?.lodging?.object?.name) ? reservation?.object?.lodging?.object?.name : 'Not allocated.' }}
+            </p>
+            <a [routerLink]="['/', reservationsPackagePath, 'details', reservation.object.id]">See all details</a>
+            <br />
             <br />
         </ng-container>
     </ng-container>

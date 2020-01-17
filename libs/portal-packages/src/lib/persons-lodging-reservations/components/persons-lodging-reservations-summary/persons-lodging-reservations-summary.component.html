@@ -1,9 +1,8 @@
 <!-- Show persons lodgings reservations here -->
 <ng-container *ngIf="persons$ | async as persons">
-    <h2>Person details</h2>
+    <h2>People</h2>
 
     <ng-container *ngIf="personsPackagePath$ | async as personsPackagePath">
-        <p>Below people is related to this reservation.</p>
         <ng-container *ngFor="let person of persons">
             <a [routerLink]="['/', personsPackagePath, 'details', person.object.id]">{{ person.object.firstName }}
                 {{ person.object.lastName }}</a>
