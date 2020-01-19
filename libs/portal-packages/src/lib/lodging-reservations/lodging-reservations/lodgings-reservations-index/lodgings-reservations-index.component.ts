@@ -83,7 +83,9 @@ export class LodgingsReservationsIndexComponent extends DocumentRecordIndexCompo
     // Misc
     new MenuItem().asUrlAction('details', MENU_ITEM_ACTION_DETAILS, 'list').setPermissions([ReservationsPermissions.findReservations]),
     new MenuItem().asUrlAction('edit', MENU_ITEM_ACTIONS_EDIT, 'edit'),
-    new MenuItem().asEventAction(MENU_ITEM_ACTIONS_DELETE, this.delete, 'delete', this),
+    new MenuItem().asEventAction(MENU_ITEM_ACTIONS_DELETE, this.delete, 'delete', this).setShowLogic((entity: LocalObject<LodgingReservation, number>) => {
+      return !(EnumHelpers.toIndexEnum(LodgingReservation.statusEnum)[entity.object.status] === LodgingReservation.statusEnum.InStay);
+    }),
 
 
   ];
