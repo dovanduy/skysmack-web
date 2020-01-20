@@ -1,6 +1,6 @@
 import { Router, ActivatedRoute } from '@angular/router';
 import { OnInit, OnDestroy } from '@angular/core';
-import { Record, LocalObject } from '@skysmack/framework';
+import { Record, LocalObject, jsonPrint } from '@skysmack/framework';
 import { EditorNavService } from '@skysmack/portal-ui';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { EntityActions, EntityStore } from '@skysmack/redux';
@@ -66,9 +66,8 @@ export class DocumentRecordFormComponent<TAppState, TRecord extends Record<TKey>
                 distinctUntilChanged((prev, curr) => JSON.stringify(prev) === JSON.stringify(curr))
             ),
             this.loadedPackage$
-        ]).pipe(map(values => {
-            this.selectedEntity = values[0];
-            return values;
-        }));
+        ]).pipe(
+            tap(values => this.selectedEntity = values[0])
+        );
     }
 }
