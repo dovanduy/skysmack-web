@@ -40,6 +40,8 @@ export class NgPersonsLodgingReservationsFieldProvider extends FieldProvider {
                 map(packages => packages.filter(_package => _package.object.type === PersonsLodgingReservationsTypeId && _package.object.dependencies[1] === packagePath)),
                 switchMap(packages => {
                     if (packages && packages.length > 0) {
+                        const extendedData = entity ? entity.object['extendedData'] : undefined;
+
                         const fieldStreams$ = packages.map(_package => {
                             // Request the package settings - only ONCE per. getFields() call.
                             const depPackagePath = _package.object.path;
@@ -58,6 +60,7 @@ export class NgPersonsLodgingReservationsFieldProvider extends FieldProvider {
 
                             return this.settingsStore.get<PersonsLodgingReservationsSettings>(depPackagePath, 'persons-reservations').pipe(
                                 map(settings => {
+
                                     const addField = new AddField({
                                         component: AddRecordFieldComponent,
                                         addTitle: 'Add persons',
@@ -75,7 +78,7 @@ export class NgPersonsLodgingReservationsFieldProvider extends FieldProvider {
 
                                     const selectField = new SelectField({
                                         component: MultiSelectFieldComponent,
-                                        value: undefined,
+                                        value: extendedData ? extendedData[`${personsPackagePath}.ids`] : undefined,
                                         key: 'extendedData__' + personsPackagePath + '.attach',
                                         optionsData$: this.personsStore.get(personsPackagePath),
                                         displayNameSelector: 'object.displayName',
@@ -83,8 +86,6 @@ export class NgPersonsLodgingReservationsFieldProvider extends FieldProvider {
                                         placeholder: personsPackagePath,
                                         includeInDetails: false
                                     });
-
-                                    const extendedData = entity ? entity.object['extendedData'] : undefined;
 
                                     const currentlySelectedIdsField = new Field({
                                         component: HiddenFieldComponent,
