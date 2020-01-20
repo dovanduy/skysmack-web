@@ -65,7 +65,7 @@ export class LodgingsReservationsEditComponent extends DocumentRecordFormCompone
         let attachedIds: number[] = extendedData[`${personPackagePath}.attach`] ? extendedData[`${personPackagePath}.attach`] : [];
         let detachIds: number[] = [];
 
-        ids.forEach(id => {
+        ids && ids.forEach(id => {
           if (!attachedIds.includes(id)) {
             // Its no longer present in attach - remove it.
             detachIds.push(id);
