@@ -88,7 +88,7 @@ export class NgPersonsLodgingReservationsFieldProvider extends FieldProvider {
 
                                     const currentlySelectedIdsField = new Field({
                                         component: HiddenFieldComponent,
-                                        value: extendedData ? extendedData[depPackagePath] && extendedData[depPackagePath]['ids'] : undefined,
+                                        value: extendedData ? extendedData[`${personsPackagePath}.ids`] : undefined,
                                         key: 'extendedData__' + personsPackagePath + '.ids',
                                         includeInDetails: false
                                     });

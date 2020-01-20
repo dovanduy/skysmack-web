@@ -124,14 +124,20 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
             formValuesClone['extendedData'] = {};
           }
 
+          // console.log({
+          //   packagePath,
+          //   keyProp,
+          //   extendedData
+          // });
+
           if (!formValuesClone['extendedData'][packagePath]) {
             // We havent set any data yet for this package. Create its dictionary.
             formValuesClone['extendedData'][packagePath] = {};
             // Set data for the current field
-            formValuesClone['extendedData'][packagePath][keyProp] = extendedData;
+            formValuesClone['extendedData'][packagePath] = extendedData;
           } else {
             // Extented data for package already exists. Set data for the current field
-            formValuesClone['extendedData'][packagePath][keyProp] = extendedData;
+            formValuesClone['extendedData'][packagePath] = extendedData;
           }
 
           // Deleted the individual, dot notated extended data, as it is no longer needed,
