@@ -96,6 +96,11 @@ export class Field {
     public includeInRequest = true;
 
     /**
+     * Whether the field should be included in the form or not.
+     */
+    public includeInDetails = true;
+
+    /**
      * Whether the field should be sortable on the index page.
      */
     public sortable = false;

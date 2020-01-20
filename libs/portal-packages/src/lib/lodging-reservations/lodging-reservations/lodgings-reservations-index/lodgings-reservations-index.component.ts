@@ -85,9 +85,7 @@ export class LodgingsReservationsIndexComponent extends DocumentRecordIndexCompo
     new MenuItem().asUrlAction('edit', MENU_ITEM_ACTIONS_EDIT, 'edit'),
     new MenuItem().asEventAction(MENU_ITEM_ACTIONS_DELETE, this.delete, 'delete', this).setShowLogic((entity: LocalObject<LodgingReservation, number>) => {
       return !(EnumHelpers.toIndexEnum(LodgingReservation.statusEnum)[entity.object.status] === LodgingReservation.statusEnum.InStay);
-    }),
-
-
+    })
   ];
 
   public areaKey: string = LODGING_RESERVATIONS_AREA_KEY;

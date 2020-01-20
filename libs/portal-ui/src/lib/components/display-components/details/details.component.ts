@@ -25,7 +25,9 @@ export class DetailsComponent implements OnInit {
 
   ngOnInit() {
     this.packagePath = this.router.url.split('/')[1];
-    this.fields$ = this.fields$.pipe(map(fields => fields.filter(field => field.key !== 'id')));
+    this.fields$ = this.fields$.pipe(
+      map(fields => fields.filter(field => field.key !== 'id').filter(field => field.includeInDetails)),
+    );
 
     if (this.summaryProviders) {
       this.summaries$ = this.summaryProviders.providers$.pipe(
