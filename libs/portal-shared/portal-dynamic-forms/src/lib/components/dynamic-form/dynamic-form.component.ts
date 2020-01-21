@@ -67,7 +67,7 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
     this.subscriptionHandler.unsubscribe();
   }
 
-  public trackByFieldKey(index: number, field: Field) {
+  public trackByFieldKey(_index: number, field: Field) {
     return `${field.key}:${JSON.stringify(field.value)}`;
   }
 

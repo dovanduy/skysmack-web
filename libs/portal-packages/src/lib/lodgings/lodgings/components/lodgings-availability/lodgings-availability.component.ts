@@ -73,7 +73,7 @@ export class LodgingsAvailabilityComponent implements OnInit {
     });
   }
 
-  public trackById(index: any, item: any) {
+  public trackById(_index: any, item: any) {
     return item.id;
   }
 

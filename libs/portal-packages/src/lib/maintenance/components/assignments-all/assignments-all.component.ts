@@ -55,7 +55,6 @@ export class AssignmentsAllIndexComponent implements OnInit, OnDestroy {
     private singleAssignmentsActions: NgSingleAssignmentsActions,
     private singleAssignmentsStore: NgSingleAssignmentsStore,
     private assignmentsScheduledActions: NgAssignmentsSchedulesActions,
-    private assignmentsScheduledStore: NgAssignmentsSchedulesStore,
     private title: EntityComponentPageTitle,
   ) { }
 
@@ -87,7 +86,7 @@ export class AssignmentsAllIndexComponent implements OnInit, OnDestroy {
     this.assignmentsActions.get(this.packagePath, this.from, this.due);
   }
 
-  public trackByLocalId(index: number, item: LocalObject<any, any>) {
+  public trackByLocalId(_index: number, item: LocalObject<any, any>) {
     return item ? item.localId : undefined;
   }
 
@@ -124,7 +123,7 @@ export class AssignmentsAllIndexComponent implements OnInit, OnDestroy {
     }
   }
 
-  public trackById(index: number, item: LocalObject<Assignment, number>) {
+  public trackById(item: LocalObject<Assignment, number>) {
     return item.object.id;
   }
 

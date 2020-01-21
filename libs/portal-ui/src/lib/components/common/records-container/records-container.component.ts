@@ -99,7 +99,7 @@ export class RecordsContainerComponent implements OnInit, OnDestroy {
     ).subscribe());
   }
 
-  public trackByLocalId(index: any, item: LocalObject<any, any>) {
+  public trackByLocalId(_index: any, item: LocalObject<any, any>) {
     return item ? item.localId : undefined;
   }
 

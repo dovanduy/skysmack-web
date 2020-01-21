@@ -49,7 +49,7 @@ export class UsersRolesComponent extends BaseComponent<User, number> implements 
     })]);
   }
 
-  public trackById(item: any) {
+  public trackById(_index: number, item: any) {
     return item.id;
   }
 

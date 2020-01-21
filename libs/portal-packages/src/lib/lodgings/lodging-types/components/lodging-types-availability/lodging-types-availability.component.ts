@@ -78,7 +78,7 @@ export class LodgingTypesAvailabilityComponent implements OnInit, OnDestroy {
     });
   }
 
-  public trackById(index: any, item: any) {
+  public trackById(_index: any, item: any) {
     return item.id;
   }
 

@@ -35,7 +35,7 @@ export class FieldPermissionFieldComponent extends FieldBaseComponent<Field> imp
     this.setPermission();
   }
 
-  public trackByRoleId(item: { roleId: number, checked: boolean }) {
+  public trackByRoleId(_index: number, item: { roleId: number, checked: boolean }) {
     return item && item.roleId;
   }
 

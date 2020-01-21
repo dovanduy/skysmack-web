@@ -39,7 +39,7 @@ export class DetailsComponent implements OnInit {
     }
   }
 
-  public trackByFieldKey(field: Field) {
+  public trackByFieldKey(_index: number, field: Field) {
     return field ? field.key : undefined;
   }
 
