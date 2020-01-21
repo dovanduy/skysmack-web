@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
-import { MenuItem, safeUndefinedTo, LocalObject, SubscriptionHandler, toLocalObject } from '@skysmack/framework';
+import { MenuItem, LocalObject, SubscriptionHandler, toLocalObject } from '@skysmack/framework';
 import { EntityComponentPageTitle } from '@skysmack/portal-ui';
 import { NgAssignmentsStore, NgAssignmentsActions, NgSingleAssignmentsActions, NgAssignmentsSchedulesActions, NgAssignmentsSchedulesStore, NgSingleAssignmentsStore } from '@skysmack/ng-maintenance';
 import { Observable } from 'rxjs';
@@ -87,7 +87,7 @@ export class AssignmentsAllIndexComponent implements OnInit, OnDestroy {
     this.assignmentsActions.get(this.packagePath, this.from, this.due);
   }
 
-  public trackByLocalId(index: any, item: LocalObject<any, any>) {
+  public trackByLocalId(index: number, item: LocalObject<any, any>) {
     return item ? item.localId : undefined;
   }
 

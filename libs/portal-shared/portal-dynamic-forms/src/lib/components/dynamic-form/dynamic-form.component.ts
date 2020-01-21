@@ -3,7 +3,7 @@ import { FormBuilder, Validators, FormGroup, FormControl } from '@angular/forms'
 import { Observable } from 'rxjs';
 import { GlobalProperties, SubscriptionHandler, LocalObject, StrIndex } from '@skysmack/framework';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
-import { map, take, delay } from 'rxjs/operators';
+import { map, take, delay, tap } from 'rxjs/operators';
 import { Field, FormRule, Validation, FormHelper } from '@skysmack/ng-dynamic-forms';
 import { EditorNavService } from '@skysmack/portal-ui';
 
@@ -50,6 +50,15 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
       map(fields => {
         this.initForm(fields);
         return fields.filter(field => field.includeInForm);
+      }),
+      tap(fields => {
+        // If field values are updated, the form group needs to have its values updated as well
+        // This is especially important if the field is provided and contains async api calls.
+        fields.forEach(field => {
+          if (!this.fh.form.controls[field.key].value) {
+            this.fh.form.controls[field.key].setValue(field.value);
+          }
+        });
       })
     );
   }
@@ -58,8 +67,8 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
     this.subscriptionHandler.unsubscribe();
   }
 
-  public trackByFieldKey(field: Field) {
-    return field ? field.key : undefined;
+  public trackByFieldKey(index: number, field: Field) {
+    return `${field.key}:${JSON.stringify(field.value)}`;
   }
 
   public initForm(fields: Field[]): void {
