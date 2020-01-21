@@ -12,7 +12,6 @@ import { SelectFieldComponent, DateFieldComponent, IntFieldComponent, HiddenFiel
 import { NgLodgingReservationsValidation } from '@skysmack/ng-lodging-reservations';
 import { LodgingTypeSelectFieldComponent } from './lodging-reservations/lodging-type-select-field/lodging-type-select-field.component';
 import { LodgingSelectFieldComponent } from './lodging-reservations/lodging-select-field/lodging-select-field.component';
-import { SignaturePadEditorFieldComponent } from '../signature-pad';
 
 @Injectable({ providedIn: 'root' })
 export class NgLodgingReservationsFieldsConfig extends DocumentFieldsConfig<LodgingReservation, number> {

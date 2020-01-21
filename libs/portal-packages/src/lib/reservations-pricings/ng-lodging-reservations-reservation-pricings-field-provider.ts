@@ -1,6 +1,6 @@
 import { Injectable, Inject } from '@angular/core';
 import { Field, ResultField } from '@skysmack/ng-dynamic-forms';
-import { map, catchError } from 'rxjs/operators';
+import { map, catchError, tap, distinctUntilChanged, share, take } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
 import { StrIndex, LocalObject, API_DOMAIN_INJECTOR_TOKEN, ApiDomain, GlobalProperties } from '@skysmack/framework';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
