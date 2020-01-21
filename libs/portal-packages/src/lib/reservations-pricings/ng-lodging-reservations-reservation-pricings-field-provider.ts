@@ -71,7 +71,7 @@ export class NgLodgingReservationsReservationsPricingsFieldProvider extends Fiel
 
                                                         const priceInfo = body && body.extendedData && body.extendedData && body.extendedData.rooms && body.extendedData.rooms.prices[0];
 
-                                                        return `Price: ${priceInfo ? priceInfo.price : ''}  ${priceInfo ? priceInfo.currencyCode : ''}`;
+                                                        return priceInfo ? `Price: ${priceInfo ? priceInfo.price : ''}  ${priceInfo ? priceInfo.currencyCode : ''}` : '';
                                                     }),
                                                     catchError((error) => {
                                                         if (!GlobalProperties.production) {
