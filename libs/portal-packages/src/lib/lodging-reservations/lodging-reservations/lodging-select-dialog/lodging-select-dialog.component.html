@@ -13,9 +13,9 @@
         </mat-autocomplete>
     </mat-form-field>
 
+    <!-- Lodging select -->
     <ng-container *ngIf="detailedLodgings$ | async as detailedLodgings">
         <mat-form-field *ngIf="detailedLodgings.length > 0">
-            <!-- Lodging select -->
             <input matInput [placeholder]="'LODGING_SELECT_DIALOG.CHOOSE_LODGING' | translate" aria-label="Lodging"
                 [matAutocomplete]="lodgingsAutoControl" [formControl]="lodgingsAutoCompleteControl">
             <mat-autocomplete #lodgingsAutoControl="matAutocomplete" (optionSelected)="selectLodging($event)"
