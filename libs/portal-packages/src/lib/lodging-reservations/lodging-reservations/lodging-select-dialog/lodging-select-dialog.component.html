@@ -13,25 +13,32 @@
         </mat-autocomplete>
     </mat-form-field>
 
-    <mat-form-field>
-    <!-- Lodging select -->
-    <input matInput [placeholder]="'LODGING_SELECT_DIALOG.CHOOSE_LODGING' | translate" aria-label="Lodging"
-        [matAutocomplete]="lodgingsAutoControl" [formControl]="lodgingsAutoCompleteControl">
-    <mat-autocomplete #lodgingsAutoControl="matAutocomplete" (optionSelected)="selectLodging($event)"
-        [displayWith]="lodgingDisplayFn" autoActiveFirstOption>
-        <mat-option *ngFor="let detailedlodging of detailedLodgings$ | async" [value]="detailedlodging">
-            <mat-icon *ngIf="detailedlodging.available" style="color: green; float: right;margin-right: 0"
-                inline="true">check_circle</mat-icon>
-            <mat-icon *ngIf="!detailedlodging.available" color="Warn" inline="true"
-                style="float: right;margin-right: 0">error</mat-icon>
-            <span>{{ detailedlodging.lodging.object.name}}</span>
-        </mat-option>
-    </mat-autocomplete>
-</mat-form-field>
+    <ng-container *ngIf="detailedLodgings$ | async as detailedLodgings">
+        <mat-form-field *ngIf="detailedLodgings.length > 0">
+            <!-- Lodging select -->
+            <input matInput [placeholder]="'LODGING_SELECT_DIALOG.CHOOSE_LODGING' | translate" aria-label="Lodging"
+                [matAutocomplete]="lodgingsAutoControl" [formControl]="lodgingsAutoCompleteControl">
+            <mat-autocomplete #lodgingsAutoControl="matAutocomplete" (optionSelected)="selectLodging($event)"
+                [displayWith]="lodgingDisplayFn" autoActiveFirstOption>
+                <mat-option *ngFor="let detailedlodging of detailedLodgings$ | async" [value]="detailedlodging">
+                    <mat-icon *ngIf="detailedlodging.available" style="color: green; float: right;margin-right: 0"
+                        inline="true">check_circle</mat-icon>
+                    <mat-icon *ngIf="!detailedlodging.available" color="Warn" inline="true"
+                        style="float: right;margin-right: 0">error</mat-icon>
+                    <span>{{ detailedlodging.lodging.object.name}}</span>
+                </mat-option>
+            </mat-autocomplete>
+        </mat-form-field>
+
+        <p *ngIf="detailedLodgings.length === 0">
+            {{ 'LODGING_SELECT_FIELD.NO_LODGING_TYPES_AVAILABLE' | translate }}</p>
+    </ng-container>
 </div>
 
 <mat-dialog-actions align="end">
     <button mat-raised-button mat-dialog-close>{{ 'LODGING_SELECT_DIALOG.CANCEL' | translate }}</button>
-    <button mat-raised-button color="warn" [mat-dialog-close]="null" *ngIf="data.lodgingId && !(displaySelect$ | async)">{{ 'LODGING_SELECT_DIALOG.DESELECT' | translate }}</button>
-    <button mat-raised-button color="primary" [mat-dialog-close]="selectedLodging" *ngIf="displaySelect$ | async">{{ 'LODGING_SELECT_DIALOG.SELECT' | translate }}</button>
+    <button mat-raised-button color="warn" [mat-dialog-close]="null"
+        *ngIf="data.lodgingId && !(displaySelect$ | async)">{{ 'LODGING_SELECT_DIALOG.DESELECT' | translate }}</button>
+    <button mat-raised-button color="primary" [mat-dialog-close]="selectedLodging"
+        *ngIf="displaySelect$ | async">{{ 'LODGING_SELECT_DIALOG.SELECT' | translate }}</button>
 </mat-dialog-actions>

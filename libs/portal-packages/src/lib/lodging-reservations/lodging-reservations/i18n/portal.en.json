@@ -142,7 +142,8 @@
         }
     },
     "LODGING_SELECT_FIELD": {
-        "SELECT_LODGING": "Select lodging"
+        "SELECT_LODGING": "Select lodging",
+        "NO_LODGING_TYPES_AVAILABLE": "No lodging types available, or none has been created."
     },
     "LODGING_TYPE_SELECT_FIELD": {
         "SELECT_LODGING_TYPE": "Select a lodging type"
