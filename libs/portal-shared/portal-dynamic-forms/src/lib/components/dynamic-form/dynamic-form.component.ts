@@ -55,7 +55,7 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
         // If field values are updated, the form group needs to have its values updated as well
         // This is especially important if the field is provided and contains async api calls.
         fields.forEach(field => {
-          if (!this.fh.form.controls[field.key].value) {
+          if (field && !this.fh.form.controls[field.key].value) {
             this.fh.form.controls[field.key].setValue(field.value);
           }
         });
