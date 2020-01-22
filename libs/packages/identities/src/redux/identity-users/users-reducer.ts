@@ -1,4 +1,4 @@
-import { LocalPageTypes, StrIndex, LocalObject, NumIndex, HttpResponse, linq, GlobalProperties, QueueItem, HttpErrorResponse, pipeFns, getValues, flattenArray, jsonPrint } from '@skysmack/framework';
+import { LocalPageTypes, StrIndex, LocalObject, NumIndex, HttpResponse, linq, GlobalProperties, QueueItem, HttpErrorResponse, pipeFns, getValues, flattenArray } from '@skysmack/framework';
 import { AppState, ReduxAction, RecordState, recordReducersBase, ReduxOfflineMeta, sharedReducer } from '@skysmack/redux';
 import { User } from '../../models/user';
 import { UsersActions } from './users-actions';
