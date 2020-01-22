@@ -1,5 +1,4 @@
 <div style="border-color: #fafafa;">
-  <!-- <mat-divider></mat-divider> -->
   <ng-container *ngIf="!adding">
     <button mat-raised-button color="primary" type="submit" (click)="toggleAdding()"
       style="min-width: 100%;">{{ field.addTitle}}</button>
@@ -19,7 +18,7 @@
   <ng-container *ngIf="adding">
     <h3>Adding</h3>
 
-    <ss-dynamic-form *ngIf="addFields$" [fields$]="addFields$" [validation]="this.field.fieldsConfig.validation"
+    <ss-dynamic-form *ngIf="addFields$" [fields$]="addFields$" [validation]="field.fieldsConfig.validation"
       [rules]="this.field.fieldsConfig.formRules" [buttonText]="'UI.BUTTONS.BUTTON_ADD' | translate"
       (submitted)="onAddSubmit($event)" [removeCloseButton]="true">
     </ss-dynamic-form>
@@ -27,5 +26,4 @@
     <button mat-raised-button color="default" type="submit" (click)="toggleAdding()">Cancel</button>
   </ng-container>
 
-  <mat-divider></mat-divider>
 </div>
