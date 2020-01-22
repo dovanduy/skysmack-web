@@ -35,3 +35,4 @@ export * from './lodgings-doorways-type';
 export * from './lodgings-reservations-pass-codes-type';
 export * from './axis-physical-access-control-type';
 export * from './invoices-persons-type';
+export * from './invoices-lodging-reservations-type';
