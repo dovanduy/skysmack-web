@@ -43,6 +43,7 @@ export class LodgingSelectFieldComponent extends FieldBaseComponent<Field> imple
 
   public selectLodging(): void {
     this.subscriptionHandler.register(this.dialog.open(LodgingSelectDialogComponent, {
+      width: '450px',
       data:
       {
         from: this.fh.form.get('checkIn').value,
