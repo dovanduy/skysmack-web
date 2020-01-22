@@ -17,9 +17,9 @@ export class NgUsersRequests extends NgRecordRequests<User, number>  {
         super(http, apiDomain, USERS_REDUX_KEY, USERS_ADDITIONAL_PATHS);
     }
 
-    public setPassword(values: { password: string, confirmPassword: string }, userPath: string, id: number) {
-        const url = `${this.apiDomain.domain}/${userPath}/users/set-passwords/${id}`;
-        return this.http.put(url, values, { observe: 'response' })
+    public setPassword(values: { id: number, password: string, confirmPassword: string }, userPath: string) {
+        const url = `${this.apiDomain.domain}/${userPath}/users/set-passwords`;
+        return this.http.put(url, [values], { observe: 'response' })
             .pipe(
                 catchError((error) => of(Object.assign({}, new ReduxAction<HttpErrorResponse>({
                     type: 'SET_PASSWORD_ERROR',
