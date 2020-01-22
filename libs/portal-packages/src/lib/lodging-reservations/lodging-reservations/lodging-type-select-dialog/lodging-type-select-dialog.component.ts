@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { NgLodgingTypesActions, NgLodgingTypesStore } from '@skysmack/ng-lodgings';
 import { Router } from '@angular/router';
-import { PagedQuery, LocalObject, SubscriptionHandler, jsonPrint } from '@skysmack/framework';
+import { PagedQuery, LocalObject, SubscriptionHandler } from '@skysmack/framework';
 import { LodgingType, DetailedLodgingType } from '@skysmack/packages-lodgings';
 import { Observable, combineLatest, of } from 'rxjs';
 import { getPackageDendencyAsStream, toDateString } from '@skysmack/ng-framework';

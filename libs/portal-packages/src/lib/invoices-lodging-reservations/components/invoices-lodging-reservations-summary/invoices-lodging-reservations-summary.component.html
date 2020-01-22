@@ -1,0 +1,12 @@
+<!-- Show invoices lodgings reservations here -->
+<ng-container *ngIf="invoices$ | async as invoices">
+    <h2>Invoices</h2>
+
+    <ng-container *ngIf="invoicesPackagePath$ | async as invoicesPackagePath">
+        <ng-container *ngFor="let invoice of invoices">
+            <a
+                [routerLink]="['/', invoicesPackagePath, 'details', invoice.object.id]">{{ invoice.object.description }}</a>
+            <br />
+        </ng-container>
+    </ng-container>
+</ng-container>

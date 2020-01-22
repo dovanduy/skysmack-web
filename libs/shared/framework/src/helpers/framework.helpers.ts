@@ -1,7 +1,6 @@
 import { Guid } from 'guid-typescript';
 import { LocalObject } from '../models/local-object';
 import { LocalObjectStatus } from '../models/local-object-status';
-import { StrIndex } from '../models';
 
 /**
  * TAKEN FROM: https://gist.github.com/jasonrhodes/2321581

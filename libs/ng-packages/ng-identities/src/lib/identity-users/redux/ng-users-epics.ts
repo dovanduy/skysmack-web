@@ -4,7 +4,7 @@ import { ActionsObservable, ofType } from 'redux-observable';
 import { ReduxAction, } from '@skysmack/redux';
 import { Observable } from 'rxjs';
 import { switchMap, map } from 'rxjs/operators';
-import { HttpErrorResponse, NumIndex, HttpResponse, jsonPrint, QueueItem, flattenArray, pipeFns, join, getValues } from '@skysmack/framework';
+import { HttpErrorResponse, QueueItem } from '@skysmack/framework';
 import { NgUsersRequests } from './ng-users-requests';
 import { NgUsersActions } from './ng-users-actions';
 import { Injectable } from '@angular/core';

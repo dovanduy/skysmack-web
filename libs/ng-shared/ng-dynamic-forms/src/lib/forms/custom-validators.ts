@@ -100,7 +100,7 @@ export class CustomValidators {
      */
     public static minStringLength(minLength: number): ValidatorFn {
         return (stringFieldControl: AbstractControl): ValidationErrors | null => {
-            if (stringFieldControl.value !== null && stringFieldControl.value.length < minLength) {
+            if (stringFieldControl.value && stringFieldControl.value.length < minLength) {
                 return { invalidStringLength: true };
             } else {
                 return null;

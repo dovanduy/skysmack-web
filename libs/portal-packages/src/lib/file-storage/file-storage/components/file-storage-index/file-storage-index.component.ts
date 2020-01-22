@@ -4,7 +4,7 @@ import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { NgFileStorageStore, NgFileStorageActions } from '@skysmack/ng-file-storage';
 import { FileStorageAppState, FILE_STORAGE_AREA_KEY, StorageQuery, FileStorageItem } from '@skysmack/packages-file-storage';
-import { MenuItem, LocalPage, LoadingState, linq, LocalObject, defined, SubscriptionHandler, jsonPrint, cloneLocalObject } from '@skysmack/framework';
+import { MenuItem, LocalPage, LoadingState, linq, LocalObject, defined, SubscriptionHandler, cloneLocalObject } from '@skysmack/framework';
 import { BaseComponent } from '@skysmack/portal-fields';
 import { Observable, BehaviorSubject, combineLatest } from 'rxjs';
 import { map, filter, take, tap } from 'rxjs/operators';
@@ -81,7 +81,6 @@ export class FileStorageIndexComponent extends BaseComponent<FileStorageAppState
     const splitted = folderPath.split('/');
     const paths = splitted.slice(2, splitted.length);
     const newPath = paths.length === 1 ? paths[0] + '/' : paths.join('/') + '/';
-    jsonPrint({ folderPath, splitted, paths, newPath });
     this.currentRequest = new StorageQuery({
       prefix: newPath === '/' ? '' : newPath,
       delimiter: '/',

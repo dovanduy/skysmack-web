@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { Observable } from 'rxjs';
-import { QueueItem, LocalObjectStatus, OfflineState, reinstantiateLocalRecord, jsonPrint } from '@skysmack/framework';
+import { QueueItem, LocalObjectStatus, OfflineState, reinstantiateLocalRecord } from '@skysmack/framework';
 import { Router } from '@angular/router';
 import { NgRedux } from '@angular-redux/store';
 import { QueuesAppState, QueueActions, createDeleteAction } from '@skysmack/redux';

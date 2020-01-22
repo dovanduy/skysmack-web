@@ -31,6 +31,7 @@ import { lodgingsDoorwaysRoute } from './lodgings-doorways-package-manifest';
 import { lodgingsReservationsPassCodeRoute } from './lodgings-reservations-pass-codes-package-manifest';
 import { axisPhysicalAccessControlRoute } from './axis-physical-access-control-package-manifest';
 import { invoicesPersonsRoute } from './invoices-persons-package-manifest';
+import { invoicesLodgingReservationsRoute } from './invoices-lodging-reservations-package-manifest';
 
 export const packagesRoutes = [
     packagesRoute,
@@ -65,5 +66,6 @@ export const packagesRoutes = [
     lodgingsDoorwaysRoute,
     lodgingsReservationsPassCodeRoute,
     axisPhysicalAccessControlRoute,
-    invoicesPersonsRoute
+    invoicesPersonsRoute,
+    invoicesLodgingReservationsRoute
 ];
