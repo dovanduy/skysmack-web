@@ -55,7 +55,7 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
       tap(fields => {
         // If field values are updated, the form group needs to have its values updated as well
         // This is especially important if the field is provided and contains async api calls.
-        if (!this.submitting) {
+        if (!this.submitting) { // Don't update the form values when submitting.
           fields.forEach(field => {
             const fieldValue = field && this.fh.form.controls[field.key].value;
             if (fieldValue === null || fieldValue === undefined) {
