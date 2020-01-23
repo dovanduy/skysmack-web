@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { FormBuilder, Validators, FormGroup, FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
-import { GlobalProperties, SubscriptionHandler, LocalObject, StrIndex } from '@skysmack/framework';
+import { GlobalProperties, SubscriptionHandler, LocalObject, StrIndex, jsonPrint } from '@skysmack/framework';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { map, take, delay, tap } from 'rxjs/operators';
 import { Field, FormRule, Validation, FormHelper } from '@skysmack/ng-dynamic-forms';
@@ -30,6 +30,7 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
   public production = GlobalProperties.production;
   public fh: FormHelper;
   private subscriptionHandler = new SubscriptionHandler();
+  private submitting: boolean;
 
   constructor(
     public fb: FormBuilder,
@@ -54,11 +55,14 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
       tap(fields => {
         // If field values are updated, the form group needs to have its values updated as well
         // This is especially important if the field is provided and contains async api calls.
-        fields.forEach(field => {
-          if (field && !this.fh.form.controls[field.key].value) {
-            this.fh.form.controls[field.key].setValue(field.value);
-          }
-        });
+        if (!this.submitting) {
+          fields.forEach(field => {
+            const fieldValue = field && this.fh.form.controls[field.key].value;
+            if (fieldValue === null || fieldValue === undefined) {
+              this.fh.form.controls[field.key].setValue(field.value);
+            }
+          });
+        }
       })
     );
   }
@@ -95,11 +99,13 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
   }
 
   public onSubmit = () => {
+    this.submitting = true;
     this.subscriptionHandler.register(this.fields$.pipe(
       take(1),
       // Remove all fields not to be included in the request.
       map(fields => fields.map(field => field.includeInRequest ? field : this.fh.form.removeControl(field.key))),
-      map(() => this.submitted.emit(this.fh))
+      map(() => this.submitted.emit(this.fh)),
+      tap(() => this.submitting = false)
     ).subscribe())
   }
 

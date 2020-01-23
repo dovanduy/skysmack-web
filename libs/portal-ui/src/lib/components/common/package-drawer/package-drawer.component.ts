@@ -4,7 +4,7 @@ import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { Menu } from '@skysmack/framework';
 import { UIRedux } from './../../../redux/ui-redux';
 import { LoadedPackage, NgAuthenticationStore } from '@skysmack/ng-framework';
-import { map, tap } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { OAuth2TypeId } from '@skysmack/package-types';
 
 @Component({
