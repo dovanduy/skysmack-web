@@ -3,7 +3,7 @@
 
     <nav class="main">
         <ng-container *ngFor="let _package of mainSectionPackages$ | async; let index = index">
-            <div *ngIf="_package.packageManifest.menuLocation === 'main'" class="app-link-wrapper">
+            <div class="app-link-wrapper">
                 <a mat-button class="app-link" [routerLink]="[_package._package.path]">
                     <i class="material-icons md-light app-icon">{{ _package.packageManifest.icon }}</i>
                     <span *ngIf="menu.drawer" [hotkey]="_package | getHotkeyOptions:(index+1)"
@@ -14,7 +14,7 @@
 
     <nav class="docker">
         <ng-container *ngFor="let _package of dockerSectionPackages$ | async">
-            <div *ngIf="_package.packageManifest.menuLocation === 'docker'" class="app-link-wrapper">
+            <div class="app-link-wrapper">
                 <a mat-button class="app-link" [routerLink]="[_package._package.path]">
                     <i class="material-icons md-light app-icon">{{ _package.packageManifest.icon }}</i>
                     <span *ngIf="menu.drawer" [hotkey]="_package | getHotkeyOptions:_package._package.name"
