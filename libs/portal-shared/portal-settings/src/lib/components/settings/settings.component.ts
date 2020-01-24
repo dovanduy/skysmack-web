@@ -30,7 +30,7 @@ export class SettingsComponent extends BaseComponent<SettingsAppState<any>, unkn
     public actions: NgSettingsActions,
     public skysmackStore: NgSkysmackStore,
     public store: NgSettingsStore,
-    public injector: Injector
+    public injector: Injector,
   ) {
     super(router, activatedRoute, skysmackStore);
   }
@@ -48,9 +48,12 @@ export class SettingsComponent extends BaseComponent<SettingsAppState<any>, unkn
   }
 
   public onSettingsSubmit(fh: FormHelper) {
-    const values = fh.form.getRawValue();
-    this.actions.update(toLocalObject(values, 'none'), this.packagePath, this.settingsKey);
-    this.ngOnDestroy();
+    fh.formValid(() => {
+      const values = fh.form.getRawValue();
+      this.actions.update(toLocalObject(values, 'none'), this.packagePath, this.settingsKey);
+      this.editorNavService.hideEditorNav();
+      this.ngOnDestroy();
+    });
   }
 
   protected setFields() {

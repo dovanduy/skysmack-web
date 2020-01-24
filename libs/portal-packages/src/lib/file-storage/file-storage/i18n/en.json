@@ -25,6 +25,7 @@
         },
         "CREATE": {
             "CREATE": "Create new bucket",
+            "CREATING": "Creating bucket. Please wait...",
             "BUTTON_CREATE": "Create"
         },
         "EDIT": {

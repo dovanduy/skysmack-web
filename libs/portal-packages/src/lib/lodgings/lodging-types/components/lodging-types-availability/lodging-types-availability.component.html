@@ -27,7 +27,7 @@
       <div style="text-align:right; padding: 0 16px">
         <!-- Lodging types selection -->
         <mat-form-field style="width:200px;margin-right:16px">
-          <mat-select [(value)]="selectedLodgingTypeIds" (selectionChange)="getAvailableLodgingTypes($event)"
+          <mat-select [(value)]="selectedLodgingTypeIds" (selectionChange)="getAvailableLodgingTypesDailyCount($event)"
             [placeholder]="'LODGING_TYPES.AVAILABILITY.PLACEHOLDER' | translate" multiple>
             <mat-option *ngFor="let opt of lodgingTypeOptions$ | async" [value]="opt.value">
               {{opt.displayName}}</mat-option>

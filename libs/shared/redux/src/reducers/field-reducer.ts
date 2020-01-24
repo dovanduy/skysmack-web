@@ -47,7 +47,11 @@ export function fieldsReducer(state: FieldState = new FieldState(), action: any)
             const stateKey = getFieldStateKey(castedAction.payload.packagePath, castedAction.meta.additionalPaths);
             newState.localPageTypes[stateKey] = PageExtensions.mergeOrAddPage(newState.localPageTypes[stateKey], castedAction.payload.page);
 
-            newState.localRecords[stateKey] = LocalObjectExtensions.mergeOrAddLocal(newState.localRecords[stateKey], castedAction.payload.entities.map(x => toLocalObject(x, 'key')));
+            newState.localRecords[stateKey] = castedAction.payload.entities.reduce((prev, curr) => {
+                const field = toLocalObject(curr, 'key');
+                prev[field.localId] = field;
+                return prev;
+            }, {})
 
             return newState;
         }

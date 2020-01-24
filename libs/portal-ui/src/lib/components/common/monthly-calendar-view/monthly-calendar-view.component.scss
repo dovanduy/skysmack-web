@@ -10,8 +10,13 @@
 .week-number {
     background: #F1F3F4;
     padding: 10px;
+    font-size: 0.8rem
 }
 
 .cal-cell-top, .cal-cell, .cal-month-view, .cal-days {
     border: none;
+}
+
+.cal-cell {
+    font-size: 0.8rem;
 }

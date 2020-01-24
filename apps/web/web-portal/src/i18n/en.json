@@ -235,45 +235,6 @@
 			"SETTINGS": "Settings"
 		}
 	},
-	"DOORWAY_RELATIONS": {
-		"FORM": {
-			"LABELS": {
-				"OUTERDOORWAYID": "Outer doorway",
-				"INNERDOORWAYID": "Inner doorway",
-				"ALLOWCIRCULARRELATIONS": "Allow circular relations"
-			},
-			"PLACEHOLDERS": {
-				"OUTERDOORWAYID": "Outer doorway",
-				"INNERDOORWAYID": "Inner doorway"
-			},
-			"VALIDATION": {
-				"OUTERDOORWAYID": {
-					"REQUIRED": "Outer doorway is required."
-				},
-				"INNERDOORWAYID": {
-					"REQUIRED": "Inner doorway is required."
-				}
-			}
-		},
-		"CREATE": {
-			"CREATE": "Create",
-			"BUTTON_CREATE": "Create"
-		},
-		"EDIT": {
-			"EDIT": "Edit",
-			"BUTTON_EDIT": "Update"
-		},
-		"INDEX": {
-			"TITLE_EXTRAS": "(Relations)",
-			"CREATE": "Create",
-			"EDIT": "Edit",
-			"DELETE": "Delete",
-			"MANAGE": "Manage",
-			"ACTIONS": "Actions",
-			"SETTINGS": "Settings"
-		},
-		"SETTINGS": {}
-	},
 	"DOORWAYS": {
 		"FORM": {
 			"LABELS": {
@@ -362,6 +323,45 @@
 			"DELETING": "Deleting {{ name }}",
 			"ERROR": "An error occured with {{ name }}. Correct and try again."
 		}
+	},
+	"DOORWAY_RELATIONS": {
+		"FORM": {
+			"LABELS": {
+				"OUTERDOORWAYID": "Outer doorway",
+				"INNERDOORWAYID": "Inner doorway",
+				"ALLOWCIRCULARRELATIONS": "Allow circular relations"
+			},
+			"PLACEHOLDERS": {
+				"OUTERDOORWAYID": "Outer doorway",
+				"INNERDOORWAYID": "Inner doorway"
+			},
+			"VALIDATION": {
+				"OUTERDOORWAYID": {
+					"REQUIRED": "Outer doorway is required."
+				},
+				"INNERDOORWAYID": {
+					"REQUIRED": "Inner doorway is required."
+				}
+			}
+		},
+		"CREATE": {
+			"CREATE": "Create",
+			"BUTTON_CREATE": "Create"
+		},
+		"EDIT": {
+			"EDIT": "Edit",
+			"BUTTON_EDIT": "Update"
+		},
+		"INDEX": {
+			"TITLE_EXTRAS": "(Relations)",
+			"CREATE": "Create",
+			"EDIT": "Edit",
+			"DELETE": "Delete",
+			"MANAGE": "Manage",
+			"ACTIONS": "Actions",
+			"SETTINGS": "Settings"
+		},
+		"SETTINGS": {}
 	},
 	"DOORWAYS_OPTIONS": {
 		"FORM": {
@@ -804,6 +804,46 @@
 			"ERROR": "An error occured with {{ displayName }}. Correct and try again."
 		}
 	},
+	"ROLES": {
+		"CREATE": {
+			"CREATE_ROLE": "Create new role",
+			"BUTTON_CREATE": "Create"
+		},
+		"EDIT": {
+			"EDITING": "Edit {{ name }}",
+			"BUTTON_EDIT": "Update"
+		},
+		"INDEX": {
+			"ACTIONS": "Actions",
+			"CREATE": "Create",
+			"MANAGE": "Manage",
+			"SECURITY": "Security",
+			"SECURITY_AND_USERS": "Users and security",
+			"ROLES": "Roles",
+			"BACK": "Back",
+			"FIELDS_TITLE": "(fields)",
+			"TITLE_EXTRAS": "(roles)"
+		},
+		"FORM": {
+			"LABELS": {
+				"NAME": "Name"
+			},
+			"PLACEHOLDERS": {
+				"NAME": "Enter name"
+			},
+			"VALIDATION": {
+				"NAME": {
+					"REQUIRED": "A name is required."
+				}
+			}
+		},
+		"QUEUE": {
+			"ADDING": "Adding {{ name }}",
+			"UPDATING": "Updating {{ name }}",
+			"DELETING": "Deleting {{ name }}",
+			"ERROR": "An error occured with {{ name }}. Correct and try again."
+		}
+	},
 	"USERS": {
 		"SETPASSWORD": {
 			"FORM": {
@@ -903,46 +943,6 @@
 		"ENTITY_ACTION": {
 			"SET_PASSWORD": "Set password",
 			"ROLES": "Roles"
-		}
-	},
-	"ROLES": {
-		"CREATE": {
-			"CREATE_ROLE": "Create new role",
-			"BUTTON_CREATE": "Create"
-		},
-		"EDIT": {
-			"EDITING": "Edit {{ name }}",
-			"BUTTON_EDIT": "Update"
-		},
-		"INDEX": {
-			"ACTIONS": "Actions",
-			"CREATE": "Create",
-			"MANAGE": "Manage",
-			"SECURITY": "Security",
-			"SECURITY_AND_USERS": "Users and security",
-			"ROLES": "Roles",
-			"BACK": "Back",
-			"FIELDS_TITLE": "(fields)",
-			"TITLE_EXTRAS": "(roles)"
-		},
-		"FORM": {
-			"LABELS": {
-				"NAME": "Name"
-			},
-			"PLACEHOLDERS": {
-				"NAME": "Enter name"
-			},
-			"VALIDATION": {
-				"NAME": {
-					"REQUIRED": "A name is required."
-				}
-			}
-		},
-		"QUEUE": {
-			"ADDING": "Adding {{ name }}",
-			"UPDATING": "Updating {{ name }}",
-			"DELETING": "Deleting {{ name }}",
-			"ERROR": "An error occured with {{ name }}. Correct and try again."
 		}
 	},
 	"INVOICES": {
@@ -1490,6 +1490,98 @@
 		"DONE": "Done",
 		"CHOOSE_LODGING_TYPE": "Choose a lodging type"
 	},
+	"PERSONS": {
+		"FORM": {
+			"LABELS": {
+				"FIRSTNAME": "First name",
+				"LASTNAME": "Last name",
+				"DISPLAYNAME": "Display name"
+			},
+			"PLACEHOLDERS": {
+				"FIRSTNAME": "Enter first name",
+				"LASTNAME": "Enter last name",
+				"DISPLAYNAME": "Enter display name"
+			},
+			"VALIDATION": {
+				"FIRSTNAME": {
+					"REQUIRED": "A first name is required."
+				},
+				"LASTNAME": {
+					"REQUIRED": "A last name is required."
+				},
+				"DISPLAYNAME": {
+					"REQUIRED": "A Display name is required."
+				}
+			}
+		},
+		"FIELDS": {
+			"CREATE": {
+				"ADD": "Add new field"
+			},
+			"EDIT": {
+				"EDITING": "Editing"
+			},
+			"INDEX": {
+				"ACTIONS": "Actions",
+				"CREATE": "Create new field",
+				"OTHER": "Other",
+				"BACK": "Back",
+				"FIELDS": "Fields",
+				"EDIT": "Edit"
+			}
+		},
+		"CREATE": {
+			"CREATE": "Create",
+			"BUTTON_CREATE": "Create"
+		},
+		"EDIT": {
+			"EDIT": "Edit",
+			"BUTTON_EDIT": "Update"
+		},
+		"INDEX": {
+			"PACKAGES": "Packages",
+			"CREATE": "Create",
+			"EDIT": "Edit",
+			"DELETE": "Delete",
+			"FIELDS": "Fields",
+			"FIELDS_TITLE": "(fields)",
+			"ITEM": "Item",
+			"MANAGE": "Manage",
+			"ACTIONS": "Actions"
+		},
+		"NOTIFICATIONS": {
+			"GET": {
+				"PAGED_ERROR": "Failed to get persons ({{ httpErrorCode }}).",
+				"SINGLE_FAILURE": "Failed to get {{ displayName }} ({{ httpErrorCode }}).",
+				"FIELDS_FAILURE": "Failed to get fields for persons ({{ httpErrorCode }}).",
+				"SINGLE_FIELD_FAILURE": "Failed to get {{ displayName }} field ({{ httpErrorCode }})."
+			},
+			"ADD": {
+				"SUCCESS": "Added {{ displayName }} succcessfully.",
+				"FAILURE": "Failed to add {{ displayName }} ({{ httpErrorCode }}).",
+				"FIELD_FAILURE": "Failed to add field for {{ displayName }} ({{ httpErrorCode }}).",
+				"FIELD_SUCCESS": "Added field for {{ displayName }} successfully."
+			},
+			"UPDATE": {
+				"SUCCESS": "Updated {{ displayName }} successfully.",
+				"FAILURE": "Failed to update {{ displayName }} ({{ httpErrorCode }}).",
+				"FIELD_SUCCESS": "Updated field for {{ displayName }} successfully.",
+				"FIELD_FAILURE": "Failed to update field for {{ displayName }} ({{ httpErrorCode }})"
+			},
+			"REMOVE": {
+				"SUCCESS": "Removed {{ displayName }} successfully.",
+				"FAILURE": "Failed to remove {{ displayName }} ({{ httpErrorCode }}).",
+				"FIELD_SUCCESS": "Removed field for {{ displayName }} succesfully.",
+				"FIELD_FAILURE": "Failed to remove field for {{ displayName }} ({{ httpErrorCode }})."
+			}
+		},
+		"QUEUE": {
+			"ADDING": "Adding {{ displayName }}",
+			"UPDATING": "Updating {{ displayName }}",
+			"DELETING": "Deleting {{ displayName }}",
+			"ERROR": "An error occured with {{ displayName }}. Correct and try again."
+		}
+	},
 	"LODGING_SETTINGS": {
 		"FORM": {
 			"LABELS": {
@@ -1650,98 +1742,6 @@
 	"LODGINGS_AVAILABILITY": {
 		"SELECT_LODGINGS": "Select lodgings",
 		"TITLE": "Lodgings Availability"
-	},
-	"PERSONS": {
-		"FORM": {
-			"LABELS": {
-				"FIRSTNAME": "First name",
-				"LASTNAME": "Last name",
-				"DISPLAYNAME": "Display name"
-			},
-			"PLACEHOLDERS": {
-				"FIRSTNAME": "Enter first name",
-				"LASTNAME": "Enter last name",
-				"DISPLAYNAME": "Enter display name"
-			},
-			"VALIDATION": {
-				"FIRSTNAME": {
-					"REQUIRED": "A first name is required."
-				},
-				"LASTNAME": {
-					"REQUIRED": "A last name is required."
-				},
-				"DISPLAYNAME": {
-					"REQUIRED": "A Display name is required."
-				}
-			}
-		},
-		"FIELDS": {
-			"CREATE": {
-				"ADD": "Add new field"
-			},
-			"EDIT": {
-				"EDITING": "Editing"
-			},
-			"INDEX": {
-				"ACTIONS": "Actions",
-				"CREATE": "Create new field",
-				"OTHER": "Other",
-				"BACK": "Back",
-				"FIELDS": "Fields",
-				"EDIT": "Edit"
-			}
-		},
-		"CREATE": {
-			"CREATE": "Create",
-			"BUTTON_CREATE": "Create"
-		},
-		"EDIT": {
-			"EDIT": "Edit",
-			"BUTTON_EDIT": "Update"
-		},
-		"INDEX": {
-			"PACKAGES": "Packages",
-			"CREATE": "Create",
-			"EDIT": "Edit",
-			"DELETE": "Delete",
-			"FIELDS": "Fields",
-			"FIELDS_TITLE": "(fields)",
-			"ITEM": "Item",
-			"MANAGE": "Manage",
-			"ACTIONS": "Actions"
-		},
-		"NOTIFICATIONS": {
-			"GET": {
-				"PAGED_ERROR": "Failed to get persons ({{ httpErrorCode }}).",
-				"SINGLE_FAILURE": "Failed to get {{ displayName }} ({{ httpErrorCode }}).",
-				"FIELDS_FAILURE": "Failed to get fields for persons ({{ httpErrorCode }}).",
-				"SINGLE_FIELD_FAILURE": "Failed to get {{ displayName }} field ({{ httpErrorCode }})."
-			},
-			"ADD": {
-				"SUCCESS": "Added {{ displayName }} succcessfully.",
-				"FAILURE": "Failed to add {{ displayName }} ({{ httpErrorCode }}).",
-				"FIELD_FAILURE": "Failed to add field for {{ displayName }} ({{ httpErrorCode }}).",
-				"FIELD_SUCCESS": "Added field for {{ displayName }} successfully."
-			},
-			"UPDATE": {
-				"SUCCESS": "Updated {{ displayName }} successfully.",
-				"FAILURE": "Failed to update {{ displayName }} ({{ httpErrorCode }}).",
-				"FIELD_SUCCESS": "Updated field for {{ displayName }} successfully.",
-				"FIELD_FAILURE": "Failed to update field for {{ displayName }} ({{ httpErrorCode }})"
-			},
-			"REMOVE": {
-				"SUCCESS": "Removed {{ displayName }} successfully.",
-				"FAILURE": "Failed to remove {{ displayName }} ({{ httpErrorCode }}).",
-				"FIELD_SUCCESS": "Removed field for {{ displayName }} succesfully.",
-				"FIELD_FAILURE": "Failed to remove field for {{ displayName }} ({{ httpErrorCode }})."
-			}
-		},
-		"QUEUE": {
-			"ADDING": "Adding {{ displayName }}",
-			"UPDATING": "Updating {{ displayName }}",
-			"DELETING": "Deleting {{ displayName }}",
-			"ERROR": "An error occured with {{ displayName }}. Correct and try again."
-		}
 	},
 	"LODGINGS_DOORWAYS": {
 		"FORM": {
@@ -2594,54 +2594,6 @@
 			"ERROR": "An error occured with the price change valid from/to: {{ dates }}. Correct and try again."
 		}
 	},
-	"PRODUCTS_SALES_PRICE": {
-		"CREATE": {
-			"CREATE": "Create",
-			"BUTTON_CREATE": "Create"
-		},
-		"EDIT": {
-			"EDIT": "Edit",
-			"BUTTON_EDIT": "Update"
-		},
-		"INDEX": {
-			"ACTIONS": "Actions",
-			"CREATE": "Create",
-			"DELETE": "Delete",
-			"MANAGE": "Manage",
-			"FIELDS": "Fields",
-			"BACK": "Back",
-			"TITLE_EXTRAS": "(sales prices)"
-		},
-		"FORM": {
-			"LABELS": {
-				"CURRENCYCODE": "Currency code",
-				"RECORDID": "Product",
-				"PRICE": "Price"
-			},
-			"PLACEHOLDERS": {
-				"CURRENCYCODE": "Currency code",
-				"RECORDID": "Product",
-				"PRICE": "Price"
-			},
-			"VALIDATION": {
-				"CURRENCYCODE": {
-					"REQUIRED": "Currency code is required"
-				},
-				"RECORDID": {
-					"REQUIRED": "Product is required"
-				},
-				"PRICE": {
-					"REQUIRED": "Price is required"
-				}
-			}
-		},
-		"QUEUE": {
-			"ADDING": "Adding the product sale price with the price: {{ price }}",
-			"UPDATING": "Updating the product sale price with the price: {{ price }}",
-			"DELETING": "Deleting the product sale price with the price: {{ price }}",
-			"ERROR": "An error occured with the product sale price with the price: {{ price }}. Correct and try again."
-		}
-	},
 	"PRODUCT_TYPE_SALES_PRICE": {
 		"CREATE": {
 			"CREATE": "Create",
@@ -2690,6 +2642,54 @@
 			"ERROR": "An error occured with the product type sale price with the price: {{ price }}. Correct and try again."
 		}
 	},
+	"PRODUCTS_SALES_PRICE": {
+		"CREATE": {
+			"CREATE": "Create",
+			"BUTTON_CREATE": "Create"
+		},
+		"EDIT": {
+			"EDIT": "Edit",
+			"BUTTON_EDIT": "Update"
+		},
+		"INDEX": {
+			"ACTIONS": "Actions",
+			"CREATE": "Create",
+			"DELETE": "Delete",
+			"MANAGE": "Manage",
+			"FIELDS": "Fields",
+			"BACK": "Back",
+			"TITLE_EXTRAS": "(sales prices)"
+		},
+		"FORM": {
+			"LABELS": {
+				"CURRENCYCODE": "Currency code",
+				"RECORDID": "Product",
+				"PRICE": "Price"
+			},
+			"PLACEHOLDERS": {
+				"CURRENCYCODE": "Currency code",
+				"RECORDID": "Product",
+				"PRICE": "Price"
+			},
+			"VALIDATION": {
+				"CURRENCYCODE": {
+					"REQUIRED": "Currency code is required"
+				},
+				"RECORDID": {
+					"REQUIRED": "Product is required"
+				},
+				"PRICE": {
+					"REQUIRED": "Price is required"
+				}
+			}
+		},
+		"QUEUE": {
+			"ADDING": "Adding the product sale price with the price: {{ price }}",
+			"UPDATING": "Updating the product sale price with the price: {{ price }}",
+			"DELETING": "Deleting the product sale price with the price: {{ price }}",
+			"ERROR": "An error occured with the product sale price with the price: {{ price }}. Correct and try again."
+		}
+	},
 	"LODGING_PRICES": {
 		"CREATE": {
 			"CREATE": "Create",
@@ -2735,108 +2735,6 @@
 			"UPDATING": "Updating the lodging price with the price: {{ price }}",
 			"DELETING": "Deleting the lodging price with the price: {{ price }}",
 			"ERROR": "An error occured with the lodging price with the price: {{ price }}. Correct and try again."
-		}
-	},
-	"LODGING_TYPE_RESERVATION_PRICE_CHANGES": {
-		"CREATE": {
-			"CREATE": "Create",
-			"BUTTON_CREATE": "Create"
-		},
-		"EDIT": {
-			"EDIT": "Edit",
-			"BUTTON_EDIT": "Update"
-		},
-		"INDEX": {
-			"ACTIONS": "Actions",
-			"CREATE": "Create",
-			"DELETE": "Delete",
-			"MANAGE": "Manage",
-			"FIELDS": "Fields",
-			"BACK": "Back"
-		},
-		"FORM": {
-			"LABELS": {
-				"CHANGE": "Price change",
-				"CURRENCYCODE": "Currency code",
-				"ISPERCENT": "Change is in percentage (%)",
-				"VALIDFROM": "Valid from",
-				"VALIDTO": "Valid to",
-				"RECORDID": "Lodging type",
-				"START": "Start",
-				"END": "End",
-				"EXCLUDEDAYSOFWEEK": "Exclude week days",
-				"MINUNITS": "Minimum units",
-				"MAXUNITS": "Maximum units",
-				"PERUNIT": "Per unit",
-				"ONLYVALIDUNITS": "Change only counts for units within min and max",
-				"MINUNITSOFTIME": "Minimum units of time",
-				"MAXUNITSOFTIME": "Maximum units of time",
-				"ONLYVALIDUNITSOFTIME": "Change only counts for units within the min and max time period",
-				"PERUNITOFTIME": "Per unit of time"
-			},
-			"PLACEHOLDERS": {
-				"CURRENCYCODE": "Currency code",
-				"RECORDID": "Lodging type",
-				"CHANGE": "Price change",
-				"ISPERCENT": "Change is in percentage (%)",
-				"VALIDFROM": "Valid from",
-				"VALIDTO": "Valid to",
-				"START": "Start",
-				"END": "End",
-				"EXCLUDEDAYSOFWEEK": "Exclude week days",
-				"MINUNITS": "Minimum units",
-				"MAXUNITS": "Maximum units",
-				"PERUNIT": "Per unit",
-				"ONLYVALIDUNITS": "Change only counts for units within min and max",
-				"MINUNITSOFTIME": "Minimum units of time",
-				"MAXUNITSOFTIME": "Maximum units of time",
-				"ONLYVALIDUNITSOFTIME": "Change only counts for units within the min and max time period",
-				"PERUNITOFTIME": "Per unit of time"
-			},
-			"VALIDATION": {
-				"CURRENCYCODE": {
-					"REQUIRED": "Currency code is required"
-				},
-				"RECORDID": {
-					"REQUIRED": "Lodging type is required"
-				},
-				"CHANGE": {
-					"REQUIRED": "Price change is required"
-				},
-				"ISPERCENT": {
-					"REQUIRED": "Price change type is required"
-				},
-				"VALIDFROM": {
-					"REQUIRED": "Valid from is required"
-				},
-				"VALIDTO": {
-					"REQUIRED": "Valid to is required"
-				},
-				"START": {
-					"REQUIRED": "Start is required"
-				},
-				"END": {
-					"REQUIRED": "End is required"
-				},
-				"MINUNITS": {
-					"REQUIRED": "Minimum units is required"
-				},
-				"MAXUNITS": {
-					"REQUIRED": "Maximum units is required"
-				},
-				"MINUNITSOFTIME": {
-					"REQUIRED": "Minimum units time is required"
-				},
-				"MAXUNITSOFTIME": {
-					"REQUIRED": "Maximum units of time is required"
-				}
-			}
-		},
-		"QUEUE": {
-			"ADDING": "Adding the lodging type reservation price change valid from/to: {{ dates }}",
-			"UPDATING": "Updating the lodging type reservation price change valid from/to: {{ dates }}",
-			"DELETING": "Deleting the lodging type reservation price change valid from/to: {{ dates }}",
-			"ERROR": "An error occured with the lodging type reservation price change valid from/to: {{ dates }}. Correct and try again."
 		}
 	},
 	"LODGING_RESERVATION_PRICE_CHANGES": {
@@ -2986,6 +2884,108 @@
 			"UPDATING": "Updating the lodging type price with the price: {{ price }}",
 			"DELETING": "Deleting the lodging type price with the price: {{ price }}",
 			"ERROR": "An error occured with the lodging type price with the price: {{ price }}. Correct and try again."
+		}
+	},
+	"LODGING_TYPE_RESERVATION_PRICE_CHANGES": {
+		"CREATE": {
+			"CREATE": "Create",
+			"BUTTON_CREATE": "Create"
+		},
+		"EDIT": {
+			"EDIT": "Edit",
+			"BUTTON_EDIT": "Update"
+		},
+		"INDEX": {
+			"ACTIONS": "Actions",
+			"CREATE": "Create",
+			"DELETE": "Delete",
+			"MANAGE": "Manage",
+			"FIELDS": "Fields",
+			"BACK": "Back"
+		},
+		"FORM": {
+			"LABELS": {
+				"CHANGE": "Price change",
+				"CURRENCYCODE": "Currency code",
+				"ISPERCENT": "Change is in percentage (%)",
+				"VALIDFROM": "Valid from",
+				"VALIDTO": "Valid to",
+				"RECORDID": "Lodging type",
+				"START": "Start",
+				"END": "End",
+				"EXCLUDEDAYSOFWEEK": "Exclude week days",
+				"MINUNITS": "Minimum units",
+				"MAXUNITS": "Maximum units",
+				"PERUNIT": "Per unit",
+				"ONLYVALIDUNITS": "Change only counts for units within min and max",
+				"MINUNITSOFTIME": "Minimum units of time",
+				"MAXUNITSOFTIME": "Maximum units of time",
+				"ONLYVALIDUNITSOFTIME": "Change only counts for units within the min and max time period",
+				"PERUNITOFTIME": "Per unit of time"
+			},
+			"PLACEHOLDERS": {
+				"CURRENCYCODE": "Currency code",
+				"RECORDID": "Lodging type",
+				"CHANGE": "Price change",
+				"ISPERCENT": "Change is in percentage (%)",
+				"VALIDFROM": "Valid from",
+				"VALIDTO": "Valid to",
+				"START": "Start",
+				"END": "End",
+				"EXCLUDEDAYSOFWEEK": "Exclude week days",
+				"MINUNITS": "Minimum units",
+				"MAXUNITS": "Maximum units",
+				"PERUNIT": "Per unit",
+				"ONLYVALIDUNITS": "Change only counts for units within min and max",
+				"MINUNITSOFTIME": "Minimum units of time",
+				"MAXUNITSOFTIME": "Maximum units of time",
+				"ONLYVALIDUNITSOFTIME": "Change only counts for units within the min and max time period",
+				"PERUNITOFTIME": "Per unit of time"
+			},
+			"VALIDATION": {
+				"CURRENCYCODE": {
+					"REQUIRED": "Currency code is required"
+				},
+				"RECORDID": {
+					"REQUIRED": "Lodging type is required"
+				},
+				"CHANGE": {
+					"REQUIRED": "Price change is required"
+				},
+				"ISPERCENT": {
+					"REQUIRED": "Price change type is required"
+				},
+				"VALIDFROM": {
+					"REQUIRED": "Valid from is required"
+				},
+				"VALIDTO": {
+					"REQUIRED": "Valid to is required"
+				},
+				"START": {
+					"REQUIRED": "Start is required"
+				},
+				"END": {
+					"REQUIRED": "End is required"
+				},
+				"MINUNITS": {
+					"REQUIRED": "Minimum units is required"
+				},
+				"MAXUNITS": {
+					"REQUIRED": "Maximum units is required"
+				},
+				"MINUNITSOFTIME": {
+					"REQUIRED": "Minimum units time is required"
+				},
+				"MAXUNITSOFTIME": {
+					"REQUIRED": "Maximum units of time is required"
+				}
+			}
+		},
+		"QUEUE": {
+			"ADDING": "Adding the lodging type reservation price change valid from/to: {{ dates }}",
+			"UPDATING": "Updating the lodging type reservation price change valid from/to: {{ dates }}",
+			"DELETING": "Deleting the lodging type reservation price change valid from/to: {{ dates }}",
+			"ERROR": "An error occured with the lodging type reservation price change valid from/to: {{ dates }}. Correct and try again."
 		}
 	},
 	"SITE_MINDER_CHANNELS": {
@@ -3550,6 +3550,90 @@
 			"ERROR": "An error occured with {{ printReceipt }}. Correct and try again."
 		}
 	},
+	"TERMINALS": {
+		"FORM": {
+			"LABELS": {
+				"NAME": "Name",
+				"CONNECTIONSTRING": "Connection string",
+				"CONNECTION": "Connection",
+				"DESCRIPTION": "Description",
+				"CLIENTID": "Client",
+				"TERMINALID": "Terminal",
+				"AMOUNT": "Amount",
+				"INVOICEID": "Invoice ID",
+				"CURRENCYCODE": "Currency"
+			},
+			"PLACEHOLDERS": {
+				"NAME": "Name",
+				"CONNECTIONSTRING": "Connection string",
+				"CONNECTION": "Connection",
+				"DESCRIPTION": "Description",
+				"CLIENTID": "Client",
+				"TERMINALID": "Terminal",
+				"AMOUNT": "Amount",
+				"INVOICEID": "Invoice ID",
+				"CURRENCYCODE": "Currency"
+			},
+			"VALIDATION": {
+				"NAME": {
+					"REQUIRED": "Name is required."
+				},
+				"CONNECTIONSTRING": {
+					"REQUIRED": "Connection string is required."
+				},
+				"CONNECTION": {
+					"REQUIRED": "Connection is required."
+				},
+				"CLIENTID": {
+					"REQUIRED": "Client is required."
+				},
+				"TERMINALID": {
+					"REQUIRED": "Terminal is required."
+				},
+				"AMOUNT": {
+					"REQUIRED": "Amount is required."
+				},
+				"INVOICEID": {
+					"REQUIRED": "Invoice ID is required."
+				},
+				"CURRENCYCODE": {
+					"REQUIRED": "Currency is required."
+				}
+			}
+		},
+		"CREATE": {
+			"CREATE": "Create",
+			"BUTTON_CREATE": "Create"
+		},
+		"EDIT": {
+			"EDIT": "Edit",
+			"BUTTON_EDIT": "Update"
+		},
+		"INDEX": {
+			"TITLE_EXTRAS": "(Terminals)",
+			"CREATE": "Create",
+			"EDIT": "Edit",
+			"DELETE": "Delete",
+			"MANAGE": "Manage",
+			"ACTIONS": "Actions",
+			"TYPES": "Types"
+		},
+		"PAY": {
+			"TITLE": "Card payment",
+			"BUTTON_PAY": "Pay"
+		},
+		"QUEUE": {
+			"ADDING": "Adding terminal {{ name }}",
+			"UPDATING": "Updating terminal {{ name }}",
+			"DELETING": "Deleting terminal {{ name }}",
+			"ERROR": "An error occured with terminal {{ name }}. Correct and try again."
+		},
+		"ENTITY_ACTION_PROVIDER": {
+			"ENTITY_ACTION": {
+				"TERMINAL_PAYMENT": "Card payment"
+			}
+		}
+	},
 	"WEBHOOKS": {
 		"FORM": {
 			"LABELS": {
@@ -3643,90 +3727,6 @@
 		"ENTITY_ACTION_PROVIDER": {
 			"ENTITY_ACTION": {
 				"WEBHOOK": "Card payment"
-			}
-		}
-	},
-	"TERMINALS": {
-		"FORM": {
-			"LABELS": {
-				"NAME": "Name",
-				"CONNECTIONSTRING": "Connection string",
-				"CONNECTION": "Connection",
-				"DESCRIPTION": "Description",
-				"CLIENTID": "Client",
-				"TERMINALID": "Terminal",
-				"AMOUNT": "Amount",
-				"INVOICEID": "Invoice ID",
-				"CURRENCYCODE": "Currency"
-			},
-			"PLACEHOLDERS": {
-				"NAME": "Name",
-				"CONNECTIONSTRING": "Connection string",
-				"CONNECTION": "Connection",
-				"DESCRIPTION": "Description",
-				"CLIENTID": "Client",
-				"TERMINALID": "Terminal",
-				"AMOUNT": "Amount",
-				"INVOICEID": "Invoice ID",
-				"CURRENCYCODE": "Currency"
-			},
-			"VALIDATION": {
-				"NAME": {
-					"REQUIRED": "Name is required."
-				},
-				"CONNECTIONSTRING": {
-					"REQUIRED": "Connection string is required."
-				},
-				"CONNECTION": {
-					"REQUIRED": "Connection is required."
-				},
-				"CLIENTID": {
-					"REQUIRED": "Client is required."
-				},
-				"TERMINALID": {
-					"REQUIRED": "Terminal is required."
-				},
-				"AMOUNT": {
-					"REQUIRED": "Amount is required."
-				},
-				"INVOICEID": {
-					"REQUIRED": "Invoice ID is required."
-				},
-				"CURRENCYCODE": {
-					"REQUIRED": "Currency is required."
-				}
-			}
-		},
-		"CREATE": {
-			"CREATE": "Create",
-			"BUTTON_CREATE": "Create"
-		},
-		"EDIT": {
-			"EDIT": "Edit",
-			"BUTTON_EDIT": "Update"
-		},
-		"INDEX": {
-			"TITLE_EXTRAS": "(Terminals)",
-			"CREATE": "Create",
-			"EDIT": "Edit",
-			"DELETE": "Delete",
-			"MANAGE": "Manage",
-			"ACTIONS": "Actions",
-			"TYPES": "Types"
-		},
-		"PAY": {
-			"TITLE": "Card payment",
-			"BUTTON_PAY": "Pay"
-		},
-		"QUEUE": {
-			"ADDING": "Adding terminal {{ name }}",
-			"UPDATING": "Updating terminal {{ name }}",
-			"DELETING": "Deleting terminal {{ name }}",
-			"ERROR": "An error occured with terminal {{ name }}. Correct and try again."
-		},
-		"ENTITY_ACTION_PROVIDER": {
-			"ENTITY_ACTION": {
-				"TERMINAL_PAYMENT": "Card payment"
 			}
 		}
 	},
@@ -4203,7 +4203,8 @@
 		},
 		"CREATE": {
 			"CREATE": "Create new bucket",
-			"BUTTON_CREATE": "Create"
+			"BUTTON_CREATE": "Create",
+			"CREATING": "Creating bucket. Please wait..."
 		},
 		"EDIT": {
 			"EDIT": "Edit",
