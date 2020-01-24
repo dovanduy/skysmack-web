@@ -4,7 +4,7 @@ import { FILE_STORAGE_REDUX_KEY, FILE_STORAGE_REDUCER_KEY } from '../../constant
 import { FileStorageActions } from './file-storage-actions';
 import { GlobalProperties, StrIndex, HttpErrorResponse, PageResponse, LocalPageTypes, LocalObject, PageExtensions, LocalObjectExtensions, LoadingState, toLocalObject, HttpSuccessResponse } from '@skysmack/framework';
 import { Bucket } from '../../models/bucket';
-import { GetStorageItemsSuccessPayload, FileStorageItem, StorageQuery, GetStorageItemsPayload } from '../../models';
+import { GetStorageItemsSuccessPayload, FileStorageItem, GetStorageItemsPayload } from '../../models';
 
 /**
  * This is to be used when you want to access file-storage via the GLOBAL state. E.g. state.file-storage (where file-storage is the reducer name.)
@@ -15,6 +15,7 @@ export class FileStorageAppState extends AppState {
 
 export class FileStorageState {
     public buckets: StrIndex<Bucket> = {};
+    public updatingBucket: StrIndex<boolean> = {};
     public localPageTypes: StrIndex<StrIndex<LocalPageTypes<string>>> = {};
     public localRecords: StrIndex<StrIndex<LocalObject<FileStorageItem, string>>> = {};
 }
@@ -36,12 +37,19 @@ export function fileStorageReducer(state = new FileStorageState(), action: Redux
             }
             return newState;
         }
+        case prefix + FileStorageActions.UPDATE_BUCKET: {
+            newState.updatingBucket[(action.payload as { packagePath: string }).packagePath] = true;
+            return newState;
+        }
         case prefix + FileStorageActions.UPDATE_BUCKET_SUCCESS: {
             const castedAction = action as { payload: { bucket: any, packagePath: string } };
+            newState.updatingBucket[castedAction.payload.packagePath] = false;
             newState.buckets[castedAction.payload.packagePath] = castedAction.payload.bucket;
             return newState;
         }
         case prefix + FileStorageActions.UPDATE_BUCKET_FAILURE: {
+            console.log(action);
+            newState.updatingBucket[(action.meta as { packagePath: string }).packagePath] = false;
             if (!GlobalProperties.production) {
                 console.log('Error. Error Action:', action);
             }

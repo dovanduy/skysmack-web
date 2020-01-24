@@ -7,15 +7,18 @@ import { BaseComponent } from '@skysmack/portal-fields';
 import { FormHelper, Field } from '@skysmack/ng-dynamic-forms';
 import { NgFileStorageFieldsConfig } from '../../../ng-file-storage-fields-config';
 import { Observable } from 'rxjs';
-import { map, switchMap } from 'rxjs/operators';
+import { switchMap } from 'rxjs/operators';
+import { NgRedux } from '@angular-redux/store';
 
 @Component({
   selector: 'ss-file-storage-installation',
-  templateUrl: './file-storage-installation.component.html'
+  templateUrl: './file-storage-installation.component.html',
+  styleUrls: ['./file-storage-installation.component.scss']
 })
 export class FileStorageInstallationComponent extends BaseComponent<FileStorageAppState, number> implements OnInit {
 
   public fields$: Observable<Field[]>;
+  public showLoadingWheel$: Observable<boolean>;
 
   constructor(
     public router: Router,
@@ -23,16 +26,20 @@ export class FileStorageInstallationComponent extends BaseComponent<FileStorageA
     public skysmackStore: NgSkysmackStore,
     public actions: NgFileStorageActions,
     public store: NgFileStorageStore,
-    public fieldsConfig: NgFileStorageFieldsConfig
+    public fieldsConfig: NgFileStorageFieldsConfig,
+    protected ngRedux: NgRedux<any>,
   ) {
     super(router, activatedRoute, skysmackStore);
   }
 
   ngOnInit() {
     super.ngOnInit();
+
     this.fields$ = this.loadedPackage$.pipe(
       switchMap(loadedPackage => this.fieldsConfig.getFields(loadedPackage))
     );
+
+    this.showLoadingWheel$ = this.store.updatingBucket(this.packagePath);
   }
 
   public onCreateSubmit(fh: FormHelper) {

@@ -1,5 +1,5 @@
 <ss-container (menuItemActionEvent)="actionEvent($event)" [componentKey]="componentKey"
-    *ngIf="loadedPackage$ | async as loadedPackage">
+    *ngIf="loadedPackage$ | async as loadedPackage" class="file-storage-container">
     <ss-file-storage-installation *ngIf="!(bucket$ | async)"></ss-file-storage-installation>
 
     <!-- Settings has been set. Show files -->
