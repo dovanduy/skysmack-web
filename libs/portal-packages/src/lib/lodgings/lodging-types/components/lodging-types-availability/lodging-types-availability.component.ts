@@ -3,7 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { EntityComponentPageTitle } from '@skysmack/portal-ui';
 import { NgLodgingTypesStore, NgLodgingTypesActions } from '@skysmack/ng-lodgings';
 import { Observable, combineLatest } from 'rxjs';
-import { map, tap, take } from 'rxjs/operators';
+import { map, tap, take, filter } from 'rxjs/operators';
 import { CalendarEvent, EventColor, EventAction } from 'calendar-utils';
 import * as _moment from 'moment';
 import { PagedQuery, defined, SubscriptionHandler } from '@skysmack/framework';
@@ -59,7 +59,6 @@ export class LodgingTypesAvailabilityComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.setCurrentDate(new Date());
     this.getLodgings();
-    this.getAvailableLodgingTypesDailyCount();
     this.requestPeriod(this.currentSelectedDate);
     this.setAvailableLodgings();
   }
@@ -94,8 +93,10 @@ export class LodgingTypesAvailabilityComponent implements OnInit, OnDestroy {
 
     // Make all checkboxes selected as default.
     this.subscriptionHandler.register(lodgingTypes$.pipe(
+      filter(lodgingTypes => lodgingTypes && lodgingTypes.length > 0),
       tap(lodgingTypes => this.selectedLodgingTypeIds = lodgingTypes.map(lodgingType => lodgingType.object.id)),
-      take(1)
+      take(1),
+      tap(() => this.getAvailableLodgingTypesDailyCount()),
     ).subscribe());
 
 
@@ -122,7 +123,6 @@ export class LodgingTypesAvailabilityComponent implements OnInit, OnDestroy {
       this.store.getAvailableLodgingTypesDailyCount(this.packagePath)
     ]).pipe(
       map(([lodgingTypes, dictionary]) => {
-        console.log(dictionary);
         const datesArray = Object.keys(dictionary);
         let freeLodgingTypes: {
           id: string,
