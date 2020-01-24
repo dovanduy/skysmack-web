@@ -134,10 +134,11 @@ export class LodgingTypesAvailabilityComponent implements OnInit, OnDestroy {
           return Object.keys(dictionary[date]).map(() => {
             freeLodgingTypes = this.selectedLodgingTypeIds.map(selectedLodgingTypeId => {
               const lodgingTypeName = lodgingTypes.find(lodging => lodging.object.id === selectedLodgingTypeId).object.name;
+              const lodgingTypeCount = dictionary[date][selectedLodgingTypeId];
               return {
                 id: date.split('T')[0] + lodgingTypeName,
                 name: lodgingTypeName,
-                count: dictionary[date][selectedLodgingTypeId]
+                count: (lodgingTypeCount !== null && lodgingTypeCount !== undefined) ? lodgingTypeCount : 0
               };
             });
 
