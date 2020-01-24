@@ -5,6 +5,8 @@ const moment = _moment;
 @Pipe({ name: 'weekNo' })
 export class WeekNoPipe implements PipeTransform {
     transform(date: Date): string {
-        return moment(date).isoWeek();
+        const weekNo = moment(date).isoWeek();
+
+        return (Number(weekNo) <= 9 || Number(weekNo) <= 1) ? `0${weekNo}` : weekNo;
     }
 }
