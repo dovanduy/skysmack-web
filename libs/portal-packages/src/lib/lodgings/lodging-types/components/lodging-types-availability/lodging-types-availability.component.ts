@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { EntityComponentPageTitle } from '@skysmack/portal-ui';
 import { NgLodgingTypesStore, NgLodgingTypesActions } from '@skysmack/ng-lodgings';
@@ -36,7 +36,12 @@ export class LodgingTypesAvailabilityComponent implements OnInit, OnDestroy {
     return this._viewDate;
   }
   public set viewDate(date: Date) {
+    // Update the request period to the calendars date.
     this.requestPeriod(date);
+
+    // Request the daily count again.
+    this.getAvailableLodgingTypesDailyCount();
+
     this._viewDate = date;
   }
 
@@ -54,6 +59,7 @@ export class LodgingTypesAvailabilityComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.setCurrentDate(new Date());
     this.getLodgings();
+    this.getAvailableLodgingTypesDailyCount();
     this.requestPeriod(this.currentSelectedDate);
     this.setAvailableLodgings();
   }
@@ -66,7 +72,7 @@ export class LodgingTypesAvailabilityComponent implements OnInit, OnDestroy {
     this.setCurrentDate(date);
   }
 
-  public getAvailableLodgingTypes(change: MatSelectChange) {
+  public getAvailableLodgingTypesDailyCount(change?: MatSelectChange) {
     this.actions.getAvailableLodgingTypesDailyCount(this.packagePath, this.startOfMonth, this.endOfMonth, this.selectedLodgingTypeIds);
   }
 
@@ -115,10 +121,8 @@ export class LodgingTypesAvailabilityComponent implements OnInit, OnDestroy {
       this.store.get(this.packagePath),
       this.store.getAvailableLodgingTypesDailyCount(this.packagePath)
     ]).pipe(
-      map(values => {
-        const lodgingTypes = values[0];
-
-        const dictionary = values[1];
+      map(([lodgingTypes, dictionary]) => {
+        console.log(dictionary);
         const datesArray = Object.keys(dictionary);
         let freeLodgingTypes: {
           id: string,
@@ -155,7 +159,8 @@ export class LodgingTypesAvailabilityComponent implements OnInit, OnDestroy {
             } as CalendarEvent;
           });
         }).reduce((acc, current) => acc.concat(current), []);
-      })
+      }),
+      // tap(x => console.log(x))
     );
   }
 }
