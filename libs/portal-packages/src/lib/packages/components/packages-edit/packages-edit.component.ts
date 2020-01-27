@@ -4,9 +4,10 @@ import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EditorNavService } from '@skysmack/portal-ui';
 import { PackagesAppState } from '@skysmack/packages-skysmack-core';
-import { Package } from '@skysmack/framework';
+import { Package, LocalObjectStatus } from '@skysmack/framework';
 import { NgPackagesFieldsConfig } from '../../ng-packages-fields-config';
 import { RecordFormComponent } from '@skysmack/portal-fields';
+import { FormHelper } from '@skysmack/ng-dynamic-forms';
 
 @Component({
   selector: 'ss-packages-edit',
@@ -28,5 +29,20 @@ export class PackagesEditComponent extends RecordFormComponent<PackagesAppState,
   ngOnInit() {
     super.ngOnInit();
     this.setEditFields();
+  }
+
+  protected update(fh: FormHelper) {
+    fh.formValid(() => {
+      const oldValue = { ...this.selectedEntity };
+      const newValue = this.extractFormValues(fh, this.selectedEntity);
+      delete newValue.object.type;
+      delete newValue.object.dependencies;
+
+      newValue.oldObject = oldValue.object;
+      newValue.status = LocalObjectStatus.MODIFYING;
+
+      this.actions.update([newValue], this.packagePath);
+      this.editorNavService.hideEditorNav();
+    });
   }
 }
