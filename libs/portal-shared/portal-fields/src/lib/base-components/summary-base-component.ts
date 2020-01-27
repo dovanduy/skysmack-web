@@ -52,10 +52,12 @@ export class SummaryBaseComponent<TKey> implements OnInit, OnDestroy {
             switchMap(recordIds => packagePath$.pipe(
                 take(1),
                 tap(packagePath => {
-                    const rsqlFilter = new RSQLFilterBuilder();
-                    rsqlFilter.column('id').in(recordIds);
-                    const query = new PagedQuery({ rsqlFilter });
-                    actions.getPaged(packagePath, query);
+                    if (recordIds && recordIds.length > 0) {
+                        const rsqlFilter = new RSQLFilterBuilder();
+                        rsqlFilter.column('id').in(recordIds);
+                        const query = new PagedQuery({ rsqlFilter });
+                        actions.getPaged(packagePath, query);
+                    }
                 })
             ))
         ).subscribe());
