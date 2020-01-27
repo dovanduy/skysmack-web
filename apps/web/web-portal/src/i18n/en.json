@@ -1342,8 +1342,7 @@
 				"CHECKOUT": "Check out",
 				"PERSONS": "Persons",
 				"STATUS": "Status",
-				"OVERBOOK": "Overbook",
-				"ALLOWOVERBOOKING": "Allow overbooking"
+				"OVERBOOK": "Overbook"
 			},
 			"PLACEHOLDERS": {
 				"LODGINGTYPEID": "Choose lodging type",
@@ -1352,8 +1351,7 @@
 				"CHECKOUT": "Choose check out date",
 				"PERSONS": "Choose number of persons",
 				"STATUS": "Status",
-				"OVERBOOK": "Overbook",
-				"ALLOWOVERBOOKING": "Allow overbooking"
+				"OVERBOOK": "Overbook"
 			},
 			"VALIDATION": {
 				"LODGINGTYPEID": {
