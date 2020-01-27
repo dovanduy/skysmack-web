@@ -16,6 +16,7 @@ import { SpeedDialFabComponent } from './speed-dial-fab/speed-dial-fab.component
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { DashboardLoaderComponent } from './dashboard-loader/dashboard-loader.component';
 import { MonthlyCalendarViewComponent } from './monthly-calendar-view/monthly-calendar-view.component';
+import { CloseWarningDialogComponent } from './close-warning-dialog/close-warning-dialog.component';
 
 export const commonComponents = [
     PageHeaderComponent,
@@ -35,5 +36,10 @@ export const commonComponents = [
     DefaultComponent,
     DashboardComponent,
     DashboardLoaderComponent,
-    MonthlyCalendarViewComponent
+    MonthlyCalendarViewComponent,
+    CloseWarningDialogComponent
+];
+
+export const commonEntryComponents = [
+    CloseWarningDialogComponent
 ];

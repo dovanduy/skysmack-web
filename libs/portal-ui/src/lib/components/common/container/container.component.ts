@@ -4,10 +4,11 @@ import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 import { SubscriptionHandler } from '@skysmack/framework';
 import { EditorNavService } from './editor-nav.service';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
-import { Observable, of } from 'rxjs';
-import { map, filter } from 'rxjs/operators';
+import { Observable, of, BehaviorSubject } from 'rxjs';
+import { map, filter, switchMap, tap, take } from 'rxjs/operators';
 import { NgAuthenticationStore } from '@skysmack/ng-framework';
 import { MatDialog } from '@angular/material/dialog';
+import { CloseWarningService } from '../close-warning-dialog/close-warning.service';
 
 const SMALL_WIDTH_BREAKPOINT = 720;
 
@@ -22,6 +23,7 @@ export class ContainerComponent implements OnInit, OnDestroy {
   @ViewChild('editornav', { static: false }) public editornav: MatSidenav;
 
   @Output() public menuItemActionEvent = new EventEmitter<any>();
+  public formChanged$: BehaviorSubject<boolean>;
 
   public anyMenuItems: EventEmitter<boolean> = new EventEmitter<boolean>(true);
 
@@ -39,11 +41,13 @@ export class ContainerComponent implements OnInit, OnDestroy {
     public skysmackStore: NgSkysmackStore,
     public changeDetectorRef: ChangeDetectorRef,
     public authentication: NgAuthenticationStore,
-    public dialogRef: MatDialog
+    public dialogRef: MatDialog,
+    private closeWarningService: CloseWarningService
   ) { }
 
   ngOnInit(): void {
     this.path = this.router.url;
+    this.formChanged$ = this.closeWarningService.formChanged$;
 
     this.subscriptionHandler.register(this.router.events.pipe(
       filter(event => event instanceof NavigationEnd),
@@ -66,6 +70,7 @@ export class ContainerComponent implements OnInit, OnDestroy {
       this.editorNavService.hideEditorNav();
     }
 
+    // Set access and authenticated streams
     const packagePath = this.router.url.split('/')[1];
     if (!packagePath || packagePath === '' || packagePath === 'skysmack') {
       this.access$ = of(true);
@@ -76,6 +81,7 @@ export class ContainerComponent implements OnInit, OnDestroy {
       this.authenticated$ = this.authentication.isCurrentUserAuthenticated();
     }
 
+    // Detect changes when access changes.
     this.subscriptionHandler.register(this.access$.pipe(
       filter(access => access),
       map(() => this.changeDetectorRef.detectChanges())
@@ -105,26 +111,51 @@ export class ContainerComponent implements OnInit, OnDestroy {
       })
     ).subscribe());
 
+    // Open/Close the editor sidebar depending on its visibility
     this.subscriptionHandler.register(this.editorNavService.isVisible.pipe(
-      map(visible => {
+      switchMap(visible => {
+        const formChanged = this.closeWarningService.formChanged;
         if (visible && !this.editornav.opened) {
-          this.editornav.open();
+          return this.editornav.open();
         } else if (!visible && this.editornav.opened) {
-          this.editornav.close();
-        }
-        if (!visible) {
-          if (this.dialogRef) {
-            setTimeout(() => {
-              this.dialogRef.closeAll();
-            }, 0);
+          if (formChanged) {
+            return this.closeWarningService.closeSidebar().pipe();
+          } else {
+            return this.editornav.close();
           }
         }
+
+        if (!visible) {
+          if (this.dialogRef) {
+            if (!formChanged) {
+              setTimeout(() => {
+                this.dialogRef.closeAll();
+              }, 0);
+              return of();
+            } else {
+              this.dialogRef.closeAll()
+              return of();
+            }
+          }
+          return of();
+        }
+        return of();
       })
     ).subscribe());
   }
 
   ngOnDestroy(): void {
     this.subscriptionHandler.unsubscribe();
+  }
+
+  public closeAttempted() {
+    if (this.closeWarningService.formChanged) {
+      this.subscriptionHandler.register(this.closeWarningService.closeSidebar().pipe(
+        take(1),
+        filter(x => x),
+        map(() => this.editorNavService.hideEditorNav())
+      ).subscribe());
+    }
   }
 
   public isScreenSmall(): boolean {

@@ -1,11 +1,11 @@
 import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { FormBuilder, Validators, FormGroup, FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
-import { GlobalProperties, SubscriptionHandler, LocalObject, StrIndex, jsonPrint } from '@skysmack/framework';
+import { GlobalProperties, SubscriptionHandler, LocalObject, StrIndex } from '@skysmack/framework';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
-import { map, take, tap, debounceTime, delay } from 'rxjs/operators';
+import { map, take, tap, debounceTime, delay, filter } from 'rxjs/operators';
 import { Field, FormRule, Validation, FormHelper } from '@skysmack/ng-dynamic-forms';
-import { EditorNavService } from '@skysmack/portal-ui';
+import { CloseWarningService, EditorNavService } from '@skysmack/portal-ui';
 
 @Component({
   selector: 'ss-dynamic-form',
@@ -30,13 +30,13 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
   public production = GlobalProperties.production;
   public fh: FormHelper;
   private subscriptionHandler = new SubscriptionHandler();
-  private formChanged = false;
   private submitting: boolean;
 
   constructor(
     public fb: FormBuilder,
     public skysmackStore: NgSkysmackStore,
-    public editorNavService: EditorNavService
+    private editorNavService: EditorNavService,
+    private closeWarningService: CloseWarningService
   ) { }
 
   ngOnInit() {
@@ -67,11 +67,25 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
       })
     );
 
-    this.closeWarning();
+    // If the form changes, show a close warning
+    this.closeWarningOnFormChange();
   }
 
   ngOnDestroy() {
     this.subscriptionHandler.unsubscribe();
+    this.closeWarningService.stopAskingBeforeClosing();
+  }
+
+  public onClose() {
+    if (this.closeWarningService.formChanged) {
+      this.subscriptionHandler.register(this.closeWarningService.closeSidebar().pipe(
+        filter(x => x),
+        take(1),
+        map(() => this.editorNavService.hideEditorNav())
+      ).subscribe());
+    } else {
+      this.editorNavService.hideEditorNav();
+    }
   }
 
   public trackByFieldKey(_index: number, field: Field) {
@@ -103,17 +117,15 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
 
   public onSubmit = () => {
     this.submitting = true;
+    this.closeWarningService.formChanged = false; // Disable form changed checks while submitting.
     this.subscriptionHandler.register(this.fields$.pipe(
       take(1),
       // Remove all fields not to be included in the request.
       map(fields => fields.map(field => field.includeInRequest ? field : this.fh.form.removeControl(field.key))),
       map(() => this.submitted.emit(this.fh)),
-      tap(() => this.submitting = false)
+      tap(() => this.submitting = false),
+      tap(() => this.closeWarningService.formChanged = true),
     ).subscribe())
-  }
-
-  public onClose() {
-    this.editorNavService.hideEditorNav();
   }
 
   /**
@@ -178,30 +190,31 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
     this.subscriptionHandler.register(formHelper.form.valueChanges.subscribe(() => formHelper.validateForm(formHelper.form)));
   }
 
-  private closeWarning() {
-    let original = null;
+  private closeWarningOnFormChange() {
+    let originalFormValue = null;
 
-    const askBeforeLeaving = () => {
-      window.addEventListener("beforeunload", function (e) {
-        var confirmationMessage = "\o/";
-
-        (e || window.event).returnValue = confirmationMessage; //Gecko + IE
-        return confirmationMessage;                            //Webkit, Safari, Chrome
-      });
-    };
-
+    // When form value changes...
     this.subscriptionHandler.register(this.fh.form.valueChanges.pipe(
       debounceTime(100),
-      tap(values => {
-        const strValues = JSON.stringify(values, undefined, 2);
-        if (!original) {
-          original = strValues;
+      tap(formValues => {
+        const strValues = JSON.stringify(formValues);
+
+        // Copy the original input
+        if (!originalFormValue) {
+          originalFormValue = strValues;
         }
-        if (original !== strValues) {
-          askBeforeLeaving();
-          this.formChanged = true;
+
+        if (originalFormValue !== strValues) {
+          // If the input has changed, ask before leaving
+          this.closeWarningService.startAskingBeforeClosing();
+          this.closeWarningService.formChanged = true;
+        } else if (originalFormValue && originalFormValue === strValues) {
+          // If the input equals the original, stop asking before leaving
+          this.closeWarningService.stopAskingBeforeClosing();
+          this.closeWarningService.formChanged = false;
         }
       })
     ).subscribe());
   }
+
 }

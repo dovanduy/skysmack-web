@@ -15,3 +15,4 @@ export * from './records-container/records-container.component';
 export * from './default/default.component';
 export * from './dashboard/dashboard.component';
 export * from './dashboard-loader/dashboard-loader.component';
+export * from './close-warning-dialog/close-warning.service';

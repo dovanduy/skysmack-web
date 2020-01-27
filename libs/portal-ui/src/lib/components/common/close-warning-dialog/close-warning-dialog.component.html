@@ -1,0 +1,10 @@
+<h2 mat-dialog-title>You have unsaved changes</h2>
+<div mat-dialog-content>
+  Do you want to continue and discard your changes?
+</div>
+
+
+<div mat-dialog-actions>
+  <button mat-raised-button (click)="stay()" cdkFocusInitial>Keep editing</button>
+  <button mat-raised-button color="warn" (click)="close()">Discard and close</button>
+</div>

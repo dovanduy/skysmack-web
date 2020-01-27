@@ -9,7 +9,7 @@ import { NOTIFICATIONS_INJECTOR_TOKEN, CoalescingComponentFactoryResolver } from
 import { NgUIModule } from '@skysmack/ng-ui';
 import { NgTranslationModule, LanguageService, PortalHttpLoaderFactory } from '@skysmack/ng-translation';
 import { portailUiPipes } from './pipes/portal-ui-pipes';
-import { commonComponents } from './components/common/common-components';
+import { commonComponents, commonEntryComponents } from './components/common/common-components';
 import { displayComponents } from './components/display-components/display-components';
 import { directives } from './directives/directives';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -68,7 +68,8 @@ const material = [
     ...portailUiPipes
   ],
   entryComponents: [
-    ...displayComponents
+    ...displayComponents,
+    ...commonEntryComponents
   ]
 })
 export class PortalUiModule {
