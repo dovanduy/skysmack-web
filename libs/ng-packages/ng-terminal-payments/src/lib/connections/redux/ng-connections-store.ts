@@ -41,9 +41,9 @@ export class NgConnectionsStore extends NgRecordStore<ConnectionsAppState, Conne
     protected getSingleRecord(packagePath: string, id: ConnectionKey): Observable<LocalObject<Connection, ConnectionKey>> {
         return this.get(packagePath).pipe(
             map(records => records.find(record => {
-                const clientIdMatch = record.object.id.clientId === id.clientId;
-                const terminalIdMatch = record.object.id.terminalId === id.terminalId;
-                return (clientIdMatch && terminalIdMatch) ? true : false;
+                const firstIdMatch = record.object.id.clientId === id.clientId;
+                const secondIdMatch = record.object.id.terminalId === id.terminalId;
+                return (firstIdMatch && secondIdMatch) ? true : false;
             })),
             hasValue()
         );

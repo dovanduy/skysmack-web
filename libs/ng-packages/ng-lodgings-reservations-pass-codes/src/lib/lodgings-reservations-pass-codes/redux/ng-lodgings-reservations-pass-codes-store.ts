@@ -5,8 +5,9 @@ import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { LodgingsReservationsPassCodesAppState } from './lodgings-reservations-pass-codes-reducer';
 import { LODGINGS_RESERVATIONS_PASS_CODES_REDUCER_KEY } from './../constants/constants';
 import { LodgingReservationPassCode, LodgingReservationPassCodeKey } from '../models/lodging-reservation-pass-code';
-import { DependencyOptions, LocalObject } from '@skysmack/framework';
+import { DependencyOptions, LocalObject, hasValue } from '@skysmack/framework';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Injectable({ providedIn: 'root' })
 export class NgLodgingsReservationsPassCodesStore extends NgRecordStore<LodgingsReservationsPassCodesAppState, LodgingReservationPassCode, LodgingReservationPassCodeKey> {
@@ -36,5 +37,16 @@ export class NgLodgingsReservationsPassCodesStore extends NgRecordStore<Lodgings
 
     public getSingle(packagePath: string, id: LodgingReservationPassCodeKey): Observable<LocalObject<LodgingReservationPassCode, LodgingReservationPassCodeKey>> {
         return this.getSingleWithDependency(packagePath, id, this.deps);
+    }
+
+    protected getSingleRecord(packagePath: string, id: LodgingReservationPassCodeKey): Observable<LocalObject<LodgingReservationPassCode, LodgingReservationPassCodeKey>> {
+        return this.get(packagePath).pipe(
+            map(records => records.find(record => {
+                const firstIdMatch = record.object.id.lodgingReservationId === id.lodgingReservationId;
+                const secondIdMatch = record.object.id.passCodeId === id.passCodeId;
+                return (firstIdMatch && secondIdMatch) ? true : false;
+            })),
+            hasValue()
+        );
     }
 }

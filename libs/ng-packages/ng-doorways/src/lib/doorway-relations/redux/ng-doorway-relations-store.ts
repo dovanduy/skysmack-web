@@ -5,8 +5,9 @@ import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { DoorwayRelationsAppState } from './doorway-relations-reducer';
 import { DoorwayRelation, DoorwayRelationKey } from './../models/doorway-relation';
 import { DOORWAY_RELATIONS_REDUCER_KEY } from './../constants/constants';
-import { DependencyOptions, LocalObject } from '@skysmack/framework';
+import { DependencyOptions, LocalObject, hasValue } from '@skysmack/framework';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Injectable({ providedIn: 'root' })
 export class NgDoorwayRelationsStore extends NgRecordStore<DoorwayRelationsAppState, DoorwayRelation, DoorwayRelationKey> {
@@ -34,5 +35,16 @@ export class NgDoorwayRelationsStore extends NgRecordStore<DoorwayRelationsAppSt
 
     public getSingle(packagePath: string, id: DoorwayRelation): Observable<LocalObject<DoorwayRelation, DoorwayRelationKey>> {
         return this.getSingleWithDependency(packagePath, id, this.deps);
+    }
+
+    protected getSingleRecord(packagePath: string, id: DoorwayRelationKey): Observable<LocalObject<DoorwayRelation, DoorwayRelationKey>> {
+        return this.get(packagePath).pipe(
+            map(records => records.find(record => {
+                const firstIdMatch = record.object.id.outerDoorwayId === id.outerDoorwayId;
+                const secondIdMatch = record.object.id.innerDoorwayId === id.innerDoorwayId;
+                return (firstIdMatch && secondIdMatch) ? true : false;
+            })),
+            hasValue()
+        );
     }
 }
