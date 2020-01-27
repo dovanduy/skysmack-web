@@ -136,6 +136,66 @@
 			"ERROR": "An error occured with access policy rules {{ id }}. Correct and try again."
 		}
 	},
+	"ACCESS_POINTS": {
+		"FORM": {
+			"LABELS": {
+				"ID": "ID",
+				"DOORWAYID": "Doorway"
+			},
+			"PLACEHOLDERS": {
+				"ID": "ID",
+				"DOORWAYID": "Doorway"
+			},
+			"VALIDATION": {
+				"ID": {
+					"REQUIRED": "ID is required."
+				},
+				"DOORWAYID": {
+					"REQUIRED": "Doorway is required."
+				}
+			}
+		},
+		"CREATE": {
+			"CREATE": "Create",
+			"BUTTON_CREATE": "Create"
+		},
+		"EDIT": {
+			"EDIT": "Edit",
+			"BUTTON_EDIT": "Update"
+		},
+		"INDEX": {
+			"TITLE_EXTRAS": "(AccessPoints)",
+			"CREATE": "Create",
+			"EDIT": "Edit",
+			"DELETE": "Delete",
+			"MANAGE": "Manage",
+			"ACTIONS": "Actions",
+			"SETTINGS": "Settings",
+			"TYPES": "Types"
+		}
+	},
+	"AXIS_PHYSICAL_ACCESS_CONTROL": {
+		"INDEX": {
+			"MANAGE": "Manage",
+			"ACTIONS": "Actions",
+			"SETTINGS": "Settings",
+			"ACCESS_POINTS": "Access points",
+			"VAPIX_CONNECTION_SETTINGS": "Connection settings"
+		},
+		"FORM": {
+			"LABELS": {
+				"ROUTE": "Route",
+				"USERNAME": "User name",
+				"PASSWORD": "Password"
+			},
+			"PLACEHOLDERS": {
+				"ROUTE": "Route",
+				"USERNAME": "User name",
+				"PASSWORD": "Password"
+			},
+			"VALIDATION": {}
+		}
+	},
 	"CORS": {
 		"FORM": {
 			"LABELS": {
@@ -164,7 +224,7 @@
 		},
 		"EDIT": {
 			"EDIT": "Edit",
-			"BUTTON_EDIT": "Update"
+			"BUTTON_EDIT": "Edit"
 		},
 		"INDEX": {
 			"CREATE": "Create",
@@ -173,6 +233,224 @@
 			"MANAGE": "Manage",
 			"ACTIONS": "Actions",
 			"SETTINGS": "Settings"
+		}
+	},
+	"DOORWAYS": {
+		"FORM": {
+			"LABELS": {
+				"NAME": "Name",
+				"DESCRIPTION": "Description"
+			},
+			"PLACEHOLDERS": {
+				"NAME": "Name",
+				"DESCRIPTION": "Description"
+			},
+			"VALIDATION": {
+				"NAME": {
+					"REQUIRED": "A name is required."
+				},
+				"DESCRIPTION": {
+					"REQUIRED": "A description is required."
+				}
+			}
+		},
+		"FIELDS": {
+			"CREATE": {
+				"ADD": "Add new field"
+			},
+			"EDIT": {
+				"EDITING": "Editing"
+			},
+			"INDEX": {
+				"ACTIONS": "Actions",
+				"CREATE": "Create new field",
+				"OTHER": "Other",
+				"BACK": "Back",
+				"FIELDS": "Fields",
+				"EDIT": "Edit"
+			}
+		},
+		"CREATE": {
+			"CREATE": "Create",
+			"BUTTON_CREATE": "Create"
+		},
+		"EDIT": {
+			"EDIT": "Edit",
+			"BUTTON_EDIT": "Update"
+		},
+		"INDEX": {
+			"PACKAGES": "Packages",
+			"CREATE": "Create",
+			"EDIT": "Edit",
+			"DELETE": "Delete",
+			"FIELDS": "Fields",
+			"FIELDS_TITLE": "(fields)",
+			"ITEM": "Item",
+			"MANAGE": "Manage",
+			"ACTIONS": "Actions",
+			"DOORWAY_RELATION_SETTINGS": "Relation settings",
+			"RELATIONS": "Doorway relations"
+		},
+		"NOTIFICATIONS": {
+			"GET": {
+				"PAGED_ERROR": "Failed to get doorways ({{ httpErrorCode }}).",
+				"SINGLE_FAILURE": "Failed to get {{ name }} ({{ httpErrorCode }}).",
+				"FIELDS_FAILURE": "Failed to get fields for doorways ({{ httpErrorCode }}).",
+				"SINGLE_FIELD_FAILURE": "Failed to get {{ name }} field ({{ httpErrorCode }})."
+			},
+			"ADD": {
+				"SUCCESS": "Added {{ name }} succcessfully.",
+				"FAILURE": "Failed to add {{ name }} ({{ httpErrorCode }}).",
+				"FIELD_FAILURE": "Failed to add field for {{ name }} ({{ httpErrorCode }}).",
+				"FIELD_SUCCESS": "Added field for {{ name }} successfully."
+			},
+			"UPDATE": {
+				"SUCCESS": "Updated {{ name }} successfully.",
+				"FAILURE": "Failed to update {{ name }} ({{ httpErrorCode }}).",
+				"FIELD_SUCCESS": "Updated field for {{ name }} successfully.",
+				"FIELD_FAILURE": "Failed to update field for {{ name }} ({{ httpErrorCode }})"
+			},
+			"REMOVE": {
+				"SUCCESS": "Removed {{ name }} successfully.",
+				"FAILURE": "Failed to remove {{ name }} ({{ httpErrorCode }}).",
+				"FIELD_SUCCESS": "Removed field for {{ name }} succesfully.",
+				"FIELD_FAILURE": "Failed to remove field for {{ name }} ({{ httpErrorCode }})."
+			}
+		},
+		"QUEUE": {
+			"ADDING": "Adding {{ name }}",
+			"UPDATING": "Updating {{ name }}",
+			"DELETING": "Deleting {{ name }}",
+			"ERROR": "An error occured with {{ name }}. Correct and try again."
+		}
+	},
+	"DOORWAY_RELATIONS": {
+		"FORM": {
+			"LABELS": {
+				"OUTERDOORWAYID": "Outer doorway",
+				"INNERDOORWAYID": "Inner doorway",
+				"ALLOWCIRCULARRELATIONS": "Allow circular relations"
+			},
+			"PLACEHOLDERS": {
+				"OUTERDOORWAYID": "Outer doorway",
+				"INNERDOORWAYID": "Inner doorway"
+			},
+			"VALIDATION": {
+				"OUTERDOORWAYID": {
+					"REQUIRED": "Outer doorway is required."
+				},
+				"INNERDOORWAYID": {
+					"REQUIRED": "Inner doorway is required."
+				}
+			}
+		},
+		"CREATE": {
+			"CREATE": "Create",
+			"BUTTON_CREATE": "Create"
+		},
+		"EDIT": {
+			"EDIT": "Edit",
+			"BUTTON_EDIT": "Update"
+		},
+		"INDEX": {
+			"TITLE_EXTRAS": "(Relations)",
+			"CREATE": "Create",
+			"EDIT": "Edit",
+			"DELETE": "Delete",
+			"MANAGE": "Manage",
+			"ACTIONS": "Actions",
+			"SETTINGS": "Settings"
+		},
+		"SETTINGS": {}
+	},
+	"DOORWAYS_OPTIONS": {
+		"FORM": {
+			"LABELS": {
+				"ID": "Door",
+				"STARTPERIOD": "Start period",
+				"ENDPERIOD": "End period",
+				"REQUIRED": "Required"
+			},
+			"PLACEHOLDERS": {
+				"ID": "Door",
+				"STARTPERIOD": "Start period",
+				"ENDPERIOD": "End period",
+				"REQUIRED": "Required"
+			},
+			"VALIDATION": {
+				"ID": {
+					"REQUIRED": "Door is required."
+				},
+				"STARTPERIOD": {
+					"REQUIRED": "Start period is required."
+				},
+				"ENDPERIOD": {
+					"REQUIRED": "End period is required."
+				}
+			}
+		},
+		"CREATE": {
+			"CREATE": "Create",
+			"BUTTON_CREATE": "Create"
+		},
+		"EDIT": {
+			"EDIT": "Edit",
+			"BUTTON_EDIT": "Update"
+		},
+		"INDEX": {
+			"TITLE_EXTRAS": "(Doorways options)",
+			"CREATE": "Create",
+			"EDIT": "Edit",
+			"DELETE": "Delete",
+			"MANAGE": "Manage",
+			"ACTIONS": "Actions",
+			"SETTINGS": "Settings",
+			"TYPES": "Types"
+		}
+	},
+	"DOORWAYS_PASS_CODES": {
+		"FORM": {
+			"LABELS": {
+				"DOORWAYID": "Doorway",
+				"PASSCODEID": "Pass code",
+				"VALIDFROM": "Valid from",
+				"VALIDTO": "Valid to",
+				"DISABLED": "Disabled"
+			},
+			"PLACEHOLDERS": {
+				"DOORWAYID": "Doorway",
+				"PASSCODEID": "Pass code",
+				"VALIDFROM": "Valid from",
+				"VALIDTO": "Valid to",
+				"DISABLED": "Disabled"
+			},
+			"VALIDATION": {
+				"DOORWAYID": {
+					"REQUIRED": "Doorway is required."
+				},
+				"PASSCODEID": {
+					"REQUIRED": "Pass code is required."
+				}
+			}
+		},
+		"CREATE": {
+			"CREATE": "Create",
+			"BUTTON_CREATE": "Create"
+		},
+		"EDIT": {
+			"EDIT": "Edit",
+			"BUTTON_EDIT": "Update"
+		},
+		"INDEX": {
+			"TITLE_EXTRAS": "(DoorwaysPassCodes)",
+			"CREATE": "Create",
+			"EDIT": "Edit",
+			"DELETE": "Delete",
+			"MANAGE": "Manage",
+			"ACTIONS": "Actions",
+			"SETTINGS": "Settings",
+			"TYPES": "Types",
+			"OPTIONS": "Doorway options"
 		}
 	},
 	"EMAIL_TEMPLATES": {
@@ -256,50 +534,6 @@
 			}
 		}
 	},
-	"CLIENTS": {
-		"CREATE": {
-			"CREATE": "Create",
-			"BUTTON_CREATE": "Create"
-		},
-		"EDIT": {
-			"EDIT": "Edit",
-			"BUTTON_EDIT": "Update"
-		},
-		"INDEX": {
-			"TITLE_EXTRAS": "(Clients)",
-			"ACTIONS": "Actions",
-			"CREATE": "Create",
-			"DELETE": "Delete",
-			"MANAGE": "Manage",
-			"BACK": "Back"
-		},
-		"FORM": {
-			"LABELS": {
-				"NAME": "Name",
-				"DESCRIPTION": "Description",
-				"ONLINE": "Online"
-			},
-			"PLACEHOLDERS": {
-				"NAME": "Name",
-				"DESCRIPTION": "Description",
-				"ONLINE": "Online"
-			},
-			"VALIDATION": {
-				"NAME": {
-					"REQUIRED": "Name is required."
-				},
-				"DESCRIPTION": {
-					"REQUIRED": "Description is required."
-				}
-			}
-		},
-		"QUEUE": {
-			"ADDING": "Adding client {{ name }}",
-			"UPDATING": "Updating client {{ name }}",
-			"DELETING": "Deleting client {{ name }}",
-			"ERROR": "An error occured with client {{ name }}. Correct and try again."
-		}
-	},
 	"ACCOUNT": {
 		"FORM": {
 			"LABELS": {
@@ -364,6 +598,50 @@
 		},
 		"NOTIFICATIONS": {},
 		"QUEUE": {}
+	},
+	"CLIENTS": {
+		"CREATE": {
+			"CREATE": "Create",
+			"BUTTON_CREATE": "Create"
+		},
+		"EDIT": {
+			"EDIT": "Edit",
+			"BUTTON_EDIT": "Update"
+		},
+		"INDEX": {
+			"TITLE_EXTRAS": "(Clients)",
+			"ACTIONS": "Actions",
+			"CREATE": "Create",
+			"DELETE": "Delete",
+			"MANAGE": "Manage",
+			"BACK": "Back"
+		},
+		"FORM": {
+			"LABELS": {
+				"NAME": "Name",
+				"DESCRIPTION": "Description",
+				"ONLINE": "Online"
+			},
+			"PLACEHOLDERS": {
+				"NAME": "Name",
+				"DESCRIPTION": "Description",
+				"ONLINE": "Online"
+			},
+			"VALIDATION": {
+				"NAME": {
+					"REQUIRED": "Name is required."
+				},
+				"DESCRIPTION": {
+					"REQUIRED": "Description is required."
+				}
+			}
+		},
+		"QUEUE": {
+			"ADDING": "Adding client {{ name }}",
+			"UPDATING": "Updating client {{ name }}",
+			"DELETING": "Deleting client {{ name }}",
+			"ERROR": "An error occured with client {{ name }}. Correct and try again."
+		}
 	},
 	"IDENTITIES": {
 		"INDEX": {
@@ -649,7 +927,9 @@
 			"OBJECT_PRIOORITY": "{{ role.object.name }} - priority",
 			"ADD": "Add",
 			"ROLES_APPLIED": "All roles have been applied, or no roles exists.",
-			"NO_ROLES_APPLIED": "User has no roles"
+			"NO_ROLES_APPLIED": "User has no roles",
+			"ADD_ROLES_FAILURE": "Failed to add roles: {{ 1 }}.",
+			"REMOVE_ROLES_FAILURE": "Failed to remove roles: {{ 1 }}."
 		},
 		"SET_PASSWORD": {
 			"PASSWORD_FOR": "Set password for {{ object.email }}"
@@ -968,6 +1248,7 @@
 			}
 		}
 	},
+	"INVOICES_PERSONS": {},
 	"INVOICES_PRODUCTS": {
 		"FORM": {
 			"LABELS": {
@@ -1061,7 +1342,7 @@
 				"CHECKOUT": "Check out",
 				"PERSONS": "Persons",
 				"STATUS": "Status",
-				"ALLOWOVERBOOKING": "Allow overbooking"
+				"OVERBOOK": "Overbook"
 			},
 			"PLACEHOLDERS": {
 				"LODGINGTYPEID": "Choose lodging type",
@@ -1070,7 +1351,7 @@
 				"CHECKOUT": "Choose check out date",
 				"PERSONS": "Choose number of persons",
 				"STATUS": "Status",
-				"ALLOWOVERBOOKING": "Allow overbooking"
+				"OVERBOOK": "Overbook"
 			},
 			"VALIDATION": {
 				"LODGINGTYPEID": {
@@ -1147,8 +1428,9 @@
 		},
 		"CHECKOUT": {
 			"TITLE": "Checkout",
-			"BUTTON_MOVE": "Checkout",
-			"CANCEL": "Cancel"
+			"BUTTON_CHECKOUT": "Checkout",
+			"CANCEL": "Cancel",
+			"BUTTON_MOVE": "Checkout"
 		},
 		"CONFIRM_RESERVATION": {
 			"TITLE": "Confirm reservation",
@@ -1183,7 +1465,8 @@
 		}
 	},
 	"LODGING_SELECT_FIELD": {
-		"SELECT_LODGING": "Select lodging"
+		"SELECT_LODGING": "Select lodging",
+		"NO_LODGING_TYPES_AVAILABLE": "No lodging types available, or none has been created."
 	},
 	"LODGING_TYPE_SELECT_FIELD": {
 		"SELECT_LODGING_TYPE": "Select a lodging type"
@@ -1457,6 +1740,82 @@
 	"LODGINGS_AVAILABILITY": {
 		"SELECT_LODGINGS": "Select lodgings",
 		"TITLE": "Lodgings Availability"
+	},
+	"LODGINGS_DOORWAYS": {
+		"FORM": {
+			"LABELS": {
+				"DOORWAYID": "Doorway",
+				"LODGINGID": "Lodging"
+			},
+			"PLACEHOLDERS": {
+				"DOORWAYID": "Doorway",
+				"LODGINGID": "Lodging"
+			},
+			"VALIDATION": {
+				"DOORWAYID": {
+					"REQUIRED": "Doorway is required."
+				},
+				"LODGINGID": {
+					"REQUIRED": "Lodging is required."
+				}
+			}
+		},
+		"CREATE": {
+			"CREATE": "Create",
+			"BUTTON_CREATE": "Create"
+		},
+		"EDIT": {
+			"EDIT": "Edit",
+			"BUTTON_EDIT": "Update"
+		},
+		"INDEX": {
+			"TITLE_EXTRAS": "(LodgingsDoorways)",
+			"CREATE": "Create",
+			"EDIT": "Edit",
+			"DELETE": "Delete",
+			"MANAGE": "Manage",
+			"ACTIONS": "Actions",
+			"SETTINGS": "Settings",
+			"TYPES": "Types"
+		}
+	},
+	"LODGINGS_RESERVATIONS_PASS_CODES": {
+		"FORM": {
+			"LABELS": {
+				"PASSCODEID": "Pass code",
+				"LODGINGRESERVATIONID": "Lodging reservation"
+			},
+			"PLACEHOLDERS": {
+				"PASSCODEID": "Pass code",
+				"LODGINGRESERVATIONID": "Lodging reservation"
+			},
+			"VALIDATION": {
+				"PASSCODEID": {
+					"REQUIRED": "Pass code is required."
+				},
+				"LODGINGRESERVATIONID": {
+					"REQUIRED": "Lodging reservation is required."
+				}
+			}
+		},
+		"CREATE": {
+			"CREATE": "Create",
+			"BUTTON_CREATE": "Create"
+		},
+		"EDIT": {
+			"EDIT": "Edit",
+			"BUTTON_EDIT": "Update"
+		},
+		"INDEX": {
+			"TITLE_EXTRAS": "(LodgingsReservationsPassCodes)",
+			"CREATE": "Create",
+			"EDIT": "Edit",
+			"DELETE": "Delete",
+			"MANAGE": "Manage",
+			"ACTIONS": "Actions",
+			"SETTINGS": "Settings",
+			"TYPES": "Types"
+		}
 	},
 	"ASSIGNMENT_TYPES": {
 		"FORM": {
@@ -2094,7 +2453,8 @@
 			"DELETE": "Delete",
 			"MANAGE": "Manage",
 			"FIELDS": "Fields",
-			"BACK": "Back"
+			"BACK": "Back",
+			"TITLE_EXTRAS": "(price changes)"
 		},
 		"FORM": {
 			"LABELS": {
@@ -2170,7 +2530,8 @@
 			"DELETE": "Delete",
 			"MANAGE": "Manage",
 			"FIELDS": "Fields",
-			"BACK": "Back"
+			"BACK": "Back",
+			"TITLE_EXTRAS": "(types price changes)"
 		},
 		"FORM": {
 			"LABELS": {
@@ -2246,7 +2607,8 @@
 			"DELETE": "Delete",
 			"MANAGE": "Manage",
 			"FIELDS": "Fields",
-			"BACK": "Back"
+			"BACK": "Back",
+			"TITLE_EXTRAS": "(types sale prices)"
 		},
 		"FORM": {
 			"LABELS": {
@@ -2293,7 +2655,8 @@
 			"DELETE": "Delete",
 			"MANAGE": "Manage",
 			"FIELDS": "Fields",
-			"BACK": "Back"
+			"BACK": "Back",
+			"TITLE_EXTRAS": "(sales prices)"
 		},
 		"FORM": {
 			"LABELS": {
@@ -2927,7 +3290,7 @@
 		},
 		"EDIT": {
 			"EDIT": "Edit",
-			"BUTTON_EDIT": "Update"
+			"BUTTON_EDIT": "Edit"
 		},
 		"INDEX": {
 			"TITLE_EXTRAS": "(Templates)",
@@ -3340,7 +3703,7 @@
 		},
 		"EDIT": {
 			"EDIT": "Edit",
-			"BUTTON_EDIT": "Update"
+			"BUTTON_EDIT": "Edit"
 		},
 		"INDEX": {
 			"TITLE_EXTRAS": "(Webhooks)",
@@ -3748,7 +4111,7 @@
 			"TERMINAL_RECEIPTS": "Receipts"
 		}
 	},
-	"FIELDS": {
+	"FIELD": {
 		"INDEX": {
 			"CREATE": "Create",
 			"ACTIONS": "Actions",
@@ -3762,6 +4125,9 @@
 		"EDIT": {
 			"EDITING": "Editing",
 			"BUTTON_EDIT": "Update"
+		},
+		"MISC": {
+			"GENERATE_GUID": "Generate GUID"
 		},
 		"FORM": {
 			"LABELS": {
@@ -3810,6 +4176,11 @@
 		}
 	},
 	"FILE_STORAGE": {
+		"MISC": {
+			"EMPTY_FOLDER": " Folder is empty (use + button bottom right).",
+			"HOME": "Home",
+			"ENTER_FOLDER_NAME": "Please enter a folder name"
+		},
 		"FORM": {
 			"LABELS": {
 				"BUCKET": "Bucket",
@@ -3830,7 +4201,8 @@
 		},
 		"CREATE": {
 			"CREATE": "Create new bucket",
-			"BUTTON_CREATE": "Create"
+			"BUTTON_CREATE": "Create",
+			"CREATING": "Creating bucket. Please wait..."
 		},
 		"EDIT": {
 			"EDIT": "Edit",
@@ -3848,6 +4220,11 @@
 			"ITEM": "Item",
 			"MANAGE": "Manage",
 			"ACTIONS": "Actions"
+		},
+		"NOTIFICATIONS": {
+			"REMOVE": {
+				"FAILURE": "{{ errorMessage }}"
+			}
 		}
 	}
 }

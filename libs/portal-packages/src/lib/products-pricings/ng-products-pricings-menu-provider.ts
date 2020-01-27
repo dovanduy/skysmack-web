@@ -34,13 +34,13 @@ export class NgProductsPricingsMenuProvider implements MenuProvider {
             getMenuEntries<MenuArea>(packagePath, ProductsPricingsTypeId, componentKey, ProductTypePriceChangesIndexComponent.COMPONENT_KEY, this.getProductTypePriceChangesMenuAreas, this.store),
             getMenuEntries<MenuArea>(packagePath, ProductsPricingsTypeId, componentKey, ProductsSalesPriceIndexComponent.COMPONENT_KEY, this.getProductsSalesPriceMenuAreas, this.store),
             getMenuEntries<MenuArea>(packagePath, ProductsPricingsTypeId, componentKey, ProductTypeSalesPriceIndexComponent.COMPONENT_KEY, this.getProductTypeSalesPriceMenuAreas, this.store)
-            
+
         );
     };
 
     public getMenuItems(packagePath: string, componentKey: string): Observable<MenuItem[]> {
         return getCombinedMenuEntries(
-            getMenuEntries<MenuItem>(packagePath,ProductsPricingsTypeId,componentKey, ProductsPricingsIndexComponent.COMPONENT_KEY, this.getProductsPricingsMenuItems, this.store),
+            getMenuEntries<MenuItem>(packagePath, ProductsPricingsTypeId, componentKey, ProductsPricingsIndexComponent.COMPONENT_KEY, this.getProductsPricingsMenuItems, this.store),
             getConnectedPackageMenuEntries(packagePath, ProductsPricingsTypeId, ProductsTypeId, componentKey, ProductsIndexComponent.COMPONENT_KEY, this.store),
             getMenuEntries<MenuItem>(packagePath, ProductsPricingsTypeId, componentKey, ProductPriceChangesIndexComponent.COMPONENT_KEY, this.getProductPriceChangesMenuItems, this.store),
             getMenuEntries<MenuItem>(packagePath, ProductsPricingsTypeId, componentKey, ProductTypePriceChangesIndexComponent.COMPONENT_KEY, this.getProductTypePriceChangesMenuItems, this.store),
@@ -54,66 +54,6 @@ export class NgProductsPricingsMenuProvider implements MenuProvider {
             new MenuArea({
                 area: 'manage',
                 translationPrefix: this.ProductsPricingsTranslationPrefix,
-                order: 2
-            })
-        ];
-    };
-
-    public getProductPriceChangesMenuAreas = () => {
-        return [
-            new MenuArea({
-                area: 'actions',
-                translationPrefix: this.ProductPriceChangesTranslationPrefix,
-                order: 1
-            }),
-            new MenuArea({
-                area: 'manage',
-                translationPrefix: this.ProductPriceChangesTranslationPrefix,
-                order: 2
-            })
-        ];
-    };
-
-    public getProductTypePriceChangesMenuAreas = () => {
-        return [
-            new MenuArea({
-                area: 'actions',
-                translationPrefix: this.ProductTypePriceChangesTranslationPrefix,
-                order: 1
-            }),
-            new MenuArea({
-                area: 'manage',
-                translationPrefix: this.ProductTypePriceChangesTranslationPrefix,
-                order: 2
-            })
-        ];
-    };
-
-    public getProductsSalesPriceMenuAreas = () => {
-        return [
-            new MenuArea({
-                area: 'actions',
-                translationPrefix: this.ProductsSalesPriceTranslationPrefix,
-                order: 1
-            }),
-            new MenuArea({
-                area: 'manage',
-                translationPrefix: this.ProductsSalesPriceTranslationPrefix,
-                order: 2
-            })
-        ];
-    };
-
-    public getProductTypeSalesPriceMenuAreas = () => {
-        return [
-            new MenuArea({
-                area: 'actions',
-                translationPrefix: this.ProductTypeSalesPriceTranslationPrefix,
-                order: 1
-            }),
-            new MenuArea({
-                area: 'manage',
-                translationPrefix: this.ProductTypeSalesPriceTranslationPrefix,
                 order: 2
             })
         ];
@@ -169,12 +109,34 @@ export class NgProductsPricingsMenuProvider implements MenuProvider {
         ];
     };
 
+
+
+    public getProductPriceChangesMenuAreas = () => {
+        return [
+            new MenuArea({
+                area: 'actions',
+                translationPrefix: this.ProductPriceChangesTranslationPrefix,
+                order: 1
+            }),
+            new MenuArea({
+                area: 'manage',
+                translationPrefix: this.ProductPriceChangesTranslationPrefix,
+                order: 2
+            })
+        ];
+    };
+
     public getProductPriceChangesMenuItems = (packagePath: string): MenuItem[] => {
         return [
             new MenuItem({
                 url: 'create',
                 displayName: this.ProductPriceChangesTranslationPrefix + 'CREATE',
                 area: 'actions',
+                hotkeyOptions: {
+                    keyCode: 67,
+                    altKey: true,
+                    action: `/${packagePath}/price-changes/create`
+                },
                 order: 1,
                 icon: 'add',
                 permissions: [
@@ -186,12 +148,34 @@ export class NgProductsPricingsMenuProvider implements MenuProvider {
         ];
     };
 
+
+
+    public getProductTypePriceChangesMenuAreas = () => {
+        return [
+            new MenuArea({
+                area: 'actions',
+                translationPrefix: this.ProductTypePriceChangesTranslationPrefix,
+                order: 1
+            }),
+            new MenuArea({
+                area: 'manage',
+                translationPrefix: this.ProductTypePriceChangesTranslationPrefix,
+                order: 2
+            })
+        ];
+    };
+
     public getProductTypePriceChangesMenuItems = (packagePath: string): MenuItem[] => {
         return [
             new MenuItem({
                 url: 'create',
                 displayName: this.ProductTypePriceChangesTranslationPrefix + 'CREATE',
                 area: 'actions',
+                hotkeyOptions: {
+                    keyCode: 67,
+                    altKey: true,
+                    action: `/${packagePath}/types/price-changes/create`
+                },
                 order: 1,
                 icon: 'add',
                 permissions: [
@@ -203,12 +187,34 @@ export class NgProductsPricingsMenuProvider implements MenuProvider {
         ];
     };
 
+
+
+    public getProductsSalesPriceMenuAreas = () => {
+        return [
+            new MenuArea({
+                area: 'actions',
+                translationPrefix: this.ProductsSalesPriceTranslationPrefix,
+                order: 1
+            }),
+            new MenuArea({
+                area: 'manage',
+                translationPrefix: this.ProductsSalesPriceTranslationPrefix,
+                order: 2
+            })
+        ];
+    };
+
     public getProductsSalesPriceMenuItems = (packagePath: string): MenuItem[] => {
         return [
             new MenuItem({
                 url: 'create',
                 displayName: this.ProductsSalesPriceTranslationPrefix + 'CREATE',
                 area: 'actions',
+                hotkeyOptions: {
+                    keyCode: 67,
+                    altKey: true,
+                    action: `/${packagePath}/sales-prices/create`
+                },
                 order: 1,
                 icon: 'add',
                 permissions: [
@@ -220,12 +226,34 @@ export class NgProductsPricingsMenuProvider implements MenuProvider {
         ];
     };
 
+
+
+    public getProductTypeSalesPriceMenuAreas = () => {
+        return [
+            new MenuArea({
+                area: 'actions',
+                translationPrefix: this.ProductTypeSalesPriceTranslationPrefix,
+                order: 1
+            }),
+            new MenuArea({
+                area: 'manage',
+                translationPrefix: this.ProductTypeSalesPriceTranslationPrefix,
+                order: 2
+            })
+        ];
+    };
+
     public getProductTypeSalesPriceMenuItems = (packagePath: string): MenuItem[] => {
         return [
             new MenuItem({
                 url: 'create',
                 displayName: this.ProductTypeSalesPriceTranslationPrefix + 'CREATE',
                 area: 'actions',
+                hotkeyOptions: {
+                    keyCode: 67,
+                    altKey: true,
+                    action: `/${packagePath}/types/sales-prices/create`
+                },
                 order: 1,
                 icon: 'add',
                 permissions: [

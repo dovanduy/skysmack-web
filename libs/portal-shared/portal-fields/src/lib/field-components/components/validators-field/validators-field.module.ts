@@ -7,10 +7,12 @@ import { RequiredValidatorComponent } from './components/required-validator/requ
 import { TranslateModule } from '@ngx-translate/core';
 import { MatSelectModule } from '@angular/material/select';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatButtonModule } from '@angular/material/button';
 
 const material = [
   MatSelectModule,
-  MatCheckboxModule
+  MatCheckboxModule,
+  MatButtonModule
 ];
 
 @NgModule({

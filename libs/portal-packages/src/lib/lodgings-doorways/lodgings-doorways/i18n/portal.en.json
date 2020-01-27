@@ -1,0 +1,40 @@
+{
+    "LODGINGS_DOORWAYS": {
+        "FORM": {
+            "LABELS": {
+                "DOORWAYID": "Doorway",
+                "LODGINGID": "Lodging"
+            },
+            "PLACEHOLDERS": {
+                "DOORWAYID": "Doorway",
+                "LODGINGID": "Lodging"
+            },
+            "VALIDATION": {
+                "DOORWAYID": {
+                    "REQUIRED": "Doorway is required."
+                },
+                "LODGINGID": {
+                    "REQUIRED": "Lodging is required."
+                }
+            }
+        },
+        "CREATE": {
+            "CREATE": "Create",
+            "BUTTON_CREATE": "Create"
+        },
+        "EDIT": {
+            "EDIT": "Edit",
+            "BUTTON_EDIT": "Update"
+        },
+        "INDEX": {
+            "TITLE_EXTRAS": "(LodgingsDoorways)",
+            "CREATE": "Create",
+            "EDIT": "Edit",
+            "DELETE": "Delete",
+            "MANAGE": "Manage",
+            "ACTIONS": "Actions",
+            "SETTINGS": "Settings",
+            "TYPES": "Types"
+        }
+    }
+}

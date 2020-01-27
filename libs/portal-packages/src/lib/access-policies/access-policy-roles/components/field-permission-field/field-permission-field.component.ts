@@ -12,6 +12,7 @@ export class FieldPermissionFieldComponent extends FieldBaseComponent<Field> imp
 
   public accessTypes: SelectFieldOption[];
   public permission: FieldAccessPermission;
+  public accessType = AccessTypes;
 
   public get selectedAccessType(): AccessTypes {
     return this.permission && this.permission.access;
@@ -21,6 +22,7 @@ export class FieldPermissionFieldComponent extends FieldBaseComponent<Field> imp
       this.permission.roles = [];
     } else {
       this.permission.roles = undefined;
+      this.permission.includeRoles = false;
     }
     this.permission.access = accessType;
   }
@@ -33,7 +35,7 @@ export class FieldPermissionFieldComponent extends FieldBaseComponent<Field> imp
     this.setPermission();
   }
 
-  public trackByRoleId(item: { roleId: number, checked: boolean }) {
+  public trackByRoleId(_index: number, item: { roleId: number, checked: boolean }) {
     return item && item.roleId;
   }
 

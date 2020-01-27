@@ -1,12 +1,12 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { EntityComponentPageTitle } from '@skysmack/portal-ui';
 import { NgLodgingTypesStore, NgLodgingTypesActions } from '@skysmack/ng-lodgings';
 import { Observable, combineLatest } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, tap, take, filter } from 'rxjs/operators';
 import { CalendarEvent, EventColor, EventAction } from 'calendar-utils';
 import * as _moment from 'moment';
-import { PagedQuery, defined } from '@skysmack/framework';
+import { PagedQuery, defined, SubscriptionHandler } from '@skysmack/framework';
 import { SelectFieldOption } from '@skysmack/ng-dynamic-forms';
 import { CalendarMonthViewDay } from 'angular-calendar';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
@@ -18,7 +18,8 @@ const moment = _moment;
   templateUrl: './lodging-types-availability.component.html',
   styleUrls: ['./lodging-types-availability.component.scss']
 })
-export class LodgingTypesAvailabilityComponent implements OnInit {
+export class LodgingTypesAvailabilityComponent implements OnInit, OnDestroy {
+  private subscriptionHandler = new SubscriptionHandler();
   public static COMPONENT_KEY = 'lodging-types-availability-index';
   public componentKey = LodgingTypesAvailabilityComponent.COMPONENT_KEY;
   public packagePath = this.router.url.split('/')[1];
@@ -35,7 +36,12 @@ export class LodgingTypesAvailabilityComponent implements OnInit {
     return this._viewDate;
   }
   public set viewDate(date: Date) {
+    // Update the request period to the calendars date.
     this.requestPeriod(date);
+
+    // Request the daily count again.
+    this.getAvailableLodgingTypesDailyCount();
+
     this._viewDate = date;
   }
 
@@ -57,11 +63,15 @@ export class LodgingTypesAvailabilityComponent implements OnInit {
     this.setAvailableLodgings();
   }
 
+  ngOnDestroy() {
+    this.subscriptionHandler.unsubscribe();
+  }
+
   public requestPeriod(date: Date) {
     this.setCurrentDate(date);
   }
 
-  public getAvailableLodgingTypes(change: MatSelectChange) {
+  public getAvailableLodgingTypesDailyCount(change?: MatSelectChange) {
     this.actions.getAvailableLodgingTypesDailyCount(this.packagePath, this.startOfMonth, this.endOfMonth, this.selectedLodgingTypeIds);
   }
 
@@ -73,13 +83,25 @@ export class LodgingTypesAvailabilityComponent implements OnInit {
     });
   }
 
-  public trackById(index: any, item: any) {
+  public trackById(_index: any, item: any) {
     return item.id;
   }
 
   private getLodgings() {
     this.actions.getPaged(this.packagePath, new PagedQuery());
-    this.lodgingTypeOptions$ = this.store.get(this.packagePath).pipe(
+    const lodgingTypes$ = this.store.get(this.packagePath);
+
+    // Make all checkboxes selected as default.
+    this.subscriptionHandler.register(lodgingTypes$.pipe(
+      filter(lodgingTypes => lodgingTypes && lodgingTypes.length > 0),
+      tap(lodgingTypes => this.selectedLodgingTypeIds = lodgingTypes.map(lodgingType => lodgingType.object.id)),
+      take(1),
+      tap(() => this.getAvailableLodgingTypesDailyCount()),
+    ).subscribe());
+
+
+    // Get options
+    this.lodgingTypeOptions$ = lodgingTypes$.pipe(
       map(lodgingTypes => {
         return lodgingTypes.map(x => ({ value: x.object.id, displayName: x.object.name } as SelectFieldOption));
       }),
@@ -100,13 +122,7 @@ export class LodgingTypesAvailabilityComponent implements OnInit {
       this.store.get(this.packagePath),
       this.store.getAvailableLodgingTypesDailyCount(this.packagePath)
     ]).pipe(
-      map(values => {
-        const lodgingTypes = values[0];
-
-        // Make all checkboxes selected as default
-        this.selectedLodgingTypeIds = lodgingTypes.map(lodgingType => lodgingType.object.id);
-
-        const dictionary = values[1];
+      map(([lodgingTypes, dictionary]) => {
         const datesArray = Object.keys(dictionary);
         let freeLodgingTypes: {
           id: string,
@@ -118,10 +134,11 @@ export class LodgingTypesAvailabilityComponent implements OnInit {
           return Object.keys(dictionary[date]).map(() => {
             freeLodgingTypes = this.selectedLodgingTypeIds.map(selectedLodgingTypeId => {
               const lodgingTypeName = lodgingTypes.find(lodging => lodging.object.id === selectedLodgingTypeId).object.name;
+              const lodgingTypeCount = dictionary[date][selectedLodgingTypeId];
               return {
                 id: date.split('T')[0] + lodgingTypeName,
                 name: lodgingTypeName,
-                count: dictionary[date][selectedLodgingTypeId]
+                count: (lodgingTypeCount !== null && lodgingTypeCount !== undefined) ? lodgingTypeCount : 0
               };
             });
 
@@ -143,7 +160,8 @@ export class LodgingTypesAvailabilityComponent implements OnInit {
             } as CalendarEvent;
           });
         }).reduce((acc, current) => acc.concat(current), []);
-      })
+      }),
+      // tap(x => console.log(x))
     );
   }
 }

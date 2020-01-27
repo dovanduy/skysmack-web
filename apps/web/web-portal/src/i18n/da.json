@@ -1,3164 +1,3295 @@
 {
-	"ACCESS_POLICY_PERMISSIONS": {
-		"CREATE": {
-			"CREATE": "Opret",
-			"BUTTON_CREATE": "Opret"
-		},
-		"EDIT": {
-			"EDITING": "Rediger",
-			"BUTTON_EDIT": "Opdater"
-		},
-		"INDEX": {
-			"TITLE_EXTRAS": "(tilladelser)",
-			"ACTIONS": "Handlinger",
-			"CREATE": "Opret",
-			"MANAGE": "Konfigurer",
-			"BACK": "Tilbage",
-			"ROLES": "Roller",
-			"FIELDS_TITLE": "(felter)"
-		},
-		"FORM": {
-			"LABELS": {
-				"PACKAGEPATH": "Pakke stig",
-				"RULEID": "Regel id",
-				"ORDER": "Rækkefølge",
-				"ISTOPLEVEL": "Er Top Level?",
-				"PERMISSION": "Tilladelse"
-			},
-			"PLACEHOLDERS": {
-				"PACKAGEPATH": "Pakke stig",
-				"RULEID": "Regel id",
-				"ORDER": "Rækkefølge",
-				"ISTOPLEVEL": "Er Top Level?",
-				"PERMISSION": "Tilladelse"
-			},
-			"VALIDATION": {}
-		},
-		"QUEUE": {
-			"ADDING": "Tilføjer {{ ruleId }}",
-			"UPDATING": "Opdatere {{ ruleId }}",
-			"DELETING": "Sletter {{ ruleId }}",
-			"ERROR": "Der skete en fejl med {{ ruleId }}. Ret og prøv igen."
-		}
-	},
-	"ACCESS_POLICY_ROLES": {
-		"CREATE": {
-			"CREATE": "Opret",
-			"BUTTON_CREATE": "Opret"
-		},
-		"EDIT": {
-			"EDITING": "Rediger",
-			"BUTTON_EDIT": "Opdater"
-		},
-		"INDEX": {
-			"TITLE_EXTRAS": "(roller)",
-			"ACTIONS": "Handlinger",
-			"CREATE": "Opret",
-			"MANAGE": "Konfigurer",
-			"BACK": "Tilbage",
-			"ROLES": "Roller",
-			"FIELDS_TITLE": "(felter)"
-		},
-		"FORM": {
-			"LABELS": {
-				"RULEID": "Regel",
-				"ROLEID": "Rolle"
-			},
-			"PLACEHOLDERS": {
-				"RULEID": "Regel",
-				"ROLEID": "Rolle"
-			},
-			"VALIDATION": {
-				"NAME": {
-					"REQUIRED": "Navn er påkrævet"
-				}
-			}
-		},
-		"QUEUE": {
-			"ADDING": "Tilføjer {{ roleId }}",
-			"UPDATING": "Opdatere {{ roleId }}",
-			"DELETING": "Sletter {{ roleId }}",
-			"ERROR": "Der opstod  en fejl ved {{ roleId }}. Ret og prøv igen."
-		}
-	},
-	"ACCESS_POLICY_RULES": {
-		"CREATE": {
-			"CREATE": "Opret",
-			"BUTTON_CREATE": "Opret"
-		},
-		"EDIT": {
-			"EDITING": "Rediger",
-			"BUTTON_EDIT": "Opdater"
-		},
-		"INDEX": {
-			"TITLE_EXTRAS": "(regler)",
-			"ACTIONS": "Handlinger",
-			"CREATE": "Opret",
-			"MANAGE": "Konfigurer",
-			"BACK": "Tilbage",
-			"ROLES": "Roller",
-			"FIELDS_TITLE": "(felter)"
-		},
-		"FORM": {
-			"LABELS": {
-				"ACCESS": "Adgang",
-				"AUTHENTICATED": "Godkendt",
-				"INCLUDEROLES": "Inkluder roller"
-			},
-			"PLACEHOLDERS": {
-				"ACCESS": "Adgang",
-				"AUTHENTICATED": "Godkendt",
-				"INCLUDEROLES": "Inkluder roller"
-			}
-		},
-		"QUEUE": {
-			"ADDING": "Tilføjer adgangspolitiske regler {{ id }}",
-			"UPDATING": "Opdatere adgangspolitiske regler {{ id }}",
-			"DELETING": "Sletter adgangspolitiske regler {{ id }}",
-			"ERROR": "Der opstod  en fejl ved adgangspolitiske regler {{ id }}. Ret og prøv igen."
-		}
-	},
-	"ACCESS_POLICIES": {
-		"TITLE": "Adgangspolitikker",
-		"DASHBOARD": {
-			"ACCESS_POLICIES": "Adgangs politikker"
-		},
-		"INDEX": {
-			"MANAGE": "Konfigurer",
-			"PERMISSIONS": "Tilladelser",
-			"ROLES": "Roller",
-			"RULES": "Regler"
-		},
-		"QUEUE": {
-			"ADDING": "Tilføjer {{ ruleId }}",
-			"UPDATING": "Opdatere {{ ruleId }}",
-			"DELETING": "Sletter {{ ruleId }}",
-			"ERROR": "Der opstod  en fejl ved {{ ruleId }}. Ret og prøv igen."
-		}
-	},
-	"EMAIL_TEMPLATES": {
-		"FORM": {
-			"LABELS": {
-				"FROM": "Til",
-				"TO": "Fra",
-				"CC": "Cc",
-				"BCC": "Bcc",
-				"SUBJECT": "Emne",
-				"BODY": "Indhold"
-			},
-			"PLACEHOLDERS": {
-				"FROM": "Til",
-				"TO": "Fra",
-				"CC": "Cc",
-				"BCC": "Bcc",
-				"SUBJECT": "Emne",
-				"BODY": "Indhold"
-			},
-			"VALIDATION": {}
-		},
-		"CREATE": {
-			"CREATE": "Opret",
-			"BUTTON_CREATE": "Opret"
-		},
-		"EDIT": {
-			"EDIT": "Ret",
-			"BUTTON_EDIT": "Ret"
-		},
-		"INDEX": {
-			"CREATE": "Opret",
-			"EDIT": "Ret",
-			"DELETE": "Slet",
-			"MANAGE": "Konfigurer",
-			"ACTIONS": "Handlinger"
-		},
-		"QUEUE": {
-			"ADDING": "Tilføjer {{ subject }}",
-			"UPDATING": "Opdaterer {{ subject }}",
-			"DELETING": "Sletter {{ subject }}",
-			"ERROR": "Der skete en fejl med {{ subject }}. Ret fejl og prøv igen."
-		}
-	},
-	"EMAILS": {
-		"INDEX": {
-			"CREATE": "Opret",
-			"EDIT": "Ret",
-			"DELETE": "Slet",
-			"ITEM": "Vare",
-			"MANAGE": "Konfigurer",
-			"ACTIONS": "Handlinger"
-		}
-	},
-	"EMAILS_SMTP": {
-		"INDEX": {
-			"CREATE": "Opret",
-			"EDIT": "Ret",
-			"DELETE": "Slet",
-			"TEMPLATES": "Skabeloner",
-			"MANAGE": "Konfigurer",
-			"ACTIONS": "Handlinger",
-			"SETTINGS": "Indstillinger"
-		}
-	},
-	"EMAILS_SMTP_SETTINGS": {
-		"FORM": {
-			"PLACEHOLDERS": {
-				"HOST": "Vært",
-				"PORT": "Port",
-				"USERNAME": "Brugernavn",
-				"PASSWORD": "Adgangskode",
-				"ENABLESSL": "Aktiver ssl"
-			},
-			"LABELS": {
-				"HOST": "Vært",
-				"PORT": "Port",
-				"USERNAME": "Brugernavn",
-				"PASSWORD": "Adgangskode",
-				"ENABLESSL": "Aktiver ssl"
-			}
-		}
-	},
-	"ACCOUNT": {
-		"FORM": {
-			"LABELS": {
-				"TOKEN": "Token",
-				"EMAIL": "Email",
-				"CURRENTPASSWORD": "Nuværende kodeord",
-				"NEWPASSWORD": "Nyt kodeord",
-				"CONFIRMNEWPASSWORD": "Bekræft kodeord"
-			},
-			"PLACEHOLDERS": {
-				"TOKEN": "Token",
-				"EMAIL": "Email",
-				"CURRENTPASSWORD": "Nuværende kodeord",
-				"NEWPASSWORD": "Nyt kodeord",
-				"CONFIRMNEWPASSWORD": "Bekræft kodeord"
-			},
-			"VALIDATION": {
-				"TOKEN": {
-					"REQUIRED": "Token er påkrævet"
-				},
-				"EMAIL": {
-					"REQUIRED": "Email er påkrævet",
-					"INVALIDEMAIL": "Indtast venligst en gyldig email"
-				},
-				"CURRENTPASSWORD": {
-					"REQUIRED": "Nuværende kodeord er påkrævet."
-				},
-				"NEWPASSWORD": {
-					"REQUIRED": "Nyt kodeord er påkrævet."
-				},
-				"CONFIRMNEWPASSWORD": {
-					"REQUIRED": "Gentag det nye kodeord.",
-					"PASSWORDMISMATCH": "Kodeord skal være ens."
-				}
-			}
-		},
-		"CHANGE_PASSWORD": {
-			"TITLE": "Skift kodeord",
-			"BUTTON_EDIT": "Bekræft"
-		},
-		"CONFIRM_EMAIL": {
-			"TITLE": "Bekræft email",
-			"BUTTON_EDIT": "Bekræft"
-		},
-		"RESET_PASSWORD": {
-			"TITLE": "Gendan adgangskode",
-			"BUTTON_EDIT": "Bekræft"
-		},
-		"FORGOT_PASSWORD": {
-			"TITLE": "Glemt adgangskode",
-			"BUTTON_EDIT": "Bekræft",
-			"CHECK_EMAIL_TITLE": "Tjek din email",
-			"CHECK_EMAIL": "Du vil finde instruktioner på at gendanne dit adgangskode i din email. Husk at tjekke din spam mappe."
-		},
-		"INDEX": {
-			"ACTIONS": "Handlinger",
-			"CHANGE_PASSWORD": "Skift adgangskode",
-			"FORGOT_PASSWORD": "Glemt adgangskode",
-			"RESET_PASSWORD": "Gendan adgangskode",
-			"CONFIRM_EMAIL": "Bekræft email",
-			"MANAGE": "Konfigurer"
-		},
-		"NOTIFICATIONS": {},
-		"QUEUE": {}
-	},
-	"CLIENTS": {
-		"CREATE": {
-			"CREATE": "Opret",
-			"BUTTON_CREATE": "Opret"
-		},
-		"EDIT": {
-			"EDIT": "Rediger",
-			"BUTTON_EDIT": "Opdater"
-		},
-		"INDEX": {
-			"TITLE_EXTRAS": "(Klienter)",
-			"ACTIONS": "Handlinger",
-			"CREATE": "Opret",
-			"DELETE": "Slet",
-			"MANAGE": "Konfigure",
-			"BACK": "Tilbage"
-		},
-		"FORM": {
-			"LABELS": {
-				"NAME": "Navn",
-				"DESCRIPTION": "Beskrivelse",
-				"ONLINE": "Online"
-			},
-			"PLACEHOLDERS": {
-				"NAME": "Navn",
-				"DESCRIPTION": "Beskrivelse",
-				"ONLINE": "Online"
-			},
-			"VALIDATION": {
-				"NAME": {
-					"REQUIRED": "Navn er påkrævet."
-				},
-				"DESCRIPTION": {
-					"REQUIRED": "Beskrivelse er påkrævet."
-				}
-			}
-		},
-		"QUEUE": {
-			"ADDING": "Tilføjer klient {{ id }}",
-			"UPDATING": "Opdaterer klient {{ id }}",
-			"DELETING": "Sletter klient {{ id }}",
-			"ERROR": "Der skete en fejl med klient {{ id }}. Ret og prøv igen."
-		}
-	},
-	"IDENTITIES": {
-		"INDEX": {
-			"ROLES": "Roller",
-			"USERS": "Brugere",
-			"CLIENTS": "Klienter",
-			"USERS_ROLES_TITLE": "Bruger roller",
-			"APPLICATIONS_ROLES_TITLE": "Applikationsroller",
-			"MANAGE": "Konfigurer",
-			"SETTINGS": "Indstillinger",
-			"ACCOUNTS": "Bruger kontier",
-			"ACCOUNT": "Bruger konto",
-			"CHANGE_PASSWORD": "Skift adgangskode",
-			"FORGOT_PASSWORD": "Glemt adgangskode",
-			"CONFIRM_EMAIL": "Bekræft email",
-			"APPLICATIONS": "Applikationer",
-			"AVAILABLE_SETTINGS": {
-				"LOCKOUT": "Lås ude",
-				"USER": "Brugere",
-				"PASSWORD": "Kodeord",
-				"SIGNIN": "Log ind"
-			}
-		}
-	},
-	"IDENTITIES_SETTINGS": {
-		"FORM": {
-			"LABELS": {
-				"ALLOWEDUSERNAMECHARACTERS": "Tilladte tegn i brugernavn",
-				"REQUIREUNIQUEEMAIL": "Email skal være unik",
-				"REQUIREDLENGTH": "Minimums længde",
-				"REQUIREDUNIQUECHARS": "Påkrævet unikke karakterer",
-				"REQUIRENONALPHANUMERIC": "Påkrævet ikke-alfabetiske karakterer.",
-				"REQUIRELOWERCASE": "Små bogstaver påkrævet",
-				"REQUIREUPPERCASE": "Store bogstaver påkrævet",
-				"REQUIREDIGIT": "Tal påkrævet",
-				"ALLOWEDFORNEWUSERS": "Tilladt for nye brugere",
-				"MAXFAILEDACCESSATTEMPTS": "Max antal fejlede login forsøg",
-				"DEFAULTLOCKOUTTIMESPAN": "Standard lockout tid",
-				"REQUIRECONFIRMEDEMAIL": "Email skal bekræftes",
-				"REQUIRECONFIRMEDPHONENUMBER": "Telefon nummer skal bekræftes"
-			},
-			"PLACEHOLDERS": {
-				"ALLOWEDUSERNAMECHARACTERS": "Tilladte tegn i brugernavn",
-				"REQUIREUNIQUEEMAIL": "Email skal være unik",
-				"REQUIREDLENGTH": "Minimums længde",
-				"REQUIREDUNIQUECHARS": "Påkrævet unikke karakterer",
-				"REQUIRENONALPHANUMERIC": "Påkrævet ikke-alfabetiske karakterer.",
-				"REQUIRELOWERCASE": "Små bogstaver påkrævet",
-				"REQUIREUPPERCASE": "Store bogstaver påkrævet",
-				"REQUIREDIGIT": "Tal påkrævet",
-				"ALLOWEDFORNEWUSERS": "Tilladt for nye brugere",
-				"MAXFAILEDACCESSATTEMPTS": "Max antal fejlede login forsøg",
-				"DEFAULTLOCKOUTTIMESPAN": "Standard lockout tid",
-				"REQUIRECONFIRMEDEMAIL": "Email skal bekræftes",
-				"REQUIRECONFIRMEDPHONENUMBER": "Telefon nummer skal bekræftes"
-			},
-			"VALIDATION": {}
-		},
-		"CREATE": {
-			"CREATE": "Ret indstillinger"
-		},
-		"QUEUE": {
-			"UPDATING": "Opdaterer",
-			"ERROR": "Der skete en fejl ved opdatering af indstillingerne."
-		}
-	},
-	"APPLICATIONS": {
-		"ENTITY_ACTION": {
-			"ROLES": "Roller"
-		},
-		"ROLES": {
-			"CURRENT_ROLES": "{{ object.displayName }} nuværende roller",
-			"ROLE_PRIORITY": "{{ role.object.name }} med prioriteten {{ role.object.priority }} -",
-			"REMOVE": "Fjern",
-			"NO_ROLES": "Ingen roller er blevet tilføjer.",
-			"ADD_ROLE": "Tilføj en rolle til {{ object.displayName }}",
-			"OBJECT_PRIOORITY": "{{ role.object.name }} - prioritet",
-			"ADD": "Tilføj",
-			"ROLES_APPLIED": "Alle roller er blevet tilføjet, ellers findes der ikke nogen.",
-			"NO_ROLES_APPLIED": "Denne application har ingen roller."
-		},
-		"CREATE": {
-			"CREATE_APPLICATION": "Opret ny applikation",
-			"BUTTON_CREATE": "Opret"
-		},
-		"EDIT": {
-			"EDITING": "Ret {{ displayName }}",
-			"BUTTON_EDIT": "Opdater"
-		},
-		"INDEX": {
-			"ACTIONS": "Handlinger",
-			"CREATE": "Opret",
-			"MANAGE": "Konfigurer",
-			"TITLE_EXTRAS": "(applikationer)",
-			"APPLICATIONS": "Applikationer",
-			"BACK": "Tilbage"
-		},
-		"FORM": {
-			"LABELS": {
-				"CLIENTID": "Klient id",
-				"CONCURRENCYTOKEN": "Valuta token",
-				"CONSENTTYPE": "Samtykke type",
-				"DISPLAYNAME": "Visningsnavn",
-				"PERMISSIONS": "Tilladelser",
-				"POSTLOGOUTREDIRECTURIS": "Vidersendelses uris til efter logout",
-				"PROPERTIES": "Egenskaber",
-				"REDIRECTURIS": "Vidersendelses uris",
-				"TYPE": "Type",
-				"CLIENTSECRET": "Klient hemmelighed"
-			},
-			"PLACEHOLDERS": {
-				"CLIENTID": "Klient id",
-				"CLIENTSECRET": "Klient hemmelighed",
-				"CONCURRENCYTOKEN": "Concurrency token",
-				"CONSENTTYPE": "Samtykke type",
-				"DISPLAYNAME": "Visningsnavn",
-				"PERMISSIONS": "Tilladelser",
-				"POSTLOGOUTREDIRECTURIS": "Vidersendelses uris til efter logout",
-				"PROPERTIES": "Egenskaber",
-				"REDIRECTURIS": "Vidersendelses uris",
-				"TYPE": "Type"
-			},
-			"VALIDATION": {
-				"CLIENTSECRET": {
-					"REQUIRED": "Klient hemmelighed er påkrævet"
-				},
-				"CLIENTID": {
-					"REQUIRED": "Klient id er påkrævet"
-				},
-				"CONCURRENCYTOKEN": {
-					"REQUIRED": "Concurrency token er påkrævet"
-				},
-				"CONSENTTYPE": {
-					"REQUIRED": "Samtykke type er påkrævet"
-				},
-				"DISPLAYNAME": {
-					"REQUIRED": "Visningsnavn er påkrævet"
-				},
-				"PERMISSIONS": {
-					"REQUIRED": "Tilladekser er påkrævet"
-				},
-				"POSTLOGOUTREDIRECTURIS": {
-					"REQUIRED": "Vidersendelses uris til efter logout er påkrævet"
-				},
-				"PROPERTIES": {
-					"REQUIRED": "Egenskaber er påkrævet"
-				},
-				"REDIRECTURIS": {
-					"REQUIRED": "Vidersendelses uris er påkrævet"
-				},
-				"TYPE": {
-					"REQUIRED": "Type er påkrævet"
-				}
-			}
-		},
-		"QUEUE": {
-			"ADDING": "Tilføjer {{ displayName }}",
-			"UPDATING": "Opdaterer {{ displayName }}",
-			"DELETING": "Sletter {{ displayName }}",
-			"ERROR": "En fejl er opstået med applikation {{ displayName }}. Ret fejlene og prøv igen."
-		}
-	},
-	"ROLES": {
-		"CREATE": {
-			"CREATE_ROLE": "Opret ny rolle",
-			"BUTTON_CREATE": "Opret"
-		},
-		"EDIT": {
-			"EDITING": "Rediger {{ name }}",
-			"BUTTON_EDIT": "Opdater"
-		},
-		"INDEX": {
-			"ACTIONS": "Handlinger",
-			"CREATE": "Opret",
-			"MANAGE": "Konfigurer",
-			"SECURITY": "Sikkerhed",
-			"SECURITY_AND_USERS": "Brugere og sikkerhed",
-			"ROLES": "Roller",
-			"BACK": "Tilbage",
-			"FIELDS_TITLE": "(felter)",
-			"TITLE_EXTRAS": "(roller)"
-		},
-		"FORM": {
-			"LABELS": {
-				"NAME": "Navn"
-			},
-			"PLACEHOLDERS": {
-				"NAME": "Indtast navn"
-			},
-			"VALIDATION": {
-				"NAME": {
-					"REQUIRED": "Navn er påkrævet"
-				}
-			}
-		},
-		"QUEUE": {
-			"ADDING": "Tilføjer {{ name }}",
-			"UPDATING": "Opdatere {{ name }}",
-			"DELETING": "Sletter {{ name }}",
-			"ERROR": "Der opstod  en fejl ved {{ name }}. Ret og prøv igen."
-		}
-	},
-	"USERS": {
-		"SETPASSWORD": {
-			"FORM": {
-				"LABELS": {
-					"PASSWORD": "Ny adgangskode",
-					"CONFIRMPASSWORD": "Bekræft adgangskode"
-				},
-				"PLACEHOLDERS": {
-					"PASSWORD": "Indtast ny adgangskode",
-					"CONFIRMPASSWORD": "Bekræft adgangskode"
-				},
-				"VALIDATION": {
-					"PASSWORD": {
-						"REQUIRED": "Adgangskode er påkrævet.",
-						"INVALIDPASSWORD": "Adgangskoden skal indeholde: mindst 6 karaktere lang, indeholde et tal, et stort og småt bogstav, og en speciel karakter."
-					},
-					"CONFIRMPASSWORD": {
-						"REQUIRED": "Bekræftelse af adgangskode er påkræftet.",
-						"PASSWORDMISMATCH": "Adgangskoderne stemmer ikke overens"
-					}
-				}
-			}
-		},
-		"FORM": {
-			"LABELS": {
-				"EMAIL": "Email",
-				"PASSWORD": "Adgangskode",
-				"CONFIRMPASSWORD": "Bekræft adgangskode"
-			},
-			"PLACEHOLDERS": {
-				"EMAIL": "Indtast email",
-				"PASSWORD": "Indtast adgangskode",
-				"CONFIRMPASSWORD": "Bekræft indtastet adgangskode"
-			},
-			"VALIDATION": {
-				"EMAIL": {
-					"REQUIRED": "En Email er påkrævet.",
-					"INVALIDEMAIL": "Indtast en gyldig e-mail."
-				},
-				"PASSWORD": {
-					"REQUIRED": "Adgangskode er påkrævet.",
-					"INVALIDPASSWORD": "Lav venligst et sværere adgangskode."
-				},
-				"CONFIRMPASSWORD": {
-					"REQUIRED": "Bekræftning adgangskode.",
-					"PASSWORDMISMATCH": "Adgangskoderne stemmer ikke overens"
-				}
-			}
-		},
-		"CREATE": {
-			"CREATE_USER": "Opret ny bruger",
-			"BUTTON_CREATE": "Opret"
-		},
-		"EDIT": {
-			"EDIT": "Rediger bruger",
-			"BUTTON_EDIT": "Opdater"
-		},
-		"INDEX": {
-			"ACTIONS": "Handlinger",
-			"CREATE": "Opret",
-			"MANAGE": "Konfigurer",
-			"ROLES": "Roller",
-			"ACCESS_POLICIES": "Tilladelser og adgang",
-			"SECURITY": "Sikkerhed",
-			"PERMISSIONS": "Tilladselser",
-			"ANONYMOUS": "Anonym",
-			"AUTHENTICATED": "Autentificeret",
-			"USERS": "Brugere",
-			"BACK": "Tilbage",
-			"ENTITY_ACTION_SET_PASSWWORD": "Sæt adgangskode",
-			"ENTITY_ACTION_ROLES": "Roller",
-			"FIELDS_TITLE": "(felter)",
-			"TITLE_EXTRAS": "(brugere)"
-		},
-		"ROLES": {
-			"CURRENT_ROLES": "{{ object.email }} nuværende roller",
-			"ROLE_PRIORITY": "{{ role.object.name }} med prioritet {{ role.object.priority }} -",
-			"REMOVE": "Fjern",
-			"NO_ROLES": "Ingen roller er blevet tilføjet.",
-			"ADD_ROLE": "Tilføj rolle til {{ object.email }}",
-			"OBJECT_PRIOORITY": "{{ role.object.name }} - prioritet",
-			"ADD": "Tilføj",
-			"ROLES_APPLIED": "Alle roller er blevet anvendt, ellers eksisterer der ikke nogen.",
-			"NO_ROLES_APPLIED": "Denne bruger har ingen roller."
-		},
-		"SET_PASSWORD": {
-			"PASSWORD_FOR": "Sæt adgangskoden til {{ object.email }}"
-		},
-		"QUEUE": {
-			"ADDING": "Tilføjer {{ email }}",
-			"UPDATING": "Opdatere {{ email }}",
-			"DELETING": "Sletter {{ email }}",
-			"ERROR": "Der opstod  en fejl ved {{ email }}. Ret og prøv igen."
-		},
-		"ENTITY_ACTION": {
-			"SET_PASSWORD": "Lav adgangskode",
-			"ROLES": "Roller"
-		}
-	},
-	"INVOICES": {
-		"FORM": {
-			"LABELS": {
-				"DESCRIPTION": "Beskrivelse",
-				"CURRENCYCODE": "Valuta kode",
-				"TOTAL": "Total",
-				"TOTALTAX": "Total skat",
-				"BALANCE": "Balance",
-				"PAID": "Betalt",
-				"STATUS": "Status"
-			},
-			"PLACEHOLDERS": {
-				"DESCRIPTION": "Beskrivelse",
-				"CURRENCYCODE": "Vælg valuta kode",
-				"TOTAL": "Total",
-				"TOTALTAX": "Total skat",
-				"BALANCE": "Balance",
-				"PAID": "Betalt",
-				"STATUS": "Status"
-			},
-			"VALIDATION": {
-				"CURRENCYCODE": {
-					"REQUIRED": "Valuta kode er påkrævet."
-				}
-			}
-		},
-		"FIELDS": {
-			"CREATE": {
-				"ADD": "Tilføj nyt felt"
-			},
-			"EDIT": {
-				"EDITING": "Redigere"
-			},
-			"INDEX": {
-				"ACTIONS": "Handlinger",
-				"CREATE": "Tilføj nyt felt",
-				"OTHER": "Andre",
-				"BACK": "Tilbage",
-				"FIELDS": "Felter",
-				"EDIT": "Rediger"
-			}
-		},
-		"CREATE": {
-			"CREATE": "Opret",
-			"BUTTON_CREATE": "Opret"
-		},
-		"EDIT": {
-			"EDIT": "Rediger",
-			"BUTTON_EDIT": "Opdater"
-		},
-		"INDEX": {
-			"PACKAGES": "Pakker",
-			"CREATE": "Opret",
-			"EDIT": "Rediger",
-			"DELETE": "Ret",
-			"FIELDS": "Felter",
-			"FIELDS_TITLE": "(Felter)",
-			"ITEM": "Enhed",
-			"MANAGE": "Konfigurer",
-			"ACTIONS": "Handlinger",
-			"ITEMS": "Enheder",
-			"PAYMENTS": "Betalinger"
-		},
-		"QUEUE": {
-			"ADDING": "Tilføjer {{ currencyCode }}",
-			"UPDATING": "Opdatere {{ currencyCode }}",
-			"DELETING": "Sletter {{ currencyCode }}",
-			"ERROR": "Der opstod  en fejl ved {{ currencyCode }}. Ret og prøv igen."
-		},
-		"ENTITY_ACTION": {
-			"ITEMS": "Enheder"
-		}
-	},
-	"INVOICE_ITEMS": {
-		"FORM": {
-			"LABELS": {
-				"DESCRIPTION": "Beskrivelse",
-				"ORDER": "Rækkefølge",
-				"UNITS": "Enheder",
-				"UNITPRICE": "Enhedspris",
-				"UNITCHANGE": "Enhedsændring",
-				"TAXPERCENT": "Skatteprocent",
-				"INVENTORYID": "Lager ID"
-			},
-			"PLACEHOLDERS": {
-				"DESCRIPTION": "Indtast beskrivelse",
-				"ORDER": "Indtast rækkefølge",
-				"UNITS": "Indtast enheder",
-				"UNITPRICE": "Indtast pris",
-				"UNITCHANGE": "Indtast ændring",
-				"TAXPERCENT": "Indtast skat",
-				"INVENTORYID": "Indtast lager ID"
-			},
-			"VALIDATION": {
-				"DESCRIPTION": {
-					"REQUIRED": "Beskrivelse er påkrævet"
-				},
-				"ORDER": {
-					"REQUIRED": "Rækkefølge er påkrævet"
-				},
-				"UNITS": {
-					"REQUIRED": "Enheder er påkrævet"
-				},
-				"UNITPRICE": {
-					"REQUIRED": "Enhedspris er påkrævet"
-				},
-				"UNITCHANGE": {
-					"REQUIRED": "Enhedsændring er påkrævet"
-				},
-				"TAXPERCENT": {
-					"REQUIRED": "Skatteprocent er påkrævet"
-				},
-				"INVENTORYID": {
-					"REQUIRED": "Lager ID er påkrævet"
-				}
-			}
-		},
-		"FIELDS": {
-			"CREATE": {
-				"ADD": "Tilføj nyt felt"
-			},
-			"EDIT": {
-				"EDITING": "Redigere"
-			},
-			"INDEX": {
-				"ACTIONS": "Handlinger",
-				"CREATE": "Tilføj nyt felt",
-				"OTHER": "Andre",
-				"BACK": "Tilbage",
-				"FIELDS": "Felter",
-				"EDIT": "Rediger"
-			}
-		},
-		"CREATE": {
-			"CREATE": "Opret",
-			"BUTTON_CREATE": "Opret"
-		},
-		"EDIT": {
-			"EDIT": "Rediger",
-			"BUTTON_EDIT": "Opdater"
-		},
-		"INDEX": {
-			"PACKAGES": "Pakker",
-			"CREATE": "Opret",
-			"EDIT": "Rediger",
-			"DELETE": "Ret",
-			"FIELDS": "Felter",
-			"ITEM": "Enhed",
-			"MANAGE": "Konfigurer",
-			"BACK": "Tilbage",
-			"ACTIONS": "Handlinger",
-			"FIELDS_TITLE": "(felter)"
-		},
-		"QUEUE": {
-			"ADDING": "Tilføjer {{ description }}",
-			"UPDATING": "Opdatere {{ description }}",
-			"DELETING": "Sletter {{ description }}",
-			"ERROR": "Der opstod  en fejl ved {{ description }}. Ret og prøv igen."
-		}
-	},
-	"INVOICE_PAYMENTS": {
-		"FORM": {
-			"LABELS": {
-				"DESCRIPTION": "Beskrivelse",
-				"SOURCE": "Kilde",
-				"AMOUNT": "Mængde",
-				"IP": "IP",
-				"INVENTORYID": "Lager ID"
-			},
-			"PLACEHOLDERS": {
-				"DESCRIPTION": "Indtast beskrivelse",
-				"SOURCE": "Indtast kilde",
-				"AMOUNT": "Indtast mængde",
-				"IP": "Indtast IP",
-				"INVENTORYID": "Indtast lager ID"
-			},
-			"VALIDATION": {
-				"DESCRIPTION": {
-					"REQUIRED": "Beskrivelse er påkrævet"
-				},
-				"SOURCE": {
-					"REQUIRED": "Kilde er påkrævet"
-				},
-				"AMOUNT": {
-					"REQUIRED": "Mængde er påkrævet"
-				},
-				"IP": {
-					"REQUIRED": "IP er påkrævet"
-				},
-				"INVENTORYID": {
-					"REQUIRED": "Lager ID er påkrævet"
-				}
-			}
-		},
-		"FIELDS": {
-			"CREATE": {
-				"ADD": "Tilføj nyt felt"
-			},
-			"EDIT": {
-				"EDITING": "Redigere"
-			},
-			"INDEX": {
-				"ACTIONS": "Handlinger",
-				"CREATE": "Tilføj nyt felt",
-				"OTHER": "Andre",
-				"BACK": "Tilbage",
-				"FIELDS": "Felter",
-				"EDIT": "Rediger"
-			}
-		},
-		"CREATE": {
-			"CREATE": "Opret",
-			"BUTTON_CREATE": "Opret"
-		},
-		"EDIT": {
-			"EDIT": "Rediger",
-			"BUTTON_EDIT": "Opdater"
-		},
-		"INDEX": {
-			"PACKAGES": "Pakker",
-			"CREATE": "Opret",
-			"EDIT": "Rediger",
-			"DELETE": "Ret",
-			"FIELDS": "Felter",
-			"ITEM": "Enhed",
-			"MANAGE": "Konfigurer",
-			"BACK": "Tilbage",
-			"ACTIONS": "Handlinger",
-			"TITLE_EXTRAS": "(betalinger)",
-			"FIELDS_TITLE": "(betalingsfelter)"
-		},
-		"QUEUE": {
-			"ADDING": "Tilføjer {{ description }}",
-			"UPDATING": "Opdatere {{ description }}",
-			"DELETING": "Sletter {{ description }}",
-			"ERROR": "Der opstod  en fejl ved {{ description }}. Ret og prøv igen."
-		}
-	},
-	"INVOICES_CASH_PAYMENTS": {
-		"FORM": {
-			"LABELS": {
-				"DESCRIPTION": "Beskrivelse",
-				"CURRENCYCODE": "Valuta kode",
-				"AMOUNT": "Mængde",
-				"INVOICEID": "Faktura"
-			},
-			"PLACEHOLDERS": {
-				"DESCRIPTION": "Beskrivelse",
-				"CURRENCYCODE": "Vælg valuta kode",
-				"AMOUNT": "Mængde",
-				"INVOICEID": "Faktura"
-			},
-			"VALIDATION": {
-				"DESCRIPTION": {
-					"REQUIRED": "Valuta kode er påkrævet."
-				},
-				"CURRENCYCODE": {
-					"REQUIRED": "Beskrivelse er påkrævet."
-				},
-				"AMOUNT": {
-					"REQUIRED": "Mængde er påkrævet."
-				},
-				"INVOICEID": {
-					"REQUIRED": "Faktura er påkrævet."
-				}
-			}
-		},
-		"CREATE": {
-			"PAYMENT": "Kontant betaling",
-			"BUTTON_CREATE": "Opret"
-		},
-		"EDIT": {
-			"EDIT": "Rediger",
-			"BUTTON_EDIT": "Opdater"
-		},
-		"PAY": {
-			"BUTTON_PAY": "Betal"
-		},
-		"INDEX": {
-			"PACKAGES": "Pakker",
-			"CREATE": "Opret",
-			"EDIT": "Rediger",
-			"DELETE": "Ret",
-			"FIELDS": "Felter",
-			"FIELDS_TITLE": "(Felter)",
-			"ITEM": "Enhed",
-			"MANAGE": "Konfigurer",
-			"ACTIONS": "Handlinger",
-			"ITEMS": "Enheder",
-			"PAYMENTS": "Betalinger"
-		},
-		"QUEUE": {
-			"ADDING": "Tilføjer {{ currencyCode }}",
-			"UPDATING": "Opdatere {{ currencyCode }}",
-			"DELETING": "Sletter {{ currencyCode }}",
-			"ERROR": "Der opstod  en fejl ved {{ currencyCode }}. Ret og prøv igen."
-		},
-		"ENTITY_ACTION_PROVIDER": {
-			"ENTITY_ACTION": {
-				"CASH_PAYMENT": "Kontant betaling"
-			}
-		}
-	},
-	"INVOICES_PRODUCTS": {
-		"FORM": {
-			"LABELS": {
-				"INVOICEID": "Faktura",
-				"PRODUCTID": "Produkt",
-				"AMOUNT": "Antal"
-			},
-			"PLACEHOLDERS": {
-				"INVOICEID": "Faktura",
-				"PRODUCTID": "Produkt",
-				"AMOUNT": "Antal"
-			},
-			"VALIDATION": {
-				"INVOICEID": {
-					"REQUIRED": "Faktura er påkrævet."
-				},
-				"PRODUCTID": {
-					"REQUIRED": "Produkt er påkrævet."
-				},
-				"AMOUNT": {
-					"REQUIRED": "Antal er påkrævet."
-				}
-			}
-		},
-		"ADD_TO_INVOICE": {
-			"TITLE": "Tilføj til faktura",
-			"SUBMIT": "Opdater"
-		},
-		"ADD_PRODUCTS": {
-			"TITLE": "Tilføj produkter",
-			"SUBMIT": "Opdater"
-		}
-	},
-	"GROUP_RESERVATIONS": {
-		"CREATE": {
-			"CREATE": "Opret",
-			"BUTTON_CREATE": "Opret"
-		},
-		"EDIT": {
-			"EDIT": "Rediger",
-			"BUTTON_EDIT": "Opdater"
-		},
-		"INDEX": {
-			"TITLE_EXTRAS": "(Grupper)",
-			"ACTIONS": "Handlinger",
-			"CREATE": "Opret",
-			"DELETE": "Fjern",
-			"MANAGE": "Konfigure",
-			"FIELDS": "Felter",
-			"FIELDS_TITLE": "(Gruppe felter)",
-			"BACK": "Tilbage"
-		},
-		"FORM": {
-			"LABELS": {
-				"NAME": "Navn"
-			},
-			"PLACEHOLDERS": {
-				"NAME": "Indtast navn"
-			},
-			"VALIDATION": {
-				"NAME": {
-					"REQUIRED": "Et navn er påkrævet."
-				}
-			}
-		},
-		"QUEUE": {
-			"ADDING": "Tilføjer {{ name }}",
-			"UPDATING": "Opdaterer {{ name }}",
-			"DELETING": "Fjerner {{ name }}",
-			"ERROR": "Der skete en fejl med {{ name }}. Ret og prøv igen."
-		}
-	},
-	"LODGING_RESERVATIONS": {
-		"ARRIVALS": {
-			"TITLE": "Ankomster",
-			"TITLE_EXTRAS": "(ankomster)"
-		},
-		"DEPARTURES": {
-			"TITLE": "Afgange",
-			"TITLE_EXTRAS": "(afgange)"
-		},
-		"STAYS": {
-			"TITLE": "Ophold",
-			"TITLE_EXTRAS": "(ophold)"
-		},
-		"FORM": {
-			"LABELS": {
-				"LODGINGTYPEID": "Rum type",
-				"LODGINGID": "Tildelt rum",
-				"CHECKIN": "Tjek ind",
-				"CHECKOUT": "Tjek ud",
-				"PERSONS": "Personer",
-				"STATUS": "Status"
-			},
-			"PLACEHOLDERS": {
-				"LODGINGTYPEID": "Indtast rum type",
-				"LODGINGID": "Indtast tildelt rum",
-				"CHECKIN": "Indtast tjek ind",
-				"CHECKOUT": "Indtast tjek ud",
-				"PERSONS": "Indtast personer",
-				"STATUS": "Status"
-			},
-			"VALIDATION": {
-				"LODGINGTYPEID": {
-					"REQUIRED": "Rum type er påkrævet."
-				},
-				"LODGINGID": {
-					"REQUIRED": "Tildelt rum er påkrævet."
-				},
-				"CHECKIN": {
-					"REQUIRED": "Check in dato er påkrævet."
-				},
-				"CHECKOUT": {
-					"REQUIRED": "Check ud dato er påkrævet."
-				},
-				"PERSONS": {
-					"REQUIRED": "Personer er påkrævet."
-				}
-			}
-		},
-		"CREATE": {
-			"CREATE": "Opret",
-			"BUTTON_CREATE": "Opret"
-		},
-		"EDIT": {
-			"EDIT": "Rediger",
-			"BUTTON_EDIT": "Opdater"
-		},
-		"INDEX": {
-			"CREATE": "Opret",
-			"EDIT": "Rediger",
-			"DELETE": "Ret",
-			"FIELDS": "Felter",
-			"FIELDS_TITLE": "(felter)",
-			"ITEM": "Enhed",
-			"MANAGE": "Konfigurer",
-			"ACTIONS": "Handlinger",
-			"STAYS": "Indlogeret",
-			"RESERVATIONS": "Reservationer",
-			"ARRIVALS": "Ankomster",
-			"SETTINGS": "Indstillinger",
-			"DEPARTURES": "Afgange",
-			"ALL": "Alle",
-			"GROUP_RESERVATIONS": "Gruppe reservationer"
-		},
-		"QUEUE": {
-			"ADDING": "Tilføjer rum reservations {{ id }}",
-			"UPDATING": "Opdatere rum reservations {{ id }}",
-			"DELETING": "Sletter rum reservations {{ id }}",
-			"ERROR": "Der opstod  en fejl ved rum reservations {{ id }}. Ret og prøv igen."
-		},
-		"ENTITY_ACTIONS": {
-			"CHECKIN": "Check ind",
-			"UNDOCHECKIN": "Fortryd check ind",
-			"CHECKOUT": "Check ud",
-			"UNDOCHECKOUT": "Fortryd check ud",
-			"CANCEL": "Aflys",
-			"UNDOCANCEL": "Fortryd aflysning",
-			"MOVE": "Flyt",
-			"UNDOMOVE": "Fortryd flytning",
-			"NOSHOW": "Ingen fremmøde",
-			"UNDONOSHOW": "Fortryd ingen fremmøde"
-		}
-	},
-	"LODGING_RESERVATIONS_SETTINGS": {
-		"FORM": {
-			"LABELS": {
-				"EARLIESTCHECKIN": "Tidligste check ind",
-				"LATESTCHECKOUT": "Seneste check ud"
-			},
-			"PLACEHOLDERS": {
-				"EARLIESTCHECKIN": "Tidligste checkin",
-				"LATESTCHECKOUT": "Seneste check ud"
-			},
-			"VALIDATION": {
-				"EARLIESTCHECKIN": {
-					"REQUIRED": "Tidligste checkin er påkrævet."
-				},
-				"LATESTCHECKOUT": {
-					"REQUIRED": "Seneste check ud er påkrævet."
-				}
-			}
-		}
-	},
-	"LODGING_SELECT_FIELD": {
-		"SELECT_LODGING": "Vælg et rum"
-	},
-	"LODGING_TYPE_SELECT_FIELD": {
-		"SELECT_LODGING_TYPE": "Vælg en rum type"
-	},
-	"LODGING_SELECT_DIALOG": {
-		"AVAILABLE": "Tilgængeligt",
-		"UNAVAILABLE": "Utilgængelig",
-		"CANCEL": "Afbryd",
-		"DONE": "Færdig",
-		"CHOOSE_LODGING_TYPE": "Vælg en rum type",
-		"CHOOSE_LODGING": "Vælg et run"
-	},
-	"LODGING_TYPE_SELECT_DIALOG": {
-		"SELECT_LODGING_TYPE": "Vælg en rum type",
-		"AVAILABLE": " tilgængeligt",
-		"PRICE_VIA": "pricer via ",
-		"CANCEL": "Afbryd",
-		"DONE": "Færdig",
-		"CHOOSE_LODGING_TYPE": "Vælg en rum type"
-	},
-	"LODGING_TYPES": {
-		"FIELDS": {
-			"CREATE": {
-				"ADD": "Opret nyt felt"
-			},
-			"EDIT": {
-				"EDITING": "Redigere"
-			},
-			"INDEX": {
-				"ACTIONS": "Handlinger",
-				"CREATE": "Opret nyt felt",
-				"OTHER": "Andre",
-				"FIELDS": "Felter",
-				"BACK": "Tilbage"
-			}
-		},
-		"CREATE": {
-			"CREATE": "Opret",
-			"BUTTON_CREATE": "Opret"
-		},
-		"EDIT": {
-			"EDIT": "Rediger",
-			"BUTTON_EDIT": "Opdater"
-		},
-		"INDEX": {
-			"TITLE_EXTRAS": "(typer)",
-			"ACTIONS": "Handlinger",
-			"CREATE": "Opret",
-			"MANAGE": "Konfigurer",
-			"AVAILABILITY": "Tilgængelighed",
-			"TYPES_FIELDS": "Type felt",
-			"FIELDS_TITLE": "(type felt)",
-			"BACK": "Tilbage",
-			"FIELDS": "Felter"
-		},
-		"FORM": {
-			"LABELS": {
-				"NAME": "Navn"
-			},
-			"PLACEHOLDERS": {
-				"NAME": "Indtast navn"
-			},
-			"VALIDATION": {
-				"NAME": {
-					"REQUIRED": "Navn er påkrævet."
-				}
-			}
-		},
-		"QUEUE": {
-			"ADDING": "Tilføjer {{ name }}",
-			"UPDATING": "Opdatere {{ name }}",
-			"DELETING": "Sletter {{ name }}",
-			"ERROR": "Der opstod  en fejl ved {{ name }}. Ret og prøv igen."
-		},
-		"AVAILABILITY": {
-			"PLACEHOLDER": "Vælg rumtyper",
-			"PREVIOUS": "Tidligere",
-			"TODAY": "I dag",
-			"NEXT": "Næste",
-			"TITLE": "Rum typer tilgængelighed"
-		}
-	},
-	"LODGING_SETTINGS": {
-		"FORM": {
-			"LABELS": {
-				"NAME": "Navn",
-				"DEFAULTCHECKIN": "Standard check in",
-				"DEFAULTCHECKOUT": "Standard checkud",
-				"TIMEZONEID": "Tidszone id"
-			},
-			"PLACEHOLDERS": {
-				"NAME": "Navn",
-				"DEFAULTCHECKIN": "Standard check in",
-				"DEFAULTCHECKOUT": "Standard checkud",
-				"TIMEZONEID": "Tidszone id"
-			},
-			"VALIDATION": {}
-		},
-		"EDIT": {
-			"EDIT": "Ret indstillinger"
-		},
-		"QUEUE": {
-			"ADDING": "Tilføjer {{ name }}",
-			"UPDATING": "Opdaterer",
-			"DELETING": "Sletter {{ name }}",
-			"ERROR": "Der skete en fejl ved opdatering af indstillingerne."
-		}
-	},
-	"LODGINGS": {
-		"FORM": {
-			"LABELS": {
-				"LODGINGTYPEID": "Type",
-				"NAME": "Navn",
-				"DISABLED": "Utilgængelig",
-				"LODGINGRESERVATIONSPRICING": "Pris"
-			},
-			"PLACEHOLDERS": {
-				"LODGINGTYPEID": "Type",
-				"NAME": "Navn",
-				"DISABLED": "Utilgængelig"
-			},
-			"VALIDATION": {
-				"LODGINGTYPEID": {
-					"REQUIRED": "Type er påkrævet."
-				},
-				"NAME": {
-					"REQUIRED": "Navn er påkrævet."
-				},
-				"DISABLED": {
-					"REQUIRED": "Utilgængeligheds status er påkrævet."
-				}
-			}
-		},
-		"FIELDS": {
-			"CREATE": {
-				"ADD": "Opret nyt felt"
-			},
-			"EDIT": {
-				"EDITING": "Redigere"
-			},
-			"INDEX": {
-				"ACTIONS": "Handlinger",
-				"CREATE": "Opret nyt felt",
-				"MANAGE": "Konfigurer",
-				"OTHER": "Andre",
-				"FIELDS": "Felter",
-				"BACK": "Tilbage"
-			}
-		},
-		"CREATE": {
-			"CREATE": "Opret",
-			"BUTTON_CREATE": "Opret"
-		},
-		"EDIT": {
-			"EDIT": "Rediger",
-			"BUTTON_EDIT": "Opdater"
-		},
-		"INDEX": {
-			"ACTIONS": "Handlinger",
-			"CREATE": "Opret",
-			"SETTINGS": "Indstillinger",
-			"AVAILABILITY": "Tilgængelighed",
-			"MANAGE": "Konfigurer",
-			"FIELDS": "Felter",
-			"FIELDS_TITLE": "(Felter)",
-			"TYPES": "Typer",
-			"BACK": "Tilbage"
-		},
-		"QUEUE": {
-			"ADDING": "Tilføjer {{ name }}",
-			"UPDATING": "Opdatere {{ name }}",
-			"DELETING": "Sletter {{ name }}",
-			"ERROR": "Der opstod  en fejl ved {{ name }}. Ret og prøv igen."
-		}
-	},
-	"LODGINGS_AVAILABILITY": {
-		"SELECT_LODGINGS": "Vælg rum",
-		"TITLE": "Rum tilgængelighed"
-	},
-	"ASSIGNMENT_TYPES": {
-		"FORM": {
-			"LABELS": {
-				"STATEID": "Tilstand",
-				"DESCRIPTION": "Beskrivelse",
-				"EXPRESSION": "Udtryk",
-				"DUEPERIOD": "Udløbsdato"
-			},
-			"PLACEHOLDERS": {
-				"STATEID": "Vælg tilstand",
-				"DESCRIPTION": "Indtast beskrivelse",
-				"EXPRESSION": "Indtast udtryk",
-				"DUEPERIOD": "Vælg udløbsdato"
-			},
-			"VALIDATION": {
-				"STATEID": {
-					"REQUIRED": "Tilstand er påkrævet."
-				},
-				"DESCRIPTION": {
-					"REQUIRED": "Beskrivelse er påkrævet."
-				},
-				"DUEPERIOD": {
-					"REQUIRED": "Udløbsdato er påkrævet."
-				},
-				"EXPRESSION": {
-					"REQUIRED": "Udtryk er påkrævet."
-				}
-			},
-			"BUTTONS": {
-				"CREATE": "Opret",
-				"EDIT": "Rediger"
-			}
-		},
-		"CREATE": {
-			"CREATE": "Opret",
-			"BUTTON_CREATE": "Opret"
-		},
-		"EDIT": {
-			"EDIT": "Ret",
-			"BUTTON_EDIT": "Opdater"
-		},
-		"INDEX": {
-			"TITLE_EXTRAS": "(opgave typer)",
-			"ACTIONS": "Handlinger",
-			"CREATE": "Opret",
-			"EDIT": "Ret",
-			"DELETE": "Slet",
-			"MANAGE": "Konfigurer",
-			"BACK": "Tilbage",
-			"FIELDS": "Felter",
-			"FIELDS_TITLE": "(type felter)",
-			"ENTITIES": "Enheder"
-		},
-		"FIELDS": {
-			"INDEX": {
-				"ACTIONS": "Handlinger",
-				"CREATE": "Opret",
-				"ASSIGNMENT_TYPES": "Opgaver",
-				"FIELDS": "Opgave felter",
-				"BACK": "Tilbage",
-				"OTHER": "Andet"
-			},
-			"CREATE": {
-				"ADD": "Tilføj felt"
-			},
-			"FORM": {
-				"LABELS": {
-					"STATEID": "Tilstand",
-					"DESCRIPTION": "Beskrivelse",
-					"EXPRESSION": "Udtryk",
-					"DUEPERIOD": "Due date"
-				},
-				"PLACEHOLDERS": {
-					"STATEID": "Vælg tilstand",
-					"DESCRIPTION": "Indtast beskrivelse",
-					"EXPRESSION": "Indtast udtryk",
-					"DUEPERIOD": "Vælg udløbsdato"
-				},
-				"VALIDATION": {
-					"STATEID": {
-						"REQUIRED": "Tilstand er påkrævet."
-					},
-					"DESCRIPTION": {
-						"REQUIRED": "Beskrivelse er påkrævet."
-					},
-					"EXPRESSION": {
-						"REQUIRED": "Udtryk er påkrævet."
-					},
-					"DUEPERIOD": {
-						"REQUIRED": "Udløbsdato er påkrævet."
-					}
-				},
-				"BUTTONS": {
-					"CREATE": "Opret",
-					"EDIT": "Rediger"
-				}
-			}
-		},
-		"QUEUE": {
-			"ADDING": "Tilføjer {{ description }}",
-			"UPDATING": "Opdatere {{ description }}",
-			"DELETING": "Sletter {{ description }}",
-			"ERROR": "Der opstod  en fejl ved {{ description }}. Ret og prøv igen."
-		}
-	},
-	"ASSIGNMENTS_SCHEDULES": {
-		"FORM": {
-			"LABELS": {
-				"ASSIGNMENTTYPEID": "Opgave type",
-				"STATUS": "Status",
-				"DUE": "Udløbsdato",
-				"FROM": "Kan startes fra"
-			},
-			"PLACEHOLDERS": {
-				"ASSIGNMENTTYPEID": "Opgave type",
-				"STATUS": "Vælg status",
-				"DUE": " Vælg udløbsdato",
-				"FROM": "Vælg hvornår opgaven kan startes"
-			},
-			"VALIDATION": {
-				"ASSIGNMENTTYPEID": {
-					"REQUIRED": "Opgave type er påkrævet."
-				},
-				"STATUS": {
-					"REQUIRED": "Status er påkrævet."
-				},
-				"DUE": {
-					"REQUIRED": "Udløbsdato er påkrævet."
-				},
-				"FROM": {
-					"REQUIRED": "En dato fra hvornår opgaven kan startes er påkrævet."
-				}
-			}
-		},
-		"CREATE": {
-			"CREATE": "Opret",
-			"BUTTON_CREATE": "Opret"
-		},
-		"EDIT": {
-			"EDIT": "Ret",
-			"BUTTON_EDIT": "Opdater"
-		},
-		"INDEX": {
-			"TITLE_EXTRAS": "(opgaver)",
-			"ACTIONS": "Handlinger",
-			"CREATE": "Opret",
-			"EDIT": "Ret",
-			"DELETE": "Slet",
-			"MANAGE": "Konfigurer",
-			"FIELDS": "Felter",
-			"STATES": "Tilstande",
-			"BACK": "Tilbage"
-		},
-		"QUEUE": {
-			"ADDING": "Tilføjer {{ description }}",
-			"UPDATING": "Opdatere {{ description }}",
-			"DELETING": "Sletter {{ description }}",
-			"ERROR": "Der opstod  en fejl ved {{ description }}. Ret og prøv igen."
-		}
-	},
-	"MAINTENANCE": {
-		"ASSIGNMENT_ALL": {
-			"TITLE": "Alle opgaver",
-			"INDEX": {
-				"SINGLE_ASSIGNMENTS": "Opgaver",
-				"RECURRING_ASSIGNMENTS": "Gentagne opgaver",
-				"MANAGE": "Konfigurer",
-				"STATES": "Vedligeholdelse tilstande",
-				"TYPES": "Opgave typer"
-			}
-		}
-	},
-	"MAINTENANCE_STATES": {
-		"FORM": {
-			"LABELS": {
-				"DESCRIPTION": "Beskrivelse",
-				"STATUS": "Status",
-				"ID": "Id"
-			},
-			"PLACEHOLDERS": {
-				"DESCRIPTION": "Indtast beskrivelse",
-				"STATUS": "Vælg Status",
-				"ID": "Vælg et Id"
-			},
-			"VALIDATION": {
-				"DESCRIPTION": {
-					"REQUIRED": "Beskrivelse er påkrævet."
-				},
-				"STATUS": {
-					"REQUIRED": "Status er påkrævet"
-				},
-				"ID": {
-					"REQUIRED": "Id er påkrævet"
-				}
-			}
-		},
-		"CREATE": {
-			"CREATE": "Opret",
-			"BUTTON_CREATE": "Opret"
-		},
-		"EDIT": {
-			"EDIT": "Ret",
-			"BUTTON_EDIT": "Opdater"
-		},
-		"INDEX": {
-			"TITLE_EXTRAS": "(tilstand)",
-			"ACTIONS": "Handlinger",
-			"CREATE": "Opret",
-			"EDIT": "Ret",
-			"DELETE": "Slet",
-			"MANAGE": "Konfigurer",
-			"FIELDS": "Felter",
-			"BACK": "Tilbage"
-		},
-		"MANAGE": {
-			"BACK": "Tilbage"
-		},
-		"QUEUE": {
-			"ADDING": "Tilføjer {{ description }}",
-			"UPDATING": "Opdatere {{ description }}",
-			"DELETING": "Sletter {{ description }}",
-			"ERROR": "Der opstod  en fejl ved {{ description }}. Ret og prøv igen."
-		}
-	},
-	"SINGLE_ASSIGNMENTS": {
-		"FORM": {
-			"LABELS": {
-				"ASSIGNMENTTYPEID": "Opgave type",
-				"DESCRIPTION": "Beskrivelse",
-				"OCCUPATIONSTATE": "Beskæftigelse tilstand",
-				"STATUS": "Status",
-				"DUE": "Afleveringsdato",
-				"FROM": "Kan startes efter den"
-			},
-			"PLACEHOLDERS": {
-				"ASSIGNMENTTYPEID": "Opgave type",
-				"DESCRIPTION": "Indtast en beskrivelse",
-				"OCCUPATIONSTATE": "Vælg en beskæftigelse tilstand",
-				"STATUS": "Vælg en status",
-				"DUE": "Vælg en afleveringsdato",
-				"FROM": "Vælg en hvornår den startes efter den"
-			},
-			"VALIDATION": {
-				"ASSIGNMENTTYPEID": {
-					"REQUIRED": "Opgave type er påkrævet."
-				},
-				"DESCRIPTION": {
-					"REQUIRED": "En beeskrivelse er påkrævet."
-				},
-				"STATUS": {
-					"REQUIRED": "En status er påkrævet."
-				},
-				"DUE": {
-					"REQUIRED": "En afleveringsdato er påkrævet.",
-					"NOTBEFORE": "Afleveringsdatoen må ikke være før start datoen."
-				},
-				"FROM": {
-					"REQUIRED": "En dato for hvonår opgaven kan starte er påkrævet."
-				}
-			},
-			"BUTTONS": {
-				"CREATE": "Opret",
-				"EDIT": "Rediger"
-			}
-		},
-		"CREATE": {
-			"CREATE": "Opret",
-			"BUTTON_CREATE": "Opret"
-		},
-		"EDIT": {
-			"EDIT": "Ret",
-			"BUTTON_EDIT": "Opdater"
-		},
-		"INDEX": {
-			"TITLE_EXTRAS": "(gentagne opgaver)",
-			"ACTIONS": "Handlinger",
-			"CREATE": "Opret",
-			"EDIT": "Ret",
-			"DELETE": "Slet",
-			"MANAGE": "Konfigurer",
-			"FIELDS": "Felter",
-			"FIELDS_TITLE": "(Felter)",
-			"STATES": "Tilstande",
-			"TYPES": "Typer",
-			"BACK": "Tilbage"
-		},
-		"QUEUE": {
-			"ADDING": "Tilføjer {{ description }}",
-			"UPDATING": "Opdatere {{ description }}",
-			"DELETING": "Sletter {{ description }}",
-			"ERROR": "Der opstod  en fejl ved {{ description }}. Ret og prøv igen."
-		}
-	},
-	"PERSONS": {
-		"FORM": {
-			"LABELS": {
-				"FIRSTNAME": "Fornavn",
-				"LASTNAME": "Efternavn",
-				"DISPLAYNAME": "Visningsnavn"
-			},
-			"PLACEHOLDERS": {
-				"FIRSTNAME": "Indtast fornavn",
-				"LASTNAME": "Indtast efternavn",
-				"DISPLAYNAME": "Indtast visningsnavn"
-			},
-			"VALIDATION": {
-				"FIRSTNAME": {
-					"REQUIRED": "Fornavn er påkrævet."
-				},
-				"LASTNAME": {
-					"REQUIRED": "Efternavn er påkrævet."
-				},
-				"DISPLAYNAME": {
-					"REQUIRED": "Visningsnavn er påkrævet."
-				}
-			}
-		},
-		"FIELDS": {
-			"CREATE": {
-				"ADD": "Tilføj nyt felt"
-			},
-			"EDIT": {
-				"EDITING": "Redigere"
-			},
-			"INDEX": {
-				"ACTIONS": "Handlinger",
-				"CREATE": "Tilføj nyt felt",
-				"OTHER": "Andre",
-				"BACK": "Tilbage",
-				"FIELDS": "Felter",
-				"EDIT": "Rediger"
-			}
-		},
-		"CREATE": {
-			"CREATE": "Opret",
-			"BUTTON_CREATE": "Opret"
-		},
-		"EDIT": {
-			"EDIT": "Rediger",
-			"BUTTON_EDIT": "Opdater"
-		},
-		"INDEX": {
-			"PACKAGES": "Pakker",
-			"CREATE": "Opret",
-			"EDIT": "Rediger",
-			"DELETE": "Ret",
-			"FIELDS": "Felter",
-			"FIELDS_TITLE": "(felter)",
-			"ITEM": "Enhed",
-			"MANAGE": "Konfigurer",
-			"ACTIONS": "Handlinger"
-		},
-		"NOTIFICATIONS": {
-			"GET": {
-				"PAGED_ERROR": "Mislykkede med at hente personer ({{ httpErrorCode }}).",
-				"SINGLE_FAILURE": "Mislykkede med at hente {{ displayName }} ({{ httpErrorCode }}).",
-				"FIELDS_FAILURE": "Mislykkede med at hente felterne for personer ({{ httpErrorCode }}).",
-				"SINGLE_FIELD_FAILURE": "Mislykkede med at hente {{ displayName }} feltet ({{ httpErrorCode }})."
-			},
-			"ADD": {
-				"SUCCESS": "Tilføjelsen af {{ displayName }} lykkedes.",
-				"FAILURE": "Mislykkede med at tilføje {{ displayName }} ({{ httpErrorCode }}).",
-				"FIELD_FAILURE": "Mislykkede med at tilføje feltet for {{ displayName }} ({{ httpErrorCode }}).",
-				"FIELD_SUCCESS": "Tilføjede feltet for {{ displayName }} lykkedes."
-			},
-			"UPDATE": {
-				"SUCCESS": "Opdateringen af {{ displayName }} lykkedes.",
-				"FAILURE": "Mislykkede med at opdatere {{ displayName }} ({{ httpErrorCode }}).",
-				"FIELD_SUCCESS": "Opdaterede feltet for {{ displayName }} lykkedes.",
-				"FIELD_FAILURE": "Mislykkede med at opdatere feltet for {{ displayName }} ({{ httpErrorCode }})"
-			},
-			"REMOVE": {
-				"SUCCESS": "Sletningen af {{ displayName }} lykkedes.",
-				"FAILURE": "Mislykkede med at fjerne {{ displayName }} ({{ httpErrorCode }}).",
-				"FIELD_SUCCESS": "Sletningen af feltet for {{ displayName }} succesfully.",
-				"FIELD_FAILURE": "Mislykkede med at fjerne feltet for {{ displayName }} ({{ httpErrorCode }})."
-			}
-		},
-		"QUEUE": {
-			"ADDING": "Tilføjer {{ displayName }}",
-			"UPDATING": "Opdatere {{ displayName }}",
-			"DELETING": "Sletter {{ displayName }}",
-			"ERROR": "Der opstod en fejl ved {{ displayName }}. Ret og prøv igen."
-		}
-	},
-	"PRODUCT_TYPES": {
-		"CREATE": {
-			"CREATE": "Opret",
-			"BUTTON_CREATE": "Opret"
-		},
-		"EDIT": {
-			"EDIT": "Rediger",
-			"BUTTON_EDIT": "Opdater"
-		},
-		"INDEX": {
-			"TITLE_EXTRAS": "(typer)",
-			"ACTIONS": "Handlinger",
-			"CREATE": "Opret ny type",
-			"DELETE": "Slet",
-			"MANAGE": "Konfigurer",
-			"FIELDS": "Felter",
-			"FIELDS_TITLE": "(type felter)",
-			"BACK": "Tilbage"
-		},
-		"FORM": {
-			"LABELS": {
-				"NAME": "Navn"
-			},
-			"PLACEHOLDERS": {
-				"NAME": "Indtast navn"
-			},
-			"VALIDATION": {
-				"NAME": {
-					"REQUIRED": "Et navn er påkrævet."
-				}
-			}
-		},
-		"QUEUE": {
-			"ADDING": "Tilføjer {{ name }}",
-			"UPDATING": "Opdatere {{ name }}",
-			"DELETING": "Sletter {{ name }}",
-			"ERROR": "Der opstod  en fejl ved {{ name }}. Ret og prøv igen."
-		}
-	},
-	"PRODUCTS": {
-		"FORM": {
-			"LABELS": {
-				"NAME": "Navn",
-				"PRODUCTTYPEID": "Produkt type",
-				"PRODUCTSPRICING": "Pris"
-			},
-			"PLACEHOLDERS": {
-				"NAME": "Indtast navn",
-				"PRODUCTTYPEID": "Vælg en produkt type"
-			},
-			"VALIDATION": {
-				"NAME": {
-					"REQUIRED": "Navn er påkrævet."
-				}
-			}
-		},
-		"CREATE": {
-			"CREATE": "Opret",
-			"BUTTON_CREATE": "Opret"
-		},
-		"EDIT": {
-			"EDIT": "Rediger",
-			"BUTTON_EDIT": "Opdater"
-		},
-		"INDEX": {
-			"CREATE": "Opret",
-			"EDIT": "Rediger",
-			"DELETE": "Slet",
-			"FIELDS": "Felter",
-			"FIELDS_TITLE": "(felter)",
-			"ITEM": "Enhed",
-			"MANAGE": "Konfigurer",
-			"ACTIONS": "Handlinger",
-			"TYPES": "Typer"
-		},
-		"FIELDS": {
-			"CREATE": {
-				"ADD": "Opret nyt felt"
-			},
-			"EDIT": {
-				"EDITING": "Redigere"
-			},
-			"INDEX": {
-				"ACTIONS": "Handlinger",
-				"CREATE": "Opret et nyt type felt",
-				"TYPES": "Typer",
-				"BACK": "Tilbage",
-				"MANAGE": "Konfigurer",
-				"FIELDS": "Felter"
-			}
-		},
-		"QUEUE": {
-			"ADDING": "Tilføjer {{ name }}",
-			"UPDATING": "Opdatere {{ name }}",
-			"DELETING": "Sletter {{ name }}",
-			"ERROR": "Der opstod  en fejl ved {{ name }}. Ret og prøv igen."
-		}
-	},
-	"PRODUCT_PRICE_CHANGES": {
-		"CREATE": {
-			"CREATE": "Opret",
-			"BUTTON_CREATE": "Opret"
-		},
-		"EDIT": {
-			"EDIT": "Rediger",
-			"BUTTON_EDIT": "Opdater"
-		},
-		"INDEX": {
-			"ACTIONS": "Handlinger",
-			"CREATE": "Opret",
-			"DELETE": "Slet",
-			"MANAGE": "Konfigurer",
-			"FIELDS": "Felter",
-			"BACK": "Tilbage"
-		},
-		"FORM": {
-			"LABELS": {
-				"CURRENCYCODE": "Valuta kode",
-				"RECORDID": "Produkt",
-				"CHANGE": "Pris ændring",
-				"PERUNIT": "Per enhed",
-				"ISPERCENT": "Ændring er i procent(%)",
-				"VALIDFROM": "Gældende fra",
-				"VALIDTO": "Gældende til",
-				"MINUNITS": "Minimum antal enheder",
-				"MAXUNITS": "Maximum antal enheder",
-				"ONLYVALIDUNITS": "Ændring gælder kun enheder indenfor min og max"
-			},
-			"PLACEHOLDERS": {
-				"CURRENCYCODE": "Valuta kode",
-				"RECORDID": "Produkt",
-				"CHANGE": "Pris ændring",
-				"PERUNIT": "Per enhed",
-				"ISPERCENT": "Ændring er i procent(%)",
-				"VALIDFROM": "Gældende fra",
-				"VALIDTO": "Gældende til",
-				"MINUNITS": "Minimum antal enheder",
-				"MAXUNITS": "Maximum antal enheder",
-				"ONLYVALIDUNITS": "Ændring gælder kun enheder indenfor min og max"
-			},
-			"VALIDATION": {
-				"CURRENCYCODE": {
-					"REQUIRED": "Valuta kode er påkrævet"
-				},
-				"RECORDID": {
-					"REQUIRED": "Products salgs pris er påkrævet"
-				},
-				"CHANGE": {
-					"REQUIRED": "Pris ændring er påkrævet"
-				},
-				"ISPERCENT": {
-					"REQUIRED": "Felt er påkrævet"
-				},
-				"VALIDFROM": {
-					"REQUIRED": "Gældende fra er påkrævet"
-				},
-				"VALIDTO": {
-					"REQUIRED": "Gældende til er påkrævet"
-				},
-				"MINUNITS": {
-					"REQUIRED": "Minimum antal enheder er påkrævet"
-				},
-				"MAXUNITS": {
-					"REQUIRED": "Maximum antal enheder er påkrævet"
-				}
-			}
-		},
-		"QUEUE": {
-			"ADDING": "Tilføjer {{ name }}",
-			"UPDATING": "Opdatere {{ name }}",
-			"DELETING": "Sletter {{ name }}",
-			"ERROR": "Der opstod  en fejl ved {{ name }}. Ret og prøv igen."
-		}
-	},
-	"PRODUCT_TYPE_PRICE_CHANGES": {
-		"CREATE": {
-			"CREATE": "Opret",
-			"BUTTON_CREATE": "Opret"
-		},
-		"EDIT": {
-			"EDIT": "Rediger",
-			"BUTTON_EDIT": "Opdater"
-		},
-		"INDEX": {
-			"ACTIONS": "Handlinger",
-			"CREATE": "Opret",
-			"DELETE": "Slet",
-			"MANAGE": "Konfigurer",
-			"FIELDS": "Felter",
-			"BACK": "Tilbage"
-		},
-		"FORM": {
-			"LABELS": {
-				"CURRENCYCODE": "Valuta kode",
-				"RECORDID": "Produkt type",
-				"CHANGE": "Ændring",
-				"ISPERCENT": "Ændring er i procent (%)",
-				"PERUNIT": "Per enhed",
-				"VALIDFROM": "Gældende fra",
-				"VALIDTO": "Gældende til",
-				"MINUNITS": "Minimum antal enheder",
-				"MAXUNITS": "Maximum antal enheder",
-				"ONLYVALIDUNITS": "Ændring gælder kun enheder indenfor min og max"
-			},
-			"PLACEHOLDERS": {
-				"CURRENCYCODE": "Valuta kode",
-				"RECORDID": "Produkt type",
-				"CHANGE": "Pris ændring",
-				"PERUNIT": "Per enhed",
-				"ISPERCENT": "Ændring er i procent (%)",
-				"VALIDFROM": "Gældende fra",
-				"VALIDTO": "Gældende til",
-				"MINUNITS": "Minimum antal enheder",
-				"MAXUNITS": "Maximum antal enheder",
-				"ONLYVALIDUNITS": "Ændring gælder kun enheder indenfor min og max"
-			},
-			"VALIDATION": {
-				"CURRENCYCODE": {
-					"REQUIRED": "Valuta kode er påkrævet"
-				},
-				"RECORDID": {
-					"REQUIRED": "Products salgs pris er påkrævet"
-				},
-				"CHANGE": {
-					"REQUIRED": "Pris ændring er påkrævet"
-				},
-				"ISPERCENT": {
-					"REQUIRED": "Felt er påkrævet"
-				},
-				"VALIDFROM": {
-					"REQUIRED": "Gældende fra er påkrævet"
-				},
-				"VALIDTO": {
-					"REQUIRED": "Gældende til er påkrævet"
-				},
-				"MINUNITS": {
-					"REQUIRED": "Minimum antal enheder er påkrævet"
-				},
-				"MAXUNITS": {
-					"REQUIRED": "Maximum antal enheder er påkrævet"
-				}
-			}
-		},
-		"QUEUE": {
-			"ADDING": "Tilføjer {{ name }}",
-			"UPDATING": "Opdatere {{ name }}",
-			"DELETING": "Sletter {{ name }}",
-			"ERROR": "Der opstod  en fejl ved {{ name }}. Ret og prøv igen."
-		}
-	},
-	"PRODUCT_TYPE_SALES_PRICE": {
-		"CREATE": {
-			"CREATE": "Opret",
-			"BUTTON_CREATE": "Opret"
-		},
-		"EDIT": {
-			"EDIT": "Rediger",
-			"BUTTON_EDIT": "Opdater"
-		},
-		"INDEX": {
-			"ACTIONS": "Handlinger",
-			"CREATE": "Opret",
-			"DELETE": "Slet",
-			"MANAGE": "Konfigurer",
-			"FIELDS": "Felter",
-			"BACK": "Tilbage"
-		},
-		"FORM": {
-			"LABELS": {
-				"CURRENCYCODE": "Valuta kode",
-				"RECORDID": "Produkt type",
-				"PRICE": "Pris"
-			},
-			"PLACEHOLDERS": {
-				"CURRENCYCODE": "Valuta kode",
-				"RECORDID": "Produkt type",
-				"PRICE": "Pris"
-			},
-			"VALIDATION": {
-				"CURRENCYCODE": {
-					"REQUIRED": "Valuta kode er påkrævet"
-				},
-				"RECORDID": {
-					"REQUIRED": "Produkt er påkrævet."
-				},
-				"PRICE": {
-					"REQUIRED": "Pris er påkrævet."
-				}
-			}
-		},
-		"QUEUE": {
-			"ADDING": "Tilføjer {{ name }}",
-			"UPDATING": "Opdatere {{ name }}",
-			"DELETING": "Sletter {{ name }}",
-			"ERROR": "Der opstod  en fejl ved {{ name }}. Ret og prøv igen."
-		}
-	},
-	"PRODUCTS_SALES_PRICE": {
-		"CREATE": {
-			"CREATE": "Opret",
-			"BUTTON_CREATE": "Opret"
-		},
-		"EDIT": {
-			"EDIT": "Rediger",
-			"BUTTON_EDIT": "Opdater"
-		},
-		"INDEX": {
-			"ACTIONS": "Handlinger",
-			"CREATE": "Opret",
-			"DELETE": "Slet",
-			"MANAGE": "Konfigurer",
-			"FIELDS": "Felter",
-			"BACK": "Tilbage"
-		},
-		"FORM": {
-			"LABELS": {
-				"CURRENCYCODE": "Valuta kode",
-				"RECORDID": "Produkt",
-				"PRICE": "Pris"
-			},
-			"PLACEHOLDERS": {
-				"CURRENCYCODE": "Valuta kode",
-				"RECORDID": "Produkt",
-				"PRICE": "Pris"
-			},
-			"VALIDATION": {
-				"CURRENCYCODE": {
-					"REQUIRED": "Valuta kode er påkrævet"
-				},
-				"RECORDID": {
-					"REQUIRED": "Produkt er påkrævet."
-				},
-				"PRICE": {
-					"REQUIRED": "Pris er påkrævet."
-				}
-			}
-		},
-		"QUEUE": {
-			"ADDING": "Tilføjer {{ name }}",
-			"UPDATING": "Opdatere {{ name }}",
-			"DELETING": "Sletter {{ name }}",
-			"ERROR": "Der opstod  en fejl ved {{ name }}. Ret og prøv igen."
-		}
-	},
-	"LODGING_PRICES": {
-		"CREATE": {
-			"CREATE": "Opret",
-			"BUTTON_CREATE": "Opret"
-		},
-		"EDIT": {
-			"EDIT": "Rediger",
-			"BUTTON_EDIT": "Opdater"
-		},
-		"INDEX": {
-			"ACTIONS": "Handlinger",
-			"CREATE": "Opret",
-			"DELETE": "Slet",
-			"MANAGE": "Konfigurer",
-			"FIELDS": "Felter",
-			"BACK": "Tilbage"
-		},
-		"FORM": {
-			"LABELS": {
-				"CURRENCYCODE": "Valuta kode",
-				"RECORDID": "Værelse",
-				"PRICE": "Pris"
-			},
-			"PLACEHOLDERS": {
-				"CURRENCYCODE": "Valuta kode",
-				"RECORDID": "Værelse",
-				"PRICE": "Pris"
-			},
-			"VALIDATION": {
-				"CURRENCYCODE": {
-					"REQUIRED": "Valuta kode er påkrævet"
-				},
-				"RECORDID": {
-					"REQUIRED": "Værelse er påkrævet."
-				},
-				"PRICE": {
-					"REQUIRED": "Pris er påkrævet."
-				}
-			}
-		},
-		"QUEUE": {
-			"ADDING": "Tilføjer {{ name }}",
-			"UPDATING": "Opdatere {{ name }}",
-			"DELETING": "Sletter {{ name }}",
-			"ERROR": "Der opstod  en fejl ved {{ name }}. Ret og prøv igen."
-		}
-	},
-	"LODGING_RESERVATION_PRICE_CHANGES": {
-		"CREATE": {
-			"CREATE": "Opret",
-			"BUTTON_CREATE": "Opret"
-		},
-		"EDIT": {
-			"EDIT": "Rediger",
-			"BUTTON_EDIT": "Opdater"
-		},
-		"INDEX": {
-			"ACTIONS": "Handlinger",
-			"CREATE": "Opret",
-			"DELETE": "Slet",
-			"MANAGE": "Konfigurer",
-			"FIELDS": "Felter",
-			"BACK": "Tilbage"
-		},
-		"FORM": {
-			"LABELS": {
-				"CHANGE": "Pris ændring",
-				"ISPERCENT": "Ændring er i procent (%)",
-				"CURRENCYCODE": "Valuta kode",
-				"VALIDFROM": "Gældende fra",
-				"VALIDTO": "Gældende til",
-				"RECORDID": "Allokeret værelse",
-				"START": "Start",
-				"END": "Slut",
-				"EXCLUDEDAYSOFWEEK": "Ekskluder uge dage",
-				"MINUNITS": "Minimum antal enheder",
-				"MAXUNITS": "Maximum antal enheder",
-				"PERUNIT": "Per enhed",
-				"ONLYVALIDUNITS": "Ændring gælder kun enheder indenfor min og max",
-				"MINUNITSOFTIME": "Minimum antal tidsenheder",
-				"MAXUNITSOFTIME": "Maximum antal tidsenheder",
-				"ONLYVALIDUNITSOFTIME": "Ændring skal gælde enheder der er indenfor tidsintervallets min og max",
-				"PERUNITOFTIME": "Ændring skal gælde pr. tidsenhed"
-			},
-			"PLACEHOLDERS": {
-				"CURRENCYCODE": "Valuta kode",
-				"RECORDID": "Allokeret værelse",
-				"CHANGE": "Pris ændring",
-				"ISPERCENT": "Ændring er i procent (%)",
-				"VALIDFROM": "Gældende fra",
-				"VALIDTO": "Gældende til",
-				"START": "Start",
-				"END": "Slut",
-				"EXCLUDEDAYSOFWEEK": "Ekskluder uge dage",
-				"MINUNITS": "Minimum antal enheder",
-				"MAXUNITS": "Maximum antal enheder",
-				"PERUNIT": "Per enhed",
-				"ONLYVALIDUNITS": "Ændring gælder kun enheder indenfor min og max",
-				"MINUNITSOFTIME": "Minimum antal tidsenheder",
-				"MAXUNITSOFTIME": "Maximum antal tidsenheder",
-				"ONLYVALIDUNITSOFTIME": "Ændring skal gælde enheder der er indenfor tidsintervallets min og max",
-				"PERUNITOFTIME": "Ændring skal gælde pr. tidsenhed"
-			},
-			"VALIDATION": {
-				"CURRENCYCODE": {
-					"REQUIRED": "Valuta kode er påkrævet"
-				},
-				"RECORDID": {
-					"REQUIRED": "Allokeret værelse er påkrævet"
-				},
-				"CHANGE": {
-					"REQUIRED": "Pris ændring er påkrævet"
-				},
-				"ISPERCENT": {
-					"REQUIRED": "Felt er påkrævet"
-				},
-				"VALIDFROM": {
-					"REQUIRED": "Gældende fra er påkrævet"
-				},
-				"VALIDTO": {
-					"REQUIRED": "Gældende til er påkrævet"
-				},
-				"START": {
-					"REQUIRED": "Start er påkrævet"
-				},
-				"END": {
-					"REQUIRED": "Slut er påkrævet"
-				},
-				"MINUNITS": {
-					"REQUIRED": "Minimum antal enheder er påkrævet"
-				},
-				"MAXUNITS": {
-					"REQUIRED": "Maximum antal enheder er påkrævet"
-				},
-				"MINUNITSOFTIME": {
-					"REQUIRED": "Minimum antal tidsenheder er påkrævet"
-				},
-				"MAXUNITSOFTIME": {
-					"REQUIRED": "Maximum antal tidsenheder er påkrævet"
-				}
-			}
-		},
-		"QUEUE": {
-			"ADDING": "Tilføjer {{ name }}",
-			"UPDATING": "Opdatere {{ name }}",
-			"DELETING": "Sletter {{ name }}",
-			"ERROR": "Der opstod  en fejl ved {{ name }}. Ret og prøv igen."
-		}
-	},
-	"LODGING_TYPE_PRICES": {
-		"CREATE": {
-			"CREATE": "Opret",
-			"BUTTON_CREATE": "Opret"
-		},
-		"EDIT": {
-			"EDIT": "Rediger",
-			"BUTTON_EDIT": "Opdater"
-		},
-		"INDEX": {
-			"ACTIONS": "Handlinger",
-			"CREATE": "Opret",
-			"DELETE": "Slet",
-			"MANAGE": "Konfigurer",
-			"FIELDS": "Felter",
-			"BACK": "Tilbage"
-		},
-		"FORM": {
-			"LABELS": {
-				"CURRENCYCODE": "Valuta kode",
-				"RECORDID": "Værelse",
-				"PRICE": "Pris"
-			},
-			"PLACEHOLDERS": {
-				"CURRENCYCODE": "Valuta kode",
-				"RECORDID": "Værelse",
-				"PRICE": "Pris"
-			},
-			"VALIDATION": {
-				"CURRENCYCODE": {
-					"REQUIRED": "Valuta kode er påkrævet"
-				},
-				"RECORDID": {
-					"REQUIRED": "Værelse er påkrævet."
-				},
-				"PRICE": {
-					"REQUIRED": "Pris er påkrævet."
-				}
-			}
-		},
-		"QUEUE": {
-			"ADDING": "Tilføjer {{ name }}",
-			"UPDATING": "Opdatere {{ name }}",
-			"DELETING": "Sletter {{ name }}",
-			"ERROR": "Der opstod  en fejl ved {{ name }}. Ret og prøv igen."
-		}
-	},
-	"LODGING_TYPE_RESERVATION_PRICE_CHANGES": {
-		"CREATE": {
-			"CREATE": "Opret",
-			"BUTTON_CREATE": "Opret"
-		},
-		"EDIT": {
-			"EDIT": "Rediger",
-			"BUTTON_EDIT": "Opdater"
-		},
-		"INDEX": {
-			"ACTIONS": "Handlinger",
-			"CREATE": "Opret",
-			"DELETE": "Slet",
-			"MANAGE": "Konfigurer",
-			"FIELDS": "Felter",
-			"BACK": "Tilbage"
-		},
-		"FORM": {
-			"LABELS": {
-				"CHANGE": "Pris ændring",
-				"CURRENCYCODE": "Valuta kode",
-				"ISPERCENT": "Ændring er i procent (%)",
-				"VALIDFROM": "Gældende fra",
-				"VALIDTO": "Gældende til",
-				"RECORDID": "Værelsestype",
-				"START": "Start",
-				"END": "Slut",
-				"EXCLUDEDAYSOFWEEK": "Ekskluder uge dage",
-				"MINUNITS": "Minimum antal enheder",
-				"MAXUNITS": "Maximum antal enheder",
-				"PERUNIT": "Per enhed",
-				"ONLYVALIDUNITS": "Ændring gælder kun enheder indenfor min og max",
-				"MINUNITSOFTIME": "Minimum antal tidsenheder",
-				"MAXUNITSOFTIME": "Maximum antal tidsenheder",
-				"ONLYVALIDUNITSOFTIME": "Ændring skal gælde enheder der er indenfor tidsintervallets min og max",
-				"PERUNITOFTIME": "Ændring skal gælde pr. tidsenhed"
-			},
-			"PLACEHOLDERS": {
-				"CURRENCYCODE": "Valuta kode",
-				"RECORDID": "Værelses type",
-				"CHANGE": "Pris ændring",
-				"ISPERCENT": "Ændring er i procent (%)",
-				"VALIDFROM": "Gældende fra",
-				"VALIDTO": "Gældende til",
-				"START": "Start",
-				"END": "Slut",
-				"EXCLUDEDAYSOFWEEK": "Ekskluder uge dage",
-				"MINUNITS": "Minimum antal enheder",
-				"MAXUNITS": "Maximum antal enheder",
-				"PERUNIT": "Per enhed",
-				"ONLYVALIDUNITS": "Ændring gælder kun enheder indenfor min og max",
-				"MINUNITSOFTIME": "Minimum antal tidsenheder",
-				"MAXUNITSOFTIME": "Maximum antal tidsenheder",
-				"ONLYVALIDUNITSOFTIME": "Ændring skal gælde enheder der er indenfor tidsintervallets min og max",
-				"PERUNITOFTIME": "Ændring skal gælde pr. tidsenhed"
-			},
-			"VALIDATION": {
-				"CURRENCYCODE": {
-					"REQUIRED": "Valuta kode er påkrævet"
-				},
-				"RECORDID": {
-					"REQUIRED": "Værelses type er påkrævet"
-				},
-				"CHANGE": {
-					"REQUIRED": "Pris ændring er påkrævet"
-				},
-				"ISPERCENT": {
-					"REQUIRED": "Felt er påkrævet"
-				},
-				"VALIDFROM": {
-					"REQUIRED": "Gældende fra er påkrævet"
-				},
-				"VALIDTO": {
-					"REQUIRED": "Gældende til er påkrævet"
-				},
-				"START": {
-					"REQUIRED": "Start er påkrævet"
-				},
-				"END": {
-					"REQUIRED": "Slut er påkrævet"
-				},
-				"MINUNITS": {
-					"REQUIRED": "Minimum antal enheder er påkrævet"
-				},
-				"MAXUNITS": {
-					"REQUIRED": "Maximum antal enheder er påkrævet"
-				},
-				"MINUNITSOFTIME": {
-					"REQUIRED": "Minimum antal tidsenheder er påkrævet"
-				},
-				"MAXUNITSOFTIME": {
-					"REQUIRED": "Maximum antal tidsenheder er påkrævet"
-				}
-			}
-		},
-		"QUEUE": {
-			"ADDING": "Tilføjer {{ name }}",
-			"UPDATING": "Opdatere {{ name }}",
-			"DELETING": "Sletter {{ name }}",
-			"ERROR": "Der opstod  en fejl ved {{ name }}. Ret og prøv igen."
-		}
-	},
-	"CONNECTIONS": {
-		"CREATE": {
-			"CREATE": "Opret",
-			"BUTTON_CREATE": "Opret"
-		},
-		"EDIT": {
-			"EDIT": "Rediger",
-			"BUTTON_EDIT": "Opdater"
-		},
-		"INDEX": {
-			"ACTIONS": "Handlinger",
-			"CREATE": "Opret",
-			"DELETE": "Slet",
-			"MANAGE": "Konfigure",
-			"BACK": "Tilbage",
-			"TITLE_EXTRAS": "(Forbindelser)"
-		},
-		"FORM": {
-			"LABELS": {
-				"STATUS": "Status",
-				"CLIENTID": "Klient",
-				"TERMINALID": "Terminal",
-				"ONLINE": "Online"
-			},
-			"PLACEHOLDERS": {
-				"STATUS": "Status",
-				"CLIENTID": "Klient",
-				"TERMINALID": "Terminal",
-				"ONLINE": "Online"
-			},
-			"VALIDATION": {
-				"STATUS": {
-					"REQUIRED": "Status er påkrævet"
-				},
-				"CLIENTID": {
-					"REQUIRED": "Klient er påkrævet"
-				},
-				"TERMINALID": {
-					"REQUIRED": "Terminal er påkrævet"
-				}
-			}
-		},
-		"QUEUE": {
-			"ADDING": "Tilføker forbindelse {{ id }}",
-			"UPDATING": "Opdaterer forbindelse {{ id }}",
-			"DELETING": "Sletter forbindelse {{ id }}",
-			"ERROR": "En fejl er opstået med forbindelse {{ id }}. Ret fejlene og prøv igen."
-		}
-	},
-	"TERMINAL_PAYMENT_RECEIPTS": {
-		"FORM": {
-			"LABELS": {
-				"REFERENCENUMBER": "Reference nummer",
-				"PRINTRECEIPT": "Udskriv kvittering",
-				"RECEIPTDOCUMENT": "Kvitterings dokument",
-				"INVOICEPAYMENTID": "Betalings faktura"
-			},
-			"PLACEHOLDERS": {
-				"REFERENCENUMBER": "Reference nummer",
-				"PRINTRECEIPT": "Udskriv kvittering",
-				"RECEIPTDOCUMENT": "Kvitterings dokument",
-				"INVOICEPAYMENTID": "Betalings faktura"
-			},
-			"VALIDATION": {
-				"REFERENCENUMBER": {
-					"REQUIRED": "Reference nummer er påkrævet."
-				},
-				"PRINTRECEIPT": {
-					"REQUIRED": "Udskriv kvittering er påkrævet."
-				},
-				"RECEIPTDOCUMENT": {
-					"REQUIRED": "Kvitterings dokument er påkrævet."
-				},
-				"INVOICEPAYMENTID": {}
-			}
-		},
-		"FIELDS": {
-			"CREATE": {
-				"ADD": "Tilføj nyt felt"
-			},
-			"EDIT": {
-				"EDITING": "Redigere"
-			},
-			"INDEX": {
-				"ACTIONS": "Handlinger",
-				"CREATE": "Opret nyt felt",
-				"OTHER": "Andre",
-				"BACK": "Tilbage",
-				"FIELDS": "Felter",
-				"EDIT": "Rediger"
-			}
-		},
-		"CREATE": {
-			"CREATE": "Opret",
-			"BUTTON_CREATE": "Opret"
-		},
-		"EDIT": {
-			"EDIT": "Rediger",
-			"BUTTON_EDIT": "Opdater"
-		},
-		"INDEX": {
-			"PACKAGES": "Pakker",
-			"CREATE": "Opret",
-			"EDIT": "Rediger",
-			"DELETE": "Slet",
-			"FIELDS": "Felter",
-			"FIELDS_TITLE": "(felter)",
-			"TITLE_EXTRAS": "(Betalings kvitteringer)",
-			"ITEM": "Vare",
-			"MANAGE": "Konfigure",
-			"ACTIONS": "Handlinger"
-		},
-		"NOTIFICATIONS": {
-			"GET": {
-				"PAGED_ERROR": "Fejlede med at hente terminalPaymentReceipts ({{ httpErrorCode }}).",
-				"SINGLE_FAILURE": "Fejlede med at hente {{ printReceipt }} ({{ httpErrorCode }}).",
-				"FIELDS_FAILURE": "Fejlede med at hente felter for terminalPaymentReceipts ({{ httpErrorCode }}).",
-				"SINGLE_FIELD_FAILURE": "Fejlede med at hente {{ printReceipt }} felter ({{ httpErrorCode }})."
-			},
-			"ADD": {
-				"SUCCESS": "Tilføjer {{ printReceipt }} successfuldt.",
-				"FAILURE": "Fejlede med at tilføje {{ printReceipt }} ({{ httpErrorCode }}).",
-				"FIELD_FAILURE": "Fejlede med at tilføje felter for {{ printReceipt }} ({{ httpErrorCode }}).",
-				"FIELD_SUCCESS": "Tilføjer felter for {{ printReceipt }} successfuldt."
-			},
-			"UPDATE": {
-				"SUCCESS": "Opdatere {{ printReceipt }} successfuldt.",
-				"FAILURE": "Fejlede med at opdatere {{ printReceipt }} ({{ httpErrorCode }}).",
-				"FIELD_SUCCESS": "Opdatere felter for {{ printReceipt }} successfuldt.",
-				"FIELD_FAILURE": "Fejlede med at opdatere felter for {{ printReceipt }} ({{ httpErrorCode }})"
-			},
-			"REMOVE": {
-				"SUCCESS": "Removed {{ printReceipt }} successfuldt.",
-				"FAILURE": "Fejlede med at fjerne {{ printReceipt }} ({{ httpErrorCode }}).",
-				"FIELD_SUCCESS": "Removed felter for {{ printReceipt }} succesfully.",
-				"FIELD_FAILURE": "Fejlede med at fjerne felter for {{ printReceipt }} ({{ httpErrorCode }})."
-			}
-		},
-		"QUEUE": {
-			"ADDING": "Tilføjer {{ printReceipt }}",
-			"UPDATING": "Opdatere {{ printReceipt }}",
-			"DELETING": "Sletter {{ printReceipt }}",
-			"ERROR": "Der skete en fejl med {{ printReceipt }}. Ret og prøv igen."
-		}
-	},
-	"TERMINALS": {
-		"FORM": {
-			"LABELS": {
-				"NAME": "Navn",
-				"CONNECTIONSTRING": "Forbindelsesdata",
-				"CONNECTION": "Forbindelser",
-				"DESCRIPTION": "Beskrivelse",
-				"CLIENTID": "Klient",
-				"TERMINALID": "Terminal",
-				"AMOUNT": "Mængde",
-				"INVOICEID": "Faktura ID",
-				"CURRENCYCODE": "Valuta kode"
-			},
-			"PLACEHOLDERS": {
-				"NAME": "Navn",
-				"CONNECTIONSTRING": "Forbindelsesdata",
-				"CONNECTION": "Forbindelse",
-				"DESCRIPTION": "Beskrivelse",
-				"CLIENTID": "Klient",
-				"TERMINALID": "Terminal",
-				"AMOUNT": "Mængde",
-				"INVOICEID": "Fakturea ID",
-				"CURRENCYCODE": "Valuta kode"
-			},
-			"VALIDATION": {
-				"NAME": {
-					"REQUIRED": "Navn er påkrævet."
-				},
-				"CONNECTIONSTRING": {
-					"REQUIRED": "Forbindelsesdata er påkrævet."
-				},
-				"CONNECTION": {
-					"REQUIRED": "Forbindelse er påkrævet."
-				},
-				"CLIENTID": {
-					"REQUIRED": "Klient er påkrævet."
-				},
-				"TERMINALID": {
-					"REQUIRED": "Terminal er påkrævet."
-				},
-				"AMOUNT": {
-					"REQUIRED": "Mængde er påkrævet."
-				},
-				"INVOICEID": {
-					"REQUIRED": "Faktura ID er påkrævet."
-				},
-				"CURRENCYCODE": {
-					"REQUIRED": "Valuta er påkrævet."
-				}
-			}
-		},
-		"CREATE": {
-			"CREATE": "Opret",
-			"BUTTON_CREATE": "Opret"
-		},
-		"EDIT": {
-			"EDIT": "Rediger",
-			"BUTTON_EDIT": "Opdater"
-		},
-		"INDEX": {
-			"TITLE_EXTRAS": "(Terminaler)",
-			"CREATE": "Opret",
-			"EDIT": "Rediger",
-			"DELETE": "Slet",
-			"MANAGE": "Konfigurer",
-			"ACTIONS": "Handlinger",
-			"TYPES": "Typer"
-		},
-		"PAY": {
-			"TITLE": "Kreditkort betaling",
-			"BUTTON_PAY": "Betal"
-		},
-		"QUEUE": {
-			"ADDING": "Tilføjer terminal {{ id }}",
-			"UPDATING": "Opdatere terminal {{ id }}",
-			"DELETING": "Sletter terminal {{ id }}",
-			"ERROR": "Der opstod  en fejl ved terminal {{ id }}. Ret og prøv igen."
-		},
-		"ENTITY_ACTION_PROVIDER": {
-			"ENTITY_ACTION": {
-				"TERMINAL_PAYMENT": "Kreditkort betaling"
-			}
-		}
-	},
-	"TERMINAL_RECEIPTS": {
-		"FORM": {
-			"LABELS": {
-				"TYPE": "Type",
-				"PRINTRECEIPT": "Udskriv kvittering"
-			},
-			"PLACEHOLDERS": {
-				"TYPE": "Type",
-				"PRINTRECEIPT": "Udskriv kvittering"
-			},
-			"VALIDATION": {
-				"TYPE": {
-					"REQUIRED": "Type er påkrævet."
-				},
-				"PRINTRECEIPT": {
-					"REQUIRED": "Udskriv kvittering er påkrævet."
-				}
-			}
-		},
-		"FIELDS": {
-			"CREATE": {
-				"ADD": "Tilføj nyt felt"
-			},
-			"EDIT": {
-				"EDITING": "Redigere"
-			},
-			"INDEX": {
-				"ACTIONS": "Handlinger",
-				"CREATE": "Opret nyt felt",
-				"OTHER": "Andre",
-				"BACK": "Tilbage",
-				"FIELDS": "Felter",
-				"EDIT": "Rediger"
-			}
-		},
-		"CREATE": {
-			"CREATE": "Opret",
-			"BUTTON_CREATE": "Opret"
-		},
-		"EDIT": {
-			"EDIT": "Rediger",
-			"BUTTON_EDIT": "Opdater"
-		},
-		"INDEX": {
-			"PACKAGES": "Pakker",
-			"CREATE": "Opret",
-			"EDIT": "Rediger",
-			"DELETE": "Slet",
-			"FIELDS": "Felter",
-			"FIELDS_TITLE": "(felter)",
-			"TITLE_EXTRAS": "(receipts)",
-			"ITEM": "Vare",
-			"MANAGE": "Konfigure",
-			"ACTIONS": "Handlinger"
-		},
-		"NOTIFICATIONS": {
-			"GET": {
-				"PAGED_ERROR": "Fejlede med at hente terminalReceipts ({{ httpErrorCode }}).",
-				"SINGLE_FAILURE": "Fejlede med at hente {{ printReceipt }} ({{ httpErrorCode }}).",
-				"FIELDS_FAILURE": "Fejlede med at hente felter for terminalReceipts ({{ httpErrorCode }}).",
-				"SINGLE_FIELD_FAILURE": "Fejlede med at hente {{ printReceipt }} felter ({{ httpErrorCode }})."
-			},
-			"ADD": {
-				"SUCCESS": "Tilføjer {{ printReceipt }} successfuldt.",
-				"FAILURE": "Fejlede med at tilføje {{ printReceipt }} ({{ httpErrorCode }}).",
-				"FIELD_FAILURE": "Fejlede med at tilføje felter for {{ printReceipt }} ({{ httpErrorCode }}).",
-				"FIELD_SUCCESS": "Tilføjer felter for {{ printReceipt }} successfuldt."
-			},
-			"UPDATE": {
-				"SUCCESS": "Opdatere {{ printReceipt }} successfuldt.",
-				"FAILURE": "Fejlede med at opdatere {{ printReceipt }} ({{ httpErrorCode }}).",
-				"FIELD_SUCCESS": "Opdatere felter for {{ printReceipt }} successfuldt.",
-				"FIELD_FAILURE": "Fejlede med at opdatere felter for {{ printReceipt }} ({{ httpErrorCode }})"
-			},
-			"REMOVE": {
-				"SUCCESS": "Removed {{ printReceipt }} successfuldt.",
-				"FAILURE": "Fejlede med at fjerne {{ printReceipt }} ({{ httpErrorCode }}).",
-				"FIELD_SUCCESS": "Removed felter for {{ printReceipt }} succesfully.",
-				"FIELD_FAILURE": "Fejlede med at fjerne felter for {{ printReceipt }} ({{ httpErrorCode }})."
-			}
-		},
-		"QUEUE": {
-			"ADDING": "Tilføjer {{ printReceipt }}",
-			"UPDATING": "Opdatere {{ printReceipt }}",
-			"DELETING": "Sletter {{ printReceipt }}",
-			"ERROR": "Der skete en fejl med {{ printReceipt }}. Ret og prøv igen."
-		}
-	},
-	"UI": {
-		"ERROR_MESSAGE": {
-			"ERROR_OCCURRED": "DER SKETE EN FEJL!",
-			"DEV_ERROR": "Vis dev fejl",
-			"SORRY_ERROR": "Undskyld, der skete en fejl. Prøv igen."
-		},
-		"ONLINE_STATUS": {
-			"OFFLINE": "Intet netværk! Kører offline tilstand."
-		},
-		"MISC": {
-			"BACK": "Tilbage",
-			"CONNECTED_PACKAGES": "Tilsluttede pakker"
-		},
-		"PACKAGE_DRAWER": {
-			"SETTINGS": "Indstillinger",
-			"SECURITY": "Sikkerhed",
-			"TENANTS": "beboerne",
-			"PACKAGES": "Pakker",
-			"ROLES": "Roller",
-			"HELP": "Hjælp",
-			"PAYMENTS": "Betalinger"
-		},
-		"TOP_BAR": {
-			"SEARCH": "Søg...",
-			"PACKAGES": "Pakker",
-			"NO_CONVER": "Ingen samtaler",
-			"NO_NOTI": "Ingen meddelser",
-			"ACC_SET": "Bruger indstillinger",
-			"ACCOUNT": "Konto",
-			"LOG_OUT": "Log ud"
-		},
-		"ENTITY_ACTIONS": {
-			"EDIT": "Rediger",
-			"DELETE": "Slet",
-			"DETAILS": "Detaljer"
-		},
-		"RECORDS_CONTAINER": {
-			"LOADED": "Hentet {{ loadedCount }} ud af {{ totalCount }}"
-		},
-		"BUTTONS": {
-			"BUTTON_ADD": "Tilføj",
-			"BUTTON_EDIT": "Opdater",
-			"BUTTON_VERIFY": "Verificere",
-			"BUTTON_VALIDATOR": "+ Tilføj validator"
-		},
-		"PERMISSION": {
-			"WRITEPERMISSION": "Skrive tilladelser",
-			"READPERMISSION": "Læse tilladelser"
-		},
-		"RECURRING_EXPRESSION": {
-			"TOGGLE": "Aktiver gentagelse",
-			"EXPRESSION": "Ekspression"
-		},
-		"ROLE_SELECT": {
-			"SELECT_ROLES": "Vælg roller",
-			"SELECT_ROLE": "Vælg rolle"
-		},
-		"GEOGRAPHY": {
-			"LONGITUDE": "Længdegrad",
-			"LANGTITUDE": "Bredegrad"
-		},
-		"TIME": {
-			"FREQUENCY": "Frekvens",
-			"ENTER_NUMBER": "Indtast nummer",
-			"HOURS": "Timer",
-			"MINUTES": "Minutter",
-			"SECONDS": "Sekunder"
-		},
-		"ADVANCED": "Avanceret",
-		"SELECT_VALIDATOR": "Venligst vælg en validator"
-	},
-	"NOTIFICATIONS": {
-		"GET": {
-			"PAGED_ERROR": "{{ errorMessage }} ({{ httpErrorCode }}).",
-			"SINGLE_FAILURE": "{{ errorMessage }} ({{ httpErrorCode }}).",
-			"FIELDS_FAILURE": "{{ errorMessage }} ({{ httpErrorCode }}).",
-			"SINGLE_FIELD_FAILURE": "{{ errorMessage }} ({{httpErrorCode }})."
-		},
-		"ADD": {
-			"SUCCESS": "Tilføjelsen lykkedes.",
-			"FAILURE": "{{ errorMessage }} ({{ httpErrorCode }}).",
-			"FIELD_FAILURE": "{{ errorMessage }} ({{ httpErrorCode }}).",
-			"FIELD_SUCCESS": "Tilføjelsen lykkedes."
-		},
-		"UPDATE": {
-			"SUCCESS": "Opdateringen lykkedes.",
-			"FAILURE": "{{ errorMessage }} ({{ httpErrorCode }}).",
-			"FIELD_SUCCESS": "Opdateringen lykkedes.",
-			"FIELD_FAILURE": "{{ errorMessage }} ({httpErrorCode }})"
-		},
-		"REMOVE": {
-			"SUCCESS": "Sletningen lykkedes.",
-			"FAILURE": "{{ errorMessage }} ({{ httpErrorCode }}).",
-			"FIELD_SUCCESS": "Sletningen lykkedes.",
-			"FIELD_FAILURE": "{{ errorMessage }} ({{httpErrorCode }})."
-		},
-		"CONNECTION_ERROR": "Der kunne ikke oprettes forbindelse til serveren."
-	},
-	"SKYSMACK": {
-		"FORM": {
-			"PLACEHOLDERS": {
-				"NAME": "Navn",
-				"DEFAULTTAX": "Moms"
-			}
-		}
-	},
-	"OAUTH2": {
-		"FORM": {
-			"LABELS": {
-				"EMAIL": "Email",
-				"PASSWORD": "Adgangskode",
-				"STAYSIGNEDIN": "Forbliv logget ind"
-			},
-			"PLACEHOLDERS": {
-				"EMAIL": "Indstast email",
-				"PASSWORD": "Indtast en adgangskode"
-			},
-			"VALIDATION": {
-				"EMAIL": {
-					"REQUIRED": "En Email er påkrævet.",
-					"INVALIDEMAIL": "Indtast en gyldig email."
-				},
-				"PASSWORD": {
-					"REQUIRED": "En adgangskode er påkrævet."
-				}
-			}
-		},
-		"OAUTH2_LOGIN": {
-			"SIGN_IN": "Log ind",
-			"ENTER_CRED": "Indtast dine log ind informationer herunder",
-			"ERROR_OCCURRED": "Der skete en fejl, bekræft at den rigtige email og adgangskode er indtastet",
-			"FORGOT_PASSWORD": "Glemt adgangskode?",
-			"LOGGING_IN": "Logger ind...",
-			"BUTTON_LOGIN": "Log ind",
-			"CONFIRM_EMAIL": "Bekræft e-mail"
-		}
-	},
-	"OPEN_API": {
-		"SETTINGS": "Indstillinger",
-		"FORM": {
-			"PLACEHOLDERS": {
-				"TITLE": "Titel",
-				"DESCRIPTION": "Beskrivelse",
-				"TERMSOFSERVICE": "Servicevilkår",
-				"CONTACTNAME": "Kontakt navn",
-				"CONTACTURL": "Kontakt URL",
-				"CONTACTEMAIL": "Kontakt email",
-				"LICENSENAME": "Licens name",
-				"LICENSEURL": "Licens URL"
-			}
-		}
-	},
-	"PACKAGES": {
-		"ADDING": "Tilføjer {{ name }}",
-		"UPDATING": "Opdatere {{ name }}",
-		"DELETING": "Sletter {{ name }}",
-		"EDITING_PATH": "Rediger sti",
-		"ERROR": "Der opstod  en fejl ved {{ name }}. Ret og prøv igen.",
-		"FORM": {
-			"LABELS": {
-				"TYPE": "Pakke type",
-				"NAME": "Navn",
-				"DESCRIPTION": "Beskrivelse",
-				"PATH": "PATH"
-			},
-			"PLACEHOLDERS": {
-				"TYPE": "Vælg en pakke type",
-				"NAME": "Indtast et navn",
-				"DESCRIPTION": "Indtast en beskrivelse",
-				"PATH": "Indtast en sti",
-				"NEWPATH": "Ny sti",
-				"CURRENTPATH": "Nuværende sti"
-			},
-			"VALIDATION": {
-				"TYPE": {
-					"REQUIRED": "En pakke type er påkrævet.",
-					"DEPSMISSING": "Ikke alle pakker er valgt."
-				},
-				"NAME": {
-					"REQUIRED": "Et navn er påkrævet."
-				},
-				"DESCRIPTION": {
-					"REQUIRED": "En beskrivelse er påkrævet."
-				},
-				"PATH": {
-					"REQUIRED": "En sti er påkrævet.",
-					"INVALIDSTRINGLENGTH": "Stien skal minimum være 3 karakterer lang."
-				},
-				"NEWPATH": {
-					"REQUIRED": "En sti er påkrævet.",
-					"INVALIDSTRINGLENGTH": "Stien skal minimum være 3 karakterer lang."
-				}
-			}
-		},
-		"INDEX": {
-			"ACTIONS": "Handlinger",
-			"CREATE": "Opret",
-			"MANAGE": "Konfigurer",
-			"ADAPTORS": "Adaptere",
-			"FEATURES": "Udvidelser",
-			"INSTALL": "Installer pakke",
-			"TITLE": "Pakker",
-			"AVAILABLE_PACKAGES": "Ledige pakker",
-			"OPEN": "Gå til"
-		},
-		"CREATE": {
-			"INSTALL": "Installer pakke",
-			"BUTTON_CREATE": "Opret"
-		},
-		"EDIT": {
-			"EDITING": "redigerer {{ object.name }} pakken",
-			"EDIT": "Ret pakke",
-			"BUTTON_EDIT": "Opdater"
-		},
-		"QUEUE": {
-			"ADDING": "Tilføjer {{ displayName }}",
-			"UPDATING": "Opdatere {{ displayName }}",
-			"DELETING": "Sletter {{ displayName }}",
-			"ERROR": "Der skete en fejl med {{ displayName }}. Ret og prøv igen."
-		}
-	},
-	"ADAPTORS": {
-		"FORM": {
-			"LABELS": {
-				"PACKAGETYPE": "Pakke type",
-				"LEFTDEPENDENCYID": "Venstre pakke",
-				"RIGHTDEPENDENCYID": "Højre pakke",
-				"NAME": "Navn",
-				"DESCRIPTION": "Beskrivelse",
-				"URL": "URL",
-				"TYPE": "Type"
-			},
-			"PLACEHOLDERS": {
-				"PACKAGETYPE": "Indtast pakke type",
-				"LEFTDEPENDENCYID": "Indtast venstre pakke ",
-				"RIGHTDEPENDENCYID": "Indtast højre pakke",
-				"NAME": "Indtast navn",
-				"DESCRIPTION": "Indtast beskrivelse",
-				"URL": "Indtast URL",
-				"TYPE": "Indtast type"
-			},
-			"VALIDATION": {
-				"PACKAGETYPE": {
-					"REQUIRED": "Vælg en pakke type."
-				},
-				"LEFTDEPENDENCYID": {
-					"REQUIRED": "Vælg venstre pakke."
-				},
-				"RIGHTDEPENDENCYID": {
-					"REQUIRED": "Vælg højre pakke."
-				},
-				"NAME": {
-					"REQUIRED": "Et navn er påkrævet."
-				},
-				"DESCRIPTION": {
-					"REQUIRED": "En beskrivelse er påkrævet."
-				},
-				"URL": {
-					"REQUIRED": "En URL er påkrævet."
-				},
-				"TYPE": {
-					"REQUIRED": "En Type er påkrævet."
-				}
-			}
-		},
-		"INDEX": {
-			"ACTIONS": "Handlinger",
-			"CREATE": "Opret",
-			"MANAGE": "Konfigurer",
-			"INSTALL": "Installer adapter",
-			"TITEL": "Adaptere",
-			"BACK": "Tilbage",
-			"OTHER": "Andet"
-		},
-		"EDIT": {
-			"EDITING": "Ret {{ object.name }} adapter"
-		},
-		"CREATE": {
-			"INSTALL": "Installer adapter"
-		}
-	},
-	"FEATURES": {
-		"FORM": {
-			"LABELS": {
-				"PACKAGETYPE": "Pakke type",
-				"DEPENDENCYID": "Pakke",
-				"NAME": "Navn",
-				"DESCRIPTION": "Beskrivelse",
-				"URL": "URL",
-				"TYPE": "Type"
-			},
-			"PLACEHOLDERS": {
-				"PACKAGETYPE": "Indtast pakke type",
-				"DEPENDENCYID": "Indtast pakke ",
-				"NAME": "Indtast navn",
-				"DESCRIPTION": "Indtast beskrivelse",
-				"URL": "Indtast URL",
-				"TYPE": "Indtast type"
-			},
-			"VALIDATION": {
-				"PACKAGETYPE": {
-					"REQUIRED": "Vælg en pakke type."
-				},
-				"DEPENDENCYID": {
-					"REQUIRED": "Vælg en pakke."
-				},
-				"NAME": {
-					"REQUIRED": "Navn er påkrævet."
-				},
-				"DESCRIPTION": {
-					"REQUIRED": "En beskrivelse er påkrævet."
-				},
-				"URL": {
-					"REQUIRED": "En URL er påkrævet."
-				},
-				"TYPE": {
-					"REQUIRED": "En Type er påkrævet."
-				}
-			}
-		},
-		"INDEX": {
-			"ACTIONS": "Handlinger",
-			"CREATE": "Opret",
-			"MANAGE": "Konfigurer",
-			"FEATURES": "Udvidelser",
-			"INSTALL": "Installer funktion",
-			"TITEL": "Udvidelser",
-			"BACK": "Tilbage",
-			"OTHER": "Andet"
-		},
-		"EDIT": {
-			"EDITING": "Ret {{ object.name }} funktion"
-		},
-		"CREATE": {
-			"INSTALL": "Installer funktion"
-		}
-	},
-	"PRODUCTS_PRICINGS": {
-		"INDEX": {
-			"MANAGE": "Konfigurer",
-			"SALES_PRICES": "Produkt salgs priser",
-			"SALES_PRICES_TYPES": "Produkt typer salgs priser",
-			"PRICE_CHANGES": "Produkt pris ændringer",
-			"PRICE_TYPE_CHANGES": "Produkt type pris ændringer"
-		}
-	},
-	"RESERVATIONS_PRICINGS": {
-		"INDEX": {
-			"MANAGE": "Konfigurer",
-			"RESERVATION_PRICE_CHANGES": "Værelses prisændringer",
-			"PRICES": "Værelses priser",
-			"RESERVATION_PRICE_CHANGES_TYPES": "Værelsestype prisændringer",
-			"PRICES_TYPES": "Værelsestype priser"
-		}
-	},
-	"TERMINAL_PAYMENTS": {
-		"INDEX": {
-			"TITLE": "Terminal Betalinger",
-			"MANAGE": "Konfigurer",
-			"TERMINALS": "Terminaler",
-			"RECEIPTS": "Kvitteringer",
-			"CONNECTIONS": "Forbindelser",
-			"TERMINAL_RECEIPTS": "Terminalkvitteringer",
-			"TERMINAL_PAYMENT_RECEIPTS": "Betalingkvitteringer"
-		}
-	},
-	"SETTINGS": {
-		"SETTINGS": "Indstillinger",
-		"BUTTON_SUBMIT": "Indsend",
-		"QUEUE": {
-			"ADDING": "Tilføjer settings",
-			"UPDATING": "Opdatere settings",
-			"DELETING": "Sletter settings",
-			"ERROR": "Der skete en fejl med indstillinger. Ret og prøv igen"
-		}
-	},
-	"FIELDS": {
-		"INDEX": {
-			"CREATE": "Opret",
-			"ACTIONS": "Handlinger",
-			"MANAGE": "Konfigurer",
-			"BACK": "Tilbage"
-		},
-		"CREATE": {
-			"CREATE": "Opret felt",
-			"BUTTON_CREATE": "Opret"
-		},
-		"EDIT": {
-			"EDITING": "Redigere",
-			"BUTTON_EDIT": "Opdater"
-		},
-		"FORM": {
-			"LABELS": {
-				"KEY": "Nøgle",
-				"TYPE": "Type",
-				"DISPLAY": "Visningsnavn",
-				"VALIDATORS": "Valideringer",
-				"READPERMISSION": "Læse tilladelser",
-				"WRITEPERMISSION": "Skrive tilladelser"
-			},
-			"PLACEHOLDERS": {
-				"KEY": "Nøgle",
-				"TYPE": "Type",
-				"DISPLAY": "Visningsnavn",
-				"VALIDATORS": "Valideringer",
-				"READPERMISSION": "Læse tilladelser",
-				"WRITEPERMISSION": "Skrive tilladelser"
-			},
-			"VALIDATION": {
-				"KEY": {
-					"REQUIRED": "Nøgle er påkrævet"
-				},
-				"TYPE": {
-					"REQUIRED": "Type er påkrævet"
-				},
-				"DISPLAY": {
-					"REQUIRED": "Visningsnavn er påkrævet"
-				}
-			}
-		},
-		"QUEUE": {
-			"ADDING": "Tilføjer {{ displayName }}",
-			"UPDATING": "Opdatere {{ displayName }}",
-			"DELETING": "Sletter {{ displayName }}",
-			"ERROR": "Der skete en fejl med {{ displayName }}. Ret og prøv igen"
-		}
-	},	
-	"RECURRING_ASSIGNMENTS": {
-		"FORM": {
-			"LABELS": {
-				"ASSIGNMENTTYPEID": "Opgave type",
-				"ENTITYID": "Enhed",
-				"START": "Start tidspunkt",
-				"END": "Slut tidspunkt"
-			},
-			"PLACEHOLDERS": {
-				"ASSIGNMENTTYPEID": "Opgave type",
-				"ENTITYID": "Enhed",
-				"START": "Start tidspunkt",
-				"END": "Slut tidspunkt"
-			},
-			"VALIDATION": {
-				"ASSIGNMENTTYPEID": {
-					"REQUIRED": "Opgave type er påkrævet."
-				},
-				"ENTITYID": {
-					"REQUIRED": "Enhed er påkrævet"
-				},
-				"START": {
-					"REQUIRED": "Start tidspunkt er påkrævet"
-				},
-				"END": {
-					"REQUIRED": "Slut tidspunkt er påkrævet"
-				}
-			}
-		},
-		"CREATE": {
-			"CREATE": "Opret",
-			"BUTTON_CREATE": "Opret"
-		},
-		"EDIT": {
-			"EDIT": "Ret",
-			"BUTTON_EDIT": "Opdater"
-		},
-		"INDEX": {
-			"TITLE_EXTRAS": "(gentagne opgaver)",
-			"ACTIONS": "Handlinger",
-			"CREATE": "Opret",
-			"EDIT": "Ret",
-			"DELETE": "Slet",
-			"MANAGE": "Konfigurer",
-			"FIELDS": "Felter",
-			"STATES": "Tilstande",
-			"BACK": "Tilbage"
-		},
-		"QUEUE": {
-			"ADDING": "Tilføjer {{ description }}",
-			"UPDATING": "Opdatere {{ description }}",
-			"DELETING": "Sletter {{ description }}",
-			"ERROR": "Der opstod  en fejl ved {{ description }}. Ret og prøv igen."
-		}
-	},
-	"FILE_STORAGE": {
-		"FORM": {
-			"LABELS": {
-				"BUCKET": "Bucket",
-				"FOLDERNAME": "Mappe navn"
-			},
-			"PLACEHOLDERS": {
-				"BUCKET": "Indtast et bucket navn",
-				"FOLDERNAME": "Indtast et mappe navn"
-			},
-			"VALIDATION": {
-				"BUCKET": {
-					"REQUIRED": "En spand name er påkrævet."
-				},
-				"FOLDERNAME": {
-					"REQUIRED": "Et mappe navn er påkrævet."
-				}
-			}
-		},
-		"CREATE": {
-			"CREATE": "Opret ny bucket",
-			"BUTTON_CREATE": "Opret"
-		},
-		"EDIT": {
-			"EDIT": "Rediger",
-			"BUTTON_EDIT": "Update"
-		},
-		"INDEX": {
-			"UPLOAD": "Upload file",
-			"CREATE_FOLDER": "Opret folder",
-			"PACKAGES": "Pakker",
-			"CREATE": "Opret",
-			"EDIT": "Rediger",
-			"DELETE": "Fjern",
-			"FIELDS": "Felter",
-			"FIELDS_TITLE": "(Felter)",
-			"ITEM": "Objekter",
-			"MANAGE": "Konfigure",
-			"ACTIONS": "Handlinger"
-		}
-	}
+  "ACCESS_POINTS": {
+    "CREATE": {
+      "BUTTON_CREATE": "Opret",
+      "CREATE": "Opret"
+    },
+    "EDIT": {
+      "BUTTON_EDIT": "Opdater",
+      "EDIT": "Rediger"
+    },
+    "FORM": {
+      "LABELS": {
+        "DOORWAYID": "døråbning",
+        "ID": "ID"
+      },
+      "PLACEHOLDERS": {
+        "DOORWAYID": "døråbning",
+        "ID": "ID"
+      },
+      "VALIDATION": {
+        "DOORWAYID": {
+          "REQUIRED": "En døråbning er påkrævet."
+        },
+        "ID": {
+          "REQUIRED": "Et ID er påkrævet."
+        }
+      }
+    },
+    "INDEX": {
+      "ACTIONS": "Handlinger",
+      "CREATE": "Opret",
+      "DELETE": "Fjern",
+      "EDIT": "Rediger",
+      "MANAGE": "Konfigurer",
+      "SETTINGS": "Indstillinger",
+      "TITLE_EXTRAS": "(AccessPoints)",
+      "TYPES": "Typer"
+    }
+  },
+  "ACCESS_POLICIES": {
+    "DASHBOARD": {
+      "ACCESS_POLICIES": "Adgangs politikker"
+    },
+    "INDEX": {
+      "MANAGE": "Konfigurer",
+      "PERMISSIONS": "Tilladelser",
+      "ROLES": "Roller",
+      "RULES": "Regler"
+    },
+    "QUEUE": {
+      "ADDING": "Tilføjer {{ ruleId }}",
+      "DELETING": "Sletter {{ ruleId }}",
+      "ERROR": "Der opstod  en fejl ved {{ ruleId }}. Ret og prøv igen.",
+      "UPDATING": "Opdatere {{ ruleId }}"
+    },
+    "TITLE": "Adgangspolitikker"
+  },
+  "ACCESS_POLICY_PERMISSIONS": {
+    "CREATE": {
+      "BUTTON_CREATE": "Opret",
+      "CREATE": "Opret"
+    },
+    "EDIT": {
+      "BUTTON_EDIT": "Opdater",
+      "EDITING": "Rediger"
+    },
+    "FORM": {
+      "LABELS": {
+        "ISTOPLEVEL": "Er Top Level?",
+        "ORDER": "Rækkefølge",
+        "PACKAGEPATH": "Pakke stig",
+        "PERMISSION": "Tilladelse",
+        "RULEID": "Regel id"
+      },
+      "PLACEHOLDERS": {
+        "ISTOPLEVEL": "Er Top Level?",
+        "ORDER": "Rækkefølge",
+        "PACKAGEPATH": "Pakke stig",
+        "PERMISSION": "Tilladelse",
+        "RULEID": "Regel id"
+      },
+      "VALIDATION": {}
+    },
+    "INDEX": {
+      "ACTIONS": "Handlinger",
+      "BACK": "Tilbage",
+      "CREATE": "Opret",
+      "FIELDS_TITLE": "(felter)",
+      "MANAGE": "Konfigurer",
+      "ROLES": "Roller",
+      "TITLE_EXTRAS": "(tilladelser)"
+    },
+    "QUEUE": {
+      "ADDING": "Tilføjer {{ ruleId }}",
+      "DELETING": "Sletter {{ ruleId }}",
+      "ERROR": "Der skete en fejl med {{ ruleId }}. Ret og prøv igen.",
+      "UPDATING": "Opdatere {{ ruleId }}"
+    }
+  },
+  "ACCESS_POLICY_ROLES": {
+    "CREATE": {
+      "BUTTON_CREATE": "Opret",
+      "CREATE": "Opret"
+    },
+    "EDIT": {
+      "BUTTON_EDIT": "Opdater",
+      "EDITING": "Rediger"
+    },
+    "FORM": {
+      "LABELS": {
+        "ROLEID": "Rolle",
+        "RULEID": "Regel"
+      },
+      "PLACEHOLDERS": {
+        "ROLEID": "Rolle",
+        "RULEID": "Regel"
+      },
+      "VALIDATION": {
+        "NAME": {
+          "REQUIRED": "Navn er påkrævet"
+        }
+      }
+    },
+    "INDEX": {
+      "ACTIONS": "Handlinger",
+      "BACK": "Tilbage",
+      "CREATE": "Opret",
+      "FIELDS_TITLE": "(felter)",
+      "MANAGE": "Konfigurer",
+      "ROLES": "Roller",
+      "TITLE_EXTRAS": "(roller)"
+    },
+    "QUEUE": {
+      "ADDING": "Tilføjer {{ roleId }}",
+      "DELETING": "Sletter {{ roleId }}",
+      "ERROR": "Der opstod  en fejl ved {{ roleId }}. Ret og prøv igen.",
+      "UPDATING": "Opdatere {{ roleId }}"
+    }
+  },
+  "ACCESS_POLICY_RULES": {
+    "CREATE": {
+      "BUTTON_CREATE": "Opret",
+      "CREATE": "Opret"
+    },
+    "EDIT": {
+      "BUTTON_EDIT": "Opdater",
+      "EDITING": "Rediger"
+    },
+    "FORM": {
+      "LABELS": {
+        "ACCESS": "Adgang",
+        "AUTHENTICATED": "Godkendt",
+        "INCLUDEROLES": "Inkluder roller"
+      },
+      "PLACEHOLDERS": {
+        "ACCESS": "Adgang",
+        "AUTHENTICATED": "Godkendt",
+        "INCLUDEROLES": "Inkluder roller"
+      }
+    },
+    "INDEX": {
+      "ACTIONS": "Handlinger",
+      "BACK": "Tilbage",
+      "CREATE": "Opret",
+      "FIELDS_TITLE": "(felter)",
+      "MANAGE": "Konfigurer",
+      "ROLES": "Roller",
+      "TITLE_EXTRAS": "(regler)"
+    },
+    "QUEUE": {
+      "ADDING": "Tilføjer adgangspolitiske regler {{ id }}",
+      "DELETING": "Sletter adgangspolitiske regler {{ id }}",
+      "ERROR": "Der opstod  en fejl ved adgangspolitiske regler {{ id }}. Ret og prøv igen.",
+      "UPDATING": "Opdatere adgangspolitiske regler {{ id }}"
+    }
+  },
+  "ACCOUNT": {
+    "CHANGE_PASSWORD": {
+      "BUTTON_EDIT": "Bekræft",
+      "TITLE": "Skift kodeord"
+    },
+    "CONFIRM_EMAIL": {
+      "BUTTON_EDIT": "Bekræft",
+      "TITLE": "Bekræft email"
+    },
+    "FORGOT_PASSWORD": {
+      "BUTTON_EDIT": "Bekræft",
+      "CHECK_EMAIL": "Du vil finde instruktioner på at gendanne dit adgangskode i din email. Husk at tjekke din spam mappe.",
+      "CHECK_EMAIL_TITLE": "Tjek din email",
+      "TITLE": "Glemt adgangskode"
+    },
+    "FORM": {
+      "LABELS": {
+        "CONFIRMNEWPASSWORD": "Bekræft kodeord",
+        "CURRENTPASSWORD": "Nuværende kodeord",
+        "EMAIL": "Email",
+        "NEWPASSWORD": "Nyt kodeord",
+        "TOKEN": "Token"
+      },
+      "PLACEHOLDERS": {
+        "CONFIRMNEWPASSWORD": "Bekræft kodeord",
+        "CURRENTPASSWORD": "Nuværende kodeord",
+        "EMAIL": "Email",
+        "NEWPASSWORD": "Nyt kodeord",
+        "TOKEN": "Token"
+      },
+      "VALIDATION": {
+        "CONFIRMNEWPASSWORD": {
+          "PASSWORDMISMATCH": "Kodeord skal være ens.",
+          "REQUIRED": "Gentag det nye kodeord."
+        },
+        "CURRENTPASSWORD": {
+          "REQUIRED": "Nuværende kodeord er påkrævet."
+        },
+        "EMAIL": {
+          "INVALIDEMAIL": "Indtast venligst en gyldig email",
+          "REQUIRED": "Email er påkrævet"
+        },
+        "NEWPASSWORD": {
+          "REQUIRED": "Nyt kodeord er påkrævet."
+        },
+        "TOKEN": {
+          "REQUIRED": "Token er påkrævet"
+        }
+      }
+    },
+    "INDEX": {
+      "ACTIONS": "Handlinger",
+      "CHANGE_PASSWORD": "Skift adgangskode",
+      "CONFIRM_EMAIL": "Bekræft email",
+      "FORGOT_PASSWORD": "Glemt adgangskode",
+      "MANAGE": "Konfigurer",
+      "RESET_PASSWORD": "Gendan adgangskode"
+    },
+    "NOTIFICATIONS": {},
+    "QUEUE": {},
+    "RESET_PASSWORD": {
+      "BUTTON_EDIT": "Bekræft",
+      "TITLE": "Gendan adgangskode"
+    }
+  },
+  "ADAPTORS": {
+    "CREATE": {
+      "INSTALL": "Installer adapter"
+    },
+    "EDIT": {
+      "EDITING": "Ret {{ object.name }} adapter"
+    },
+    "FORM": {
+      "LABELS": {
+        "DESCRIPTION": "Beskrivelse",
+        "LEFTDEPENDENCYID": "Venstre pakke",
+        "NAME": "Navn",
+        "PACKAGETYPE": "Pakke type",
+        "RIGHTDEPENDENCYID": "Højre pakke",
+        "TYPE": "Type",
+        "URL": "URL"
+      },
+      "PLACEHOLDERS": {
+        "DESCRIPTION": "Indtast beskrivelse",
+        "LEFTDEPENDENCYID": "Indtast venstre pakke ",
+        "NAME": "Indtast navn",
+        "PACKAGETYPE": "Indtast pakke type",
+        "RIGHTDEPENDENCYID": "Indtast højre pakke",
+        "TYPE": "Indtast type",
+        "URL": "Indtast URL"
+      },
+      "VALIDATION": {
+        "DESCRIPTION": {
+          "REQUIRED": "En beskrivelse er påkrævet."
+        },
+        "LEFTDEPENDENCYID": {
+          "REQUIRED": "Vælg venstre pakke."
+        },
+        "NAME": {
+          "REQUIRED": "Et navn er påkrævet."
+        },
+        "PACKAGETYPE": {
+          "REQUIRED": "Vælg en pakke type."
+        },
+        "RIGHTDEPENDENCYID": {
+          "REQUIRED": "Vælg højre pakke."
+        },
+        "TYPE": {
+          "REQUIRED": "En Type er påkrævet."
+        },
+        "URL": {
+          "REQUIRED": "En URL er påkrævet."
+        }
+      }
+    },
+    "INDEX": {
+      "ACTIONS": "Handlinger",
+      "BACK": "Tilbage",
+      "CREATE": "Opret",
+      "INSTALL": "Installer adapter",
+      "MANAGE": "Konfigurer",
+      "OTHER": "Andet",
+      "TITEL": "Adaptere"
+    }
+  },
+  "APPLICATIONS": {
+    "CREATE": {
+      "BUTTON_CREATE": "Opret",
+      "CREATE_APPLICATION": "Opret ny applikation"
+    },
+    "EDIT": {
+      "BUTTON_EDIT": "Opdater",
+      "EDITING": "Ret {{ displayName }}"
+    },
+    "ENTITY_ACTION": {
+      "ROLES": "Roller"
+    },
+    "FORM": {
+      "LABELS": {
+        "CLIENTID": "Klient id",
+        "CLIENTSECRET": "Klient hemmelighed",
+        "CONCURRENCYTOKEN": "Valuta token",
+        "CONSENTTYPE": "Samtykke type",
+        "DISPLAYNAME": "Visningsnavn",
+        "PERMISSIONS": "Tilladelser",
+        "POSTLOGOUTREDIRECTURIS": "Vidersendelses uris til efter logout",
+        "PROPERTIES": "Egenskaber",
+        "REDIRECTURIS": "Vidersendelses uris",
+        "TYPE": "Type"
+      },
+      "PLACEHOLDERS": {
+        "CLIENTID": "Klient id",
+        "CLIENTSECRET": "Klient hemmelighed",
+        "CONCURRENCYTOKEN": "Concurrency token",
+        "CONSENTTYPE": "Samtykke type",
+        "DISPLAYNAME": "Visningsnavn",
+        "PERMISSIONS": "Tilladelser",
+        "POSTLOGOUTREDIRECTURIS": "Vidersendelses uris til efter logout",
+        "PROPERTIES": "Egenskaber",
+        "REDIRECTURIS": "Vidersendelses uris",
+        "TYPE": "Type"
+      },
+      "VALIDATION": {
+        "CLIENTID": {
+          "REQUIRED": "Klient id er påkrævet"
+        },
+        "CLIENTSECRET": {
+          "REQUIRED": "Klient hemmelighed er påkrævet"
+        },
+        "CONCURRENCYTOKEN": {
+          "REQUIRED": "Concurrency token er påkrævet"
+        },
+        "CONSENTTYPE": {
+          "REQUIRED": "Samtykke type er påkrævet"
+        },
+        "DISPLAYNAME": {
+          "REQUIRED": "Visningsnavn er påkrævet"
+        },
+        "PERMISSIONS": {
+          "REQUIRED": "Tilladekser er påkrævet"
+        },
+        "POSTLOGOUTREDIRECTURIS": {
+          "REQUIRED": "Vidersendelses uris til efter logout er påkrævet"
+        },
+        "PROPERTIES": {
+          "REQUIRED": "Egenskaber er påkrævet"
+        },
+        "REDIRECTURIS": {
+          "REQUIRED": "Vidersendelses uris er påkrævet"
+        },
+        "TYPE": {
+          "REQUIRED": "Type er påkrævet"
+        }
+      }
+    },
+    "INDEX": {
+      "ACTIONS": "Handlinger",
+      "APPLICATIONS": "Applikationer",
+      "BACK": "Tilbage",
+      "CREATE": "Opret",
+      "MANAGE": "Konfigurer",
+      "TITLE_EXTRAS": "(applikationer)"
+    },
+    "QUEUE": {
+      "ADDING": "Tilføjer {{ displayName }}",
+      "DELETING": "Sletter {{ displayName }}",
+      "ERROR": "En fejl er opstået med applikation {{ displayName }}. Ret fejlene og prøv igen.",
+      "UPDATING": "Opdaterer {{ displayName }}"
+    },
+    "ROLES": {
+      "ADD": "Tilføj",
+      "ADD_ROLE": "Tilføj en rolle til {{ object.displayName }}",
+      "CURRENT_ROLES": "{{ object.displayName }} nuværende roller",
+      "NO_ROLES": "Ingen roller er blevet tilføjer.",
+      "NO_ROLES_APPLIED": "Denne application har ingen roller.",
+      "OBJECT_PRIOORITY": "{{ role.object.name }} - prioritet",
+      "REMOVE": "Fjern",
+      "ROLES_APPLIED": "Alle roller er blevet tilføjet, ellers findes der ikke nogen.",
+      "ROLE_PRIORITY": "{{ role.object.name }} med prioriteten {{ role.object.priority }} -"
+    }
+  },
+  "ASSIGNMENTS_SCHEDULES": {
+    "CREATE": {
+      "BUTTON_CREATE": "Opret",
+      "CREATE": "Opret"
+    },
+    "EDIT": {
+      "BUTTON_EDIT": "Opdater",
+      "EDIT": "Ret"
+    },
+    "FORM": {
+      "LABELS": {
+        "ASSIGNMENTTYPEID": "Opgave type",
+        "END": "Slut dato",
+        "EXPRESSION": "Ekspression",
+        "START": "Start dato"
+      },
+      "PLACEHOLDERS": {
+        "ASSIGNMENTTYPEID": "Opgave type",
+        "END": "Slut dato",
+        "EXPRESSION": "Ekspression",
+        "START": "Start dato"
+      },
+      "VALIDATION": {
+        "ASSIGNMENTTYPEID": {
+          "REQUIRED": "Opgave type er påkrævet."
+        },
+        "DUE": {},
+        "END": {
+          "REQUIRED": "En slut dato er påkrævet."
+        },
+        "EXPRESSION": {
+          "REQUIRED": "En ekspression er påkrævet."
+        },
+        "FROM": {},
+        "START": {
+          "REQUIRED": "En start dato er påkrævet."
+        },
+        "STATUS": {}
+      }
+    },
+    "INDEX": {
+      "ACTIONS": "Handlinger",
+      "BACK": "Tilbage",
+      "CREATE": "Opret",
+      "DELETE": "Slet",
+      "EDIT": "Ret",
+      "FIELDS": "Felter",
+      "MANAGE": "Konfigurer",
+      "TITLE_EXTRAS": "(opgaver)"
+    },
+    "QUEUE": {
+      "ADDING": "Tilføjer {{ description }}",
+      "DELETING": "Sletter {{ description }}",
+      "ERROR": "Der opstod  en fejl ved {{ description }}. Ret og prøv igen.",
+      "UPDATING": "Opdatere {{ description }}"
+    }
+  },
+  "ASSIGNMENT_TYPES": {
+    "CREATE": {
+      "BUTTON_CREATE": "Opret",
+      "CREATE": "Opret"
+    },
+    "EDIT": {
+      "BUTTON_EDIT": "Opdater",
+      "EDIT": "Ret"
+    },
+    "FIELDS": {
+      "CREATE": {
+        "ADD": "Tilføj felt"
+      },
+      "INDEX": {
+        "ACTIONS": "Handlinger",
+        "ASSIGNMENT_TYPES": "Opgaver",
+        "BACK": "Tilbage",
+        "CREATE": "Opret",
+        "FIELDS": "Opgave felter",
+        "OTHER": "Andet"
+      }
+    },
+    "FORM": {
+      "BUTTONS": {
+        "CREATE": "Opret",
+        "EDIT": "Rediger"
+      },
+      "LABELS": {
+        "DESCRIPTION": "Beskrivelse",
+        "DUEPERIOD": "Udløbsdato",
+        "STATEID": "Tilstand"
+      },
+      "PLACEHOLDERS": {
+        "DESCRIPTION": "Indtast beskrivelse",
+        "DUEPERIOD": "Vælg udløbsdato",
+        "STATEID": "Vælg tilstand"
+      },
+      "VALIDATION": {
+        "DESCRIPTION": {
+          "REQUIRED": "Beskrivelse er påkrævet."
+        },
+        "DUEPERIOD": {
+          "REQUIRED": "Udløbsdato er påkrævet."
+        },
+        "EXPRESSION": {},
+        "STATEID": {
+          "REQUIRED": "Tilstand er påkrævet."
+        }
+      }
+    },
+    "INDEX": {
+      "ACTIONS": "Handlinger",
+      "BACK": "Tilbage",
+      "CREATE": "Opret",
+      "DELETE": "Slet",
+      "EDIT": "Ret",
+      "ENTITIES": "Enheder",
+      "FIELDS": "Felter",
+      "FIELDS_TITLE": "(type felter)",
+      "MANAGE": "Konfigurer",
+      "TITLE_EXTRAS": "(opgave typer)"
+    },
+    "QUEUE": {
+      "ADDING": "Tilføjer {{ description }}",
+      "DELETING": "Sletter {{ description }}",
+      "ERROR": "Der opstod  en fejl ved {{ description }}. Ret og prøv igen.",
+      "UPDATING": "Opdatere {{ description }}"
+    }
+  },
+  "AXIS_PHYSICAL_ACCESS_CONTROL": {
+    "FORM": {
+      "LABELS": {
+        "PASSWORD": "Adgangskode",
+        "ROUTE": "Rute",
+        "USERNAME": "Brugernavn"
+      },
+      "PLACEHOLDERS": {
+        "PASSWORD": "Adganskode",
+        "ROUTE": "Rute",
+        "USERNAME": "Brugernavn"
+      }
+    },
+    "INDEX": {
+      "ACCESS_POINTS": "Adgangspunkter",
+      "ACTIONS": "Handlinger",
+      "MANAGE": "Konfigurer",
+      "SETTINGS": "Indstillinger",
+      "VAPIX_CONNECTION_SETTINGS": "Forbindelsesindstillinger"
+    }
+  },
+  "CALL_DATA_SETTINGS": {
+    "FORM": {
+      "LABELS": {
+        "CURRENCYCODE": "Valutakode",
+        "OUTPUTFIELDS": "Output felter"
+      },
+      "PLACEHOLDERS": {
+        "CURRENCYCODE": "Valutakode",
+        "OUTPUTFIELDS": "Output felter"
+      }
+    },
+    "INDEX": {
+      "SETTINGS": "Indstillinger"
+    }
+  },
+  "CLIENTS": {
+    "CREATE": {
+      "BUTTON_CREATE": "Opret",
+      "CREATE": "Opret"
+    },
+    "EDIT": {
+      "BUTTON_EDIT": "Opdater",
+      "EDIT": "Rediger"
+    },
+    "FORM": {
+      "LABELS": {
+        "DESCRIPTION": "Beskrivelse",
+        "NAME": "Navn",
+        "ONLINE": "Online"
+      },
+      "PLACEHOLDERS": {
+        "DESCRIPTION": "Beskrivelse",
+        "NAME": "Navn",
+        "ONLINE": "Online"
+      },
+      "VALIDATION": {
+        "DESCRIPTION": {
+          "REQUIRED": "Beskrivelse er påkrævet."
+        },
+        "NAME": {
+          "REQUIRED": "Navn er påkrævet."
+        }
+      }
+    },
+    "INDEX": {
+      "ACTIONS": "Handlinger",
+      "BACK": "Tilbage",
+      "CREATE": "Opret",
+      "DELETE": "Slet",
+      "MANAGE": "Konfigure",
+      "TITLE_EXTRAS": "(Klienter)"
+    },
+    "QUEUE": {
+      "ADDING": "Tilføjer klient {{ id }}",
+      "DELETING": "Sletter klient {{ id }}",
+      "ERROR": "Der skete en fejl med klient {{ id }}. Ret og prøv igen.",
+      "UPDATING": "Opdaterer klient {{ id }}"
+    }
+  },
+  "CONNECTIONS": {
+    "CREATE": {
+      "BUTTON_CREATE": "Opret",
+      "CREATE": "Opret"
+    },
+    "EDIT": {
+      "BUTTON_EDIT": "Opdater",
+      "EDIT": "Rediger"
+    },
+    "FORM": {
+      "LABELS": {
+        "CLIENTID": "Klient",
+        "ONLINE": "Online",
+        "STATUS": "Status",
+        "TERMINALID": "Terminal"
+      },
+      "PLACEHOLDERS": {
+        "CLIENTID": "Klient",
+        "ONLINE": "Online",
+        "STATUS": "Status",
+        "TERMINALID": "Terminal"
+      },
+      "VALIDATION": {
+        "CLIENTID": {
+          "REQUIRED": "Klient er påkrævet"
+        },
+        "STATUS": {
+          "REQUIRED": "Status er påkrævet"
+        },
+        "TERMINALID": {
+          "REQUIRED": "Terminal er påkrævet"
+        }
+      }
+    },
+    "INDEX": {
+      "ACTIONS": "Handlinger",
+      "BACK": "Tilbage",
+      "CREATE": "Opret",
+      "DELETE": "Slet",
+      "MANAGE": "Konfigure",
+      "TITLE_EXTRAS": "(Forbindelser)"
+    },
+    "QUEUE": {
+      "ADDING": "Tilføker forbindelse {{ id }}",
+      "DELETING": "Sletter forbindelse {{ id }}",
+      "ERROR": "En fejl er opstået med forbindelse {{ id }}. Ret fejlene og prøv igen.",
+      "UPDATING": "Opdaterer forbindelse {{ id }}"
+    }
+  },
+  "CORS": {
+    "CREATE": {
+      "BUTTON_CREATE": "Opret",
+      "CREATE": "Opret"
+    },
+    "EDIT": {
+      "BUTTON_EDIT": "Rediger",
+      "EDIT": "Rediger"
+    },
+    "FORM": {
+      "LABELS": {
+        "ALLOWALLORIGINS": "Tillad alle oprindelser",
+        "CUSTOMHEADERS": "Brugerdefinerede overskrifter",
+        "EVENTTYPE": "Begivenhedstype",
+        "HTTPMETHOD": "HTTP metode",
+        "PACKAGEPATH": "Pakke sti",
+        "SOURCE": "Kilde",
+        "URL": "Url"
+      },
+      "PLACEHOLDERS": {
+        "ALLOWALLORIGINS": "Tillad alle oprindelser",
+        "CUSTOMHEADERS": "Brugerdefinerede overskrifter",
+        "EVENTTYPE": "Begivenhedstype",
+        "HTTPMETHOD": "HTTP metode",
+        "PACKAGEPATH": "Pakke sti",
+        "SOURCE": "Kilde",
+        "URL": "Url"
+      }
+    },
+    "INDEX": {
+      "ACTIONS": "Handlinger",
+      "CREATE": "Opret",
+      "DELETE": "Fjern",
+      "EDIT": "Rediger",
+      "MANAGE": "Konfigurer",
+      "SETTINGS": "Indstillinger"
+    }
+  },
+  "DOORWAY_RELATIONS": {
+    "CREATE": {
+      "BUTTON_CREATE": "Opret",
+      "CREATE": "Opret"
+    },
+    "EDIT": {
+      "BUTTON_EDIT": "Opdater",
+      "EDIT": "Rediger"
+    },
+    "FORM": {
+      "LABELS": {
+        "ALLOWCIRCULARRELATIONS": "Tillad cirkulære forhold",
+        "INNERDOORWAYID": "Indvendig døråbning",
+        "OUTERDOORWAYID": "udvendig døråbning"
+      },
+      "PLACEHOLDERS": {
+        "INNERDOORWAYID": "Indvendig døråbning",
+        "OUTERDOORWAYID": "udvendig døråbning"
+      },
+      "VALIDATION": {
+        "INNERDOORWAYID": {
+          "REQUIRED": "En indvendig døråbning er påkrævet."
+        },
+        "OUTERDOORWAYID": {
+          "REQUIRED": "En undvendig døråbning er påkrævet."
+        }
+      }
+    },
+    "INDEX": {
+      "ACTIONS": "Handlinger",
+      "CREATE": "Opret",
+      "DELETE": "Fjern",
+      "EDIT": "Rediger",
+      "MANAGE": "Konfigurer",
+      "SETTINGS": "Indstillinger",
+      "TITLE_EXTRAS": "(Relations)"
+    }
+  },
+  "EMAILS": {
+    "INDEX": {
+      "ACTIONS": "Handlinger",
+      "CREATE": "Opret",
+      "DELETE": "Slet",
+      "EDIT": "Ret",
+      "ITEM": "Vare",
+      "MANAGE": "Konfigurer"
+    }
+  },
+  "EMAILS_SMTP": {
+    "INDEX": {
+      "ACTIONS": "Handlinger",
+      "CREATE": "Opret",
+      "DELETE": "Slet",
+      "EDIT": "Ret",
+      "MANAGE": "Konfigurer",
+      "SETTINGS": "Indstillinger",
+      "TEMPLATES": "Skabeloner"
+    }
+  },
+  "EMAILS_SMTP_SETTINGS": {
+    "FORM": {
+      "LABELS": {
+        "ENABLESSL": "Aktiver ssl",
+        "HOST": "Vært",
+        "PASSWORD": "Adgangskode",
+        "PORT": "Port",
+        "USERNAME": "Brugernavn"
+      },
+      "PLACEHOLDERS": {
+        "ENABLESSL": "Aktiver ssl",
+        "HOST": "Vært",
+        "PASSWORD": "Adgangskode",
+        "PORT": "Port",
+        "USERNAME": "Brugernavn"
+      }
+    }
+  },
+  "EMAIL_TEMPLATES": {
+    "CREATE": {
+      "BUTTON_CREATE": "Opret",
+      "CREATE": "Opret"
+    },
+    "EDIT": {
+      "BUTTON_EDIT": "Ret",
+      "EDIT": "Ret"
+    },
+    "FORM": {
+      "LABELS": {
+        "BCC": "Bcc",
+        "BODY": "Indhold",
+        "CC": "Cc",
+        "FROM": "Til",
+        "SUBJECT": "Emne",
+        "TO": "Fra"
+      },
+      "PLACEHOLDERS": {
+        "BCC": "Bcc",
+        "BODY": "Indhold",
+        "CC": "Cc",
+        "FROM": "Til",
+        "SUBJECT": "Emne",
+        "TO": "Fra"
+      },
+      "VALIDATION": {}
+    },
+    "INDEX": {
+      "ACTIONS": "Handlinger",
+      "CREATE": "Opret",
+      "DELETE": "Slet",
+      "EDIT": "Ret",
+      "MANAGE": "Konfigurer"
+    },
+    "QUEUE": {
+      "ADDING": "Tilføjer {{ subject }}",
+      "DELETING": "Sletter {{ subject }}",
+      "ERROR": "Der skete en fejl med {{ subject }}. Ret fejl og prøv igen.",
+      "UPDATING": "Opdaterer {{ subject }}"
+    }
+  },
+  "FEATURES": {
+    "CREATE": {
+      "INSTALL": "Installer funktion"
+    },
+    "EDIT": {
+      "EDITING": "Ret {{ object.name }} funktion"
+    },
+    "FORM": {
+      "LABELS": {
+        "DEPENDENCYID": "Pakke",
+        "DESCRIPTION": "Beskrivelse",
+        "NAME": "Navn",
+        "PACKAGETYPE": "Pakke type",
+        "TYPE": "Type",
+        "URL": "URL"
+      },
+      "PLACEHOLDERS": {
+        "DEPENDENCYID": "Indtast pakke ",
+        "DESCRIPTION": "Indtast beskrivelse",
+        "NAME": "Indtast navn",
+        "PACKAGETYPE": "Indtast pakke type",
+        "TYPE": "Indtast type",
+        "URL": "Indtast URL"
+      },
+      "VALIDATION": {
+        "DEPENDENCYID": {
+          "REQUIRED": "Vælg en pakke."
+        },
+        "DESCRIPTION": {
+          "REQUIRED": "En beskrivelse er påkrævet."
+        },
+        "NAME": {
+          "REQUIRED": "Navn er påkrævet."
+        },
+        "PACKAGETYPE": {
+          "REQUIRED": "Vælg en pakke type."
+        },
+        "TYPE": {
+          "REQUIRED": "En Type er påkrævet."
+        },
+        "URL": {
+          "REQUIRED": "En URL er påkrævet."
+        }
+      }
+    },
+    "INDEX": {
+      "ACTIONS": "Handlinger",
+      "BACK": "Tilbage",
+      "CREATE": "Opret",
+      "FEATURES": "Udvidelser",
+      "INSTALL": "Installer funktion",
+      "MANAGE": "Konfigurer",
+      "OTHER": "Andet",
+      "TITEL": "Udvidelser"
+    }
+  },
+  "FIELDS": {
+    "CREATE": {
+      "BUTTON_CREATE": "Opret",
+      "CREATE": "Opret felt"
+    },
+    "EDIT": {
+      "BUTTON_EDIT": "Opdater",
+      "EDITING": "Redigere"
+    },
+    "FORM": {
+      "LABELS": {
+        "DISPLAY": "Visningsnavn",
+        "KEY": "Nøgle",
+        "READPERMISSION": "Læse tilladelser",
+        "TYPE": "Type",
+        "VALIDATORS": "Valideringer",
+        "WRITEPERMISSION": "Skrive tilladelser"
+      },
+      "PLACEHOLDERS": {
+        "DISPLAY": "Visningsnavn",
+        "KEY": "Nøgle",
+        "READPERMISSION": "Læse tilladelser",
+        "TYPE": "Type",
+        "VALIDATORS": "Valideringer",
+        "WRITEPERMISSION": "Skrive tilladelser"
+      },
+      "VALIDATION": {
+        "DISPLAY": {
+          "REQUIRED": "Visningsnavn er påkrævet"
+        },
+        "KEY": {
+          "REQUIRED": "Nøgle er påkrævet"
+        },
+        "TYPE": {
+          "REQUIRED": "Type er påkrævet"
+        }
+      }
+    },
+    "INDEX": {
+      "ACTIONS": "Handlinger",
+      "BACK": "Tilbage",
+      "CREATE": "Opret",
+      "MANAGE": "Konfigurer"
+    },
+    "QUEUE": {
+      "ADDING": "Tilføjer {{ displayName }}",
+      "DELETING": "Sletter {{ displayName }}",
+      "ERROR": "Der skete en fejl med {{ displayName }}. Ret og prøv igen",
+      "UPDATING": "Opdatere {{ displayName }}"
+    }
+  },
+  "FILE_STORAGE": {
+    "CREATE": {
+      "BUTTON_CREATE": "Opret",
+      "CREATE": "Opret ny bucket"
+    },
+    "EDIT": {
+      "BUTTON_EDIT": "Update",
+      "EDIT": "Rediger"
+    },
+    "FORM": {
+      "LABELS": {
+        "BUCKET": "Bucket",
+        "FOLDERNAME": "Mappe navn"
+      },
+      "PLACEHOLDERS": {
+        "BUCKET": "Indtast et bucket navn",
+        "FOLDERNAME": "Indtast et mappe navn"
+      },
+      "VALIDATION": {
+        "BUCKET": {
+          "REQUIRED": "En spand name er påkrævet."
+        },
+        "FOLDERNAME": {
+          "REQUIRED": "Et mappe navn er påkrævet."
+        }
+      }
+    },
+    "INDEX": {
+      "ACTIONS": "Handlinger",
+      "CREATE": "Opret",
+      "CREATE_FOLDER": "Opret folder",
+      "DELETE": "Fjern",
+      "EDIT": "Rediger",
+      "FIELDS": "Felter",
+      "FIELDS_TITLE": "(Felter)",
+      "ITEM": "Objekter",
+      "MANAGE": "Konfigure",
+      "PACKAGES": "Pakker",
+      "UPLOAD": "Upload file"
+    }
+  },
+  "GROUP_RESERVATIONS": {
+    "CREATE": {
+      "BUTTON_CREATE": "Opret",
+      "CREATE": "Opret"
+    },
+    "EDIT": {
+      "BUTTON_EDIT": "Opdater",
+      "EDIT": "Rediger"
+    },
+    "FORM": {
+      "LABELS": {
+        "NAME": "Navn"
+      },
+      "PLACEHOLDERS": {
+        "NAME": "Indtast navn"
+      },
+      "VALIDATION": {
+        "NAME": {
+          "REQUIRED": "Et navn er påkrævet."
+        }
+      }
+    },
+    "INDEX": {
+      "ACTIONS": "Handlinger",
+      "BACK": "Tilbage",
+      "CREATE": "Opret",
+      "DELETE": "Fjern",
+      "FIELDS": "Felter",
+      "FIELDS_TITLE": "(Gruppe felter)",
+      "MANAGE": "Konfigure",
+      "TITLE_EXTRAS": "(Grupper)"
+    },
+    "QUEUE": {
+      "ADDING": "Tilføjer {{ name }}",
+      "DELETING": "Fjerner {{ name }}",
+      "ERROR": "Der skete en fejl med {{ name }}. Ret og prøv igen.",
+      "UPDATING": "Opdaterer {{ name }}"
+    }
+  },
+  "IDENTITIES": {
+    "INDEX": {
+      "ACCOUNT": "Bruger konto",
+      "ACCOUNTS": "Bruger kontier",
+      "APPLICATIONS": "Applikationer",
+      "APPLICATIONS_ROLES_TITLE": "Applikationsroller",
+      "AVAILABLE_SETTINGS": {
+        "LOCKOUT": "Lås ude",
+        "PASSWORD": "Kodeord",
+        "SIGNIN": "Log ind",
+        "USER": "Brugere"
+      },
+      "CHANGE_PASSWORD": "Skift adgangskode",
+      "CLIENTS": "Klienter",
+      "CONFIRM_EMAIL": "Bekræft email",
+      "FORGOT_PASSWORD": "Glemt adgangskode",
+      "MANAGE": "Konfigurer",
+      "ROLES": "Roller",
+      "SETTINGS": "Indstillinger",
+      "USERS": "Brugere",
+      "USERS_ROLES_TITLE": "Bruger roller"
+    }
+  },
+  "IDENTITIES_SETTINGS": {
+    "CREATE": {
+      "CREATE": "Ret indstillinger"
+    },
+    "FORM": {
+      "LABELS": {
+        "ALLOWEDFORNEWUSERS": "Tilladt for nye brugere",
+        "ALLOWEDUSERNAMECHARACTERS": "Tilladte tegn i brugernavn",
+        "DEFAULTLOCKOUTTIMESPAN": "Standard lockout tid",
+        "MAXFAILEDACCESSATTEMPTS": "Max antal fejlede login forsøg",
+        "REQUIRECONFIRMEDEMAIL": "Email skal bekræftes",
+        "REQUIRECONFIRMEDPHONENUMBER": "Telefon nummer skal bekræftes",
+        "REQUIREDIGIT": "Tal påkrævet",
+        "REQUIREDLENGTH": "Minimums længde",
+        "REQUIREDUNIQUECHARS": "Påkrævet unikke karakterer",
+        "REQUIRELOWERCASE": "Små bogstaver påkrævet",
+        "REQUIRENONALPHANUMERIC": "Påkrævet ikke-alfabetiske karakterer.",
+        "REQUIREUNIQUEEMAIL": "Email skal være unik",
+        "REQUIREUPPERCASE": "Store bogstaver påkrævet"
+      },
+      "PLACEHOLDERS": {
+        "ALLOWEDFORNEWUSERS": "Tilladt for nye brugere",
+        "ALLOWEDUSERNAMECHARACTERS": "Tilladte tegn i brugernavn",
+        "DEFAULTLOCKOUTTIMESPAN": "Standard lockout tid",
+        "MAXFAILEDACCESSATTEMPTS": "Max antal fejlede login forsøg",
+        "REQUIRECONFIRMEDEMAIL": "Email skal bekræftes",
+        "REQUIRECONFIRMEDPHONENUMBER": "Telefon nummer skal bekræftes",
+        "REQUIREDIGIT": "Tal påkrævet",
+        "REQUIREDLENGTH": "Minimums længde",
+        "REQUIREDUNIQUECHARS": "Påkrævet unikke karakterer",
+        "REQUIRELOWERCASE": "Små bogstaver påkrævet",
+        "REQUIRENONALPHANUMERIC": "Påkrævet ikke-alfabetiske karakterer.",
+        "REQUIREUNIQUEEMAIL": "Email skal være unik",
+        "REQUIREUPPERCASE": "Store bogstaver påkrævet"
+      },
+      "VALIDATION": {}
+    },
+    "QUEUE": {
+      "ERROR": "Der skete en fejl ved opdatering af indstillingerne.",
+      "UPDATING": "Opdaterer"
+    }
+  },
+  "INVOICES": {
+    "CREATE": {
+      "BUTTON_CREATE": "Opret",
+      "CREATE": "Opret"
+    },
+    "EDIT": {
+      "BUTTON_EDIT": "Opdater",
+      "EDIT": "Rediger"
+    },
+    "ENTITY_ACTION": {
+      "ITEMS": "Enheder"
+    },
+    "FIELDS": {
+      "CREATE": {
+        "ADD": "Tilføj nyt felt"
+      },
+      "EDIT": {
+        "EDITING": "Redigere"
+      },
+      "INDEX": {
+        "ACTIONS": "Handlinger",
+        "BACK": "Tilbage",
+        "CREATE": "Tilføj nyt felt",
+        "EDIT": "Rediger",
+        "FIELDS": "Felter",
+        "OTHER": "Andre"
+      }
+    },
+    "FORM": {
+      "LABELS": {
+        "BALANCE": "Balance",
+        "CURRENCYCODE": "Valuta kode",
+        "DESCRIPTION": "Beskrivelse",
+        "PAID": "Betalt",
+        "STATUS": "Status",
+        "TOTAL": "Total",
+        "TOTALTAX": "Total skat"
+      },
+      "PLACEHOLDERS": {
+        "BALANCE": "Balance",
+        "CURRENCYCODE": "Vælg valuta kode",
+        "DESCRIPTION": "Beskrivelse",
+        "PAID": "Betalt",
+        "STATUS": "Status",
+        "TOTAL": "Total",
+        "TOTALTAX": "Total skat"
+      },
+      "VALIDATION": {
+        "CURRENCYCODE": {
+          "REQUIRED": "Valuta kode er påkrævet."
+        }
+      }
+    },
+    "INDEX": {
+      "ACTIONS": "Handlinger",
+      "CREATE": "Opret",
+      "DELETE": "Ret",
+      "EDIT": "Rediger",
+      "FIELDS": "Felter",
+      "FIELDS_TITLE": "(Felter)",
+      "ITEM": "Enhed",
+      "ITEMS": "Enheder",
+      "MANAGE": "Konfigurer",
+      "PACKAGES": "Pakker",
+      "PAYMENTS": "Betalinger"
+    },
+    "QUEUE": {
+      "ADDING": "Tilføjer {{ currencyCode }}",
+      "DELETING": "Sletter {{ currencyCode }}",
+      "ERROR": "Der opstod  en fejl ved {{ currencyCode }}. Ret og prøv igen.",
+      "UPDATING": "Opdatere {{ currencyCode }}"
+    }
+  },
+  "INVOICES_CASH_PAYMENTS": {
+    "CREATE": {
+      "BUTTON_CREATE": "Opret",
+      "PAYMENT": "Kontant betaling"
+    },
+    "EDIT": {
+      "BUTTON_EDIT": "Opdater",
+      "EDIT": "Rediger"
+    },
+    "ENTITY_ACTION_PROVIDER": {
+      "ENTITY_ACTION": {
+        "CASH_PAYMENT": "Kontant betaling"
+      }
+    },
+    "FORM": {
+      "LABELS": {
+        "AMOUNT": "Mængde",
+        "CURRENCYCODE": "Valuta kode",
+        "DESCRIPTION": "Beskrivelse",
+        "INVOICEID": "Faktura"
+      },
+      "PLACEHOLDERS": {
+        "AMOUNT": "Mængde",
+        "CURRENCYCODE": "Vælg valuta kode",
+        "DESCRIPTION": "Beskrivelse",
+        "INVOICEID": "Faktura"
+      },
+      "VALIDATION": {
+        "AMOUNT": {
+          "REQUIRED": "Mængde er påkrævet."
+        },
+        "CURRENCYCODE": {
+          "REQUIRED": "Beskrivelse er påkrævet."
+        },
+        "DESCRIPTION": {
+          "REQUIRED": "Valuta kode er påkrævet."
+        },
+        "INVOICEID": {
+          "REQUIRED": "Faktura er påkrævet."
+        }
+      }
+    },
+    "INDEX": {
+      "ACTIONS": "Handlinger",
+      "CREATE": "Opret",
+      "DELETE": "Ret",
+      "EDIT": "Rediger",
+      "FIELDS": "Felter",
+      "FIELDS_TITLE": "(Felter)",
+      "ITEM": "Enhed",
+      "ITEMS": "Enheder",
+      "MANAGE": "Konfigurer",
+      "PACKAGES": "Pakker",
+      "PAYMENTS": "Betalinger"
+    },
+    "PAY": {
+      "BUTTON_PAY": "Betal"
+    },
+    "QUEUE": {
+      "ADDING": "Tilføjer {{ currencyCode }}",
+      "DELETING": "Sletter {{ currencyCode }}",
+      "ERROR": "Der opstod  en fejl ved {{ currencyCode }}. Ret og prøv igen.",
+      "UPDATING": "Opdatere {{ currencyCode }}"
+    }
+  },
+  "INVOICES_PRODUCTS": {
+    "ADD_PRODUCTS": {
+      "SUBMIT": "Opdater",
+      "TITLE": "Tilføj produkter"
+    },
+    "ADD_TO_INVOICE": {
+      "SUBMIT": "Opdater",
+      "TITLE": "Tilføj til faktura"
+    },
+    "FORM": {
+      "LABELS": {
+        "AMOUNT": "Antal",
+        "INVOICEID": "Faktura",
+        "PRODUCTID": "Produkt"
+      },
+      "PLACEHOLDERS": {
+        "AMOUNT": "Antal",
+        "INVOICEID": "Faktura",
+        "PRODUCTID": "Produkt"
+      },
+      "VALIDATION": {
+        "AMOUNT": {
+          "REQUIRED": "Antal er påkrævet."
+        },
+        "INVOICEID": {
+          "REQUIRED": "Faktura er påkrævet."
+        },
+        "PRODUCTID": {
+          "REQUIRED": "Produkt er påkrævet."
+        }
+      }
+    }
+  },
+  "INVOICE_ITEMS": {
+    "CREATE": {
+      "BUTTON_CREATE": "Opret",
+      "CREATE": "Opret"
+    },
+    "EDIT": {
+      "BUTTON_EDIT": "Opdater",
+      "EDIT": "Rediger"
+    },
+    "FIELDS": {
+      "CREATE": {
+        "ADD": "Tilføj nyt felt"
+      },
+      "EDIT": {
+        "EDITING": "Redigere"
+      },
+      "INDEX": {
+        "ACTIONS": "Handlinger",
+        "BACK": "Tilbage",
+        "CREATE": "Tilføj nyt felt",
+        "EDIT": "Rediger",
+        "FIELDS": "Felter",
+        "OTHER": "Andre"
+      }
+    },
+    "FORM": {
+      "LABELS": {
+        "DESCRIPTION": "Beskrivelse",
+        "INVENTORYID": "Lager ID",
+        "ORDER": "Rækkefølge",
+        "TAXPERCENT": "Skatteprocent",
+        "UNITCHANGE": "Enhedsændring",
+        "UNITPRICE": "Enhedspris",
+        "UNITS": "Enheder"
+      },
+      "PLACEHOLDERS": {
+        "DESCRIPTION": "Indtast beskrivelse",
+        "INVENTORYID": "Indtast lager ID",
+        "ORDER": "Indtast rækkefølge",
+        "TAXPERCENT": "Indtast skat",
+        "UNITCHANGE": "Indtast ændring",
+        "UNITPRICE": "Indtast pris",
+        "UNITS": "Indtast enheder"
+      },
+      "VALIDATION": {
+        "DESCRIPTION": {
+          "REQUIRED": "Beskrivelse er påkrævet"
+        },
+        "INVENTORYID": {
+          "REQUIRED": "Lager ID er påkrævet"
+        },
+        "ORDER": {
+          "REQUIRED": "Rækkefølge er påkrævet"
+        },
+        "TAXPERCENT": {
+          "REQUIRED": "Skatteprocent er påkrævet"
+        },
+        "UNITCHANGE": {
+          "REQUIRED": "Enhedsændring er påkrævet"
+        },
+        "UNITPRICE": {
+          "REQUIRED": "Enhedspris er påkrævet"
+        },
+        "UNITS": {
+          "REQUIRED": "Enheder er påkrævet"
+        }
+      }
+    },
+    "INDEX": {
+      "ACTIONS": "Handlinger",
+      "BACK": "Tilbage",
+      "CREATE": "Opret",
+      "DELETE": "Ret",
+      "EDIT": "Rediger",
+      "FIELDS": "Felter",
+      "FIELDS_TITLE": "(felter)",
+      "ITEM": "Enhed",
+      "MANAGE": "Konfigurer",
+      "PACKAGES": "Pakker"
+    },
+    "QUEUE": {
+      "ADDING": "Tilføjer {{ description }}",
+      "DELETING": "Sletter {{ description }}",
+      "ERROR": "Der opstod  en fejl ved {{ description }}. Ret og prøv igen.",
+      "UPDATING": "Opdatere {{ description }}"
+    }
+  },
+  "INVOICE_PAYMENTS": {
+    "CREATE": {
+      "BUTTON_CREATE": "Opret",
+      "CREATE": "Opret"
+    },
+    "EDIT": {
+      "BUTTON_EDIT": "Opdater",
+      "EDIT": "Rediger"
+    },
+    "FIELDS": {
+      "CREATE": {
+        "ADD": "Tilføj nyt felt"
+      },
+      "EDIT": {
+        "EDITING": "Redigere"
+      },
+      "INDEX": {
+        "ACTIONS": "Handlinger",
+        "BACK": "Tilbage",
+        "CREATE": "Tilføj nyt felt",
+        "EDIT": "Rediger",
+        "FIELDS": "Felter",
+        "OTHER": "Andre"
+      }
+    },
+    "FORM": {
+      "LABELS": {
+        "AMOUNT": "Mængde",
+        "DESCRIPTION": "Beskrivelse",
+        "INVENTORYID": "Lager ID",
+        "IP": "IP",
+        "SOURCE": "Kilde"
+      },
+      "PLACEHOLDERS": {
+        "AMOUNT": "Indtast mængde",
+        "DESCRIPTION": "Indtast beskrivelse",
+        "INVENTORYID": "Indtast lager ID",
+        "IP": "Indtast IP",
+        "SOURCE": "Indtast kilde"
+      },
+      "VALIDATION": {
+        "AMOUNT": {
+          "REQUIRED": "Mængde er påkrævet"
+        },
+        "DESCRIPTION": {
+          "REQUIRED": "Beskrivelse er påkrævet"
+        },
+        "INVENTORYID": {
+          "REQUIRED": "Lager ID er påkrævet"
+        },
+        "IP": {
+          "REQUIRED": "IP er påkrævet"
+        },
+        "SOURCE": {
+          "REQUIRED": "Kilde er påkrævet"
+        }
+      }
+    },
+    "INDEX": {
+      "ACTIONS": "Handlinger",
+      "BACK": "Tilbage",
+      "CREATE": "Opret",
+      "DELETE": "Ret",
+      "EDIT": "Rediger",
+      "FIELDS": "Felter",
+      "FIELDS_TITLE": "(betalingsfelter)",
+      "ITEM": "Enhed",
+      "MANAGE": "Konfigurer",
+      "PACKAGES": "Pakker",
+      "TITLE_EXTRAS": "(betalinger)"
+    },
+    "QUEUE": {
+      "ADDING": "Tilføjer {{ description }}",
+      "DELETING": "Sletter {{ description }}",
+      "ERROR": "Der opstod  en fejl ved {{ description }}. Ret og prøv igen.",
+      "UPDATING": "Opdatere {{ description }}"
+    }
+  },
+  "LODGINGS": {
+    "CREATE": {
+      "BUTTON_CREATE": "Opret",
+      "CREATE": "Opret"
+    },
+    "EDIT": {
+      "BUTTON_EDIT": "Opdater",
+      "EDIT": "Rediger"
+    },
+    "FIELDS": {
+      "CREATE": {
+        "ADD": "Opret nyt felt"
+      },
+      "EDIT": {
+        "EDITING": "Redigere"
+      },
+      "INDEX": {
+        "ACTIONS": "Handlinger",
+        "BACK": "Tilbage",
+        "CREATE": "Opret nyt felt",
+        "FIELDS": "Felter",
+        "MANAGE": "Konfigurer",
+        "OTHER": "Andre"
+      }
+    },
+    "FORM": {
+      "LABELS": {
+        "DISABLED": "Utilgængelig",
+        "LODGINGRESERVATIONSPRICING": "Pris",
+        "LODGINGTYPEID": "Type",
+        "NAME": "Navn"
+      },
+      "PLACEHOLDERS": {
+        "DISABLED": "Utilgængelig",
+        "LODGINGTYPEID": "Type",
+        "NAME": "Navn"
+      },
+      "VALIDATION": {
+        "DISABLED": {
+          "REQUIRED": "Utilgængeligheds status er påkrævet."
+        },
+        "LODGINGTYPEID": {
+          "REQUIRED": "Type er påkrævet."
+        },
+        "NAME": {
+          "REQUIRED": "Navn er påkrævet."
+        }
+      }
+    },
+    "INDEX": {
+      "ACTIONS": "Handlinger",
+      "AVAILABILITY": "Tilgængelighed",
+      "BACK": "Tilbage",
+      "CREATE": "Opret",
+      "FIELDS": "Felter",
+      "FIELDS_TITLE": "(Felter)",
+      "MANAGE": "Konfigurer",
+      "SETTINGS": "Indstillinger",
+      "TYPES": "Typer"
+    },
+    "QUEUE": {
+      "ADDING": "Tilføjer {{ name }}",
+      "DELETING": "Sletter {{ name }}",
+      "ERROR": "Der opstod  en fejl ved {{ name }}. Ret og prøv igen.",
+      "UPDATING": "Opdatere {{ name }}"
+    }
+  },
+  "LODGINGS_AVAILABILITY": {
+    "SELECT_LODGINGS": "Vælg rum",
+    "TITLE": "Rum tilgængelighed"
+  },
+  "LODGING_PRICES": {
+    "CREATE": {
+      "BUTTON_CREATE": "Opret",
+      "CREATE": "Opret"
+    },
+    "EDIT": {
+      "BUTTON_EDIT": "Opdater",
+      "EDIT": "Rediger"
+    },
+    "FORM": {
+      "LABELS": {
+        "CURRENCYCODE": "Valuta kode",
+        "PRICE": "Pris",
+        "RECORDID": "Værelse"
+      },
+      "PLACEHOLDERS": {
+        "CURRENCYCODE": "Valuta kode",
+        "PRICE": "Pris",
+        "RECORDID": "Værelse"
+      },
+      "VALIDATION": {
+        "CURRENCYCODE": {
+          "REQUIRED": "Valuta kode er påkrævet"
+        },
+        "PRICE": {
+          "REQUIRED": "Pris er påkrævet."
+        },
+        "RECORDID": {
+          "REQUIRED": "Værelse er påkrævet."
+        }
+      }
+    },
+    "INDEX": {
+      "ACTIONS": "Handlinger",
+      "BACK": "Tilbage",
+      "CREATE": "Opret",
+      "DELETE": "Slet",
+      "FIELDS": "Felter",
+      "MANAGE": "Konfigurer"
+    },
+    "QUEUE": {
+      "ADDING": "Tilføjer {{ name }}",
+      "DELETING": "Sletter {{ name }}",
+      "ERROR": "Der opstod  en fejl ved {{ name }}. Ret og prøv igen.",
+      "UPDATING": "Opdatere {{ name }}"
+    }
+  },
+  "LODGING_RESERVATIONS": {
+    "ARRIVALS": {
+      "TITLE": "Ankomster",
+      "TITLE_EXTRAS": "(ankomster)"
+    },
+    "CREATE": {
+      "BUTTON_CREATE": "Opret",
+      "CREATE": "Opret"
+    },
+    "DEPARTURES": {
+      "TITLE": "Afgange",
+      "TITLE_EXTRAS": "(afgange)"
+    },
+    "EDIT": {
+      "BUTTON_EDIT": "Opdater",
+      "EDIT": "Rediger"
+    },
+    "ENTITY_ACTIONS": {
+      "CANCEL": "Aflys",
+      "CHECKIN": "Check ind",
+      "CHECKOUT": "Check ud",
+      "MOVE": "Flyt",
+      "NOSHOW": "Ingen fremmøde",
+      "UNDOCANCEL": "Fortryd aflysning",
+      "UNDOCHECKIN": "Fortryd check ind",
+      "UNDOCHECKOUT": "Fortryd check ud",
+      "UNDOMOVE": "Fortryd flytning",
+      "UNDONOSHOW": "Fortryd ingen fremmøde"
+    },
+    "FORM": {
+      "LABELS": {
+        "CHECKIN": "Tjek ind",
+        "CHECKOUT": "Tjek ud",
+        "LODGINGID": "Tildelt rum",
+        "LODGINGTYPEID": "Rum type",
+        "PERSONS": "Personer",
+        "STATUS": "Status"
+      },
+      "PLACEHOLDERS": {
+        "CHECKIN": "Indtast tjek ind",
+        "CHECKOUT": "Indtast tjek ud",
+        "LODGINGID": "Indtast tildelt rum",
+        "LODGINGTYPEID": "Indtast rum type",
+        "PERSONS": "Indtast personer",
+        "STATUS": "Status"
+      },
+      "VALIDATION": {
+        "CHECKIN": {
+          "REQUIRED": "Check in dato er påkrævet."
+        },
+        "CHECKOUT": {
+          "REQUIRED": "Check ud dato er påkrævet."
+        },
+        "LODGINGID": {
+          "REQUIRED": "Tildelt rum er påkrævet."
+        },
+        "LODGINGTYPEID": {
+          "REQUIRED": "Rum type er påkrævet."
+        },
+        "PERSONS": {
+          "REQUIRED": "Personer er påkrævet."
+        }
+      }
+    },
+    "INDEX": {
+      "ACTIONS": "Handlinger",
+      "ALL": "Alle",
+      "ARRIVALS": "Ankomster",
+      "CREATE": "Opret",
+      "DELETE": "Ret",
+      "DEPARTURES": "Afgange",
+      "EDIT": "Rediger",
+      "FIELDS": "Felter",
+      "FIELDS_TITLE": "(felter)",
+      "GROUP_RESERVATIONS": "Gruppe reservationer",
+      "ITEM": "Enhed",
+      "MANAGE": "Konfigurer",
+      "RESERVATIONS": "Reservationer",
+      "SETTINGS": "Indstillinger",
+      "STAYS": "Indlogeret"
+    },
+    "QUEUE": {
+      "ADDING": "Tilføjer rum reservations {{ id }}",
+      "DELETING": "Sletter rum reservations {{ id }}",
+      "ERROR": "Der opstod  en fejl ved rum reservations {{ id }}. Ret og prøv igen.",
+      "UPDATING": "Opdatere rum reservations {{ id }}"
+    },
+    "STAYS": {
+      "TITLE": "Ophold",
+      "TITLE_EXTRAS": "(ophold)"
+    }
+  },
+  "LODGING_RESERVATIONS_SETTINGS": {
+    "FORM": {
+      "LABELS": {
+        "EARLIESTCHECKIN": "Tidligste check ind",
+        "LATESTCHECKOUT": "Seneste check ud"
+      },
+      "PLACEHOLDERS": {
+        "EARLIESTCHECKIN": "Tidligste checkin",
+        "LATESTCHECKOUT": "Seneste check ud"
+      },
+      "VALIDATION": {
+        "EARLIESTCHECKIN": {
+          "REQUIRED": "Tidligste checkin er påkrævet."
+        },
+        "LATESTCHECKOUT": {
+          "REQUIRED": "Seneste check ud er påkrævet."
+        }
+      }
+    }
+  },
+  "LODGING_RESERVATION_PRICE_CHANGES": {
+    "CREATE": {
+      "BUTTON_CREATE": "Opret",
+      "CREATE": "Opret"
+    },
+    "EDIT": {
+      "BUTTON_EDIT": "Opdater",
+      "EDIT": "Rediger"
+    },
+    "FORM": {
+      "LABELS": {
+        "CHANGE": "Pris ændring",
+        "CURRENCYCODE": "Valuta kode",
+        "END": "Slut",
+        "EXCLUDEDAYSOFWEEK": "Ekskluder uge dage",
+        "ISPERCENT": "Ændring er i procent (%)",
+        "MAXUNITS": "Maximum antal enheder",
+        "MAXUNITSOFTIME": "Maximum antal tidsenheder",
+        "MINUNITS": "Minimum antal enheder",
+        "MINUNITSOFTIME": "Minimum antal tidsenheder",
+        "ONLYVALIDUNITS": "Ændring gælder kun enheder indenfor min og max",
+        "ONLYVALIDUNITSOFTIME": "Ændring skal gælde enheder der er indenfor tidsintervallets min og max",
+        "PERUNIT": "Per enhed",
+        "PERUNITOFTIME": "Ændring skal gælde pr. tidsenhed",
+        "RECORDID": "Allokeret værelse",
+        "START": "Start",
+        "VALIDFROM": "Gældende fra",
+        "VALIDTO": "Gældende til"
+      },
+      "PLACEHOLDERS": {
+        "CHANGE": "Pris ændring",
+        "CURRENCYCODE": "Valuta kode",
+        "END": "Slut",
+        "EXCLUDEDAYSOFWEEK": "Ekskluder uge dage",
+        "ISPERCENT": "Ændring er i procent (%)",
+        "MAXUNITS": "Maximum antal enheder",
+        "MAXUNITSOFTIME": "Maximum antal tidsenheder",
+        "MINUNITS": "Minimum antal enheder",
+        "MINUNITSOFTIME": "Minimum antal tidsenheder",
+        "ONLYVALIDUNITS": "Ændring gælder kun enheder indenfor min og max",
+        "ONLYVALIDUNITSOFTIME": "Ændring skal gælde enheder der er indenfor tidsintervallets min og max",
+        "PERUNIT": "Per enhed",
+        "PERUNITOFTIME": "Ændring skal gælde pr. tidsenhed",
+        "RECORDID": "Allokeret værelse",
+        "START": "Start",
+        "VALIDFROM": "Gældende fra",
+        "VALIDTO": "Gældende til"
+      },
+      "VALIDATION": {
+        "CHANGE": {
+          "REQUIRED": "Pris ændring er påkrævet"
+        },
+        "CURRENCYCODE": {
+          "REQUIRED": "Valuta kode er påkrævet"
+        },
+        "END": {
+          "REQUIRED": "Slut er påkrævet"
+        },
+        "ISPERCENT": {
+          "REQUIRED": "Felt er påkrævet"
+        },
+        "MAXUNITS": {
+          "REQUIRED": "Maximum antal enheder er påkrævet"
+        },
+        "MAXUNITSOFTIME": {
+          "REQUIRED": "Maximum antal tidsenheder er påkrævet"
+        },
+        "MINUNITS": {
+          "REQUIRED": "Minimum antal enheder er påkrævet"
+        },
+        "MINUNITSOFTIME": {
+          "REQUIRED": "Minimum antal tidsenheder er påkrævet"
+        },
+        "RECORDID": {
+          "REQUIRED": "Allokeret værelse er påkrævet"
+        },
+        "START": {
+          "REQUIRED": "Start er påkrævet"
+        },
+        "VALIDFROM": {
+          "REQUIRED": "Gældende fra er påkrævet"
+        },
+        "VALIDTO": {
+          "REQUIRED": "Gældende til er påkrævet"
+        }
+      }
+    },
+    "INDEX": {
+      "ACTIONS": "Handlinger",
+      "BACK": "Tilbage",
+      "CREATE": "Opret",
+      "DELETE": "Slet",
+      "FIELDS": "Felter",
+      "MANAGE": "Konfigurer"
+    },
+    "QUEUE": {
+      "ADDING": "Tilføjer {{ name }}",
+      "DELETING": "Sletter {{ name }}",
+      "ERROR": "Der opstod  en fejl ved {{ name }}. Ret og prøv igen.",
+      "UPDATING": "Opdatere {{ name }}"
+    }
+  },
+  "LODGING_SELECT_DIALOG": {
+    "AVAILABLE": "Tilgængeligt",
+    "CANCEL": "Afbryd",
+    "CHOOSE_LODGING": "Vælg et run",
+    "CHOOSE_LODGING_TYPE": "Vælg en rum type",
+    "DONE": "Færdig",
+    "UNAVAILABLE": "Utilgængelig"
+  },
+  "LODGING_SELECT_FIELD": {
+    "SELECT_LODGING": "Vælg et rum"
+  },
+  "LODGING_SETTINGS": {
+    "EDIT": {
+      "EDIT": "Ret indstillinger"
+    },
+    "FORM": {
+      "LABELS": {
+        "DEFAULTCHECKIN": "Standard check in",
+        "DEFAULTCHECKOUT": "Standard checkud",
+        "NAME": "Navn",
+        "TIMEZONEID": "Tidszone id"
+      },
+      "PLACEHOLDERS": {
+        "DEFAULTCHECKIN": "Standard check in",
+        "DEFAULTCHECKOUT": "Standard checkud",
+        "NAME": "Navn",
+        "TIMEZONEID": "Tidszone id"
+      },
+      "VALIDATION": {}
+    },
+    "QUEUE": {
+      "ADDING": "Tilføjer {{ name }}",
+      "DELETING": "Sletter {{ name }}",
+      "ERROR": "Der skete en fejl ved opdatering af indstillingerne.",
+      "UPDATING": "Opdaterer"
+    }
+  },
+  "LODGING_TYPES": {
+    "AVAILABILITY": {
+      "NEXT": "Næste",
+      "PLACEHOLDER": "Vælg rumtyper",
+      "PREVIOUS": "Tidligere",
+      "TITLE": "Rum typer tilgængelighed",
+      "TODAY": "I dag"
+    },
+    "CREATE": {
+      "BUTTON_CREATE": "Opret",
+      "CREATE": "Opret"
+    },
+    "EDIT": {
+      "BUTTON_EDIT": "Opdater",
+      "EDIT": "Rediger"
+    },
+    "FIELDS": {
+      "CREATE": {
+        "ADD": "Opret nyt felt"
+      },
+      "EDIT": {
+        "EDITING": "Redigere"
+      },
+      "INDEX": {
+        "ACTIONS": "Handlinger",
+        "BACK": "Tilbage",
+        "CREATE": "Opret nyt felt",
+        "FIELDS": "Felter",
+        "OTHER": "Andre"
+      }
+    },
+    "FORM": {
+      "LABELS": {
+        "NAME": "Navn"
+      },
+      "PLACEHOLDERS": {
+        "NAME": "Indtast navn"
+      },
+      "VALIDATION": {
+        "NAME": {
+          "REQUIRED": "Navn er påkrævet."
+        }
+      }
+    },
+    "INDEX": {
+      "ACTIONS": "Handlinger",
+      "AVAILABILITY": "Tilgængelighed",
+      "BACK": "Tilbage",
+      "CREATE": "Opret",
+      "FIELDS": "Felter",
+      "FIELDS_TITLE": "(type felt)",
+      "MANAGE": "Konfigurer",
+      "TITLE_EXTRAS": "(typer)",
+      "TYPES_FIELDS": "Type felt"
+    },
+    "QUEUE": {
+      "ADDING": "Tilføjer {{ name }}",
+      "DELETING": "Sletter {{ name }}",
+      "ERROR": "Der opstod  en fejl ved {{ name }}. Ret og prøv igen.",
+      "UPDATING": "Opdatere {{ name }}"
+    }
+  },
+  "LODGING_TYPE_PRICES": {
+    "CREATE": {
+      "BUTTON_CREATE": "Opret",
+      "CREATE": "Opret"
+    },
+    "EDIT": {
+      "BUTTON_EDIT": "Opdater",
+      "EDIT": "Rediger"
+    },
+    "FORM": {
+      "LABELS": {
+        "CURRENCYCODE": "Valuta kode",
+        "PRICE": "Pris",
+        "RECORDID": "Værelse"
+      },
+      "PLACEHOLDERS": {
+        "CURRENCYCODE": "Valuta kode",
+        "PRICE": "Pris",
+        "RECORDID": "Værelse"
+      },
+      "VALIDATION": {
+        "CURRENCYCODE": {
+          "REQUIRED": "Valuta kode er påkrævet"
+        },
+        "PRICE": {
+          "REQUIRED": "Pris er påkrævet."
+        },
+        "RECORDID": {
+          "REQUIRED": "Værelse er påkrævet."
+        }
+      }
+    },
+    "INDEX": {
+      "ACTIONS": "Handlinger",
+      "BACK": "Tilbage",
+      "CREATE": "Opret",
+      "DELETE": "Slet",
+      "FIELDS": "Felter",
+      "MANAGE": "Konfigurer"
+    },
+    "QUEUE": {
+      "ADDING": "Tilføjer {{ name }}",
+      "DELETING": "Sletter {{ name }}",
+      "ERROR": "Der opstod  en fejl ved {{ name }}. Ret og prøv igen.",
+      "UPDATING": "Opdatere {{ name }}"
+    }
+  },
+  "LODGING_TYPE_RESERVATION_PRICE_CHANGES": {
+    "CREATE": {
+      "BUTTON_CREATE": "Opret",
+      "CREATE": "Opret"
+    },
+    "EDIT": {
+      "BUTTON_EDIT": "Opdater",
+      "EDIT": "Rediger"
+    },
+    "FORM": {
+      "LABELS": {
+        "CHANGE": "Pris ændring",
+        "CURRENCYCODE": "Valuta kode",
+        "END": "Slut",
+        "EXCLUDEDAYSOFWEEK": "Ekskluder uge dage",
+        "ISPERCENT": "Ændring er i procent (%)",
+        "MAXUNITS": "Maximum antal enheder",
+        "MAXUNITSOFTIME": "Maximum antal tidsenheder",
+        "MINUNITS": "Minimum antal enheder",
+        "MINUNITSOFTIME": "Minimum antal tidsenheder",
+        "ONLYVALIDUNITS": "Ændring gælder kun enheder indenfor min og max",
+        "ONLYVALIDUNITSOFTIME": "Ændring skal gælde enheder der er indenfor tidsintervallets min og max",
+        "PERUNIT": "Per enhed",
+        "PERUNITOFTIME": "Ændring skal gælde pr. tidsenhed",
+        "RECORDID": "Værelsestype",
+        "START": "Start",
+        "VALIDFROM": "Gældende fra",
+        "VALIDTO": "Gældende til"
+      },
+      "PLACEHOLDERS": {
+        "CHANGE": "Pris ændring",
+        "CURRENCYCODE": "Valuta kode",
+        "END": "Slut",
+        "EXCLUDEDAYSOFWEEK": "Ekskluder uge dage",
+        "ISPERCENT": "Ændring er i procent (%)",
+        "MAXUNITS": "Maximum antal enheder",
+        "MAXUNITSOFTIME": "Maximum antal tidsenheder",
+        "MINUNITS": "Minimum antal enheder",
+        "MINUNITSOFTIME": "Minimum antal tidsenheder",
+        "ONLYVALIDUNITS": "Ændring gælder kun enheder indenfor min og max",
+        "ONLYVALIDUNITSOFTIME": "Ændring skal gælde enheder der er indenfor tidsintervallets min og max",
+        "PERUNIT": "Per enhed",
+        "PERUNITOFTIME": "Ændring skal gælde pr. tidsenhed",
+        "RECORDID": "Værelses type",
+        "START": "Start",
+        "VALIDFROM": "Gældende fra",
+        "VALIDTO": "Gældende til"
+      },
+      "VALIDATION": {
+        "CHANGE": {
+          "REQUIRED": "Pris ændring er påkrævet"
+        },
+        "CURRENCYCODE": {
+          "REQUIRED": "Valuta kode er påkrævet"
+        },
+        "END": {
+          "REQUIRED": "Slut er påkrævet"
+        },
+        "ISPERCENT": {
+          "REQUIRED": "Felt er påkrævet"
+        },
+        "MAXUNITS": {
+          "REQUIRED": "Maximum antal enheder er påkrævet"
+        },
+        "MAXUNITSOFTIME": {
+          "REQUIRED": "Maximum antal tidsenheder er påkrævet"
+        },
+        "MINUNITS": {
+          "REQUIRED": "Minimum antal enheder er påkrævet"
+        },
+        "MINUNITSOFTIME": {
+          "REQUIRED": "Minimum antal tidsenheder er påkrævet"
+        },
+        "RECORDID": {
+          "REQUIRED": "Værelses type er påkrævet"
+        },
+        "START": {
+          "REQUIRED": "Start er påkrævet"
+        },
+        "VALIDFROM": {
+          "REQUIRED": "Gældende fra er påkrævet"
+        },
+        "VALIDTO": {
+          "REQUIRED": "Gældende til er påkrævet"
+        }
+      }
+    },
+    "INDEX": {
+      "ACTIONS": "Handlinger",
+      "BACK": "Tilbage",
+      "CREATE": "Opret",
+      "DELETE": "Slet",
+      "FIELDS": "Felter",
+      "MANAGE": "Konfigurer"
+    },
+    "QUEUE": {
+      "ADDING": "Tilføjer {{ name }}",
+      "DELETING": "Sletter {{ name }}",
+      "ERROR": "Der opstod  en fejl ved {{ name }}. Ret og prøv igen.",
+      "UPDATING": "Opdatere {{ name }}"
+    }
+  },
+  "LODGING_TYPE_SELECT_DIALOG": {
+    "AVAILABLE": " tilgængeligt",
+    "CANCEL": "Afbryd",
+    "CHOOSE_LODGING_TYPE": "Vælg en rum type",
+    "DONE": "Færdig",
+    "PRICE_VIA": "pricer via ",
+    "SELECT_LODGING_TYPE": "Vælg en rum type"
+  },
+  "LODGING_TYPE_SELECT_FIELD": {
+    "SELECT_LODGING_TYPE": "Vælg en rum type"
+  },
+  "MAINTENANCE": {
+    "ASSIGNMENT_ALL": {
+      "INDEX": {
+        "MANAGE": "Konfigurer",
+        "RECURRING_ASSIGNMENTS": "Gentagne opgaver",
+        "SINGLE_ASSIGNMENTS": "Opgaver",
+        "STATES": "Vedligeholdelse tilstande",
+        "TYPES": "Opgave typer"
+      },
+      "TITLE": "Alle opgaver"
+    }
+  },
+  "MAINTENANCE_STATES": {
+    "CREATE": {
+      "BUTTON_CREATE": "Opret",
+      "CREATE": "Opret"
+    },
+    "EDIT": {
+      "BUTTON_EDIT": "Opdater",
+      "EDIT": "Ret"
+    },
+    "FORM": {
+      "LABELS": {
+        "DESCRIPTION": "Beskrivelse",
+        "ID": "Id",
+        "STATUS": "Status"
+      },
+      "PLACEHOLDERS": {
+        "DESCRIPTION": "Indtast beskrivelse",
+        "ID": "Vælg et Id",
+        "STATUS": "Vælg Status"
+      },
+      "VALIDATION": {
+        "DESCRIPTION": {
+          "REQUIRED": "Beskrivelse er påkrævet."
+        },
+        "ID": {
+          "REQUIRED": "Id er påkrævet"
+        },
+        "STATUS": {
+          "REQUIRED": "Status er påkrævet"
+        }
+      }
+    },
+    "INDEX": {
+      "ACTIONS": "Handlinger",
+      "BACK": "Tilbage",
+      "CREATE": "Opret",
+      "DELETE": "Slet",
+      "EDIT": "Ret",
+      "FIELDS": "Felter",
+      "MANAGE": "Konfigurer",
+      "TITLE_EXTRAS": "(tilstand)"
+    },
+    "MANAGE": {
+      "BACK": "Tilbage"
+    },
+    "QUEUE": {
+      "ADDING": "Tilføjer {{ description }}",
+      "DELETING": "Sletter {{ description }}",
+      "ERROR": "Der opstod  en fejl ved {{ description }}. Ret og prøv igen.",
+      "UPDATING": "Opdatere {{ description }}"
+    }
+  },
+  "NOTIFICATIONS": {
+    "ADD": {
+      "FAILURE": "{{ errorMessage }} ({{ httpErrorCode }}).",
+      "FIELD_FAILURE": "{{ errorMessage }} ({{ httpErrorCode }}).",
+      "FIELD_SUCCESS": "Tilføjelsen lykkedes.",
+      "SUCCESS": "Tilføjelsen lykkedes."
+    },
+    "CONNECTION_ERROR": "Der kunne ikke oprettes forbindelse til serveren.",
+    "GET": {
+      "FIELDS_FAILURE": "{{ errorMessage }} ({{ httpErrorCode }}).",
+      "PAGED_ERROR": "{{ errorMessage }} ({{ httpErrorCode }}).",
+      "SINGLE_FAILURE": "{{ errorMessage }} ({{ httpErrorCode }}).",
+      "SINGLE_FIELD_FAILURE": "{{ errorMessage }} ({{httpErrorCode }})."
+    },
+    "REMOVE": {
+      "FAILURE": "{{ errorMessage }} ({{ httpErrorCode }}).",
+      "FIELD_FAILURE": "{{ errorMessage }} ({{httpErrorCode }}).",
+      "FIELD_SUCCESS": "Sletningen lykkedes.",
+      "SUCCESS": "Sletningen lykkedes."
+    },
+    "UPDATE": {
+      "FAILURE": "{{ errorMessage }} ({{ httpErrorCode }}).",
+      "FIELD_FAILURE": "{{ errorMessage }} ({httpErrorCode }})",
+      "FIELD_SUCCESS": "Opdateringen lykkedes.",
+      "SUCCESS": "Opdateringen lykkedes."
+    }
+  },
+  "OAUTH2": {
+    "FORM": {
+      "LABELS": {
+        "EMAIL": "Email",
+        "PASSWORD": "Adgangskode",
+        "STAYSIGNEDIN": "Forbliv logget ind"
+      },
+      "PLACEHOLDERS": {
+        "EMAIL": "Indstast email",
+        "PASSWORD": "Indtast en adgangskode"
+      },
+      "VALIDATION": {
+        "EMAIL": {
+          "INVALIDEMAIL": "Indtast en gyldig email.",
+          "REQUIRED": "En Email er påkrævet."
+        },
+        "PASSWORD": {
+          "REQUIRED": "En adgangskode er påkrævet."
+        }
+      }
+    },
+    "OAUTH2_LOGIN": {
+      "BUTTON_LOGIN": "Log ind",
+      "CONFIRM_EMAIL": "Bekræft e-mail",
+      "ENTER_CRED": "Indtast dine log ind informationer herunder",
+      "ERROR_OCCURRED": "Der skete en fejl, bekræft at den rigtige email og adgangskode er indtastet",
+      "FORGOT_PASSWORD": "Glemt adgangskode?",
+      "LOGGING_IN": "Logger ind...",
+      "SIGN_IN": "Log ind"
+    }
+  },
+  "OPEN_API": {
+    "FORM": {
+      "PLACEHOLDERS": {
+        "CONTACTEMAIL": "Kontakt email",
+        "CONTACTNAME": "Kontakt navn",
+        "CONTACTURL": "Kontakt URL",
+        "DESCRIPTION": "Beskrivelse",
+        "LICENSENAME": "Licens name",
+        "LICENSEURL": "Licens URL",
+        "TERMSOFSERVICE": "Servicevilkår",
+        "TITLE": "Titel"
+      }
+    },
+    "SETTINGS": "Indstillinger"
+  },
+  "PACKAGES": {
+    "ADDING": "Tilføjer {{ name }}",
+    "CREATE": {
+      "BUTTON_CREATE": "Opret",
+      "INSTALL": "Installer pakke"
+    },
+    "DELETING": "Sletter {{ name }}",
+    "EDIT": {
+      "BUTTON_EDIT": "Opdater",
+      "EDIT": "Ret pakke",
+      "EDITING": "redigerer {{ object.name }} pakken"
+    },
+    "EDITING_PATH": "Rediger sti",
+    "ERROR": "Der opstod  en fejl ved {{ name }}. Ret og prøv igen.",
+    "FORM": {
+      "LABELS": {
+        "DESCRIPTION": "Beskrivelse",
+        "NAME": "Navn",
+        "PATH": "PATH",
+        "TYPE": "Pakke type"
+      },
+      "PLACEHOLDERS": {
+        "CURRENTPATH": "Nuværende sti",
+        "DESCRIPTION": "Indtast en beskrivelse",
+        "NAME": "Indtast et navn",
+        "NEWPATH": "Ny sti",
+        "PATH": "Indtast en sti",
+        "TYPE": "Vælg en pakke type"
+      },
+      "VALIDATION": {
+        "DESCRIPTION": {
+          "REQUIRED": "En beskrivelse er påkrævet."
+        },
+        "NAME": {
+          "REQUIRED": "Et navn er påkrævet."
+        },
+        "NEWPATH": {
+          "INVALIDSTRINGLENGTH": "Stien skal minimum være 3 karakterer lang.",
+          "REQUIRED": "En sti er påkrævet."
+        },
+        "PATH": {
+          "INVALIDSTRINGLENGTH": "Stien skal minimum være 3 karakterer lang.",
+          "REQUIRED": "En sti er påkrævet."
+        },
+        "TYPE": {
+          "DEPSMISSING": "Ikke alle pakker er valgt.",
+          "REQUIRED": "En pakke type er påkrævet."
+        }
+      }
+    },
+    "INDEX": {
+      "ACTIONS": "Handlinger",
+      "ADAPTORS": "Adaptere",
+      "AVAILABLE_PACKAGES": "Ledige pakker",
+      "CREATE": "Opret",
+      "FEATURES": "Udvidelser",
+      "INSTALL": "Installer pakke",
+      "MANAGE": "Konfigurer",
+      "OPEN": "Gå til",
+      "TITLE": "Pakker"
+    },
+    "QUEUE": {
+      "ADDING": "Tilføjer {{ displayName }}",
+      "DELETING": "Sletter {{ displayName }}",
+      "ERROR": "Der skete en fejl med {{ displayName }}. Ret og prøv igen.",
+      "UPDATING": "Opdatere {{ displayName }}"
+    },
+    "UPDATING": "Opdatere {{ name }}"
+  },
+  "PASS_CODES": {
+    "FORM": {
+      "LABELS": {
+        "EXPRESSION": "Ekspression"
+      },
+      "PLACEHOLDERS": {
+        "EXPRESSION": "Ekspression"
+      },
+      "VALIDATION": {
+        "EXPRESSION": {
+          "REQUIRED": "En ekspression er påkrævet."
+        }
+      }
+    }
+  },
+  "PERSONS": {
+    "CREATE": {
+      "BUTTON_CREATE": "Opret",
+      "CREATE": "Opret"
+    },
+    "EDIT": {
+      "BUTTON_EDIT": "Opdater",
+      "EDIT": "Rediger"
+    },
+    "FIELDS": {
+      "CREATE": {
+        "ADD": "Tilføj nyt felt"
+      },
+      "EDIT": {
+        "EDITING": "Redigere"
+      },
+      "INDEX": {
+        "ACTIONS": "Handlinger",
+        "BACK": "Tilbage",
+        "CREATE": "Tilføj nyt felt",
+        "EDIT": "Rediger",
+        "FIELDS": "Felter",
+        "OTHER": "Andre"
+      }
+    },
+    "FORM": {
+      "LABELS": {
+        "DISPLAYNAME": "Visningsnavn",
+        "FIRSTNAME": "Fornavn",
+        "LASTNAME": "Efternavn"
+      },
+      "PLACEHOLDERS": {
+        "DISPLAYNAME": "Indtast visningsnavn",
+        "FIRSTNAME": "Indtast fornavn",
+        "LASTNAME": "Indtast efternavn"
+      },
+      "VALIDATION": {
+        "DISPLAYNAME": {
+          "REQUIRED": "Visningsnavn er påkrævet."
+        },
+        "FIRSTNAME": {
+          "REQUIRED": "Fornavn er påkrævet."
+        },
+        "LASTNAME": {
+          "REQUIRED": "Efternavn er påkrævet."
+        }
+      }
+    },
+    "INDEX": {
+      "ACTIONS": "Handlinger",
+      "CREATE": "Opret",
+      "DELETE": "Ret",
+      "EDIT": "Rediger",
+      "FIELDS": "Felter",
+      "FIELDS_TITLE": "(felter)",
+      "ITEM": "Enhed",
+      "MANAGE": "Konfigurer",
+      "PACKAGES": "Pakker"
+    },
+    "NOTIFICATIONS": {
+      "ADD": {
+        "FAILURE": "Mislykkede med at tilføje {{ displayName }} ({{ httpErrorCode }}).",
+        "FIELD_FAILURE": "Mislykkede med at tilføje feltet for {{ displayName }} ({{ httpErrorCode }}).",
+        "FIELD_SUCCESS": "Tilføjede feltet for {{ displayName }} lykkedes.",
+        "SUCCESS": "Tilføjelsen af {{ displayName }} lykkedes."
+      },
+      "GET": {
+        "FIELDS_FAILURE": "Mislykkede med at hente felterne for personer ({{ httpErrorCode }}).",
+        "PAGED_ERROR": "Mislykkede med at hente personer ({{ httpErrorCode }}).",
+        "SINGLE_FAILURE": "Mislykkede med at hente {{ displayName }} ({{ httpErrorCode }}).",
+        "SINGLE_FIELD_FAILURE": "Mislykkede med at hente {{ displayName }} feltet ({{ httpErrorCode }})."
+      },
+      "REMOVE": {
+        "FAILURE": "Mislykkede med at fjerne {{ displayName }} ({{ httpErrorCode }}).",
+        "FIELD_FAILURE": "Mislykkede med at fjerne feltet for {{ displayName }} ({{ httpErrorCode }}).",
+        "FIELD_SUCCESS": "Sletningen af feltet for {{ displayName }} succesfully.",
+        "SUCCESS": "Sletningen af {{ displayName }} lykkedes."
+      },
+      "UPDATE": {
+        "FAILURE": "Mislykkede med at opdatere {{ displayName }} ({{ httpErrorCode }}).",
+        "FIELD_FAILURE": "Mislykkede med at opdatere feltet for {{ displayName }} ({{ httpErrorCode }})",
+        "FIELD_SUCCESS": "Opdaterede feltet for {{ displayName }} lykkedes.",
+        "SUCCESS": "Opdateringen af {{ displayName }} lykkedes."
+      }
+    },
+    "QUEUE": {
+      "ADDING": "Tilføjer {{ displayName }}",
+      "DELETING": "Sletter {{ displayName }}",
+      "ERROR": "Der opstod en fejl ved {{ displayName }}. Ret og prøv igen.",
+      "UPDATING": "Opdatere {{ displayName }}"
+    }
+  },
+  "PRODUCTS": {
+    "CREATE": {
+      "BUTTON_CREATE": "Opret",
+      "CREATE": "Opret"
+    },
+    "EDIT": {
+      "BUTTON_EDIT": "Opdater",
+      "EDIT": "Rediger"
+    },
+    "FIELDS": {
+      "CREATE": {
+        "ADD": "Opret nyt felt"
+      },
+      "EDIT": {
+        "EDITING": "Redigere"
+      },
+      "INDEX": {
+        "ACTIONS": "Handlinger",
+        "BACK": "Tilbage",
+        "CREATE": "Opret et nyt type felt",
+        "FIELDS": "Felter",
+        "MANAGE": "Konfigurer",
+        "TYPES": "Typer"
+      }
+    },
+    "FORM": {
+      "LABELS": {
+        "NAME": "Navn",
+        "PRODUCTSPRICING": "Pris",
+        "PRODUCTTYPEID": "Produkt type"
+      },
+      "PLACEHOLDERS": {
+        "NAME": "Indtast navn",
+        "PRODUCTTYPEID": "Vælg en produkt type"
+      },
+      "VALIDATION": {
+        "NAME": {
+          "REQUIRED": "Navn er påkrævet."
+        }
+      }
+    },
+    "INDEX": {
+      "ACTIONS": "Handlinger",
+      "CREATE": "Opret",
+      "DELETE": "Slet",
+      "EDIT": "Rediger",
+      "FIELDS": "Felter",
+      "FIELDS_TITLE": "(felter)",
+      "ITEM": "Enhed",
+      "MANAGE": "Konfigurer",
+      "TYPES": "Typer"
+    },
+    "QUEUE": {
+      "ADDING": "Tilføjer {{ name }}",
+      "DELETING": "Sletter {{ name }}",
+      "ERROR": "Der opstod  en fejl ved {{ name }}. Ret og prøv igen.",
+      "UPDATING": "Opdatere {{ name }}"
+    }
+  },
+  "PRODUCTS_PRICINGS": {
+    "INDEX": {
+      "MANAGE": "Konfigurer",
+      "PRICE_CHANGES": "Produkt pris ændringer",
+      "PRICE_TYPE_CHANGES": "Produkt type pris ændringer",
+      "SALES_PRICES": "Produkt salgs priser",
+      "SALES_PRICES_TYPES": "Produkt typer salgs priser"
+    }
+  },
+  "PRODUCTS_SALES_PRICE": {
+    "CREATE": {
+      "BUTTON_CREATE": "Opret",
+      "CREATE": "Opret"
+    },
+    "EDIT": {
+      "BUTTON_EDIT": "Opdater",
+      "EDIT": "Rediger"
+    },
+    "FORM": {
+      "LABELS": {
+        "CURRENCYCODE": "Valuta kode",
+        "PRICE": "Pris",
+        "RECORDID": "Produkt"
+      },
+      "PLACEHOLDERS": {
+        "CURRENCYCODE": "Valuta kode",
+        "PRICE": "Pris",
+        "RECORDID": "Produkt"
+      },
+      "VALIDATION": {
+        "CURRENCYCODE": {
+          "REQUIRED": "Valuta kode er påkrævet"
+        },
+        "PRICE": {
+          "REQUIRED": "Pris er påkrævet."
+        },
+        "RECORDID": {
+          "REQUIRED": "Produkt er påkrævet."
+        }
+      }
+    },
+    "INDEX": {
+      "ACTIONS": "Handlinger",
+      "BACK": "Tilbage",
+      "CREATE": "Opret",
+      "DELETE": "Slet",
+      "FIELDS": "Felter",
+      "MANAGE": "Konfigurer"
+    },
+    "QUEUE": {
+      "ADDING": "Tilføjer {{ name }}",
+      "DELETING": "Sletter {{ name }}",
+      "ERROR": "Der opstod  en fejl ved {{ name }}. Ret og prøv igen.",
+      "UPDATING": "Opdatere {{ name }}"
+    }
+  },
+  "PRODUCT_PRICE_CHANGES": {
+    "CREATE": {
+      "BUTTON_CREATE": "Opret",
+      "CREATE": "Opret"
+    },
+    "EDIT": {
+      "BUTTON_EDIT": "Opdater",
+      "EDIT": "Rediger"
+    },
+    "FORM": {
+      "LABELS": {
+        "CHANGE": "Pris ændring",
+        "CURRENCYCODE": "Valuta kode",
+        "ISPERCENT": "Ændring er i procent(%)",
+        "MAXUNITS": "Maximum antal enheder",
+        "MINUNITS": "Minimum antal enheder",
+        "ONLYVALIDUNITS": "Ændring gælder kun enheder indenfor min og max",
+        "PERUNIT": "Per enhed",
+        "RECORDID": "Produkt",
+        "VALIDFROM": "Gældende fra",
+        "VALIDTO": "Gældende til"
+      },
+      "PLACEHOLDERS": {
+        "CHANGE": "Pris ændring",
+        "CURRENCYCODE": "Valuta kode",
+        "ISPERCENT": "Ændring er i procent(%)",
+        "MAXUNITS": "Maximum antal enheder",
+        "MINUNITS": "Minimum antal enheder",
+        "ONLYVALIDUNITS": "Ændring gælder kun enheder indenfor min og max",
+        "PERUNIT": "Per enhed",
+        "RECORDID": "Produkt",
+        "VALIDFROM": "Gældende fra",
+        "VALIDTO": "Gældende til"
+      },
+      "VALIDATION": {
+        "CHANGE": {
+          "REQUIRED": "Pris ændring er påkrævet"
+        },
+        "CURRENCYCODE": {
+          "REQUIRED": "Valuta kode er påkrævet"
+        },
+        "ISPERCENT": {
+          "REQUIRED": "Felt er påkrævet"
+        },
+        "MAXUNITS": {
+          "REQUIRED": "Maximum antal enheder er påkrævet"
+        },
+        "MINUNITS": {
+          "REQUIRED": "Minimum antal enheder er påkrævet"
+        },
+        "RECORDID": {
+          "REQUIRED": "Products salgs pris er påkrævet"
+        },
+        "VALIDFROM": {
+          "REQUIRED": "Gældende fra er påkrævet"
+        },
+        "VALIDTO": {
+          "REQUIRED": "Gældende til er påkrævet"
+        }
+      }
+    },
+    "INDEX": {
+      "ACTIONS": "Handlinger",
+      "BACK": "Tilbage",
+      "CREATE": "Opret",
+      "DELETE": "Slet",
+      "FIELDS": "Felter",
+      "MANAGE": "Konfigurer"
+    },
+    "QUEUE": {
+      "ADDING": "Tilføjer {{ name }}",
+      "DELETING": "Sletter {{ name }}",
+      "ERROR": "Der opstod  en fejl ved {{ name }}. Ret og prøv igen.",
+      "UPDATING": "Opdatere {{ name }}"
+    }
+  },
+  "PRODUCT_TYPES": {
+    "CREATE": {
+      "BUTTON_CREATE": "Opret",
+      "CREATE": "Opret"
+    },
+    "EDIT": {
+      "BUTTON_EDIT": "Opdater",
+      "EDIT": "Rediger"
+    },
+    "FORM": {
+      "LABELS": {
+        "NAME": "Navn"
+      },
+      "PLACEHOLDERS": {
+        "NAME": "Indtast navn"
+      },
+      "VALIDATION": {
+        "NAME": {
+          "REQUIRED": "Et navn er påkrævet."
+        }
+      }
+    },
+    "INDEX": {
+      "ACTIONS": "Handlinger",
+      "BACK": "Tilbage",
+      "CREATE": "Opret ny type",
+      "DELETE": "Slet",
+      "FIELDS": "Felter",
+      "FIELDS_TITLE": "(type felter)",
+      "MANAGE": "Konfigurer",
+      "TITLE_EXTRAS": "(typer)"
+    },
+    "QUEUE": {
+      "ADDING": "Tilføjer {{ name }}",
+      "DELETING": "Sletter {{ name }}",
+      "ERROR": "Der opstod  en fejl ved {{ name }}. Ret og prøv igen.",
+      "UPDATING": "Opdatere {{ name }}"
+    }
+  },
+  "PRODUCT_TYPE_PRICE_CHANGES": {
+    "CREATE": {
+      "BUTTON_CREATE": "Opret",
+      "CREATE": "Opret"
+    },
+    "EDIT": {
+      "BUTTON_EDIT": "Opdater",
+      "EDIT": "Rediger"
+    },
+    "FORM": {
+      "LABELS": {
+        "CHANGE": "Ændring",
+        "CURRENCYCODE": "Valuta kode",
+        "ISPERCENT": "Ændring er i procent (%)",
+        "MAXUNITS": "Maximum antal enheder",
+        "MINUNITS": "Minimum antal enheder",
+        "ONLYVALIDUNITS": "Ændring gælder kun enheder indenfor min og max",
+        "PERUNIT": "Per enhed",
+        "RECORDID": "Produkt type",
+        "VALIDFROM": "Gældende fra",
+        "VALIDTO": "Gældende til"
+      },
+      "PLACEHOLDERS": {
+        "CHANGE": "Pris ændring",
+        "CURRENCYCODE": "Valuta kode",
+        "ISPERCENT": "Ændring er i procent (%)",
+        "MAXUNITS": "Maximum antal enheder",
+        "MINUNITS": "Minimum antal enheder",
+        "ONLYVALIDUNITS": "Ændring gælder kun enheder indenfor min og max",
+        "PERUNIT": "Per enhed",
+        "RECORDID": "Produkt type",
+        "VALIDFROM": "Gældende fra",
+        "VALIDTO": "Gældende til"
+      },
+      "VALIDATION": {
+        "CHANGE": {
+          "REQUIRED": "Pris ændring er påkrævet"
+        },
+        "CURRENCYCODE": {
+          "REQUIRED": "Valuta kode er påkrævet"
+        },
+        "ISPERCENT": {
+          "REQUIRED": "Felt er påkrævet"
+        },
+        "MAXUNITS": {
+          "REQUIRED": "Maximum antal enheder er påkrævet"
+        },
+        "MINUNITS": {
+          "REQUIRED": "Minimum antal enheder er påkrævet"
+        },
+        "RECORDID": {
+          "REQUIRED": "Products salgs pris er påkrævet"
+        },
+        "VALIDFROM": {
+          "REQUIRED": "Gældende fra er påkrævet"
+        },
+        "VALIDTO": {
+          "REQUIRED": "Gældende til er påkrævet"
+        }
+      }
+    },
+    "INDEX": {
+      "ACTIONS": "Handlinger",
+      "BACK": "Tilbage",
+      "CREATE": "Opret",
+      "DELETE": "Slet",
+      "FIELDS": "Felter",
+      "MANAGE": "Konfigurer"
+    },
+    "QUEUE": {
+      "ADDING": "Tilføjer {{ name }}",
+      "DELETING": "Sletter {{ name }}",
+      "ERROR": "Der opstod  en fejl ved {{ name }}. Ret og prøv igen.",
+      "UPDATING": "Opdatere {{ name }}"
+    }
+  },
+  "PRODUCT_TYPE_SALES_PRICE": {
+    "CREATE": {
+      "BUTTON_CREATE": "Opret",
+      "CREATE": "Opret"
+    },
+    "EDIT": {
+      "BUTTON_EDIT": "Opdater",
+      "EDIT": "Rediger"
+    },
+    "FORM": {
+      "LABELS": {
+        "CURRENCYCODE": "Valuta kode",
+        "PRICE": "Pris",
+        "RECORDID": "Produkt type"
+      },
+      "PLACEHOLDERS": {
+        "CURRENCYCODE": "Valuta kode",
+        "PRICE": "Pris",
+        "RECORDID": "Produkt type"
+      },
+      "VALIDATION": {
+        "CURRENCYCODE": {
+          "REQUIRED": "Valuta kode er påkrævet"
+        },
+        "PRICE": {
+          "REQUIRED": "Pris er påkrævet."
+        },
+        "RECORDID": {
+          "REQUIRED": "Produkt er påkrævet."
+        }
+      }
+    },
+    "INDEX": {
+      "ACTIONS": "Handlinger",
+      "BACK": "Tilbage",
+      "CREATE": "Opret",
+      "DELETE": "Slet",
+      "FIELDS": "Felter",
+      "MANAGE": "Konfigurer"
+    },
+    "QUEUE": {
+      "ADDING": "Tilføjer {{ name }}",
+      "DELETING": "Sletter {{ name }}",
+      "ERROR": "Der opstod  en fejl ved {{ name }}. Ret og prøv igen.",
+      "UPDATING": "Opdatere {{ name }}"
+    }
+  },
+  "RECURRING_ASSIGNMENTS": {
+    "CREATE": {
+      "BUTTON_CREATE": "Opret",
+      "CREATE": "Opret"
+    },
+    "EDIT": {
+      "BUTTON_EDIT": "Opdater",
+      "EDIT": "Ret"
+    },
+    "FORM": {
+      "LABELS": {
+        "ASSIGNMENTTYPEID": "Opgave type",
+        "END": "Slut tidspunkt",
+        "ENTITYID": "Enhed",
+        "START": "Start tidspunkt"
+      },
+      "PLACEHOLDERS": {
+        "ASSIGNMENTTYPEID": "Opgave type",
+        "END": "Slut tidspunkt",
+        "ENTITYID": "Enhed",
+        "START": "Start tidspunkt"
+      },
+      "VALIDATION": {
+        "ASSIGNMENTTYPEID": {
+          "REQUIRED": "Opgave type er påkrævet."
+        },
+        "END": {
+          "REQUIRED": "Slut tidspunkt er påkrævet"
+        },
+        "ENTITYID": {
+          "REQUIRED": "Enhed er påkrævet"
+        },
+        "START": {
+          "REQUIRED": "Start tidspunkt er påkrævet"
+        }
+      }
+    },
+    "INDEX": {
+      "ACTIONS": "Handlinger",
+      "BACK": "Tilbage",
+      "CREATE": "Opret",
+      "DELETE": "Slet",
+      "EDIT": "Ret",
+      "FIELDS": "Felter",
+      "MANAGE": "Konfigurer",
+      "STATES": "Tilstande",
+      "TITLE_EXTRAS": "(gentagne opgaver)"
+    },
+    "QUEUE": {
+      "ADDING": "Tilføjer {{ description }}",
+      "DELETING": "Sletter {{ description }}",
+      "ERROR": "Der opstod  en fejl ved {{ description }}. Ret og prøv igen.",
+      "UPDATING": "Opdatere {{ description }}"
+    }
+  },
+  "RESERVATIONS_PRICINGS": {
+    "INDEX": {
+      "MANAGE": "Konfigurer",
+      "PRICES": "Værelses priser",
+      "PRICES_TYPES": "Værelsestype priser",
+      "RESERVATION_PRICE_CHANGES": "Værelses prisændringer",
+      "RESERVATION_PRICE_CHANGES_TYPES": "Værelsestype prisændringer"
+    }
+  },
+  "ROLES": {
+    "CREATE": {
+      "BUTTON_CREATE": "Opret",
+      "CREATE_ROLE": "Opret ny rolle"
+    },
+    "EDIT": {
+      "BUTTON_EDIT": "Opdater",
+      "EDITING": "Rediger {{ name }}"
+    },
+    "FORM": {
+      "LABELS": {
+        "NAME": "Navn"
+      },
+      "PLACEHOLDERS": {
+        "NAME": "Indtast navn"
+      },
+      "VALIDATION": {
+        "NAME": {
+          "REQUIRED": "Navn er påkrævet"
+        }
+      }
+    },
+    "INDEX": {
+      "ACTIONS": "Handlinger",
+      "BACK": "Tilbage",
+      "CREATE": "Opret",
+      "FIELDS_TITLE": "(felter)",
+      "MANAGE": "Konfigurer",
+      "ROLES": "Roller",
+      "SECURITY": "Sikkerhed",
+      "SECURITY_AND_USERS": "Brugere og sikkerhed",
+      "TITLE_EXTRAS": "(roller)"
+    },
+    "QUEUE": {
+      "ADDING": "Tilføjer {{ name }}",
+      "DELETING": "Sletter {{ name }}",
+      "ERROR": "Der opstod  en fejl ved {{ name }}. Ret og prøv igen.",
+      "UPDATING": "Opdatere {{ name }}"
+    }
+  },
+  "SETTINGS": {
+    "BUTTON_SUBMIT": "Indsend",
+    "QUEUE": {
+      "ADDING": "Tilføjer settings",
+      "DELETING": "Sletter settings",
+      "ERROR": "Der skete en fejl med indstillinger. Ret og prøv igen",
+      "UPDATING": "Opdatere settings"
+    },
+    "SETTINGS": "Indstillinger"
+  },
+  "SINGLE_ASSIGNMENTS": {
+    "CREATE": {
+      "BUTTON_CREATE": "Opret",
+      "CREATE": "Opret"
+    },
+    "EDIT": {
+      "BUTTON_EDIT": "Opdater",
+      "EDIT": "Ret"
+    },
+    "FORM": {
+      "BUTTONS": {
+        "CREATE": "Opret",
+        "EDIT": "Rediger"
+      },
+      "LABELS": {
+        "ASSIGNMENTTYPEID": "Opgave type",
+        "DESCRIPTION": "Beskrivelse",
+        "DUE": "Afleveringsdato",
+        "FROM": "Kan startes efter den",
+        "OCCUPATIONSTATE": "Beskæftigelse tilstand",
+        "STATUS": "Status"
+      },
+      "PLACEHOLDERS": {
+        "ASSIGNMENTTYPEID": "Opgave type",
+        "DESCRIPTION": "Indtast en beskrivelse",
+        "DUE": "Vælg en afleveringsdato",
+        "FROM": "Vælg en hvornår den startes efter den",
+        "OCCUPATIONSTATE": "Vælg en beskæftigelse tilstand",
+        "STATUS": "Vælg en status"
+      },
+      "VALIDATION": {
+        "ASSIGNMENTTYPEID": {
+          "REQUIRED": "Opgave type er påkrævet."
+        },
+        "DESCRIPTION": {
+          "REQUIRED": "En beeskrivelse er påkrævet."
+        },
+        "DUE": {
+          "NOTBEFORE": "Afleveringsdatoen må ikke være før start datoen.",
+          "REQUIRED": "En afleveringsdato er påkrævet."
+        },
+        "FROM": {
+          "REQUIRED": "En dato for hvonår opgaven kan starte er påkrævet."
+        },
+        "STATUS": {
+          "REQUIRED": "En status er påkrævet."
+        }
+      }
+    },
+    "INDEX": {
+      "ACTIONS": "Handlinger",
+      "BACK": "Tilbage",
+      "CREATE": "Opret",
+      "DELETE": "Slet",
+      "EDIT": "Ret",
+      "FIELDS": "Felter",
+      "FIELDS_TITLE": "(Felter)",
+      "MANAGE": "Konfigurer",
+      "STATES": "Tilstande",
+      "TITLE_EXTRAS": "(gentagne opgaver)",
+      "TYPES": "Typer"
+    },
+    "QUEUE": {
+      "ADDING": "Tilføjer {{ description }}",
+      "DELETING": "Sletter {{ description }}",
+      "ERROR": "Der opstod  en fejl ved {{ description }}. Ret og prøv igen.",
+      "UPDATING": "Opdatere {{ description }}"
+    }
+  },
+  "SKYSMACK": {
+    "FORM": {
+      "PLACEHOLDERS": {
+        "DEFAULTTAX": "Moms",
+        "NAME": "Navn"
+      }
+    }
+  },
+  "TERMINALS": {
+    "CREATE": {
+      "BUTTON_CREATE": "Opret",
+      "CREATE": "Opret"
+    },
+    "EDIT": {
+      "BUTTON_EDIT": "Opdater",
+      "EDIT": "Rediger"
+    },
+    "ENTITY_ACTION_PROVIDER": {
+      "ENTITY_ACTION": {
+        "TERMINAL_PAYMENT": "Kreditkort betaling"
+      }
+    },
+    "FORM": {
+      "LABELS": {
+        "AMOUNT": "Mængde",
+        "CLIENTID": "Klient",
+        "CONNECTION": "Forbindelser",
+        "CONNECTIONSTRING": "Forbindelsesdata",
+        "CURRENCYCODE": "Valuta kode",
+        "DESCRIPTION": "Beskrivelse",
+        "INVOICEID": "Faktura ID",
+        "NAME": "Navn",
+        "TERMINALID": "Terminal"
+      },
+      "PLACEHOLDERS": {
+        "AMOUNT": "Mængde",
+        "CLIENTID": "Klient",
+        "CONNECTION": "Forbindelse",
+        "CONNECTIONSTRING": "Forbindelsesdata",
+        "CURRENCYCODE": "Valuta kode",
+        "DESCRIPTION": "Beskrivelse",
+        "INVOICEID": "Fakturea ID",
+        "NAME": "Navn",
+        "TERMINALID": "Terminal"
+      },
+      "VALIDATION": {
+        "AMOUNT": {
+          "REQUIRED": "Mængde er påkrævet."
+        },
+        "CLIENTID": {
+          "REQUIRED": "Klient er påkrævet."
+        },
+        "CONNECTION": {
+          "REQUIRED": "Forbindelse er påkrævet."
+        },
+        "CONNECTIONSTRING": {
+          "REQUIRED": "Forbindelsesdata er påkrævet."
+        },
+        "CURRENCYCODE": {
+          "REQUIRED": "Valuta er påkrævet."
+        },
+        "INVOICEID": {
+          "REQUIRED": "Faktura ID er påkrævet."
+        },
+        "NAME": {
+          "REQUIRED": "Navn er påkrævet."
+        },
+        "TERMINALID": {
+          "REQUIRED": "Terminal er påkrævet."
+        }
+      }
+    },
+    "INDEX": {
+      "ACTIONS": "Handlinger",
+      "CREATE": "Opret",
+      "DELETE": "Slet",
+      "EDIT": "Rediger",
+      "MANAGE": "Konfigurer",
+      "TITLE_EXTRAS": "(Terminaler)",
+      "TYPES": "Typer"
+    },
+    "PAY": {
+      "BUTTON_PAY": "Betal",
+      "TITLE": "Kreditkort betaling"
+    },
+    "QUEUE": {
+      "ADDING": "Tilføjer terminal {{ id }}",
+      "DELETING": "Sletter terminal {{ id }}",
+      "ERROR": "Der opstod  en fejl ved terminal {{ id }}. Ret og prøv igen.",
+      "UPDATING": "Opdatere terminal {{ id }}"
+    }
+  },
+  "TERMINAL_PAYMENTS": {
+    "INDEX": {
+      "CONNECTIONS": "Forbindelser",
+      "MANAGE": "Konfigurer",
+      "RECEIPTS": "Kvitteringer",
+      "TERMINALS": "Terminaler",
+      "TERMINAL_PAYMENT_RECEIPTS": "Betalingkvitteringer",
+      "TERMINAL_RECEIPTS": "Terminalkvitteringer",
+      "TITLE": "Terminal Betalinger"
+    }
+  },
+  "TERMINAL_PAYMENT_RECEIPTS": {
+    "CREATE": {
+      "BUTTON_CREATE": "Opret",
+      "CREATE": "Opret"
+    },
+    "EDIT": {
+      "BUTTON_EDIT": "Opdater",
+      "EDIT": "Rediger"
+    },
+    "FIELDS": {
+      "CREATE": {
+        "ADD": "Tilføj nyt felt"
+      },
+      "EDIT": {
+        "EDITING": "Redigere"
+      },
+      "INDEX": {
+        "ACTIONS": "Handlinger",
+        "BACK": "Tilbage",
+        "CREATE": "Opret nyt felt",
+        "EDIT": "Rediger",
+        "FIELDS": "Felter",
+        "OTHER": "Andre"
+      }
+    },
+    "FORM": {
+      "LABELS": {
+        "INVOICEPAYMENTID": "Betalings faktura",
+        "PRINTRECEIPT": "Udskriv kvittering",
+        "RECEIPTDOCUMENT": "Kvitterings dokument",
+        "REFERENCENUMBER": "Reference nummer"
+      },
+      "PLACEHOLDERS": {
+        "INVOICEPAYMENTID": "Betalings faktura",
+        "PRINTRECEIPT": "Udskriv kvittering",
+        "RECEIPTDOCUMENT": "Kvitterings dokument",
+        "REFERENCENUMBER": "Reference nummer"
+      },
+      "VALIDATION": {
+        "INVOICEPAYMENTID": {},
+        "PRINTRECEIPT": {
+          "REQUIRED": "Udskriv kvittering er påkrævet."
+        },
+        "RECEIPTDOCUMENT": {
+          "REQUIRED": "Kvitterings dokument er påkrævet."
+        },
+        "REFERENCENUMBER": {
+          "REQUIRED": "Reference nummer er påkrævet."
+        }
+      }
+    },
+    "INDEX": {
+      "ACTIONS": "Handlinger",
+      "CREATE": "Opret",
+      "DELETE": "Slet",
+      "EDIT": "Rediger",
+      "FIELDS": "Felter",
+      "FIELDS_TITLE": "(felter)",
+      "ITEM": "Vare",
+      "MANAGE": "Konfigure",
+      "PACKAGES": "Pakker",
+      "TITLE_EXTRAS": "(Betalings kvitteringer)"
+    },
+    "NOTIFICATIONS": {
+      "ADD": {
+        "FAILURE": "Fejlede med at tilføje {{ printReceipt }} ({{ httpErrorCode }}).",
+        "FIELD_FAILURE": "Fejlede med at tilføje felter for {{ printReceipt }} ({{ httpErrorCode }}).",
+        "FIELD_SUCCESS": "Tilføjer felter for {{ printReceipt }} successfuldt.",
+        "SUCCESS": "Tilføjer {{ printReceipt }} successfuldt."
+      },
+      "GET": {
+        "FIELDS_FAILURE": "Fejlede med at hente felter for terminalPaymentReceipts ({{ httpErrorCode }}).",
+        "PAGED_ERROR": "Fejlede med at hente terminalPaymentReceipts ({{ httpErrorCode }}).",
+        "SINGLE_FAILURE": "Fejlede med at hente {{ printReceipt }} ({{ httpErrorCode }}).",
+        "SINGLE_FIELD_FAILURE": "Fejlede med at hente {{ printReceipt }} felter ({{ httpErrorCode }})."
+      },
+      "REMOVE": {
+        "FAILURE": "Fejlede med at fjerne {{ printReceipt }} ({{ httpErrorCode }}).",
+        "FIELD_FAILURE": "Fejlede med at fjerne felter for {{ printReceipt }} ({{ httpErrorCode }}).",
+        "FIELD_SUCCESS": "Removed felter for {{ printReceipt }} succesfully.",
+        "SUCCESS": "Removed {{ printReceipt }} successfuldt."
+      },
+      "UPDATE": {
+        "FAILURE": "Fejlede med at opdatere {{ printReceipt }} ({{ httpErrorCode }}).",
+        "FIELD_FAILURE": "Fejlede med at opdatere felter for {{ printReceipt }} ({{ httpErrorCode }})",
+        "FIELD_SUCCESS": "Opdatere felter for {{ printReceipt }} successfuldt.",
+        "SUCCESS": "Opdatere {{ printReceipt }} successfuldt."
+      }
+    },
+    "QUEUE": {
+      "ADDING": "Tilføjer {{ printReceipt }}",
+      "DELETING": "Sletter {{ printReceipt }}",
+      "ERROR": "Der skete en fejl med {{ printReceipt }}. Ret og prøv igen.",
+      "UPDATING": "Opdatere {{ printReceipt }}"
+    }
+  },
+  "TERMINAL_RECEIPTS": {
+    "CREATE": {
+      "BUTTON_CREATE": "Opret",
+      "CREATE": "Opret"
+    },
+    "EDIT": {
+      "BUTTON_EDIT": "Opdater",
+      "EDIT": "Rediger"
+    },
+    "FIELDS": {
+      "CREATE": {
+        "ADD": "Tilføj nyt felt"
+      },
+      "EDIT": {
+        "EDITING": "Redigere"
+      },
+      "INDEX": {
+        "ACTIONS": "Handlinger",
+        "BACK": "Tilbage",
+        "CREATE": "Opret nyt felt",
+        "EDIT": "Rediger",
+        "FIELDS": "Felter",
+        "OTHER": "Andre"
+      }
+    },
+    "FORM": {
+      "LABELS": {
+        "PRINTRECEIPT": "Udskriv kvittering",
+        "TYPE": "Type"
+      },
+      "PLACEHOLDERS": {
+        "PRINTRECEIPT": "Udskriv kvittering",
+        "TYPE": "Type"
+      },
+      "VALIDATION": {
+        "PRINTRECEIPT": {
+          "REQUIRED": "Udskriv kvittering er påkrævet."
+        },
+        "TYPE": {
+          "REQUIRED": "Type er påkrævet."
+        }
+      }
+    },
+    "INDEX": {
+      "ACTIONS": "Handlinger",
+      "CREATE": "Opret",
+      "DELETE": "Slet",
+      "EDIT": "Rediger",
+      "FIELDS": "Felter",
+      "FIELDS_TITLE": "(felter)",
+      "ITEM": "Vare",
+      "MANAGE": "Konfigure",
+      "PACKAGES": "Pakker",
+      "TITLE_EXTRAS": "(receipts)"
+    },
+    "NOTIFICATIONS": {
+      "ADD": {
+        "FAILURE": "Fejlede med at tilføje {{ printReceipt }} ({{ httpErrorCode }}).",
+        "FIELD_FAILURE": "Fejlede med at tilføje felter for {{ printReceipt }} ({{ httpErrorCode }}).",
+        "FIELD_SUCCESS": "Tilføjer felter for {{ printReceipt }} successfuldt.",
+        "SUCCESS": "Tilføjer {{ printReceipt }} successfuldt."
+      },
+      "GET": {
+        "FIELDS_FAILURE": "Fejlede med at hente felter for terminalReceipts ({{ httpErrorCode }}).",
+        "PAGED_ERROR": "Fejlede med at hente terminalReceipts ({{ httpErrorCode }}).",
+        "SINGLE_FAILURE": "Fejlede med at hente {{ printReceipt }} ({{ httpErrorCode }}).",
+        "SINGLE_FIELD_FAILURE": "Fejlede med at hente {{ printReceipt }} felter ({{ httpErrorCode }})."
+      },
+      "REMOVE": {
+        "FAILURE": "Fejlede med at fjerne {{ printReceipt }} ({{ httpErrorCode }}).",
+        "FIELD_FAILURE": "Fejlede med at fjerne felter for {{ printReceipt }} ({{ httpErrorCode }}).",
+        "FIELD_SUCCESS": "Removed felter for {{ printReceipt }} succesfully.",
+        "SUCCESS": "Removed {{ printReceipt }} successfuldt."
+      },
+      "UPDATE": {
+        "FAILURE": "Fejlede med at opdatere {{ printReceipt }} ({{ httpErrorCode }}).",
+        "FIELD_FAILURE": "Fejlede med at opdatere felter for {{ printReceipt }} ({{ httpErrorCode }})",
+        "FIELD_SUCCESS": "Opdatere felter for {{ printReceipt }} successfuldt.",
+        "SUCCESS": "Opdatere {{ printReceipt }} successfuldt."
+      }
+    },
+    "QUEUE": {
+      "ADDING": "Tilføjer {{ printReceipt }}",
+      "DELETING": "Sletter {{ printReceipt }}",
+      "ERROR": "Der skete en fejl med {{ printReceipt }}. Ret og prøv igen.",
+      "UPDATING": "Opdatere {{ printReceipt }}"
+    }
+  },
+  "UI": {
+    "ADVANCED": "Avanceret",
+    "BUTTONS": {
+      "BUTTON_ADD": "Tilføj",
+      "BUTTON_EDIT": "Opdater",
+      "BUTTON_VALIDATOR": "+ Tilføj validator",
+      "BUTTON_VERIFY": "Verificere"
+    },
+    "ENTITY_ACTIONS": {
+      "DELETE": "Slet",
+      "DETAILS": "Detaljer",
+      "EDIT": "Rediger"
+    },
+    "ERROR_MESSAGE": {
+      "DEV_ERROR": "Vis dev fejl",
+      "ERROR_OCCURRED": "DER SKETE EN FEJL!",
+      "SORRY_ERROR": "Undskyld, der skete en fejl. Prøv igen."
+    },
+    "GEOGRAPHY": {
+      "LANGTITUDE": "Bredegrad",
+      "LONGITUDE": "Længdegrad"
+    },
+    "MISC": {
+      "BACK": "Tilbage",
+      "CONNECTED_PACKAGES": "Tilsluttede pakker"
+    },
+    "ONLINE_STATUS": {
+      "OFFLINE": "Intet netværk! Kører offline tilstand."
+    },
+    "PACKAGE_DRAWER": {
+      "HELP": "Hjælp",
+      "PACKAGES": "Pakker",
+      "PAYMENTS": "Betalinger",
+      "ROLES": "Roller",
+      "SECURITY": "Sikkerhed",
+      "SETTINGS": "Indstillinger",
+      "TENANTS": "beboerne"
+    },
+    "PERMISSION": {
+      "READPERMISSION": "Læse tilladelser",
+      "WRITEPERMISSION": "Skrive tilladelser"
+    },
+    "RECORDS_CONTAINER": {
+      "LOADED": "Hentet {{ loadedCount }} ud af {{ totalCount }}"
+    },
+    "RECURRING_EXPRESSION": {
+      "EXPRESSION": "Ekspression",
+      "TOGGLE": "Aktiver gentagelse"
+    },
+    "ROLE_SELECT": {
+      "SELECT_ROLE": "Vælg rolle",
+      "SELECT_ROLES": "Vælg roller"
+    },
+    "SELECT_VALIDATOR": "Venligst vælg en validator",
+    "TIME": {
+      "ENTER_NUMBER": "Indtast nummer",
+      "FREQUENCY": "Frekvens",
+      "HOURS": "Timer",
+      "MINUTES": "Minutter",
+      "SECONDS": "Sekunder"
+    },
+    "TOP_BAR": {
+      "ACCOUNT": "Konto",
+      "ACC_SET": "Bruger indstillinger",
+      "LOG_OUT": "Log ud",
+      "NO_CONVER": "Ingen samtaler",
+      "NO_NOTI": "Ingen meddelser",
+      "PACKAGES": "Pakker",
+      "SEARCH": "Søg..."
+    }
+  },
+  "USERS": {
+    "CREATE": {
+      "BUTTON_CREATE": "Opret",
+      "CREATE_USER": "Opret ny bruger"
+    },
+    "EDIT": {
+      "BUTTON_EDIT": "Opdater",
+      "EDIT": "Rediger bruger"
+    },
+    "ENTITY_ACTION": {
+      "ROLES": "Roller",
+      "SET_PASSWORD": "Lav adgangskode"
+    },
+    "FORM": {
+      "LABELS": {
+        "CONFIRMPASSWORD": "Bekræft adgangskode",
+        "EMAIL": "Email",
+        "PASSWORD": "Adgangskode"
+      },
+      "PLACEHOLDERS": {
+        "CONFIRMPASSWORD": "Bekræft indtastet adgangskode",
+        "EMAIL": "Indtast email",
+        "PASSWORD": "Indtast adgangskode"
+      },
+      "VALIDATION": {
+        "CONFIRMPASSWORD": {
+          "PASSWORDMISMATCH": "Adgangskoderne stemmer ikke overens",
+          "REQUIRED": "Bekræftning adgangskode."
+        },
+        "EMAIL": {
+          "INVALIDEMAIL": "Indtast en gyldig e-mail.",
+          "REQUIRED": "En Email er påkrævet."
+        },
+        "PASSWORD": {
+          "INVALIDPASSWORD": "Lav venligst et sværere adgangskode.",
+          "REQUIRED": "Adgangskode er påkrævet."
+        }
+      }
+    },
+    "INDEX": {
+      "ACCESS_POLICIES": "Tilladelser og adgang",
+      "ACTIONS": "Handlinger",
+      "ANONYMOUS": "Anonym",
+      "AUTHENTICATED": "Autentificeret",
+      "BACK": "Tilbage",
+      "CREATE": "Opret",
+      "ENTITY_ACTION_ROLES": "Roller",
+      "ENTITY_ACTION_SET_PASSWWORD": "Sæt adgangskode",
+      "FIELDS_TITLE": "(felter)",
+      "MANAGE": "Konfigurer",
+      "PERMISSIONS": "Tilladselser",
+      "ROLES": "Roller",
+      "SECURITY": "Sikkerhed",
+      "TITLE_EXTRAS": "(brugere)",
+      "USERS": "Brugere"
+    },
+    "QUEUE": {
+      "ADDING": "Tilføjer {{ email }}",
+      "DELETING": "Sletter {{ email }}",
+      "ERROR": "Der opstod  en fejl ved {{ email }}. Ret og prøv igen.",
+      "UPDATING": "Opdatere {{ email }}"
+    },
+    "ROLES": {
+      "ADD": "Tilføj",
+      "ADD_ROLE": "Tilføj rolle til {{ object.email }}",
+      "CURRENT_ROLES": "{{ object.email }} nuværende roller",
+      "NO_ROLES": "Ingen roller er blevet tilføjet.",
+      "NO_ROLES_APPLIED": "Denne bruger har ingen roller.",
+      "OBJECT_PRIOORITY": "{{ role.object.name }} - prioritet",
+      "REMOVE": "Fjern",
+      "ROLES_APPLIED": "Alle roller er blevet anvendt, ellers eksisterer der ikke nogen.",
+      "ROLE_PRIORITY": "{{ role.object.name }} med prioritet {{ role.object.priority }} -"
+    },
+    "SETPASSWORD": {
+      "FORM": {
+        "LABELS": {
+          "CONFIRMPASSWORD": "Bekræft adgangskode",
+          "PASSWORD": "Ny adgangskode"
+        },
+        "PLACEHOLDERS": {
+          "CONFIRMPASSWORD": "Bekræft adgangskode",
+          "PASSWORD": "Indtast ny adgangskode"
+        },
+        "VALIDATION": {
+          "CONFIRMPASSWORD": {
+            "PASSWORDMISMATCH": "Adgangskoderne stemmer ikke overens",
+            "REQUIRED": "Bekræftelse af adgangskode er påkræftet."
+          },
+          "PASSWORD": {
+            "INVALIDPASSWORD": "Adgangskoden skal indeholde: mindst 6 karaktere lang, indeholde et tal, et stort og småt bogstav, og en speciel karakter.",
+            "REQUIRED": "Adgangskode er påkrævet."
+          }
+        }
+      }
+    },
+    "SET_PASSWORD": {
+      "PASSWORD_FOR": "Sæt adgangskoden til {{ object.email }}"
+    }
+  }
 }

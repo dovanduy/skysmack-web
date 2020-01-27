@@ -21,6 +21,13 @@ export class NgFileStorageStore {
         );
     }
 
+    public updatingBucket(packagePath: string): Observable<boolean> {
+        return this.getState().pipe(
+            map(state => state.updatingBucket[packagePath]),
+        );
+    }
+
+
     public get(packagePath: string): Observable<LocalObject<FileStorageItem, string>[]> {
         return this.ngRedux.select(state => state.fileStorage).pipe(
             map(state => state.localRecords[packagePath]),

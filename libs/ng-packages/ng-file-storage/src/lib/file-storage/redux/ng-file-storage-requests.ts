@@ -83,10 +83,13 @@ export class NgFileStorageRequests {
                     }));
                 }),
                 retry(3),
-                catchError((error) => of(Object.assign({}, new ReduxAction<HttpErrorResponse, any>({
+                catchError((error) => of(Object.assign({}, new ReduxAction<HttpErrorResponse, { packagePath: string }>({
                     type: FILE_STORAGE_REDUX_KEY + NgFileStorageActions.UPDATE_BUCKET_FAILURE,
                     payload: error,
-                    error: true
+                    error: true,
+                    meta: {
+                        packagePath: action.payload.packagePath
+                    }
                 }))))
             );
     }

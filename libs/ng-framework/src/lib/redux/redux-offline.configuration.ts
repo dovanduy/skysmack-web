@@ -5,7 +5,7 @@ import defaultQueue from '@redux-offline/redux-offline/lib/defaults/queue';
 import { Config, OfflineAction, OfflineState } from '@redux-offline/redux-offline/lib/types';
 import { Observable } from 'rxjs';
 import { share } from 'rxjs/operators';
-import { HttpMethod, ApiDomain, HttpSuccessResponse, HttpErrorResponse } from '@skysmack/framework';
+import { HttpMethod, ApiDomain, HttpSuccessResponse, HttpErrorResponse, GlobalProperties } from '@skysmack/framework';
 import { Effect, RecordActionsBase, cancelRecordActionOutboxFilter, cancelFieldActionOutboxFilter, FieldActions, TOOGLE_HYDRATED } from '@skysmack/redux';
 import * as localForage from 'localforage';
 
@@ -21,7 +21,7 @@ export class ReduxOfflineConfiguration implements Config {
             if (action.meta.isCancelAction) {
                 switch (action.type) {
                     case action.payload.prefix + RecordActionsBase.CANCEL_RECORD_ACTION: return cancelRecordActionOutboxFilter(outbox, action);
-                    case FieldActions.CANCEL_FIELD_ACTION: return cancelFieldActionOutboxFilter(outbox, action);
+                    case 'FIELD_' + FieldActions.CANCEL_FIELD_ACTION: return cancelFieldActionOutboxFilter(outbox, action);
                     default:
                         return [...outbox, action];
                 }
@@ -96,6 +96,11 @@ export class ReduxOfflineConfiguration implements Config {
             return false;
         }
 
+        // Don't retry in development
+        if (!GlobalProperties.production) {
+            return true;
+        }
+
         // Retry 3 times on 5xx and 0 errors (takes roughly 25 seconds before giving up)
         if (error.status >= 500) {
             // First retry is 0.
@@ -113,6 +118,5 @@ export class ReduxOfflineConfiguration implements Config {
 
         // Don't retry on < 4xx errors
         return true;
-        // return 400 <= error.status && error.status < 500;
     }
 }

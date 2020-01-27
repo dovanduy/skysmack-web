@@ -49,7 +49,7 @@ export class ApplicationsRolesComponent extends BaseComponent<Application, numbe
     this.actions.addApplicationsRoles(this.packagePath, dic);
   }
 
-  public trackById(item: any) {
+  public trackById(_index: number, item: any) {
     return item.id;
   }
 
@@ -63,7 +63,7 @@ export class ApplicationsRolesComponent extends BaseComponent<Application, numbe
     this.rolesActions.getPaged(this.packagePath, new PagedQuery());
     console.log('getRoles')
     this.roles$ = combineLatest([
-      this.applicationRoles$, 
+      this.applicationRoles$,
       this.rolesStore.get(this.packagePath)
     ]).pipe(map(values => {
       // Only show roles the user isn't in.

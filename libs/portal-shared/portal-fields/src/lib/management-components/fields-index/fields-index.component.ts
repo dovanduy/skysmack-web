@@ -21,7 +21,12 @@ export class FieldsIndexComponent extends RecordIndexComponent<any, any, any> im
   public componentKey = FieldsIndexComponent.COMPONENT_KEY;
   public menuItemActions: MenuItem[] = [
     new MenuItem().asUrlAction('edit', MENU_ITEM_ACTIONS_EDIT, 'edit'),
-    new MenuItem().asEventAction(MENU_ITEM_ACTIONS_DELETE, this.delete, 'delete', this)
+    new MenuItem().asEventAction(MENU_ITEM_ACTIONS_DELETE, (_this: FieldsIndexComponent, value: LocalObject<FieldSchemaViewModel, string>) => {
+      this.subscriptionHandler.register(_this.additionalPaths$.pipe(
+        tap(additionalPaths => _this.actions.delete([value], _this.packagePath, additionalPaths)),
+        take(1)
+      ).subscribe());
+    }, 'delete', this)
   ];
   protected subscriptionHandler = new SubscriptionHandler();
   private additionalPaths$: Observable<string[]>
@@ -41,7 +46,9 @@ export class FieldsIndexComponent extends RecordIndexComponent<any, any, any> im
   }
 
   ngOnInit() {
-    this.additionalPaths$ = this.activatedRoute.data.pipe(map(data => data.additionalPaths));
+    this.additionalPaths$ = this.activatedRoute.data.pipe(
+      map(data => data.additionalPaths)
+    );
     super.ngOnInit();
     this.subscriptionHandler.register(combineLatest(
       this.loadedPackage$,
@@ -70,13 +77,6 @@ export class FieldsIndexComponent extends RecordIndexComponent<any, any, any> im
   protected actionsGetPaged() {
     this.subscriptionHandler.register(this.additionalPaths$.pipe(
       tap(additionalPaths => this.actions.getPaged(this.packagePath, this.pagedQuery, additionalPaths)),
-      take(1)
-    ).subscribe());
-  }
-
-  protected delete(_this: FieldsIndexComponent, value: LocalObject<FieldSchemaViewModel, string>) {
-    this.subscriptionHandler.register(_this.additionalPaths$.pipe(
-      tap(additionalPaths => _this.actions.delete([value], _this.packagePath, additionalPaths)),
       take(1)
     ).subscribe());
   }

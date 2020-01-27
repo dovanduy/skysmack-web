@@ -5,10 +5,7 @@ export class FieldsValidation extends Validation {
     public formErrors = {
         key: '',
         type: '',
-        display: '',
-        validators: '',
-        readPermission: '',
-        writePermission: ''
+        display: ''
     };
 
     public validationMessages: StrIndex<{}> = {
@@ -23,7 +20,7 @@ export class FieldsValidation extends Validation {
         }
     };
 
-    public area = 'fields';
+    public area = 'field';
 
     public formValidators = [];
 

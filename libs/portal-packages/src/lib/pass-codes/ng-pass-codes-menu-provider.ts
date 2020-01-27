@@ -41,12 +41,17 @@ export class NgPassCodesMenuProvider implements MenuProvider {
         ];
     }
 
-    private getPassCodesMenuItems = () => {
+    private getPassCodesMenuItems = (packagePath: string) => {
         return [
             new MenuItem({
                 url: 'create',
                 displayName: this.translationPrefix + 'CREATE',
                 area: 'actions',
+                hotkeyOptions: {
+                    keyCode: 67,
+                    altKey: true,
+                    action: `/${packagePath}/create`
+                },
                 order: 1,
                 icon: 'add',
                 permissions: [
@@ -58,6 +63,11 @@ export class NgPassCodesMenuProvider implements MenuProvider {
                 url: 'fields',
                 displayName: this.translationPrefix + 'FIELDS',
                 area: 'manage',
+                hotkeyOptions: {
+                    keyCode: 70,
+                    altKey: true,
+                    action: `/${packagePath}/fields`
+                },
                 order: 2,
                 icon: 'short_text',
                 permissions: [

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NgUsersActions, NgUsersStore, NgRolesStore, NgRolesActions } from '@skysmack/ng-identities';
 import { EntityComponentPageTitle } from '@skysmack/portal-ui';
-import { User, Role } from '@skysmack/packages-identities';
+import { User, Role, UserRoles } from '@skysmack/packages-identities';
 import { combineLatest, Observable } from 'rxjs';
 import { EditorNavService } from '@skysmack/portal-ui';
 import { LocalObject, PagedQuery } from '@skysmack/framework';
@@ -43,19 +43,21 @@ export class UsersRolesComponent extends BaseComponent<User, number> implements 
   }
 
   public addRole(role: LocalObject<Role, number>): void {
-    const dic = {};
-    dic[this.entityId] = [role.object.name];
-    this.actions.addUsersRoles(this.packagePath, dic);
+    this.actions.addUsersRoles(this.packagePath, [new UserRoles({
+      userId: Number(this.entityId),
+      roleNames: [role.object.name]
+    })]);
   }
 
-  public trackById(item: any) {
+  public trackById(_index: number, item: any) {
     return item.id;
   }
 
   public removeRole(userRole: string): void {
-    const dic = {};
-    dic[this.entityId] = [userRole];
-    this.actions.removeUsersRoles(this.packagePath, dic);
+    this.actions.removeUsersRoles(this.packagePath, [new UserRoles({
+      userId: Number(this.entityId),
+      roleNames: [userRole]
+    })]);
   }
 
   private getRoles() {

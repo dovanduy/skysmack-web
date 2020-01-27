@@ -10,7 +10,6 @@ export const emailTemplatesRoutes: Routes = [
     children: [
       { path: 'create', component: EmailTemplatesCreateComponent, pathMatch: 'full' },
       { path: 'edit/:id', component: EmailTemplatesEditComponent, pathMatch: 'full' },
-      { path: 'details/:id', component: EmailTemplatesDetailsComponent, pathMatch: 'full' },
     ]
   }
 ];
@@ -19,5 +18,9 @@ export const emailTemplatesComponents: any[] = [
   EmailTemplatesIndexComponent,
   EmailTemplatesCreateComponent,
   EmailTemplatesEditComponent,
+  EmailTemplatesDetailsComponent
+];
+
+export const emailTemplatesEntryComponents: any[] = [
   EmailTemplatesDetailsComponent
 ];

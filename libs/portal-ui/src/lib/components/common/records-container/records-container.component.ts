@@ -2,8 +2,10 @@ import { Component, OnInit, Input, EventEmitter, Output, ViewChild, OnDestroy } 
 import { LocalObject, LoadingState, DisplayColumn, SubscriptionHandler, MenuItem } from '@skysmack/framework';
 import { Observable, BehaviorSubject, combineLatest } from 'rxjs';
 import { Field, FieldTypes } from '@skysmack/ng-dynamic-forms';
-import { map, delay, debounceTime, tap } from 'rxjs/operators';
+import { map, delay, debounceTime, tap, take } from 'rxjs/operators';
 import { CdkVirtualScrollViewport } from '@angular/cdk/scrolling';
+import { NgRedux } from '@angular-redux/store';
+import { QueuesAppState } from '@skysmack/redux';
 
 @Component({
   selector: 'ss-records-container',
@@ -31,12 +33,13 @@ export class RecordsContainerComponent implements OnInit, OnDestroy {
   @Input() public packagePath: string;
   @Input() public additionalPaths?: string[];
   @Input() public title: string;
-  @Input() public cancelAction: Function;
   @Input() public area: string;
 
   public displayColumns$: Observable<DisplayColumn[]>;
 
-  constructor() { }
+  constructor(
+    public ngRedux: NgRedux<any>,
+  ) { }
 
   ngOnInit() {
     // Set display columns
@@ -89,10 +92,14 @@ export class RecordsContainerComponent implements OnInit, OnDestroy {
   }
 
   public runCancelAction(entity: LocalObject<any, any>) {
-    this.additionalPaths ? this.cancelAction(entity, this.packagePath, this.additionalPaths) : this.cancelAction(entity, this.packagePath);
+    this.subscriptionHandler.register(this.ngRedux.select((state: QueuesAppState) => state.queue).pipe(
+      map(queue => queue.items.find(item => item.localObject && item.localObject.localId === entity.localId)),
+      tap(item => item ? this.ngRedux.dispatch(Object.assign({}, item.cancelAction)) : console.log('Could not find queue item. Try checking redux actions.')),
+      take(1)
+    ).subscribe());
   }
 
-  public trackByLocalId(index: any, item: LocalObject<any, any>) {
+  public trackByLocalId(_index: any, item: LocalObject<any, any>) {
     return item ? item.localId : undefined;
   }
 

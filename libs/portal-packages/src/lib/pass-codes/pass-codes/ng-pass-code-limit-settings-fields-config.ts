@@ -4,7 +4,7 @@ import { LocalObject } from '@skysmack/framework';
 import { LoadedPackage } from '@skysmack/ng-framework';
 import { FieldsConfig, FieldProviders } from '@skysmack/ng-fields';
 import { StringFieldComponent } from '@skysmack/portal-fields';
-import { NgPassCodeLimitSettingsValidation } from './ng-webhooks-settings-validation';
+import { NgPassCodeLimitSettingsValidation } from './ng-pass-code-limit-settings-validation';
 import { PassCodeLimitSettings, PASS_CODES_AREA_KEY, PASS_CODES_ADDITIONAL_PATHS } from '@skysmack/packages-pass-codes';
 
 @Injectable({ providedIn: 'root' })

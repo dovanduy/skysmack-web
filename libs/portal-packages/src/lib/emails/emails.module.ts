@@ -6,7 +6,7 @@ import { NgEmailsModule } from '../../../../ng-packages/ng-emails/src/lib';
 import { PortalUiModule, NgMenuProviders } from '@skysmack/portal-ui';
 
 import { emailsComponents } from './emails/components/emails-components';
-import { emailTemplatesComponents } from './email-templates';
+import { emailTemplatesComponents, emailTemplatesEntryComponents } from './email-templates';
 import { DynamicFormsModule } from '@skysmack/portal-dynamic-forms';
 import { PortalFieldsModule } from '@skysmack/portal-fields';
 import { NgEmailsIndexMenuProvider } from './emails/ng-emails-menu-provider';
@@ -26,6 +26,9 @@ import { WYSIWYGModule } from '../wysiwyg/wysiwyg.module';
   declarations: [
     ...emailsComponents,
     ...emailTemplatesComponents
+  ],
+  entryComponents: [
+    ...emailTemplatesEntryComponents
   ],
   providers: []
 })

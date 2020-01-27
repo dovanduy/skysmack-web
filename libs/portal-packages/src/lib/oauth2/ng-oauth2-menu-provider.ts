@@ -55,7 +55,7 @@ export class NgOAuth2MenuProvider implements MenuProvider {
 
                     aMenuItem.hotkeyOptions = {
                         keyCode: 81,
-                        shiftKey: true,
+                        altKey: true,
                         action: aMenuItem.action
                     };
 

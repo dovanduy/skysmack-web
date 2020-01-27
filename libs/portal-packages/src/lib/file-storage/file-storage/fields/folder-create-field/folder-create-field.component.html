@@ -1,6 +1,7 @@
 <ng-container *ngIf="field" [formGroup]="fh.form">
   <mat-form-field>
-    <input matInput type="text" placeholder="Please enter a folder name | translate" [formControl]="folderName" />
+    <input matInput type="text" [placeholder]="'FILE_STORAGE.MISC.ENTER_FOLDER_NAME' | translate"
+      [formControl]="folderName" />
 
 
     <!-- Frontend errors -->
@@ -11,7 +12,7 @@
     </mat-error>
   </mat-form-field>
 
-  <button mat-raised-button (click)="create()">Create</button>
+  <button mat-raised-button (click)="create()">{{ 'FILE_STORAGE.INDEX.CREATE' | translate }}</button>
 
 
   <ss-backend-errors [field]="field"></ss-backend-errors>

@@ -43,6 +43,7 @@ export class NgLodgingReservationsEpics extends RecordEpicsBase<LodgingReservati
                 actions: this.lodgingsActions,
                 dependencyIndexes: [0]
             }),
+            this.snackBarConfirmFailureEpic,
             this.snackBarCheckInFailureEpic,
             this.snackBarUndoCheckInFailureEpic,
             this.snackBarCheckOutFailureEpic,
@@ -55,6 +56,14 @@ export class NgLodgingReservationsEpics extends RecordEpicsBase<LodgingReservati
             this.snackBarUndoNoShowFailureEpic
         ]);
     }
+
+    public snackBarConfirmFailureEpic = (action$: ActionsObservable<ReduxAction<HttpErrorResponse, any>>): Observable<ReduxAction> => action$.pipe(
+        ofType(this.prefix + NgLodgingReservationsActions.CONFIRM_FAILURE),
+        map((action) => {
+            this.notifications.getBackendError(action);
+            return { type: NgLodgingReservationsActions.CONFIRM_FAILURE + this.NOTIFICATION };
+        })
+    )
 
     public snackBarCheckInFailureEpic = (action$: ActionsObservable<ReduxAction<HttpErrorResponse, any>>): Observable<ReduxAction> => action$.pipe(
         ofType(this.prefix + NgLodgingReservationsActions.CHECK_IN_FAILURE),

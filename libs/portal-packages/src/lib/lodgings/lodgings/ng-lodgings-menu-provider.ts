@@ -23,7 +23,6 @@ export class NgLodgingsMenuProvider implements MenuProvider {
 
     constructor(
         private store: NgSkysmackStore,
-        private router: Router
     ) { }
 
     public getMenuAreas(packagePath: string, componentKey: string): Observable<MenuArea[]> {
@@ -80,6 +79,11 @@ export class NgLodgingsMenuProvider implements MenuProvider {
                 url: `/${packagePath}/create`,
                 displayName: this.LodgingTranslationPrefix + 'CREATE',
                 area: 'actions',
+                hotkeyOptions: {
+                    keyCode: 67,
+                    altKey: true,
+                    action: `/${packagePath}/create`
+                },
                 order: 1,
                 icon: 'add',
                 permissions: [
@@ -102,6 +106,11 @@ export class NgLodgingsMenuProvider implements MenuProvider {
                 url: `/${packagePath}/types`,
                 displayName: this.LodgingTranslationPrefix + 'TYPES',
                 area: 'manage',
+                hotkeyOptions: {
+                    keyCode: 84,
+                    altKey: true,
+                    action: `/${packagePath}/types`
+                },
                 order: 1,
                 icon: 'description',
                 permissions: [
@@ -113,6 +122,11 @@ export class NgLodgingsMenuProvider implements MenuProvider {
                 url: `/${packagePath}/fields`,
                 displayName: this.LodgingTranslationPrefix + 'FIELDS',
                 area: 'manage',
+                hotkeyOptions: {
+                    keyCode: 70,
+                    altKey: true,
+                    action: `/${packagePath}/fields`
+                },
                 order: 2,
                 icon: 'short_text',
                 permissions: [
@@ -149,6 +163,11 @@ export class NgLodgingsMenuProvider implements MenuProvider {
                 url: 'create',
                 displayName: this.LodgingTypesTranslationPrefix + 'CREATE',
                 area: 'actions',
+                hotkeyOptions: {
+                    keyCode: 67,
+                    altKey: true,
+                    action: `/${packagePath}/types/create`
+                },
                 order: 1,
                 icon: 'add',
                 permissions: [
@@ -160,6 +179,11 @@ export class NgLodgingsMenuProvider implements MenuProvider {
                 url: 'fields',
                 displayName: this.LodgingTypesTranslationPrefix + 'FIELDS',
                 area: 'manage',
+                hotkeyOptions: {
+                    keyCode: 70,
+                    altKey: true,
+                    action: `/${packagePath}/types/fields`
+                },
                 order: 2,
                 icon: 'short_text',
                 permissions: [

@@ -1,6 +1,7 @@
 import { LocalObject, DocumentRecord } from "@skysmack/framework";
 import { Stay } from './stay';
 import { LodgingType, Lodging } from '@skysmack/packages-lodgings';
+import { GroupReservation } from './group-reservation';
 
 export class LodgingReservation extends DocumentRecord<number> {
     public lodgingTypeId: number;
@@ -8,6 +9,9 @@ export class LodgingReservation extends DocumentRecord<number> {
 
     public lodgingId?: number;
     public lodging: LocalObject<Lodging, number>;
+
+    public groupId?: number;
+    public group: LocalObject<GroupReservation, number>;
 
     public checkIn: Date;
     public checkOut: Date;

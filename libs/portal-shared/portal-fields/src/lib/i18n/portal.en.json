@@ -1,5 +1,5 @@
 {
-    "FIELDS": {
+    "FIELD": {
         "INDEX": {
             "CREATE": "Create",
             "ACTIONS": "Actions",
@@ -13,6 +13,9 @@
         "EDIT": {
             "EDITING": "Editing",
             "BUTTON_EDIT": "Update"
+        },
+        "MISC": {
+            "GENERATE_GUID": "Generate GUID"
         },
         "FORM": {
             "LABELS": {

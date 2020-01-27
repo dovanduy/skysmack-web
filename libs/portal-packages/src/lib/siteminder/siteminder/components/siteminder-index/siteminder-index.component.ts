@@ -268,7 +268,7 @@ export class SiteMinderIndexComponent extends BaseComponent<SiteMinderAppState, 
     }
   }
 
-  public trackByRow(index: any, row: SiteminderRow) {
+  public trackByRow(_index: any, row: SiteminderRow) {
     return row ? row.date : undefined;
   }
 

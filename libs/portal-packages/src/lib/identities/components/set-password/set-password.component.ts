@@ -7,6 +7,8 @@ import { FormHelper } from '@skysmack/ng-dynamic-forms';
 import { NgSetPasswordFieldsConfig } from '../../ng-set-password-fields-config';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { FormBaseComponent } from '@skysmack/portal-fields';
+import { tap, take } from 'rxjs/operators';
+import { combineLatest } from 'rxjs';
 
 @Component({
   selector: 'ss-portal-package-set-password',
@@ -27,12 +29,19 @@ export class SetPasswordComponent extends FormBaseComponent<UsersAppState, User,
 
   ngOnInit() {
     super.ngOnInit();
-    this.fields$ = this.fieldsConfig.getFields(undefined);
+    this.actions.getSingle(this.packagePath, this.entityId);
+    this.subscriptionHandler.register(
+      combineLatest([
+        this.loadedPackage$.pipe(take(1)),
+        this.store.getSingle(this.packagePath, this.entityId).pipe(take(1))
+      ]).pipe(
+        tap(([loadedPackage, user]) => this.fields$ = this.fieldsConfig.getFields(loadedPackage, user))
+      ).subscribe());
   }
 
   public onSetPasswordSubmit(fh: FormHelper) {
     fh.formValid(() => {
-      this.requests.setPassword(fh.form.getRawValue(), this.packagePath, this.entityId).subscribe(() => this.editorNavService.hideEditorNav());
+      this.requests.setPassword(fh.form.getRawValue(), this.packagePath).subscribe(() => this.editorNavService.hideEditorNav());
     });
   }
 }

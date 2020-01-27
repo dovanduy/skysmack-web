@@ -33,18 +33,20 @@ export class AddRecordFieldComponent extends FieldBaseComponent<AddField> implem
   }
 
   public onAddSubmit(fh: FormHelper) {
-    const postedValues = fh.form.getRawValue();
-    let currentValues = this.getFieldValue();
+    fh.formValid(() => {
+      const postedValues = fh.form.getRawValue();
+      let currentValues = this.getFieldValue();
 
-    if (!currentValues) {
-      currentValues = [];
-    }
+      if (!currentValues) {
+        currentValues = [];
+      }
 
-    currentValues.push(postedValues);
+      currentValues.push(postedValues);
 
-    this.added = currentValues;
-    this.setFieldValue(currentValues);
-    this.toggleAdding();
+      this.added = currentValues;
+      this.setFieldValue(currentValues);
+      this.toggleAdding();
+    });
   }
 
   public remove(index: number) {

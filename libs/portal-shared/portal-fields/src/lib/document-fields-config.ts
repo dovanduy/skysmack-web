@@ -2,8 +2,6 @@ import { LocalObject, FieldSchemaViewModel } from '@skysmack/framework';
 import { Field, FieldTypes } from '@skysmack/ng-dynamic-forms';
 import { IntFieldComponent } from './field-components/components/int-field/int-field.component';
 import { Type } from '@angular/core';
-import { LimitedStringFieldComponent } from './field-components/components/limited-string-field/limited-string-field.component';
-import { GeographyFieldComponent } from './field-components/components/geography-field/geography-field.component';
 import { DoubleFieldComponent } from './field-components/components/double-field/double-field.component';
 import { DecimalFieldComponent } from './field-components/components/decimal-field/decimal-field.component';
 import { DateTimeFieldComponent } from './field-components/components/date-time-field/date-time-field.component';
@@ -13,6 +11,7 @@ import { Observable, combineLatest } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { NgFieldStore, LoadedPackage } from '@skysmack/ng-framework';
 import { FieldProviders } from '@skysmack/ng-fields';
+import { BooleanFieldComponent, GuidFieldComponent } from './field-components';
 
 export abstract class DocumentFieldsConfig<TRecord, TKey> extends FieldsConfig<TRecord, TKey> {
     constructor(
@@ -51,27 +50,36 @@ export abstract class DocumentFieldsConfig<TRecord, TKey> extends FieldsConfig<T
 
     protected getComponentFromDynamicFieldType(type: string): Type<any> {
         switch (type) {
-            case 'int': return IntFieldComponent;
-            case 'string': return StringFieldComponent;
-            case 'dateTime': return DateTimeFieldComponent;
-            case 'decimal': return DecimalFieldComponent;
-            case 'double': return DoubleFieldComponent;
-            case 'geography': return GeographyFieldComponent;
-            case 'limitedString': return LimitedStringFieldComponent;
+            case 'Boolean': return BooleanFieldComponent;
+            case 'DateTime': return DateTimeFieldComponent;
+            case 'DateTimeOffset': return DateTimeFieldComponent; // MAKE INTO DATETIMEOFFSETFIELDCOMPONENT
+            case 'Decimal': return DecimalFieldComponent;
+            case 'Double': return DecimalFieldComponent;
+            case 'Single': return DoubleFieldComponent;
+            case 'Guid': return GuidFieldComponent;
+            case 'Int16': return IntFieldComponent;
+            case 'Int32': return IntFieldComponent;
+            case 'Int64': return IntFieldComponent;
+            case 'String': return StringFieldComponent;
             default: console.log('This field type is not defined. Please create a component for it'); return undefined;
         }
     }
 
     protected getSortFromDynamicFieldType(type: string): boolean {
         switch (type) {
-            case 'int': return true;
-            case 'string': return false;
-            case 'dateTime': return true;
-            case 'decimal': return true;
-            case 'double': return true;
-            case 'geography': return true;
-            case 'limitedString': return true;
+            case 'Boolean': return false;
+            case 'DateTime': return true;
+            case 'DateTimeOffset': return true;
+            case 'Decimal': return true;
+            case 'Double': return true;
+            case 'Single': return true;
+            case 'Guid': return false;
+            case 'Int16': return true;
+            case 'Int32': return true;
+            case 'Int64': return true;
+            case 'String': return false;
             default: console.log('This field type is not defined. Please create a component for it'); return false;
         }
     }
 }
+

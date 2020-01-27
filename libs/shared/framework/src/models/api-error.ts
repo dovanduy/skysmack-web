@@ -15,9 +15,10 @@ export class ApiError {
         this.instance = response && response.error && response.error.instance;
 
         if (response && response.error && response.error.validationErrors) {
+
             this.validationErrors = Object.keys(response.error.validationErrors).map(validationErrorKey => {
                 let fieldNameUpperCase = validationErrorKey.split('.')[1];
-                let fieldKey;
+                let fieldKey = '';
                 if (fieldNameUpperCase) {
                     const firstLetter = fieldNameUpperCase.charAt(0);
                     const lowercaseFirstLetter = fieldNameUpperCase.substr(0, 1).toLowerCase();

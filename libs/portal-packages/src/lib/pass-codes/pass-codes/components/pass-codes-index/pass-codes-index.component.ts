@@ -19,7 +19,7 @@ export class PassCodesIndexComponent extends DocumentRecordIndexComponent<PassCo
 
   public areaKey: string = PASS_CODES_AREA_KEY;
   public menuItemActions: MenuItem[] = [
-    new MenuItem().asUrlAction('details', MENU_ITEM_ACTION_DETAILS, 'list'),
+    new MenuItem().asUrlAction('details', MENU_ITEM_ACTION_DETAILS, 'list').setPermissions([PassCodesPermissions.findPassCodes]),
     new MenuItem().asUrlAction('edit', MENU_ITEM_ACTIONS_EDIT, 'edit').setPermissions([
       PassCodesPermissions.updatePassCodes,
     ]),

@@ -54,7 +54,7 @@ export class NgConfirmReservationFieldsConfig extends FieldsConfig<any, number> 
 
             new Field({
                 component: CheckboxFieldComponent,
-                key: 'allowOverbooking',
+                key: 'overbook',
                 order: 6,
                 permissions: ['overbooking'],
                 sortable: true

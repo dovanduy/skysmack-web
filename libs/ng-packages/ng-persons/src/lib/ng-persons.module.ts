@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { personsReducer, PERSONS_REDUCER_KEY } from '@skysmack/packages-persons';
 import { NgPersonsEpics } from './persons/redux/ng-persons-epics';
-import { registerRedux, NgSignalR } from '@skysmack/ng-framework';
+import { registerRedux } from '@skysmack/ng-framework';
 import { SignalRPersonProvider } from './persons/signal-r-persons-provider';
 
 @NgModule({
   imports: [],
   exports: [],
-  providers: [],
+  providers: []
 })
 export class NgPersonsModule {
   constructor(

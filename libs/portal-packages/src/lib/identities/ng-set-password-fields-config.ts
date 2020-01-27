@@ -6,7 +6,7 @@ import { User, IDENTITES_AREA_KEY, IDENTITES_ADDITIONAL_PATHS } from '@skysmack/
 import { LoadedPackage } from '@skysmack/ng-framework';
 import { NgSetPasswordValidation } from '@skysmack/ng-identities';
 import { FieldsConfig, FieldProviders } from '@skysmack/ng-fields';
-import { PasswordFieldComponent } from '@skysmack/portal-fields';
+import { PasswordFieldComponent, HiddenFieldComponent } from '@skysmack/portal-fields';
 
 @Injectable({ providedIn: 'root' })
 export class NgSetPasswordFieldsConfig extends FieldsConfig<User, number> {
@@ -40,7 +40,13 @@ export class NgSetPasswordFieldsConfig extends FieldsConfig<User, number> {
                 order: 3,
                 placeholder: 'Password',
                 sortable: true
-            })
+            }),
+
+            new Field({
+                component: HiddenFieldComponent,
+                value: entity ? entity.object.id : undefined,
+                key: 'id'
+            }),
         ];
 
         return fields;

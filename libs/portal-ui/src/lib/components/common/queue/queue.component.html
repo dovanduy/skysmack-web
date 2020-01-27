@@ -20,7 +20,7 @@
 
                 <!-- ERROR -->
                 <ng-container
-                  *ngIf="item.localObject.error && !item.deleteAction || !offline.retryScheduled || index !== 0">
+                  *ngIf="item.localObject.error && (!item.deleteAction || !offline.retryScheduled && !item.deleteAction  || index !== 0  && !item.deleteAction)">
                   <button mat-icon-button (click)="toEditor(item)">
                     <mat-icon>sync</mat-icon>
                   </button>
@@ -36,8 +36,9 @@
                 </ng-container>
 
                 <!-- CANCEL -->
-                <ng-container *ngIf="item.localObject.error || !offline.retryScheduled || index !== 0">
-                  <button mat-icon-button (click)="item.cancelAction(item.localObject, item.packagePath)">
+                <ng-container
+                  *ngIf="item.cancelAction && (item.localObject.error || !offline.retryScheduled || index !== 0)">
+                  <button mat-icon-button (click)="cancelAction(item)">
                     <mat-icon>undo</mat-icon>
                   </button>
                 </ng-container>

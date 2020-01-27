@@ -1,7 +1,5 @@
 <div class="wrapper">
   <div class="actions">
-    <a mat-raised-button color="default" class="call-to-action"
-      [routerLink]="['/', 'tenants', 'packages']">{{ 'COMMERCIAL_TENANTS.PACKAGES' | translate }}</a>
     <a mat-raised-button color="primary" class="call-to-action"
       [routerLink]="['/', 'tenants', 'create']">{{ 'COMMERCIAL_TENANTS.CREATETENANT' | translate }}</a>
   </div>
@@ -30,14 +28,17 @@
           </a>
         </div> -->
         <div mat-icon>
-          <a [routerLink]="['/', 'tenants', 'edit', tenant.id]" [disabled]="tenant.state === 0" mat-icon-button
+          <a [routerLink]="['/', 'tenants', 'edit', tenant.id]" *ngIf="tenant.state !== 0" mat-icon-button
             matTooltip="
         {{ 'COMMERCIAL_TENANTS.EDIT' | translate }}">
             <mat-icon>edit</mat-icon>
           </a>
+          <button mat-icon-button [disabled]="true" *ngIf="tenant.state === 0">
+            <mat-icon>edit</mat-icon>
+          </button>
         </div>
         <div mat-icon>
-          <button (click)="remove(tenant)" [disabled]="tenant.state !== 3" mat-icon-button matTooltip="
+          <button (click)="remove(tenant)" [disabled]="tenant.state === 1 || tenant.state === 2" mat-icon-button matTooltip="
                 {{ 'COMMERCIAL_TENANTS.REMOVE' | translate }}">
             <mat-icon>delete</mat-icon>
           </button>

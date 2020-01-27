@@ -31,6 +31,10 @@ export abstract class NgRecordStore<TState, TRecord extends Record<TKey>, TKey> 
         );
     }
 
+    /**
+     * Get multiple records and set their related data properties (defined by dependency options).
+     * Note: Currently this method always assumes one object pr. data property. Meaning arrays of data won't be binded correctly.
+     */
     protected getWithDependencies = (packagePath: string, options: DependencyOptions[]): Observable<LocalObject<TRecord, TKey>[]> => {
         const updatedOptions = options.map(option => {
             option.targetPackage$ = getPackageDendencyAsStream(this.skysmackStore, packagePath, option.dependencyIndexes);
@@ -51,6 +55,8 @@ export abstract class NgRecordStore<TState, TRecord extends Record<TKey>, TKey> 
         );
     }
 
+    // Get a single record and set its related data properties (defined by dependency options).
+    // Note: This assumes the properties has ARRAYS of data.
     protected getSingleWithDependency = (packagePath: string, id: TKey, options: DependencyOptions[]): Observable<LocalObject<TRecord, TKey>> => {
         const updatedOptions = options.map(option => {
             option.targetPackage$ = getPackageDendencyAsStream(this.skysmackStore, packagePath, option.dependencyIndexes);
@@ -71,6 +77,8 @@ export abstract class NgRecordStore<TState, TRecord extends Record<TKey>, TKey> 
         );
     }
 
+    // Get a single record and set its related data properties (defined by dependency options).
+    // Note: This assumes the properties is a single object..
     protected getSingleWithDependencies = (packagePath: string, id: TKey, options: DependencyOptions[]): Observable<LocalObject<TRecord, TKey>> => {
         const updatedOptions = options.map(option => {
             option.targetPackage$ = getPackageDendencyAsStream(this.skysmackStore, packagePath, option.dependencyIndexes);
@@ -126,19 +134,28 @@ export abstract class NgRecordStore<TState, TRecord extends Record<TKey>, TKey> 
             const record = records[index];
             const recordId = getProperty(record.object, relationIdSelector);
             if (recordId && (recordId > 0 || recordId !== '')) {
-                record.object[relationSelector] = dependencies.find(dependency => dependency.object.id === getProperty(record.object, relationIdSelector));
+                record.object[relationSelector] = dependencies.find(dependency => {
+                    const prop = getProperty(record.object, relationIdSelector);
+                    return (dependency.object.id && dependency.object.id.toString()) === (prop && prop.toString());
+                });
             }
         }
         return records;
     }
 
     protected mapRecordDependency(record: LocalObject<any, any>, dependencies: LocalObject<any, any>[], relationIdSelector: string, relationSelector: string): LocalObject<any, any> {
-        record.object[relationSelector] = dependencies.find(dependency => getProperty(dependency.object, relationIdSelector) === getProperty(record.object, relationIdSelector));
+        record.object[relationSelector] = dependencies.find(dependency => {
+            const prop = getProperty(record.object, relationIdSelector);
+            return (dependency.object.id && dependency.object.id.toString()) === (prop && prop.toString());
+        });
         return record;
     }
 
     protected mapRecordDependencies(record: LocalObject<any, any>, dependencies: LocalObject<any, any>[], relationIdSelector: string, relationSelector: string): LocalObject<any, any> {
-        record.object[relationSelector] = dependencies.filter(dependency => getProperty(dependency.object, relationIdSelector) === getProperty(record.object, relationIdSelector));
+        record.object[relationSelector] = dependencies.filter(dependency => {
+            const prop = getProperty(record.object, relationIdSelector);
+            return (dependency.object.id && dependency.object.id.toString()) === (prop && prop.toString());
+        });
         return record;
     }
 }

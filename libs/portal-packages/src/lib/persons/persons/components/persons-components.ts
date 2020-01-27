@@ -11,10 +11,12 @@ export const personsRoutes: Routes = [
   {
     path: '', children: [
       {
+        path: 'details/:id', component: PersonsDetailsComponent, pathMatch: 'full'
+      },
+      {
         path: '', component: PersonsIndexComponent, children: [
           { path: 'create', component: PersonsCreateComponent, pathMatch: 'full' },
           { path: 'edit/:id', component: PersonsEditComponent, pathMatch: 'full' },
-          { path: 'details/:id', component: PersonsDetailsComponent, pathMatch: 'full' },
         ]
       },
       getFieldsRoutes(PERSONS_AREA_KEY, PERSONS_ADDITIONAL_PATHS)
@@ -31,5 +33,6 @@ export const personsComponents: any[] = [
 ];
 
 export const personsEntryComponents: any[] = [
-  PersonsDashboardComponent
+  PersonsDashboardComponent,
+  PersonsDetailsComponent
 ]

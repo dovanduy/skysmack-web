@@ -24,3 +24,5 @@ export * from './add-record-field/add-record-field.component';
 export * from './result-field/result-field.component';
 export * from './string-array-field/string-array-field.component';
 export * from './key-value-array-field/key-value-array-field.component';
+export * from './boolean-field/boolean-field.component';
+export * from './guid-field/guid-field.component';

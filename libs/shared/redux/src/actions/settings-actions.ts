@@ -20,11 +20,6 @@ export class SettingsActions {
 
     constructor(protected store: Store<SettingsAppState<unknown>>) { }
 
-    public cancelAction = (): void => {
-        // TODO: Implement this?
-        throw new Error('This method has not been implemented');
-    }
-
     public get(packagePath: string, settingKey: string): void {
         this.store.dispatch(Object.assign({}, new ReduxAction<GetSettingsPayload>({
             type: SettingsActions.GET_SETTINGS,
@@ -46,8 +41,7 @@ export class SettingsActions {
                 messageParams: {},
                 link: url,
                 packagePath,
-                localObject: settings,
-                cancelAction: this.cancelAction
+                localObject: settings
             })
         ];
 

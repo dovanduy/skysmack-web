@@ -1,5 +1,11 @@
-<ss-dynamic-form [fields$]="fields$" [validation]="fieldsConfig.validation" [rules]="fieldsConfig.formRules"
+<ss-dynamic-form [ngClass]="(showLoadingWheel$ | async) ? 'hide' : 'show'" [fields$]="fields$"
+    [validation]="fieldsConfig.validation" [rules]="fieldsConfig.formRules"
     [buttonText]="'FILE_STORAGE.CREATE.BUTTON_CREATE' | translate" (submitted)="onCreateSubmit($event)"
     [removeCloseButton]="true">
     <h2 [translate]="'FILE_STORAGE.CREATE.CREATE'"></h2>
 </ss-dynamic-form>
+
+<div class="creating" [ngClass]="(showLoadingWheel$ | async) ? 'show' : 'hide'">
+    <h2 [translate]="'FILE_STORAGE.CREATE.CREATING'"></h2>
+    <mat-spinner diameter="50"></mat-spinner>
+</div>

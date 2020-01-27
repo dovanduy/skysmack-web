@@ -25,6 +25,13 @@ import { webhooksRoute } from './webhooks-package-manifest';
 import { templatesRoute } from './templates-package-manifest';
 import { corsRoute } from './cors-package-manifest';
 import { passCodesRoute } from './pass-codes-package-manifest';
+import { doorwaysRoute } from './doorways-package-manifest';
+import { doorwaysPassCodesRoute } from './doorways-pass-codes-package-manifest';
+import { lodgingsDoorwaysRoute } from './lodgings-doorways-package-manifest';
+import { lodgingsReservationsPassCodeRoute } from './lodgings-reservations-pass-codes-package-manifest';
+import { axisPhysicalAccessControlRoute } from './axis-physical-access-control-package-manifest';
+import { invoicesPersonsRoute } from './invoices-persons-package-manifest';
+import { invoicesLodgingReservationsRoute } from './invoices-lodging-reservations-package-manifest';
 
 export const packagesRoutes = [
     packagesRoute,
@@ -53,5 +60,12 @@ export const packagesRoutes = [
     webhooksRoute,
     templatesRoute,
     corsRoute,
-    passCodesRoute
+    passCodesRoute,
+    doorwaysRoute,
+    doorwaysPassCodesRoute,
+    lodgingsDoorwaysRoute,
+    lodgingsReservationsPassCodeRoute,
+    axisPhysicalAccessControlRoute,
+    invoicesPersonsRoute,
+    invoicesLodgingReservationsRoute
 ];

@@ -34,6 +34,13 @@ import { loadWebhooksPackage } from '../packages/webhooks-package-manifest';
 import { loadTemplatePackage } from '../packages/templates-package-manifest';
 import { loadCorsPackage } from '../packages/cors-package-manifest';
 import { loadPassCodePackage } from '../packages/pass-codes-package-manifest';
+import { loadDoorwayPackage } from '../packages/doorways-package-manifest';
+import { loadDoorwaysPassCodesPackage } from '../packages/doorways-pass-codes-package-manifest';
+import { loadLodgingsDoorwaysPackage } from '../packages/lodgings-doorways-package-manifest';
+import { loadLodgingsReservationsPassCodePackage } from '../packages/lodgings-reservations-pass-codes-package-manifest';
+import { loadAxisPhysicalAccessControlPackage } from '../packages/axis-physical-access-control-package-manifest';
+import { loadInvoicesPersonsPackage } from '../packages/invoices-persons-package-manifest';
+import { loadInvoicesLodgingReservationsPackage } from '../packages/invoices-lodging-reservations-package-manifest';
 
 export function configureSkysmack(actions: NgSkysmackActions) {
     return () => actions.getSkysmack();
@@ -68,6 +75,7 @@ export const packageLoaders = [
     { provide: APP_INITIALIZER, useFactory: loadLodgingReservationsSignaturesPackage, deps: [PackageLoader], multi: true },
     { provide: APP_INITIALIZER, useFactory: loadReservationsPricingsPackage, deps: [PackageLoader], multi: true },
     { provide: APP_INITIALIZER, useFactory: loadPersonsLodgingReservationsPackage, deps: [PackageLoader], multi: true },
+    { provide: APP_INITIALIZER, useFactory: loadInvoicesLodgingReservationsPackage, deps: [PackageLoader], multi: true },
     { provide: APP_INITIALIZER, useFactory: loadOAuth2Package, deps: [PackageLoader], multi: true },
     { provide: APP_INITIALIZER, useFactory: loadMaintenancePackage, deps: [PackageLoader], multi: true },
     { provide: APP_INITIALIZER, useFactory: loadTerminalPaymentsPackage, deps: [PackageLoader], multi: true },
@@ -76,7 +84,13 @@ export const packageLoaders = [
     { provide: APP_INITIALIZER, useFactory: loadOpenApiPackage, deps: [PackageLoader], multi: true },
     { provide: APP_INITIALIZER, useFactory: loadTemplatePackage, deps: [PackageLoader], multi: true },
     { provide: APP_INITIALIZER, useFactory: loadCorsPackage, deps: [PackageLoader], multi: true },
-    { provide: APP_INITIALIZER, useFactory: loadPassCodePackage, deps: [PackageLoader], multi: true }
+    { provide: APP_INITIALIZER, useFactory: loadPassCodePackage, deps: [PackageLoader], multi: true },
+    { provide: APP_INITIALIZER, useFactory: loadDoorwayPackage, deps: [PackageLoader], multi: true },
+    { provide: APP_INITIALIZER, useFactory: loadDoorwaysPassCodesPackage, deps: [PackageLoader], multi: true },
+    { provide: APP_INITIALIZER, useFactory: loadLodgingsDoorwaysPackage, deps: [PackageLoader], multi: true },
+    { provide: APP_INITIALIZER, useFactory: loadLodgingsReservationsPassCodePackage, deps: [PackageLoader], multi: true },
+    { provide: APP_INITIALIZER, useFactory: loadAxisPhysicalAccessControlPackage, deps: [PackageLoader], multi: true },
+    { provide: APP_INITIALIZER, useFactory: loadInvoicesPersonsPackage, deps: [PackageLoader], multi: true }
 ];
 
 export const injectionTokens = [

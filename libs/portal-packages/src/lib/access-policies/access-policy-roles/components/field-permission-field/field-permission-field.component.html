@@ -10,7 +10,7 @@
   <br />
 
   <!-- ROLES -->
-  <ng-container *ngIf="selectedAccessType === 2">
+  <ng-container *ngIf="selectedAccessType === accessType.authenticated">
     <mat-slide-toggle (change)="toggleIncludeRoles($event)" [checked]="permission.includeRoles">Include roles
     </mat-slide-toggle>
     <br />

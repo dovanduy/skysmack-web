@@ -16,8 +16,8 @@ export class NgPassCodesDashboardProvider extends DashboardProvider {
     public getDashboards(): Observable<Dashboard[]> {
         return this.skysmackStore.getAccessiblePackages().pipe(
             map(packages => packages.filter(_package => _package.object.type === PassCodesTypeId)),
-            map(passCodePackages => passCodePackages.map(passCodePackage => new Dashboard({
-                packagePath: passCodePackage.object.path,
+            map(packages => packages.map(_package => new Dashboard({
+                packagePath: _package.object.path,
                 component: PassCodesDashboardComponent
             })))
         );

@@ -62,14 +62,14 @@ export class NgPassCodesNotifications extends RecordNotifications<PassCode, numb
 
     protected getPassCodeParams(action: ReduxAction<unknown, CommitMeta<LocalObject<PassCode, number>[]>>): StrIndex<any> {
         return {
-            displayName: action.meta.value[0].object.displayName
+            displayName: action.meta.value[0].object.description
         };
     }
 
     protected getPassCodeErrorParams(action: ReduxAction<HttpErrorResponse, RollbackMeta<LocalObject<PassCode, number>[]>>): StrIndex<any> {
         return {
-            displayName: action.meta.value[0].object.display,
-            httpError: action.payload.status
+            displayName: action.meta.value[0].object.description,
+            httpErrorCode: action.payload.status
         };
     }
 }

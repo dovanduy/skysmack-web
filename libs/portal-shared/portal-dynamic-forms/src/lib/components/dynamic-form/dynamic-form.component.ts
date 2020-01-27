@@ -1,9 +1,9 @@
 import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { FormBuilder, Validators, FormGroup, FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
-import { GlobalProperties, SubscriptionHandler, LocalObject, StrIndex } from '@skysmack/framework';
+import { GlobalProperties, SubscriptionHandler, LocalObject, StrIndex, jsonPrint } from '@skysmack/framework';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
-import { map, take, tap, debounceTime } from 'rxjs/operators';
+import { map, take, tap, debounceTime, delay } from 'rxjs/operators';
 import { Field, FormRule, Validation, FormHelper } from '@skysmack/ng-dynamic-forms';
 import { EditorNavService } from '@skysmack/portal-ui';
 
@@ -31,6 +31,7 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
   public fh: FormHelper;
   private subscriptionHandler = new SubscriptionHandler();
   private formChanged = false;
+  private submitting: boolean;
 
   constructor(
     public fb: FormBuilder,
@@ -47,9 +48,22 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
 
     // Update the fields and  form (FormGroup) on field changes
     this.fields$ = this.fields$.pipe(
+      delay(0), // Prevents ExpressionChanged error
       map(fields => {
         this.initForm(fields);
         return fields.filter(field => field.includeInForm);
+      }),
+      tap(fields => {
+        // If field values are updated, the form group needs to have its values updated as well
+        // This is especially important if the field is provided and contains async api calls.
+        if (!this.submitting) { // Don't update the form values when submitting.
+          fields.forEach(field => {
+            const fieldValue = field && this.fh.form.controls[field.key].value;
+            if (fieldValue === null || fieldValue === undefined) {
+              this.fh.form.controls[field.key].setValue(field.value);
+            }
+          });
+        }
       })
     );
 
@@ -60,8 +74,8 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
     this.subscriptionHandler.unsubscribe();
   }
 
-  public trackByFieldKey(field: Field) {
-    return field ? field.key : undefined;
+  public trackByFieldKey(_index: number, field: Field) {
+    return `${field.key}:${JSON.stringify(field.value)}`;
   }
 
   public initForm(fields: Field[]): void {
@@ -88,11 +102,13 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
   }
 
   public onSubmit = () => {
+    this.submitting = true;
     this.subscriptionHandler.register(this.fields$.pipe(
       take(1),
       // Remove all fields not to be included in the request.
       map(fields => fields.map(field => field.includeInRequest ? field : this.fh.form.removeControl(field.key))),
-      map(() => this.submitted.emit(this.fh))
+      map(() => this.submitted.emit(this.fh)),
+      tap(() => this.submitting = false)
     ).subscribe())
   }
 
@@ -130,10 +146,10 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
             // We havent set any data yet for this package. Create its dictionary.
             formValuesClone['extendedData'][packagePath] = {};
             // Set data for the current field
-            formValuesClone['extendedData'][packagePath][keyProp] = extendedData;
+            formValuesClone['extendedData'][packagePath] = extendedData;
           } else {
             // Extented data for package already exists. Set data for the current field
-            formValuesClone['extendedData'][packagePath][keyProp] = extendedData;
+            formValuesClone['extendedData'][packagePath] = extendedData;
           }
 
           // Deleted the individual, dot notated extended data, as it is no longer needed,

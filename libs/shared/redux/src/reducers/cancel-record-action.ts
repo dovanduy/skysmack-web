@@ -1,7 +1,6 @@
-import { LocalObjectStatus, Record } from '@skysmack/framework';
+import { LocalObjectStatus, Record, CancelActionMeta } from '@skysmack/framework';
 import { RecordState } from './../states';
 import { ReduxAction } from './../action-types/redux-action';
-import { CancelActionMeta } from './../metas/offline-redux/cancel-action-meta';
 import { CancelActionPayload } from './../payloads/cancel-action-payload';
 import { ReduxOfflineMeta } from '../metas/offline-redux/redux-offline-meta';
 

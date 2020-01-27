@@ -25,7 +25,7 @@ export class DateTimeFieldComponent extends FieldBaseComponent<Field> implements
   @ViewChild('dateInput', { static: false }) public dateInput: ElementRef;
   public date: string;
 
-  public dateTime: Date;
+  public dateTime: Date = new Date();
 
   private dateFormats = [
     "DD-MM-YYYY",

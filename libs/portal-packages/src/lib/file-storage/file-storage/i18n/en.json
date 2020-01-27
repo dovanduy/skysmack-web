@@ -1,5 +1,10 @@
 {
     "FILE_STORAGE": {
+        "MISC": {
+            "EMPTY_FOLDER": " Folder is empty (use + button bottom right).",
+            "HOME": "Home",
+            "ENTER_FOLDER_NAME": "Please enter a folder name"
+        },
         "FORM": {
             "LABELS": {
                 "BUCKET": "Bucket",
@@ -20,6 +25,7 @@
         },
         "CREATE": {
             "CREATE": "Create new bucket",
+            "CREATING": "Creating bucket. Please wait...",
             "BUTTON_CREATE": "Create"
         },
         "EDIT": {
@@ -38,6 +44,11 @@
             "ITEM": "Item",
             "MANAGE": "Manage",
             "ACTIONS": "Actions"
+        },
+        "NOTIFICATIONS": {
+            "REMOVE": {
+                "FAILURE": "{{ errorMessage }}"
+            }
         }
     }
 }

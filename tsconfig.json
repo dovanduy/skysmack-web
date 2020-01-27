@@ -191,6 +191,21 @@
       "@skysmack/ng-persons": [
         "libs/ng-packages/ng-persons/src/public_api.ts"
       ],
+      "@skysmack/ng-doorways": [
+        "libs/ng-packages/ng-doorways/src/public_api.ts"
+      ],
+      "@skysmack/ng-lodgings-doorways": [
+        "libs/ng-packages/ng-lodgings-doorways/src/public_api.ts"
+      ],
+      "@skysmack/ng-axis-physical-access-control": [
+        "libs/ng-packages/ng-axis-physical-access-control/src/public_api.ts"
+      ],
+      "@skysmack/ng-doorways-pass-codes": [
+        "libs/ng-packages/ng-doorways-pass-codes/src/public_api.ts"
+      ],
+      "@skysmack/ng-lodgings-reservations-pass-codes": [
+        "libs/ng-packages/ng-lodgings-reservations-pass-codes/src/public_api.ts"
+      ],
       "@skysmack/ng-pass-codes": [
         "libs/ng-packages/ng-pass-codes/src/public_api.ts"
       ],

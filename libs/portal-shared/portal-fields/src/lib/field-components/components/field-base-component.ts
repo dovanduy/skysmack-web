@@ -71,11 +71,7 @@ export abstract class FieldBaseComponent<TField extends Field> implements Dynami
     protected getFormField = (): FormControl => (this.fh.form.controls[this.field.key] as FormControl);
 
     protected getFieldValue() {
-        const fieldValue = this.fh.form.controls[this.field.key].value;
-        if (fieldValue == null) {
-            return undefined;
-        }
-        return fieldValue;
+        return this.fh.form.controls[this.field.key].value;
     }
 
     protected setOtherFieldErrors(fieldKey: string, errors: StrIndex<boolean>) {

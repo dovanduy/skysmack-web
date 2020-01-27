@@ -80,6 +80,11 @@ export class NgEmailsIndexMenuProvider implements MenuProvider {
                 url: 'create',
                 displayName: this.EmailTemplatesTranslationPrefix + 'CREATE',
                 area: 'actions',
+                hotkeyOptions: {
+                    keyCode: 67,
+                    altKey: true,
+                    action: `/${packagePath}/templates/create`
+                },
                 order: 1,
                 icon: 'add',
                 permissions: [

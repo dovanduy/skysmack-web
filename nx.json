@@ -185,7 +185,19 @@
     "ng-persons": {
       "tags": []
     },
+    "ng-doorways": {
+      "tags": []
+    },
     "ng-pass-codes": {
+      "tags": []
+    },
+    "ng-lodgings-doorways": {
+      "tags": []
+    },
+    "ng-axis-physical-access-control": {
+      "tags": []
+    },
+    "ng-lodgings-reservations-pass-codes": {
       "tags": []
     },
     "ng-cors": {

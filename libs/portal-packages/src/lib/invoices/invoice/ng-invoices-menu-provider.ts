@@ -73,42 +73,17 @@ export class NgInvoicesMenuProvider implements MenuProvider {
         ];
     };
 
-    private getInvoiceItemsMenuAreas = () => {
-        return [
-            new MenuArea({
-                area: 'actions',
-                translationPrefix: this.InvoiceItemsTranslationPrefix,
-                order: 1
-            }),
-            new MenuArea({
-                area: 'manage',
-                translationPrefix: this.InvoiceItemsTranslationPrefix,
-                order: 2
-            })
-        ];
-    }
-
-    private getInvoicePaymentsMenuAreas = () => {
-        return [
-            new MenuArea({
-                area: 'actions',
-                translationPrefix: this.InvoicePaymentsTranslationPrefix,
-                order: 1
-            }),
-            new MenuArea({
-                area: 'manage',
-                translationPrefix: this.InvoicePaymentsTranslationPrefix,
-                order: 2
-            })
-        ];
-    };
-
-    private getInvoicesMenuItems = () => {
+    private getInvoicesMenuItems = (packagePath: string) => {
         return [
             new MenuItem({
                 url: 'create',
                 displayName: this.InvoicesTranslationPrefix + 'CREATE',
                 area: 'actions',
+                hotkeyOptions: {
+                    keyCode: 67,
+                    altKey: true,
+                    action: `/${packagePath}/create`
+                },
                 order: 1,
                 icon: 'add',
                 permissions: [
@@ -120,6 +95,11 @@ export class NgInvoicesMenuProvider implements MenuProvider {
                 url: 'fields',
                 displayName: this.InvoicesTranslationPrefix + 'FIELDS',
                 area: 'manage',
+                hotkeyOptions: {
+                    keyCode: 70,
+                    altKey: true,
+                    action: `/${packagePath}/fields`
+                },
                 order: 2,
                 icon: 'short_text',
                 permissions: [
@@ -141,12 +121,32 @@ export class NgInvoicesMenuProvider implements MenuProvider {
         ];
     };
 
+    private getInvoiceItemsMenuAreas = () => {
+        return [
+            new MenuArea({
+                area: 'actions',
+                translationPrefix: this.InvoiceItemsTranslationPrefix,
+                order: 1
+            }),
+            new MenuArea({
+                area: 'manage',
+                translationPrefix: this.InvoiceItemsTranslationPrefix,
+                order: 2
+            })
+        ];
+    }
+
     private getInvoiceItemsMenuItems = (packagePath: string): MenuItem[] => {
         return [
             new MenuItem({
                 url: 'create',
                 displayName: this.InvoiceItemsTranslationPrefix + 'CREATE',
                 area: 'actions',
+                hotkeyOptions: {
+                    keyCode: 67,
+                    altKey: true,
+                    action: `/${packagePath}/create`
+                },
                 order: 1,
                 icon: 'add',
                 permissions: [
@@ -158,6 +158,11 @@ export class NgInvoicesMenuProvider implements MenuProvider {
                 url: 'fields',
                 displayName: this.InvoiceItemsTranslationPrefix + 'FIELDS',
                 area: 'manage',
+                hotkeyOptions: {
+                    keyCode: 70,
+                    altKey: true,
+                    action: `/${packagePath}/fields`
+                },
                 order: 2,
                 icon: 'short_text',
                 permissions: [
@@ -169,12 +174,32 @@ export class NgInvoicesMenuProvider implements MenuProvider {
         ];
     };
 
+    private getInvoicePaymentsMenuAreas = () => {
+        return [
+            new MenuArea({
+                area: 'actions',
+                translationPrefix: this.InvoicePaymentsTranslationPrefix,
+                order: 1
+            }),
+            new MenuArea({
+                area: 'manage',
+                translationPrefix: this.InvoicePaymentsTranslationPrefix,
+                order: 2
+            })
+        ];
+    };
+
     private getInvoicePaymentsMenuItems = (packagePath: string): MenuItem[] => {
         return [
             new MenuItem({
                 url: 'create',
                 displayName: this.InvoicePaymentsTranslationPrefix + 'CREATE',
                 area: 'actions',
+                hotkeyOptions: {
+                    keyCode: 67,
+                    altKey: true,
+                    action: `/${packagePath}/payments/create`
+                },
                 order: 1,
                 icon: 'add',
                 permissions: [
@@ -186,6 +211,11 @@ export class NgInvoicesMenuProvider implements MenuProvider {
                 url: 'fields',
                 displayName: this.InvoicePaymentsTranslationPrefix + 'FIELDS',
                 area: 'manage',
+                hotkeyOptions: {
+                    keyCode: 70,
+                    altKey: true,
+                    action: `/${packagePath}/payments/fields`
+                },
                 order: 2,
                 icon: 'short_text',
                 permissions: [

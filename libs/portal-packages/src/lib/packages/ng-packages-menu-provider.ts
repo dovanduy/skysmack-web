@@ -37,12 +37,17 @@ export class NgPackagesMenuProvider implements MenuProvider {
         ];
     };
 
-    private getPackagesMenuItems = () => {
+    private getPackagesMenuItems = (packagePath: string) => {
         return [
             new MenuItem({
                 url: 'create',
                 displayName: this.translationPrefix + 'CREATE',
                 area: 'actions',
+                hotkeyOptions: {
+                    keyCode: 67,
+                    altKey: true,
+                    action: `/${packagePath}/create`
+                },
                 order: 1,
                 icon: 'add',
                 permissions: [

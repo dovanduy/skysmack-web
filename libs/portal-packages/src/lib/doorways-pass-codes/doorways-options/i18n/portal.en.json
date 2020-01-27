@@ -1,0 +1,47 @@
+{
+    "DOORWAYS_OPTIONS": {
+        "FORM": {
+            "LABELS": {
+                "ID": "Door",
+                "STARTPERIOD": "Start period",
+                "ENDPERIOD": "End period",
+                "REQUIRED": "Required"
+            },
+            "PLACEHOLDERS": {
+                "ID": "Door",
+                "STARTPERIOD": "Start period",
+                "ENDPERIOD": "End period",
+                "REQUIRED": "Required"
+            },
+            "VALIDATION": {
+                "ID": {
+                    "REQUIRED": "Door is required."
+                },
+                "STARTPERIOD": {
+                    "REQUIRED": "Start period is required."
+                },
+                "ENDPERIOD": {
+                    "REQUIRED": "End period is required."
+                }
+            }
+        },
+        "CREATE": {
+            "CREATE": "Create",
+            "BUTTON_CREATE": "Create"
+        },
+        "EDIT": {
+            "EDIT": "Edit",
+            "BUTTON_EDIT": "Update"
+        },
+        "INDEX": {
+            "TITLE_EXTRAS": "(Doorways options)",
+            "CREATE": "Create",
+            "EDIT": "Edit",
+            "DELETE": "Delete",
+            "MANAGE": "Manage",
+            "ACTIONS": "Actions",
+            "SETTINGS": "Settings",
+            "TYPES": "Types"
+        }
+    }
+}

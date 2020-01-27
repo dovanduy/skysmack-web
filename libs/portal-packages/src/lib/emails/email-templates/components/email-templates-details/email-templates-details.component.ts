@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { EditorNavService } from '@skysmack/portal-ui';
+import { EditorNavService, EntityComponentPageTitle } from '@skysmack/portal-ui';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { NgEmailTemplatesFieldsConfig } from '../../ng-email-templates-fields-config';
 import { NgEmailTemplatesActions, NgEmailTemplatesStore } from '../../../../../../../ng-packages/ng-emails/src/lib';
-import { EmailTemplatesAppState } from '@skysmack/packages-emails';
+import { EmailTemplatesAppState, EmailTemplate } from '@skysmack/packages-emails';
 import { DetailsBaseComponent } from '@skysmack/portal-fields';
+import { LocalObject } from '@skysmack/framework';
 
 @Component({
   selector: 'ss-email-templates-details',
@@ -19,12 +20,17 @@ export class EmailTemplatesDetailsComponent extends DetailsBaseComponent<EmailTe
     public actions: NgEmailTemplatesActions,
     public store: NgEmailTemplatesStore,
     public fieldsConfig: NgEmailTemplatesFieldsConfig,
-    public editorNavService: EditorNavService
+    public editorNavService: EditorNavService,
+    public title: EntityComponentPageTitle
   ) {
-    super(router, activatedRoute, skysmackStore, actions, store, fieldsConfig, editorNavService);
+    super(router, activatedRoute, skysmackStore, actions, store, fieldsConfig, editorNavService, title);
   }
 
   ngOnInit() {
     super.ngOnInit();
+  }
+
+  protected getTitle(record: LocalObject<EmailTemplate, number>): string {
+    return `${record.object.subject}`;
   }
 }

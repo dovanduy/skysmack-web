@@ -143,6 +143,11 @@ export class NgAccessPoliciesDashboardMenuProvider implements MenuProvider {
                 url: 'create',
                 displayName: this.permissionsTranslationPrefix + 'CREATE',
                 area: 'actions',
+                hotkeyOptions: {
+                    keyCode: 67,
+                    altKey: true,
+                    action: `/${packagePath}/permissions/create`
+                },
                 order: 1,
                 icon: 'add',
                 permissions: [
@@ -160,6 +165,11 @@ export class NgAccessPoliciesDashboardMenuProvider implements MenuProvider {
                 url: 'create',
                 displayName: this.RolesTranslationPrefix + 'CREATE',
                 area: 'actions',
+                hotkeyOptions: {
+                    keyCode: 67,
+                    altKey: true,
+                    action: `/${packagePath}/roles/create`
+                },
                 order: 1,
                 icon: 'group_add',
                 permissions: [
@@ -177,6 +187,11 @@ export class NgAccessPoliciesDashboardMenuProvider implements MenuProvider {
                 url: 'create',
                 displayName: this.RulesTranslationPrefix + 'CREATE',
                 area: 'actions',
+                hotkeyOptions: {
+                    keyCode: 67,
+                    altKey: true,
+                    action: `/${packagePath}/rules/create`
+                },
                 order: 1,
                 icon: 'group_add',
                 permissions: [

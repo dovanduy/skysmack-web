@@ -24,16 +24,6 @@ export class PackagesActions extends RecordActionsBase<PackagesAppState, Store<P
     }
 
     public changePath = (_changePackagePaths: ChangePackagePath[], packagePath: string) => {
-        const queueItems = _changePackagePaths.map(record => {
-            return new QueueItem({
-                message: `PACKAGES.EDITING_PATH`,
-                messageParams: { path: record.previousPath } as any,
-                link: `${this.addAdditionalPaths(packagePath)}/edit/path/${record.previousPath}`,
-                packagePath,
-                cancelAction: this.cancelAction
-            });
-        });
-
         this.store.dispatch(Object.assign({}, new ReduxAction<any, ReduxOfflineMeta<ChangePackagePath[], HttpResponse, ChangePackagePath[]>>({
             type: this.prefix + PackagesActions.EDIT_PACKAGE_PATH,
             meta: new ReduxOfflineMeta(
@@ -48,7 +38,7 @@ export class PackagesActions extends RecordActionsBase<PackagesAppState, Store<P
                         meta: {
                             stateKey: packagePath,
                             value: _changePackagePaths,
-                            queueItems
+                            queueItems: []
                         }
                     }),
                     new ReduxAction<any, RollbackMeta<ChangePackagePath[]>>({
@@ -56,7 +46,7 @@ export class PackagesActions extends RecordActionsBase<PackagesAppState, Store<P
                         meta: {
                             stateKey: packagePath,
                             value: _changePackagePaths,
-                            queueItems
+                            queueItems: []
                         }
                     })
                 )

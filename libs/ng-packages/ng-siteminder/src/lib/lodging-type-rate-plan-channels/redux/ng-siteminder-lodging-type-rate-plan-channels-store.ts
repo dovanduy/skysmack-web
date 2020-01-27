@@ -3,8 +3,9 @@ import { NgRedux } from '@angular-redux/store';
 import { LodgingTypeRatePlanChannel, SiteMinderLodgingTypeRatePlanChannelsAppState, SITE_MINDER_LODGING_TYPE_RATE_PLAN_CHANNELS_REDUCER_KEY, LodgingTypeRatePlanChannelKey } from '@skysmack/packages-siteminder';
 import { NgRecordStore } from '@skysmack/ng-framework';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
-import { DependencyOptions, LocalObject } from '@skysmack/framework';
+import { DependencyOptions, LocalObject, hasValue } from '@skysmack/framework';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Injectable({ providedIn: 'root' })
 export class NgSiteMinderLodgingTypeRatePlanChannelsStore extends NgRecordStore<SiteMinderLodgingTypeRatePlanChannelsAppState, LodgingTypeRatePlanChannel, LodgingTypeRatePlanChannelKey> {
@@ -38,5 +39,17 @@ export class NgSiteMinderLodgingTypeRatePlanChannelsStore extends NgRecordStore<
 
     public getSingle(packagePath: string, id: LodgingTypeRatePlanChannelKey): Observable<LocalObject<LodgingTypeRatePlanChannel, LodgingTypeRatePlanChannelKey>> {
         return this.getSingleWithDependency(packagePath, id, this.deps);
+    }
+
+    protected getSingleRecord(packagePath: string, id: LodgingTypeRatePlanChannelKey): Observable<LocalObject<LodgingTypeRatePlanChannel, LodgingTypeRatePlanChannelKey>> {
+        return this.get(packagePath).pipe(
+            map(records => records.find(record => {
+                const firstIdMatch = record.object.id.channelId === id.channelId;
+                const secondIdMatch = record.object.id.lodgingTypeId === id.lodgingTypeId;
+                const thirdIdMatch = record.object.id.ratePlanId === id.ratePlanId;
+                return (firstIdMatch && secondIdMatch && thirdIdMatch) ? true : false;
+            })),
+            hasValue()
+        );
     }
 }

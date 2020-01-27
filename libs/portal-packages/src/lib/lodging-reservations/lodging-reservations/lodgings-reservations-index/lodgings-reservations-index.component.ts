@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { LocalObject, EnumHelpers } from '@skysmack/framework';
-import { LodgingReservationsAppState, LodgingReservation, LODGING_RESERVATIONS_AREA_KEY, CheckIn } from '@skysmack/packages-lodging-reservations';
+import { LodgingReservationsAppState, LodgingReservation, LODGING_RESERVATIONS_AREA_KEY, ReservationsPermissions } from '@skysmack/packages-lodging-reservations';
 import { MenuItem } from '@skysmack/framework';
 import { NgLodgingsStore, NgLodgingTypesStore, NgLodgingsActions, NgLodgingTypesActions } from '@skysmack/ng-lodgings';
-import { EntityComponentPageTitle, MenuItemActionProviders, MENU_ITEM_ACTIONS_EDIT, MENU_ITEM_ACTIONS_DELETE } from '@skysmack/portal-ui';
+import { EntityComponentPageTitle, MenuItemActionProviders, MENU_ITEM_ACTIONS_EDIT, MENU_ITEM_ACTIONS_DELETE, MENU_ITEM_ACTION_DETAILS } from '@skysmack/portal-ui';
 import { NgLodgingReservationsFieldsConfig } from '../../ng-lodging-reservations-fields-config';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { DocumentRecordIndexComponent } from '@skysmack/portal-fields';
@@ -27,6 +27,9 @@ export class LodgingsReservationsIndexComponent extends DocumentRecordIndexCompo
 
   public translationPrefix = 'LODGING_RESERVATIONS.ENTITY_ACTIONS.';
 
+  /**
+   * KEEP IN SYNC WITH SAME ARRAY IN LodgingsReservationsDetailsComponent.
+   */
   public menuItemActions: MenuItem[] = [
     // Checkin
     new MenuItem().asEventAction(`${this.translationPrefix}CHECKIN`, this.checkIn, 'label', this).setShowLogic((entity: LocalObject<LodgingReservation, number>) => {
@@ -53,11 +56,11 @@ export class LodgingsReservationsIndexComponent extends DocumentRecordIndexCompo
     }),
 
     // Move
+    // Note: Both move and undo move always shows as the same time, since their show logic is the same.
     new MenuItem().asEventAction(`${this.translationPrefix}MOVE`, this.move, 'compare_arrows', this).setShowLogic((entity: LocalObject<LodgingReservation, number>) => {
       return EnumHelpers.toIndexEnum(LodgingReservation.statusEnum)[entity.object.status] === LodgingReservation.statusEnum.InStay;
     }),
     new MenuItem().asEventAction(`${this.translationPrefix}UNDOMOVE`, this.undoMove, 'undo', this).setShowLogic((entity: LocalObject<LodgingReservation, number>) => {
-      // TODO: This is likely NOT correct...
       return EnumHelpers.toIndexEnum(LodgingReservation.statusEnum)[entity.object.status] === LodgingReservation.statusEnum.InStay;
     }),
 
@@ -78,8 +81,11 @@ export class LodgingsReservationsIndexComponent extends DocumentRecordIndexCompo
     }),
 
     // Misc
+    new MenuItem().asUrlAction('details', MENU_ITEM_ACTION_DETAILS, 'list').setPermissions([ReservationsPermissions.findReservations]),
     new MenuItem().asUrlAction('edit', MENU_ITEM_ACTIONS_EDIT, 'edit'),
-    new MenuItem().asEventAction(MENU_ITEM_ACTIONS_DELETE, this.delete, 'delete', this),
+    new MenuItem().asEventAction(MENU_ITEM_ACTIONS_DELETE, this.delete, 'delete', this).setShowLogic((entity: LocalObject<LodgingReservation, number>) => {
+      return !(EnumHelpers.toIndexEnum(LodgingReservation.statusEnum)[entity.object.status] === LodgingReservation.statusEnum.InStay);
+    })
   ];
 
   public areaKey: string = LODGING_RESERVATIONS_AREA_KEY;
@@ -108,13 +114,18 @@ export class LodgingsReservationsIndexComponent extends DocumentRecordIndexCompo
     super.ngOnInit();
   }
 
+
+  /**
+   * KEEP ALL METHODS IN BELOW REGION IN SYNC WITH SAME METHODS IN LodgingsReservationsDetailsComponent.
+   */
+  //#region MenuItem events
   public confirm(_this: LodgingsReservationsIndexComponent, entity: LocalObject<LodgingReservation, number>) {
     _this.subscriptionHandler.register(_this.dialog.open(ConfirmReservationDialogComponent, { data: { packagePath: _this.packagePath, reservation: entity } }).afterClosed().pipe(
       take(1)
     ).subscribe());
   }
   public undoConfirm(_this: LodgingsReservationsIndexComponent, entity: LocalObject<LodgingReservation, number>) {
-    // _this.actions.undoConfirm(_this.packagePath, entity, [entity.object.id]);
+    _this.actions.undoConfirm(_this.packagePath, entity, [entity.object.id]);
   }
 
   public checkIn(_this: LodgingsReservationsIndexComponent, entity: LocalObject<LodgingReservation, number>) {
@@ -159,5 +170,6 @@ export class LodgingsReservationsIndexComponent extends DocumentRecordIndexCompo
   public undoNoShow(_this: LodgingsReservationsIndexComponent, entity: LocalObject<LodgingReservation, number>) {
     _this.actions.undoNoShow(_this.packagePath, entity, [entity.object.id]);
   }
+  //#endregion
 }
 

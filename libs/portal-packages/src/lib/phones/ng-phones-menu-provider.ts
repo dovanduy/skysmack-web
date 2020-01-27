@@ -45,7 +45,7 @@ export class NgPhonesMenuProvider implements MenuProvider {
                 PhonesTypeId,
                 componentKey,
                 PhoneNumbersIndexComponent.COMPONENT_KEY,
-                this.getPhoneLogsIndexMenuAreas,
+                this.getPhoneNumbersIndexMenuAreas,
                 this.store
             )
         );
@@ -66,7 +66,7 @@ export class NgPhonesMenuProvider implements MenuProvider {
                 PhonesTypeId,
                 componentKey,
                 PhoneLogsIndexComponent.COMPONENT_KEY,
-                this.getPhoneNumbersIndexMenuItems,
+                this.getPhoneLogsIndexMenuItems,
                 this.store
             ),
             getMenuEntries<MenuItem>(
@@ -100,12 +100,17 @@ export class NgPhonesMenuProvider implements MenuProvider {
         ];
     }
 
-    private getPhonesIndexMenuItems = (): MenuItem[] => {
+    private getPhonesIndexMenuItems = (packagePath: string): MenuItem[] => {
         return [
             new MenuItem({
                 url: 'create',
                 displayName: this.phoneTranslationPrefix + 'CREATE',
                 area: 'actions',
+                hotkeyOptions: {
+                    keyCode: 67,
+                    altKey: true,
+                    action: `/${packagePath}/create`
+                },
                 order: 1,
                 icon: 'add',
                 permissions: [
@@ -138,6 +143,8 @@ export class NgPhonesMenuProvider implements MenuProvider {
         ];
     }
 
+
+
     private getPhoneLogsIndexMenuAreas = (): MenuArea[] => {
         return [
             new MenuArea({
@@ -159,6 +166,11 @@ export class NgPhonesMenuProvider implements MenuProvider {
                 url: 'create',
                 displayName: this.phoneLogsTranslationPrefix + 'CREATE',
                 area: 'actions',
+                hotkeyOptions: {
+                    keyCode: 67,
+                    altKey: true,
+                    action: `/${packagePath}/logs/create`
+                },
                 order: 1,
                 icon: 'add',
                 permissions: [
@@ -169,6 +181,8 @@ export class NgPhonesMenuProvider implements MenuProvider {
             setBackButton(packagePath)
         ];
     }
+
+
 
     private getPhoneNumbersIndexMenuAreas = (): MenuArea[] => {
         return [
@@ -191,6 +205,11 @@ export class NgPhonesMenuProvider implements MenuProvider {
                 url: 'create',
                 displayName: this.phoneNumbersTranslationPrefix + 'CREATE',
                 area: 'actions',
+                hotkeyOptions: {
+                    keyCode: 67,
+                    altKey: true,
+                    action: `/${packagePath}/numbers/create`
+                },
                 order: 1,
                 icon: 'add',
                 permissions: [
