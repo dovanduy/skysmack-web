@@ -47,7 +47,11 @@ export class LodgingsAvailabilityComponent implements OnInit, OnDestroy {
     return this._viewDate;
   }
   public set viewDate(date: Date) {
+    // Update the request period to the calendars date.
     this.requestPeriod(date);
+
+    // Request the daily count again.
+    this.getAvailableLodgingsDaily();
     this._viewDate = date;
   }
 
