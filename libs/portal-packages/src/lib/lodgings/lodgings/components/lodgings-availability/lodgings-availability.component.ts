@@ -79,7 +79,6 @@ export class LodgingsAvailabilityComponent implements OnInit, OnDestroy {
 
   public requestPeriod(date: Date) {
     this.setCurrentDate(date);
-    this.getAvailableLodgingsDaily();
   }
 
   public getAvailableLodgingsDaily() {

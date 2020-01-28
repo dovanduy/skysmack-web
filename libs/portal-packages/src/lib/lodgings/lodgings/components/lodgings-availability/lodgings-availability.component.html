@@ -22,14 +22,6 @@
     <mat-card [ngSwitch]="view">
       <div style="text-align:right; padding: 0 16px">
         <!-- Lodgings selection -->
-        <!-- <mat-form-field style="width:200px;margin-right:16px">
-          <mat-select [(value)]="selectedLodgingIds" (selectionChange)="getAvailableLodgingsDaily($event)"
-            [placeholder]="'LODGINGS_AVAILABILITY.SELECT_LODGINGS' | translate" multiple>
-            <mat-option *ngFor="let opt of lodgingOptions$ | async" [value]="opt.value">
-              {{opt.displayName}}</mat-option>
-          </mat-select>
-        </mat-form-field> -->
-
         <mat-form-field style="width:200px;margin-right:16px">
           <mat-chip-list #chipList aria-label="Lodging selection">
             <mat-chip *ngFor="let opt of selectedLodgingOptions" [selectable]="true" [removable]="true"
@@ -37,9 +29,10 @@
               {{ opt.displayName }}
               <mat-icon matChipRemove>cancel</mat-icon>
             </mat-chip>
-            <input placeholder="Select lodging" #lodgingInput [formControl]="lodgingCtrl" [matAutocomplete]="auto"
-              [matChipInputFor]="chipList" [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-              [matChipInputAddOnBlur]="true" (matChipInputTokenEnd)="add($event)">
+            <input [placeholder]="'LODGINGS_AVAILABILITY.SELECT_LODGINGS' | translate" #lodgingInput
+              [formControl]="lodgingCtrl" [matAutocomplete]="auto" [matChipInputFor]="chipList"
+              [matChipInputSeparatorKeyCodes]="separatorKeysCodes" [matChipInputAddOnBlur]="true"
+              (matChipInputTokenEnd)="add($event)">
           </mat-chip-list>
           <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
             <mat-option *ngFor="let opt of filteredLodgings$ | async" [value]="opt">
