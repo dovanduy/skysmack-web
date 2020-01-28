@@ -127,15 +127,10 @@ export class ContainerComponent implements OnInit, OnDestroy {
 
         if (!visible) {
           if (this.dialogRef) {
-            if (!formChanged) {
-              setTimeout(() => {
-                this.dialogRef.closeAll();
-              }, 0);
-              return of();
-            } else {
-              this.dialogRef.closeAll()
-              return of();
-            }
+            setTimeout(() => {
+              this.dialogRef.closeAll();
+            }, 0);
+            return of();
           }
           return of();
         }

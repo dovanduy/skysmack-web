@@ -62,7 +62,6 @@ export abstract class FieldsConfig<TRecord, TKey> implements EntityFieldsConfig<
                 const extractedProviders = providers[loadedPackage && loadedPackage.packageManifest && loadedPackage.packageManifest.id];
 
                 if (extractedProviders && extractedProviders.length > 0) {
-                    console.log('test');
                     return combineLatest(
                         extractedProviders.map(provider => {
                             return provider.getFields(loadedPackage._package.path, this.area, entity);

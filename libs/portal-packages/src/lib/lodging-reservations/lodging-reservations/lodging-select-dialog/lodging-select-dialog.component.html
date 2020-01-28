@@ -21,10 +21,13 @@
             <mat-autocomplete #lodgingsAutoControl="matAutocomplete" (optionSelected)="selectLodging($event)"
                 [displayWith]="lodgingDisplayFn" autoActiveFirstOption>
                 <mat-option *ngFor="let detailedlodging of detailedLodgings$ | async" [value]="detailedlodging">
-                    <mat-icon *ngIf="detailedlodging.available" style="color: green; float: right;margin-right: 0"
-                        inline="true">check_circle</mat-icon>
-                    <mat-icon *ngIf="!detailedlodging.available" color="Warn" inline="true"
+                    <mat-icon *ngIf="detailedlodging.available === true"
+                        style="color: green; float: right;margin-right: 0" inline="true">check_circle</mat-icon>
+                    <mat-icon *ngIf="detailedlodging.available === false" color="Warn" inline="true"
                         style="float: right;margin-right: 0">error</mat-icon>
+                    <mat-icon *ngIf="detailedlodging.available === undefined || detailedlodging.available === null"
+                        color="default" inline="true" style="float: right;margin-right: 0">
+                        help</mat-icon>
                     <span>{{ detailedlodging.lodging.object.name}}</span>
                 </mat-option>
             </mat-autocomplete>

@@ -14,7 +14,7 @@ export class LodgingsAppState extends AppState {
 export class LodgingsState implements RecordState<Lodging, number> {
     public localPageTypes: StrIndex<StrIndex<LocalPageTypes<number>>> = {};
     public localRecords: StrIndex<StrIndex<LocalObject<Lodging, number>>> = {};
-    public availableLodgings: StrIndex<StrIndex<StrIndex<boolean>>> = {};
+    public availableLodgings: StrIndex<StrIndex<NumIndex<boolean>>> = {};
     public availableLodgingsDaily: StrIndex<StrIndex<NumIndex<boolean>>> = {};
 }
 
@@ -24,17 +24,30 @@ export function lodgingsReducer(state = new LodgingsState(), action: ReduxAction
 
     switch (action.type) {
         case prefix + LodgingsActions.GET_AVAILABLE_LODGINGS_SUCCESS: {
-            const castedAction = action as ReduxAction<StrIndex<boolean>, { stateKey: string, dateKey: string }>;
+            const castedAction = action as ReduxAction<StrIndex<boolean>, { stateKey: string, dateKey: string, ids: number[] }>;
 
             // Merge data
             const incoming = castedAction.payload;
-            const currentState = newState.availableLodgings[castedAction.meta.stateKey] ? newState.availableLodgings[castedAction.meta.stateKey] : {};
-            const currentSubState = currentState[castedAction.meta.dateKey] ? currentState[castedAction.meta.dateKey] : {};
+            const current = newState.availableLodgings[castedAction.meta.stateKey] ? newState.availableLodgings[castedAction.meta.stateKey] : {};
 
-            Object.keys(incoming).forEach((incomingKey) => currentSubState[incomingKey] = incoming[incomingKey]);
+            const dates = Object.keys(incoming);
+            for (let dateIndex = 0; dateIndex < dates.length; dateIndex++) {
+                const date = dates[dateIndex];
+                if (!newState.availableLodgings[castedAction.meta.stateKey][date]) {
+                    newState.availableLodgings[castedAction.meta.stateKey][date] = {};
+                }
 
-            newState.availableLodgings[castedAction.meta.stateKey] = currentState;
-            newState.availableLodgings[castedAction.meta.stateKey][castedAction.meta.dateKey] = currentSubState;
+                for (let index = 0; index < castedAction.meta.ids.length; index++) {
+                    const id = castedAction.meta.ids[index];
+                    if (incoming[date]) {
+                        newState.availableLodgings[castedAction.meta.stateKey][castedAction.meta.dateKey] = incoming;
+                    }
+                }
+            }
+
+
+            newState.availableLodgings[castedAction.meta.stateKey] = current;
+            // newState.availableLodgings[castedAction.meta.stateKey][castedAction.meta.dateKey] = currentSubState;
 
             return newState;
         }
