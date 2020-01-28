@@ -11,15 +11,13 @@
           <p *ngIf="freeLodgingTypes.count > 0" style="color:green;">{{ freeLodgingTypes.name }}: {{
             freeLodgingTypes.count }}</p>
           <p *ngIf="!freeLodgingTypes.count || freeLodgingTypes.count === 0" style="color:black;">
-            {{ freeLodgingTypes.name }}: {{
-            freeLodgingTypes.count }}</p>
+            {{ freeLodgingTypes.name }}: {{ freeLodgingTypes.count }}</p>
           <p *ngIf="freeLodgingTypes.count < 0" style="color:red;">{{ freeLodgingTypes.name }}: {{
               freeLodgingTypes.count }}</p>
         </ng-container>
       </div>
     </ng-container>
   </ng-template>
-
 
   <ng-container *ngIf="events$ | async as events">
 
@@ -57,7 +55,6 @@
         (dayClicked)="viewDate = $event.day.date;" (beforeViewRender)="beforeMonthViewRender($event)"
         [cellTemplate]="customCellTemplate">
       </ss-monthly-calendar-view>
-
     </mat-card>
   </ng-container>
 </ss-container>

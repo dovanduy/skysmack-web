@@ -1,14 +1,5 @@
 <ss-container [componentKey]="'lodgings-availability-index'" [componentKey]="componentKey">
 
-  <!-- Lodgings selection -->
-  <mat-form-field>
-    <mat-select [(value)]="selectedLodgingIds" [placeholder]="'LODGINGS_AVAILABILITY.SELECT_LODGINGS' | translate"
-      multiple>
-      <mat-option *ngFor="let opt of lodgingOptions$ | async" [value]="opt.value" (click)="getAvailableLodgingsDaily()">
-        {{opt.displayName}}</mat-option>
-    </mat-select>
-  </mat-form-field>
-
   <!-- Calendar -->
   <ng-template #customCellTemplate let-day="day" let-locale="locale">
     <ng-container *ngIf="day.freeLodgings">
@@ -23,29 +14,62 @@
       </div>
     </ng-container>
   </ng-template>
+
   <ng-container *ngIf="events$ | async as events">
-    <div [ngSwitch]="view">
-      <button mat-raised-button color="primary" mwlCalendarPreviousView [view]="view" [(viewDate)]="viewDate">
-        Previous
-      </button>
-      <button mat-raised-button color="primary" mwlCalendarToday [(viewDate)]="viewDate">
-        Today
-      </button>
-      <button mat-raised-button color="primary" mwlCalendarNextView [view]="view" [(viewDate)]="viewDate">
-        Next
-      </button>
 
-      <h3>{{ viewDate | calendarDate:(view + 'ViewTitle'):'en' }}</h3>
+    <mat-card [ngSwitch]="view">
+      <div style="text-align:right; padding: 0 16px">
+        <!-- Lodgings selection -->
+        <!-- <mat-form-field style="width:200px;margin-right:16px">
+          <mat-select [(value)]="selectedLodgingIds" (selectionChange)="getAvailableLodgingsDaily($event)"
+            [placeholder]="'LODGINGS_AVAILABILITY.SELECT_LODGINGS' | translate" multiple>
+            <mat-option *ngFor="let opt of lodgingOptions$ | async" [value]="opt.value">
+              {{opt.displayName}}</mat-option>
+          </mat-select>
+        </mat-form-field> -->
 
-      <mwl-calendar-month-view *ngSwitchCase="'month'" [viewDate]="viewDate" [events]="events"
+        <mat-form-field style="width:200px;margin-right:16px">
+          <mat-chip-list #chipList aria-label="Lodging selection">
+            <mat-chip *ngFor="let opt of selectedLodgingOptions" [selectable]="true" [removable]="true"
+              (removed)="remove(opt)">
+              {{ opt.displayName }}
+              <mat-icon matChipRemove>cancel</mat-icon>
+            </mat-chip>
+            <input placeholder="Select lodging" #lodgingInput [formControl]="lodgingCtrl" [matAutocomplete]="auto"
+              [matChipInputFor]="chipList" [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+              [matChipInputAddOnBlur]="true" (matChipInputTokenEnd)="add($event)">
+          </mat-chip-list>
+          <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+            <mat-option *ngFor="let opt of filteredLodgings$ | async" [value]="opt">
+              {{ opt.displayName }}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+
+
+        <button mat-icon-button mwlCalendarToday [(viewDate)]="viewDate"
+          matTooltip="{{ 'LODGING_TYPES.AVAILABILITY.TODAY' | translate }}">
+          <mat-icon>calendar_today</mat-icon>
+        </button>
+
+        <button mat-icon-button mwlCalendarPreviousView [view]="view" [(viewDate)]="viewDate"
+          matTooltip="{{ 'LODGING_TYPES.AVAILABILITY.PREVIOUS' | translate }}">
+          <mat-icon>chevron_left</mat-icon>
+        </button>
+
+        <button mat-icon-button mwlCalendarNextView [view]="view" [(viewDate)]="viewDate"
+          matTooltip="{{ 'LODGING_TYPES.AVAILABILITY.NEXT' | translate }}">
+          <mat-icon>chevron_right</mat-icon>
+        </button>
+        <h2 style="float:left;margin-top: 8px">
+          {{ viewDate | calendarDate:(view + 'ViewTitle'):'en' }}
+        </h2>
+      </div>
+
+      <ss-monthly-calendar-view *ngSwitchCase="'month'" [viewDate]="viewDate" [events]="events"
         (dayClicked)="viewDate = $event.day.date;" (beforeViewRender)="beforeMonthViewRender($event)"
         [cellTemplate]="customCellTemplate">
-      </mwl-calendar-month-view>
-      <mwl-calendar-week-view *ngSwitchCase="'week'" [viewDate]="viewDate" [events]="events"
-        (dayHeaderClicked)="viewDate = $event.day.date; view = 'day';">
-      </mwl-calendar-week-view>
-      <mwl-calendar-day-view *ngSwitchCase="'day'" [viewDate]="viewDate" [events]="events">
-      </mwl-calendar-day-view>
-    </div>
+      </ss-monthly-calendar-view>
+    </mat-card>
   </ng-container>
 </ss-container>

@@ -3,7 +3,7 @@ import { Injectable, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ApiDomain, API_DOMAIN_INJECTOR_TOKEN, StrIndex, HttpErrorResponse } from '@skysmack/framework';
 import { NgRecordRequests } from '@skysmack/ng-framework';
-import { ReduxAction, GetIntervalPayload, SelectedIdsMeta, StateKeyMeta } from '@skysmack/redux';
+import { ReduxAction, GetIntervalPayload, SelectedIdsMeta } from '@skysmack/redux';
 import { Observable, of } from 'rxjs';
 import { map, retry, catchError } from 'rxjs/operators';
 import { NgLodgingsActions } from './ng-lodgings-actions';
@@ -44,11 +44,12 @@ export class NgLodgingsRequests extends NgRecordRequests<Lodging, number> {
         url = `${url}?${action.meta.ids.map(id => `lodgingIds=${id}`).join('&')}`;
 
         return this.http.get<any>(url, { observe: 'response' }).pipe(
-            map(httpResponse => Object.assign({}, new ReduxAction<StrIndex<StrIndex<number[]>>, StateKeyMeta>({
+            map(httpResponse => Object.assign({}, new ReduxAction<StrIndex<StrIndex<number[]>>, { stateKey: string, ids: number[] }>({
                 type: LODGINGS_REDUX_KEY + NgLodgingsActions.GET_AVAILABLE_LODGINGS_DAILY_SUCCESS,
                 payload: httpResponse.body,
                 meta: {
-                    stateKey: action.payload.packagePath
+                    stateKey: action.payload.packagePath,
+                    ids: action.meta.ids
                 }
             }))),
             retry(3),

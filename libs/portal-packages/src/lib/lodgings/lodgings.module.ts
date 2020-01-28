@@ -14,6 +14,13 @@ import { SettingsModule } from '@skysmack/portal-settings';
 import { PortalFieldsModule } from '@skysmack/portal-fields';
 import { NgLodgingsMenuProvider } from './lodgings/ng-lodgings-menu-provider';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+
+const material = [
+  MatChipsModule,
+  MatAutocompleteModule
+];
 
 @NgModule({
   imports: [
@@ -25,6 +32,7 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
     LodgingsRoutingModule,
     PortalFieldsModule,
     SettingsModule,
+    ...material,
     CalendarModule.forRoot({
       provide: DateAdapter,
       useFactory: adapterFactory
