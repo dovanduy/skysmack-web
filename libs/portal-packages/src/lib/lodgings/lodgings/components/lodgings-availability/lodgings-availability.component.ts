@@ -135,11 +135,11 @@ export class LodgingsAvailabilityComponent implements OnInit, OnDestroy {
 
 
           freeLodgings = this.selectedLodgingOptions.map(x => x.value).map(selectedLodgingId => {
-            const lodgingName = lodgings.find(lodging => lodging.object.id === selectedLodgingId).object.name;
+            const lodging = lodgings.find(lodging => lodging.object.id === selectedLodgingId);
             return {
-              id: date.split('T')[0] + lodgingName,
-              name: lodgingName,
-              available: dates[dateKey].includes(selectedLodgingId)
+              id: date.split('T')[0] + lodging.object.name,
+              name: lodging.object.name,
+              available: dates[dateKey][lodging.object.id]
             };
           });
 

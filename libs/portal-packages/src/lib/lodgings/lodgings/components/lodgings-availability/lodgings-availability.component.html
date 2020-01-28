@@ -8,8 +8,10 @@
       </div>
       <div class="cell-totals">
         <ng-container *ngFor="let freeLodgings of day.freeLodgings; trackBy: trackById">
-          <p *ngIf="freeLodgings.available" style="color:green;">{{ freeLodgings.name }} ✓</p>
-          <p *ngIf="!freeLodgings.available" style="color:red;">{{ freeLodgings.name }} ✘</p>
+          <p *ngIf="freeLodgings.available === true" style="color:green;">{{ freeLodgings.name }} ✓</p>
+          <p *ngIf="freeLodgings.available === false" style="color:red;">{{ freeLodgings.name }} ✘</p>
+          <p *ngIf="freeLodgings.available === undefined || freeLodgings.available === null" style="color:grey;">
+            {{ freeLodgings.name }} ?</p>
         </ng-container>
       </div>
     </ng-container>

@@ -3,7 +3,7 @@ import { NgRedux } from '@angular-redux/store';
 import { Lodging, LodgingsAppState, LODGINGS_REDUCER_KEY, LodgingsState } from '@skysmack/packages-lodgings';
 import { NgRecordStore } from '@skysmack/ng-framework';
 import { Observable } from 'rxjs';
-import { LocalObject, DependencyOptions, StrIndex, defined } from '@skysmack/framework';
+import { LocalObject, DependencyOptions, StrIndex, defined, NumIndex } from '@skysmack/framework';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { map } from 'rxjs/operators';
 
@@ -32,8 +32,6 @@ export class NgLodgingsStore extends NgRecordStore<LodgingsAppState, Lodging, nu
     }
 
     public getAvailableLodgings(packagePath: string, startDate: any, endDate: any): Observable<StrIndex<boolean>> {
-        
-
         return this.getState<LodgingsState>().pipe(
             map(state => state.availableLodgings[packagePath]),
             defined(),
@@ -42,7 +40,7 @@ export class NgLodgingsStore extends NgRecordStore<LodgingsAppState, Lodging, nu
         );
     }
 
-    public getAvailableLodgingsDaily(packagePath: string): Observable<StrIndex<number[]>> {
+    public getAvailableLodgingsDaily(packagePath: string): Observable<StrIndex<NumIndex<boolean>>> {
         return this.getState<LodgingsState>().pipe(
             map(state => state.availableLodgingsDaily[packagePath]),
             defined()
