@@ -52,7 +52,7 @@ export abstract class DocumentFieldsConfig<TRecord, TKey> extends FieldsConfig<T
         switch (type) {
             case 'Boolean': return BooleanFieldComponent;
             case 'DateTime': return DateTimeFieldComponent;
-            case 'DateTimeOffset': return DateTimeFieldComponent; // MAKE INTO DATETIMEOFFSETFIELDCOMPONENT
+            case 'DateTimeOffset': return DateTimeFieldComponent; // TODO: MAKE INTO DATETIMEOFFSETFIELDCOMPONENT
             case 'Decimal': return DecimalFieldComponent;
             case 'Double': return DecimalFieldComponent;
             case 'Single': return DoubleFieldComponent;
@@ -67,17 +67,17 @@ export abstract class DocumentFieldsConfig<TRecord, TKey> extends FieldsConfig<T
 
     protected getSortFromDynamicFieldType(type: string): boolean {
         switch (type) {
-            case 'Boolean': return false;
+            case 'Boolean': return true;
             case 'DateTime': return true;
             case 'DateTimeOffset': return true;
             case 'Decimal': return true;
             case 'Double': return true;
             case 'Single': return true;
-            case 'Guid': return false;
+            case 'Guid': return true;
             case 'Int16': return true;
             case 'Int32': return true;
             case 'Int64': return true;
-            case 'String': return false;
+            case 'String': return true;
             default: console.log('This field type is not defined. Please create a component for it'); return false;
         }
     }
