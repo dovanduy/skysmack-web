@@ -25,11 +25,22 @@
       <div style="text-align:right; padding: 0 16px">
         <!-- Lodging types selection -->
         <mat-form-field style="width:200px;margin-right:16px">
-          <mat-select [(value)]="selectedLodgingTypeIds" (selectionChange)="getAvailableLodgingTypesDailyCount($event)"
-            [placeholder]="'LODGING_TYPES.AVAILABILITY.PLACEHOLDER' | translate" multiple>
-            <mat-option *ngFor="let opt of lodgingTypeOptions$ | async" [value]="opt.value">
-              {{opt.displayName}}</mat-option>
-          </mat-select>
+          <mat-chip-list #chipList aria-label="Lodging type selection">
+            <mat-chip *ngFor="let opt of selectedLodgingTypeOptions" [selectable]="true" [removable]="true"
+              (removed)="remove(opt)">
+              {{ opt.displayName }}
+              <mat-icon matChipRemove>cancel</mat-icon>
+            </mat-chip>
+            <input [placeholder]="'LODGING_TYPES.AVAILABILITY.PLACEHOLDER' | translate" #lodgingTypeInput
+              [formControl]="lodgingTypeCtrl" [matAutocomplete]="auto" [matChipInputFor]="chipList"
+              [matChipInputSeparatorKeyCodes]="separatorKeysCodes" [matChipInputAddOnBlur]="true"
+              (matChipInputTokenEnd)="add($event)">
+          </mat-chip-list>
+          <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+            <mat-option *ngFor="let opt of filteredLodgingTypes$ | async" [value]="opt">
+              {{ opt.displayName }}
+            </mat-option>
+          </mat-autocomplete>
         </mat-form-field>
 
         <button mat-icon-button mwlCalendarToday [(viewDate)]="viewDate"

@@ -27,12 +27,12 @@ export class LodgingsAvailabilityComponent implements OnInit, OnDestroy {
   public componentKey = LodgingsAvailabilityComponent.COMPONENT_KEY;
   public packagePath = this.router.url.split('/')[1];
   public events$: Observable<CalendarEvent[]>;
-  public lodgingOptions$: Observable<SelectFieldOption[]>;
   public currentSelectedDate: Date = new Date();
   public startOfMonth: string;
   public endOfMonth: string;
 
   // Chip list
+  public lodgingOptions$: Observable<SelectFieldOption[]>;
   public separatorKeysCodes: number[] = [ENTER, COMMA];
   public lodgingCtrl = new FormControl();
   public selectedLodgingOptions: SelectFieldOption[] = [];
@@ -170,8 +170,7 @@ export class LodgingsAvailabilityComponent implements OnInit, OnDestroy {
   private _filter(searchInput: string | SelectFieldOption | null, lodgingOptions: SelectFieldOption[]): SelectFieldOption[] {
     if (searchInput && (searchInput as string).toLowerCase) {
       const filterValue = (searchInput as string).toLowerCase();
-      return lodgingOptions.map(lodgingOption => ({ lodgingOption, hit: lodgingOption.displayName.toLowerCase().indexOf(filterValue.toLowerCase()) })).filter(lodgingTypeHit => lodgingTypeHit.hit >= 0).sort((a, b) => a.hit - b.hit).map(lodgingTypeHit => lodgingTypeHit.lodgingOption);
-      // return lodgingOptions.filter(lodgingOption => lodgingOption.displayName.toLowerCase().indexOf(filterValue) === 0);
+      return lodgingOptions.map(lodgingOption => ({ lodgingOption, hit: lodgingOption.displayName.toLowerCase().indexOf(filterValue.toLowerCase()) })).filter(lodgingHit => lodgingHit.hit >= 0).sort((a, b) => a.hit - b.hit).map(lodgingHit => lodgingHit.lodgingOption);
     }
     return lodgingOptions;
   }

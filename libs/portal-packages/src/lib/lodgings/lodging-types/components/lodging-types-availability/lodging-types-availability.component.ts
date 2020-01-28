@@ -1,9 +1,9 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ElementRef, ViewChild } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { EntityComponentPageTitle } from '@skysmack/portal-ui';
 import { NgLodgingTypesStore, NgLodgingTypesActions } from '@skysmack/ng-lodgings';
 import { Observable, combineLatest } from 'rxjs';
-import { map, tap, take, filter } from 'rxjs/operators';
+import { map, tap, take, filter, startWith } from 'rxjs/operators';
 import { CalendarEvent, EventColor, EventAction } from 'calendar-utils';
 import * as _moment from 'moment';
 import { PagedQuery, defined, SubscriptionHandler } from '@skysmack/framework';
@@ -11,6 +11,10 @@ import { SelectFieldOption } from '@skysmack/ng-dynamic-forms';
 import { CalendarMonthViewDay } from 'angular-calendar';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { MatSelectChange } from '@angular/material/select';
+import { ENTER, COMMA } from '@angular/cdk/keycodes';
+import { MatAutocomplete, MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
+import { FormControl } from '@angular/forms';
+import { MatChipInputEvent } from '@angular/material/chips';
 const moment = _moment;
 
 @Component({
@@ -24,12 +28,20 @@ export class LodgingTypesAvailabilityComponent implements OnInit, OnDestroy {
   public componentKey = LodgingTypesAvailabilityComponent.COMPONENT_KEY;
   public packagePath = this.router.url.split('/')[1];
   public events$: Observable<CalendarEvent[]>;
-  public selectedLodgingTypeIds: number[] = [];
-  public lodgingTypeOptions$: Observable<SelectFieldOption[]>;
   public currentSelectedDate: Date = new Date();
   public startOfMonth: string;
   public endOfMonth: string;
 
+  // Chip list
+  public lodgingTypeOptions$: Observable<SelectFieldOption[]>;
+  public separatorKeysCodes: number[] = [ENTER, COMMA];
+  public lodgingTypeCtrl = new FormControl();
+  public selectedLodgingTypeOptions: SelectFieldOption[] = [];
+  public filteredLodgingTypes$: Observable<SelectFieldOption[]>;
+  @ViewChild('lodgingTypeInput', { static: false }) lodgingTypeInput: ElementRef<HTMLInputElement>;
+  @ViewChild('auto', { static: false }) matAutocomplete: MatAutocomplete;
+
+  // Calendar
   public view = 'month';
   private _viewDate: Date = new Date();
   public get viewDate(): Date {
@@ -52,15 +64,21 @@ export class LodgingTypesAvailabilityComponent implements OnInit, OnDestroy {
     public store: NgLodgingTypesStore,
     public actions: NgLodgingTypesActions,
     public pageTitle: EntityComponentPageTitle
-  ) {
-    pageTitle.setTitle('LODGING_TYPES.AVAILABILITY.TITLE');
-  }
+  ) { }
 
   ngOnInit() {
+    this.pageTitle.setTitle('LODGING_TYPES.AVAILABILITY.TITLE');
     this.setCurrentDate(new Date());
     this.getLodgings();
     this.requestPeriod(this.currentSelectedDate);
     this.setAvailableLodgings();
+
+    this.filteredLodgingTypes$ = combineLatest([
+      this.lodgingTypeCtrl.valueChanges.pipe(startWith(null)),
+      this.lodgingTypeOptions$
+    ]).pipe(
+      map(([searchInput, lodgingTypeOptions]) => searchInput ? this._filter(searchInput, lodgingTypeOptions) : lodgingTypeOptions.slice())
+    );
   }
 
   ngOnDestroy() {
@@ -72,7 +90,7 @@ export class LodgingTypesAvailabilityComponent implements OnInit, OnDestroy {
   }
 
   public getAvailableLodgingTypesDailyCount(change?: MatSelectChange) {
-    this.actions.getAvailableLodgingTypesDailyCount(this.packagePath, this.startOfMonth, this.endOfMonth, this.selectedLodgingTypeIds);
+    this.actions.getAvailableLodgingTypesDailyCount(this.packagePath, this.startOfMonth, this.endOfMonth, this.selectedLodgingTypeOptions.map(x => x.value));
   }
 
   public beforeMonthViewRender({ body }: { body: CalendarMonthViewDay[] }): void {
@@ -94,7 +112,7 @@ export class LodgingTypesAvailabilityComponent implements OnInit, OnDestroy {
     // Make all checkboxes selected as default.
     this.subscriptionHandler.register(lodgingTypes$.pipe(
       filter(lodgingTypes => lodgingTypes && lodgingTypes.length > 0),
-      tap(lodgingTypes => this.selectedLodgingTypeIds = lodgingTypes.map(lodgingType => lodgingType.object.id)),
+      tap(lodgingTypes => this.selectedLodgingTypeOptions = lodgingTypes.map(x => ({ value: x.object.id, displayName: x.object.name } as SelectFieldOption))),
       take(1),
       tap(() => this.getAvailableLodgingTypesDailyCount()),
     ).subscribe());
@@ -132,7 +150,7 @@ export class LodgingTypesAvailabilityComponent implements OnInit, OnDestroy {
 
         return datesArray.map(date => {
           return Object.keys(dictionary[date]).map(() => {
-            freeLodgingTypes = this.selectedLodgingTypeIds.map(selectedLodgingTypeId => {
+            freeLodgingTypes = this.selectedLodgingTypeOptions.map(x => x.value).map(selectedLodgingTypeId => {
               const lodgingTypeName = lodgingTypes.find(lodging => lodging.object.id === selectedLodgingTypeId).object.name;
               const lodgingTypeCount = dictionary[date][selectedLodgingTypeId];
               return {
@@ -160,8 +178,52 @@ export class LodgingTypesAvailabilityComponent implements OnInit, OnDestroy {
             } as CalendarEvent;
           });
         }).reduce((acc, current) => acc.concat(current), []);
-      }),
-      // tap(x => console.log(x))
+      })
     );
+  }
+
+  private _filter(searchInput: string | SelectFieldOption | null, lodgingTypeOptions: SelectFieldOption[]): SelectFieldOption[] {
+    if (searchInput && (searchInput as string).toLowerCase) {
+      const filterValue = (searchInput as string).toLowerCase();
+      return lodgingTypeOptions.map(lodgingTypeOption => ({ lodgingTypeOption, hit: lodgingTypeOption.displayName.toLowerCase().indexOf(filterValue.toLowerCase()) })).filter(lodgingTypeHit => lodgingTypeHit.hit >= 0).sort((a, b) => a.hit - b.hit).map(lodgingTypeHit => lodgingTypeHit.lodgingTypeOption);
+    }
+    return lodgingTypeOptions;
+  }
+
+  public add(event: MatChipInputEvent): void {
+    // Add fruit only when MatAutocomplete is not open
+    // To make sure this does not conflict with OptionSelected Event
+    if (!this.matAutocomplete.isOpen) {
+      const input = event.input;
+      const value = event.value as unknown as SelectFieldOption;
+
+      // Add lodging
+      if (value) {
+        this.selectedLodgingTypeOptions.push(value);
+      }
+
+      // Reset the input value
+      if (input) {
+        input.value = '';
+      }
+
+      this.lodgingTypeCtrl.setValue(null);
+    }
+  }
+
+  public remove(lodgingType: SelectFieldOption): void {
+    const found = this.selectedLodgingTypeOptions.find(sl => sl.displayName === lodgingType.displayName);
+
+    if (found) {
+      this.selectedLodgingTypeOptions = this.selectedLodgingTypeOptions.filter(sl => sl.displayName !== lodgingType.displayName);
+      this.getAvailableLodgingTypesDailyCount();
+    }
+  }
+
+  public selected(event: MatAutocompleteSelectedEvent): void {
+    this.selectedLodgingTypeOptions.push(event.option.value as SelectFieldOption);
+    this.lodgingTypeInput.nativeElement.value = '';
+    this.lodgingTypeCtrl.setValue(null);
+    this.getAvailableLodgingTypesDailyCount();
   }
 }
