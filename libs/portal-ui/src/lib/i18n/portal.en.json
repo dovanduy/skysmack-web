@@ -68,7 +68,13 @@
             "SECONDS": "Seconds"
         },
         "ADVANCED": "Advanced",
-        "SELECT_VALIDATOR": "Please select a validator"
+        "SELECT_VALIDATOR": "Please select a validator",
+        "CLOSE_WARNING": {
+            "TITLE": "You have unsaved changes",
+            "CONTENT": "Do you want to continue and discard your changes?",
+            "STAY": "Keep editing",
+            "CLOSE": "Discard and close"
+        }
     },
     "NOTIFICATIONS": {
         "GET": {

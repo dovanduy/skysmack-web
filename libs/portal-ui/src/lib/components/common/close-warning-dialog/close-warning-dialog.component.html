@@ -1,10 +1,10 @@
-<h2 mat-dialog-title>You have unsaved changes</h2>
+<h2 mat-dialog-title>{{ 'UI.CLOSE_WARNING.TITLE' | translate }}</h2>
 <div mat-dialog-content>
-  Do you want to continue and discard your changes?
+  {{ 'UI.CLOSE_WARNING.CONTENT' | translate }}
 </div>
 
 
 <div mat-dialog-actions>
-  <button mat-raised-button (click)="stay()" cdkFocusInitial>Keep editing</button>
-  <button mat-raised-button color="warn" (click)="close()">Discard and close</button>
+  <button mat-raised-button (click)="stay()" cdkFocusInitial>{{ 'UI.CLOSE_WARNING.STAY' | translate }}</button>
+  <button mat-raised-button color="warn" (click)="close()">{{ 'UI.CLOSE_WARNING.CLOSE' | translate }}</button>
 </div>

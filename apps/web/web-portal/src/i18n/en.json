@@ -235,6 +235,45 @@
 			"SETTINGS": "Settings"
 		}
 	},
+	"DOORWAY_RELATIONS": {
+		"FORM": {
+			"LABELS": {
+				"OUTERDOORWAYID": "Outer doorway",
+				"INNERDOORWAYID": "Inner doorway",
+				"ALLOWCIRCULARRELATIONS": "Allow circular relations"
+			},
+			"PLACEHOLDERS": {
+				"OUTERDOORWAYID": "Outer doorway",
+				"INNERDOORWAYID": "Inner doorway"
+			},
+			"VALIDATION": {
+				"OUTERDOORWAYID": {
+					"REQUIRED": "Outer doorway is required."
+				},
+				"INNERDOORWAYID": {
+					"REQUIRED": "Inner doorway is required."
+				}
+			}
+		},
+		"CREATE": {
+			"CREATE": "Create",
+			"BUTTON_CREATE": "Create"
+		},
+		"EDIT": {
+			"EDIT": "Edit",
+			"BUTTON_EDIT": "Update"
+		},
+		"INDEX": {
+			"TITLE_EXTRAS": "(Relations)",
+			"CREATE": "Create",
+			"EDIT": "Edit",
+			"DELETE": "Delete",
+			"MANAGE": "Manage",
+			"ACTIONS": "Actions",
+			"SETTINGS": "Settings"
+		},
+		"SETTINGS": {}
+	},
 	"DOORWAYS": {
 		"FORM": {
 			"LABELS": {
@@ -323,45 +362,6 @@
 			"DELETING": "Deleting {{ name }}",
 			"ERROR": "An error occured with {{ name }}. Correct and try again."
 		}
-	},
-	"DOORWAY_RELATIONS": {
-		"FORM": {
-			"LABELS": {
-				"OUTERDOORWAYID": "Outer doorway",
-				"INNERDOORWAYID": "Inner doorway",
-				"ALLOWCIRCULARRELATIONS": "Allow circular relations"
-			},
-			"PLACEHOLDERS": {
-				"OUTERDOORWAYID": "Outer doorway",
-				"INNERDOORWAYID": "Inner doorway"
-			},
-			"VALIDATION": {
-				"OUTERDOORWAYID": {
-					"REQUIRED": "Outer doorway is required."
-				},
-				"INNERDOORWAYID": {
-					"REQUIRED": "Inner doorway is required."
-				}
-			}
-		},
-		"CREATE": {
-			"CREATE": "Create",
-			"BUTTON_CREATE": "Create"
-		},
-		"EDIT": {
-			"EDIT": "Edit",
-			"BUTTON_EDIT": "Update"
-		},
-		"INDEX": {
-			"TITLE_EXTRAS": "(Relations)",
-			"CREATE": "Create",
-			"EDIT": "Edit",
-			"DELETE": "Delete",
-			"MANAGE": "Manage",
-			"ACTIONS": "Actions",
-			"SETTINGS": "Settings"
-		},
-		"SETTINGS": {}
 	},
 	"DOORWAYS_OPTIONS": {
 		"FORM": {
@@ -708,6 +708,46 @@
 			"ERROR": "Error occured updating settings."
 		}
 	},
+	"ROLES": {
+		"CREATE": {
+			"CREATE_ROLE": "Create new role",
+			"BUTTON_CREATE": "Create"
+		},
+		"EDIT": {
+			"EDITING": "Edit {{ name }}",
+			"BUTTON_EDIT": "Update"
+		},
+		"INDEX": {
+			"ACTIONS": "Actions",
+			"CREATE": "Create",
+			"MANAGE": "Manage",
+			"SECURITY": "Security",
+			"SECURITY_AND_USERS": "Users and security",
+			"ROLES": "Roles",
+			"BACK": "Back",
+			"FIELDS_TITLE": "(fields)",
+			"TITLE_EXTRAS": "(roles)"
+		},
+		"FORM": {
+			"LABELS": {
+				"NAME": "Name"
+			},
+			"PLACEHOLDERS": {
+				"NAME": "Enter name"
+			},
+			"VALIDATION": {
+				"NAME": {
+					"REQUIRED": "A name is required."
+				}
+			}
+		},
+		"QUEUE": {
+			"ADDING": "Adding {{ name }}",
+			"UPDATING": "Updating {{ name }}",
+			"DELETING": "Deleting {{ name }}",
+			"ERROR": "An error occured with {{ name }}. Correct and try again."
+		}
+	},
 	"APPLICATIONS": {
 		"ENTITY_ACTION": {
 			"ROLES": "Roles"
@@ -802,46 +842,6 @@
 			"UPDATING": "Updating {{ displayName }}",
 			"DELETING": "Deleting {{ displayName }}",
 			"ERROR": "An error occured with {{ displayName }}. Correct and try again."
-		}
-	},
-	"ROLES": {
-		"CREATE": {
-			"CREATE_ROLE": "Create new role",
-			"BUTTON_CREATE": "Create"
-		},
-		"EDIT": {
-			"EDITING": "Edit {{ name }}",
-			"BUTTON_EDIT": "Update"
-		},
-		"INDEX": {
-			"ACTIONS": "Actions",
-			"CREATE": "Create",
-			"MANAGE": "Manage",
-			"SECURITY": "Security",
-			"SECURITY_AND_USERS": "Users and security",
-			"ROLES": "Roles",
-			"BACK": "Back",
-			"FIELDS_TITLE": "(fields)",
-			"TITLE_EXTRAS": "(roles)"
-		},
-		"FORM": {
-			"LABELS": {
-				"NAME": "Name"
-			},
-			"PLACEHOLDERS": {
-				"NAME": "Enter name"
-			},
-			"VALIDATION": {
-				"NAME": {
-					"REQUIRED": "A name is required."
-				}
-			}
-		},
-		"QUEUE": {
-			"ADDING": "Adding {{ name }}",
-			"UPDATING": "Updating {{ name }}",
-			"DELETING": "Deleting {{ name }}",
-			"ERROR": "An error occured with {{ name }}. Correct and try again."
 		}
 	},
 	"USERS": {
@@ -2226,6 +2226,54 @@
 			"ERROR": "An error occured with {{ name }}. Correct and try again."
 		}
 	},
+	"PHONE_NUMBERS": {
+		"FORM": {
+			"LABELS": {
+				"NUMBER": "Number",
+				"INTERNAL": "Internal",
+				"PHONEID": "Phone"
+			},
+			"PLACEHOLDERS": {
+				"NUMBER": "Number",
+				"INTERNAL": "Internal",
+				"PHONEID": "Phone"
+			},
+			"VALIDATION": {
+				"NUMBER": {
+					"REQUIRED": "Number is required"
+				},
+				"INTERNAL": {
+					"REQUIRED": "Internal is required"
+				},
+				"PHONEID": {
+					"REQUIRED": "Phone is required"
+				}
+			}
+		},
+		"CREATE": {
+			"CREATE_PHONE": "Create a new phone-number",
+			"BUTTON_CREATE": "Create"
+		},
+		"EDIT": {
+			"EDIT": "Edit phone-number",
+			"BUTTON_EDIT": "Update"
+		},
+		"INDEX": {
+			"ACTIONS": "Actions",
+			"CREATE": "Create",
+			"MANAGE": "Manage",
+			"PHONES": "Phones",
+			"LOGS": "Logs",
+			"BACK": "Back",
+			"TITLE_EXTRAS": "(numbers)"
+		},
+		"QUEUE": {
+			"ADDING": "Adding {{ number }}",
+			"UPDATING": "Updating {{ number }}",
+			"DELETING": "Deleting {{ number }}",
+			"ERROR": "An error occured with {{ number }}. Correct and try again."
+		}
+	},
 	"PHONE_LOGS": {
 		"FORM": {
 			"LABELS": {
@@ -2290,54 +2338,6 @@
 			"UPDATING": "Updating {{ name }}",
 			"DELETING": "Deleting {{ name }}",
 			"ERROR": "An error occured with {{ name }}. Correct and try again."
-		}
-	},
-	"PHONE_NUMBERS": {
-		"FORM": {
-			"LABELS": {
-				"NUMBER": "Number",
-				"INTERNAL": "Internal",
-				"PHONEID": "Phone"
-			},
-			"PLACEHOLDERS": {
-				"NUMBER": "Number",
-				"INTERNAL": "Internal",
-				"PHONEID": "Phone"
-			},
-			"VALIDATION": {
-				"NUMBER": {
-					"REQUIRED": "Number is required"
-				},
-				"INTERNAL": {
-					"REQUIRED": "Internal is required"
-				},
-				"PHONEID": {
-					"REQUIRED": "Phone is required"
-				}
-			}
-		},
-		"CREATE": {
-			"CREATE_PHONE": "Create a new phone-number",
-			"BUTTON_CREATE": "Create"
-		},
-		"EDIT": {
-			"EDIT": "Edit phone-number",
-			"BUTTON_EDIT": "Update"
-		},
-		"INDEX": {
-			"ACTIONS": "Actions",
-			"CREATE": "Create",
-			"MANAGE": "Manage",
-			"PHONES": "Phones",
-			"LOGS": "Logs",
-			"BACK": "Back",
-			"TITLE_EXTRAS": "(numbers)"
-		},
-		"QUEUE": {
-			"ADDING": "Adding {{ number }}",
-			"UPDATING": "Updating {{ number }}",
-			"DELETING": "Deleting {{ number }}",
-			"ERROR": "An error occured with {{ number }}. Correct and try again."
 		}
 	},
 	"PRODUCT_TYPES": {
@@ -3797,7 +3797,13 @@
 			"SECONDS": "Seconds"
 		},
 		"ADVANCED": "Advanced",
-		"SELECT_VALIDATOR": "Please select a validator"
+		"SELECT_VALIDATOR": "Please select a validator",
+		"CLOSE_WARNING": {
+			"TITLE": "You have unsaved changes",
+			"CONTENT": "Do you want to continue and discard your changes?",
+			"STAY": "Keep editing",
+			"CLOSE": "Discard and close"
+		}
 	},
 	"NOTIFICATIONS": {
 		"GET": {
