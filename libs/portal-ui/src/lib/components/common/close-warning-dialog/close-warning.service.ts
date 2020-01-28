@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { CloseWarningDialogComponent } from './close-warning-dialog.component';
-import { map, take } from 'rxjs/operators';
-import { of, Observable, BehaviorSubject } from 'rxjs';
-import { EditorNavService } from '../container/editor-nav.service';
+import { map } from 'rxjs/operators';
+import { Observable, BehaviorSubject } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class CloseWarningService {

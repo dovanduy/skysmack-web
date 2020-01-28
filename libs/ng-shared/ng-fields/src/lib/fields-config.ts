@@ -2,7 +2,7 @@ import { LocalObject } from '@skysmack/framework';
 import { FormRule, Validation, Field } from '@skysmack/ng-dynamic-forms';
 import { EntityFieldsConfig } from './entity-fields-config';
 import { Observable, combineLatest, of } from 'rxjs';
-import { map, distinctUntilChanged, switchMap } from 'rxjs/operators';
+import { map, distinctUntilChanged, switchMap, debounceTime } from 'rxjs/operators';
 import { FieldProviders } from './field-providers';
 import { LoadedPackage } from '@skysmack/ng-framework';
 
@@ -57,10 +57,12 @@ export abstract class FieldsConfig<TRecord, TKey> implements EntityFieldsConfig<
 
     protected getProvidedFields(loadedPackage: LoadedPackage, entity?: LocalObject<TRecord, TKey>): Observable<Field[]> {
         return this.fieldProviders.providers$.pipe(
+            debounceTime(0), // Prevents requests being fired everytime a new field provider is registered (only a concern on application startup).
             switchMap(providers => {
                 const extractedProviders = providers[loadedPackage && loadedPackage.packageManifest && loadedPackage.packageManifest.id];
 
                 if (extractedProviders && extractedProviders.length > 0) {
+                    console.log('test');
                     return combineLatest(
                         extractedProviders.map(provider => {
                             return provider.getFields(loadedPackage._package.path, this.area, entity);

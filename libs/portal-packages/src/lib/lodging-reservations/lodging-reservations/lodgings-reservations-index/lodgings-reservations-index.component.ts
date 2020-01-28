@@ -29,6 +29,7 @@ export class LodgingsReservationsIndexComponent extends DocumentRecordIndexCompo
 
   /**
    * KEEP IN SYNC WITH SAME ARRAY IN LodgingsReservationsDetailsComponent.
+   * Note: Details, edit, and delete should only be in this component.
    */
   public menuItemActions: MenuItem[] = [
     // Checkin
@@ -141,8 +142,6 @@ export class LodgingsReservationsIndexComponent extends DocumentRecordIndexCompo
     _this.subscriptionHandler.register(_this.dialog.open(CheckoutFormComponent, { data: { packagePath: _this.packagePath, reservation: entity } }).afterClosed().pipe(
       take(1)
     ).subscribe());
-
-    // _this.actions.checkOut(_this.packagePath, entity, [entity.object.id]);
   }
   public undoCheckout(_this: LodgingsReservationsIndexComponent, entity: LocalObject<LodgingReservation, number>) {
     _this.actions.undoCheckOut(_this.packagePath, entity, [entity.object.id]);
