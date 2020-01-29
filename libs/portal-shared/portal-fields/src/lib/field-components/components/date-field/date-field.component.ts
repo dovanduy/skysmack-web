@@ -1,4 +1,4 @@
-import { Component, OnInit, ElementRef, AfterViewInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ElementRef, AfterViewInit, ViewChild, OnDestroy } from '@angular/core';
 import { FieldBaseComponent } from '../field-base-component';
 import * as _moment from 'moment';
 import { DateAdapter } from '@angular/material/core';
@@ -6,6 +6,7 @@ import { DateOnlyAdapter } from './date-only-adapter';
 import { Field } from '@skysmack/ng-dynamic-forms';
 import { fromEvent } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
+import { MatDialog } from '@angular/material/dialog';
 const moment = _moment;
 
 @Component({
@@ -13,7 +14,7 @@ const moment = _moment;
   templateUrl: './date-field.component.html',
   providers: [DateOnlyAdapter, { provide: DateAdapter, useClass: DateOnlyAdapter }]
 })
-export class DateFieldComponent extends FieldBaseComponent<Field> implements AfterViewInit, OnInit {
+export class DateFieldComponent extends FieldBaseComponent<Field> implements AfterViewInit, OnInit, OnDestroy {
 
   @ViewChild('dateInput', { static: false }) public dateInput: ElementRef;
   public date: string;
@@ -30,6 +31,10 @@ export class DateFieldComponent extends FieldBaseComponent<Field> implements Aft
   ngOnInit() {
     super.ngOnInit();
     this.updatePickerFields();
+  }
+
+  ngOnDestroy() {
+    super.ngOnDestroy();
   }
 
   private updatePickerFields() {
@@ -74,9 +79,9 @@ export class DateFieldComponent extends FieldBaseComponent<Field> implements Aft
     }
 
     if (dateInput) {
-      this.dateTime ? this.dateTime = this.dateTime : this.dateTime = new Date();
-      this.dateTime.setFullYear(dateInput.getFullYear(), dateInput.getMonth(), dateInput.getDate());
-      this.setFieldValue(moment(this.dateTime).format('YYYY-MM-DD'));
+      const dateTime = new Date();
+      dateTime.setFullYear(dateInput.getFullYear(), dateInput.getMonth(), dateInput.getDate());
+      this.setFieldValue(moment(dateTime).format('YYYY-MM-DD'));
       this.runRules();
     }
   }
