@@ -6,7 +6,7 @@ import { Person, PERSONS_AREA_KEY, PERSONS_ADDITIONAL_PATHS } from '@skysmack/pa
 import { NgPersonsValidation } from '@skysmack/ng-persons';
 import { NgFieldStore, LoadedPackage } from '@skysmack/ng-framework';
 import { FormRule, SetDisplayNameRule, Field } from '@skysmack/ng-dynamic-forms';
-import { DocumentFieldsConfig, StringFieldComponent, HiddenFieldComponent } from '@skysmack/portal-fields';
+import { DocumentFieldsConfig, StringFieldComponent, HiddenFieldComponent, DateFieldComponent } from '@skysmack/portal-fields';
 import { FieldProviders } from '@skysmack/ng-fields';
 
 @Injectable({ providedIn: 'root' })
@@ -51,6 +51,15 @@ export class NgPersonsFieldsConfig extends DocumentFieldsConfig<Person, number> 
                 value: entity ? entity.object.displayName : undefined,
                 key: 'displayName',
                 validators: [Validators.required],
+                order: 3,
+                showColumn: true,
+                sortable: true
+            }),
+
+            new Field({
+                component: DateFieldComponent,
+                value: undefined,
+                key: 'test',
                 order: 3,
                 showColumn: true,
                 sortable: true

@@ -74,6 +74,7 @@ export class DateFieldComponent extends FieldBaseComponent<Field> implements Aft
     }
 
     if (dateInput) {
+      this.dateTime ? this.dateTime = this.dateTime : this.dateTime = new Date();
       this.dateTime.setFullYear(dateInput.getFullYear(), dateInput.getMonth(), dateInput.getDate());
       this.setFieldValue(moment(this.dateTime).format('YYYY-MM-DD'));
       this.runRules();
