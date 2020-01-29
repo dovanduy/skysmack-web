@@ -6,7 +6,7 @@ import { Observable, combineLatest } from 'rxjs';
 import { map, tap, take, filter, startWith } from 'rxjs/operators';
 import { CalendarEvent, EventColor, EventAction } from 'calendar-utils';
 import * as _moment from 'moment';
-import { PagedQuery, defined, SubscriptionHandler } from '@skysmack/framework';
+import { PagedQuery, defined, SubscriptionHandler, removeDuplicates } from '@skysmack/framework';
 import { SelectFieldOption } from '@skysmack/ng-dynamic-forms';
 import { CalendarMonthViewDay } from 'angular-calendar';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
@@ -105,6 +105,45 @@ export class LodgingTypesAvailabilityComponent implements OnInit, OnDestroy {
     return item.id;
   }
 
+  public add(event: MatChipInputEvent): void {
+    // Add fruit only when MatAutocomplete is not open
+    // To make sure this does not conflict with OptionSelected Event
+    if (!this.matAutocomplete.isOpen) {
+      const input = event.input;
+      const value = event.value as unknown as SelectFieldOption;
+
+      // Add lodging
+      if (value) {
+        this.selectedLodgingTypeOptions.push(value);
+        this.selectedLodgingTypeOptions = removeDuplicates(this.selectedLodgingTypeOptions, 'value');
+      }
+
+      // Reset the input value
+      if (input) {
+        input.value = '';
+      }
+
+      this.lodgingTypeCtrl.setValue(null);
+    }
+  }
+
+  public remove(lodgingType: SelectFieldOption): void {
+    const found = this.selectedLodgingTypeOptions.find(sl => sl.displayName === lodgingType.displayName);
+
+    if (found) {
+      this.selectedLodgingTypeOptions = this.selectedLodgingTypeOptions.filter(sl => sl.displayName !== lodgingType.displayName);
+      this.getAvailableLodgingTypesDailyCount();
+    }
+  }
+
+  public selected(event: MatAutocompleteSelectedEvent): void {
+    this.selectedLodgingTypeOptions.push(event.option.value as SelectFieldOption);
+    this.selectedLodgingTypeOptions = removeDuplicates(this.selectedLodgingTypeOptions, 'value');
+    this.lodgingTypeInput.nativeElement.value = '';
+    this.lodgingTypeCtrl.setValue(null);
+    this.getAvailableLodgingTypesDailyCount();
+  }
+
   private getLodgings() {
     this.actions.getPaged(this.packagePath, new PagedQuery());
     const lodgingTypes$ = this.store.get(this.packagePath);
@@ -123,6 +162,7 @@ export class LodgingTypesAvailabilityComponent implements OnInit, OnDestroy {
       map(lodgingTypes => {
         return lodgingTypes.map(x => ({ value: x.object.id, displayName: x.object.name } as SelectFieldOption));
       }),
+      map(ltos => ltos.filter(lto => !this.selectedLodgingTypeOptions.find(slto => slto.value === lto.value))), // Don't include already selected options
       defined()
     );
   }
@@ -188,42 +228,5 @@ export class LodgingTypesAvailabilityComponent implements OnInit, OnDestroy {
       return lodgingTypeOptions.map(lodgingTypeOption => ({ lodgingTypeOption, hit: lodgingTypeOption.displayName.toLowerCase().indexOf(filterValue.toLowerCase()) })).filter(lodgingTypeHit => lodgingTypeHit.hit >= 0).sort((a, b) => a.hit - b.hit).map(lodgingTypeHit => lodgingTypeHit.lodgingTypeOption);
     }
     return lodgingTypeOptions;
-  }
-
-  public add(event: MatChipInputEvent): void {
-    // Add fruit only when MatAutocomplete is not open
-    // To make sure this does not conflict with OptionSelected Event
-    if (!this.matAutocomplete.isOpen) {
-      const input = event.input;
-      const value = event.value as unknown as SelectFieldOption;
-
-      // Add lodging
-      if (value) {
-        this.selectedLodgingTypeOptions.push(value);
-      }
-
-      // Reset the input value
-      if (input) {
-        input.value = '';
-      }
-
-      this.lodgingTypeCtrl.setValue(null);
-    }
-  }
-
-  public remove(lodgingType: SelectFieldOption): void {
-    const found = this.selectedLodgingTypeOptions.find(sl => sl.displayName === lodgingType.displayName);
-
-    if (found) {
-      this.selectedLodgingTypeOptions = this.selectedLodgingTypeOptions.filter(sl => sl.displayName !== lodgingType.displayName);
-      this.getAvailableLodgingTypesDailyCount();
-    }
-  }
-
-  public selected(event: MatAutocompleteSelectedEvent): void {
-    this.selectedLodgingTypeOptions.push(event.option.value as SelectFieldOption);
-    this.lodgingTypeInput.nativeElement.value = '';
-    this.lodgingTypeCtrl.setValue(null);
-    this.getAvailableLodgingTypesDailyCount();
   }
 }

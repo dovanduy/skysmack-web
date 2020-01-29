@@ -4,6 +4,12 @@ import { getProperty } from './framework.helpers';
 import { LocalObject } from './../models/local-object';
 import { LocalObjectStatus } from './../models/local-object-status';
 
+export const removeDuplicates = (myArr, prop): any[] => {
+    return myArr.filter((obj, pos, arr) => {
+        return arr.map(mapObj => mapObj[prop]).indexOf(obj[prop]) === pos;
+    });
+};
+
 // https://github.com/ng-packagr/ng-packagr/issues/696
 // @dynamic
 export class ArrayHelpers {

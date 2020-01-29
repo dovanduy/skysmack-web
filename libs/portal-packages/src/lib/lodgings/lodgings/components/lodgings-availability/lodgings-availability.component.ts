@@ -3,12 +3,12 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { EntityComponentPageTitle } from '@skysmack/portal-ui';
 import { NgLodgingsStore, NgLodgingsActions } from '@skysmack/ng-lodgings';
 import { Observable, combineLatest } from 'rxjs';
-import { map, startWith, tap } from 'rxjs/operators';
+import { map, startWith } from 'rxjs/operators';
 import { CalendarEvent, EventColor, EventAction } from 'calendar-utils';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
 
 import * as _moment from 'moment';
-import { PagedQuery, defined } from '@skysmack/framework';
+import { PagedQuery, defined, removeDuplicates } from '@skysmack/framework';
 import { SelectFieldOption } from '@skysmack/ng-dynamic-forms';
 import { CalendarMonthViewDay } from 'angular-calendar';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
@@ -102,12 +102,52 @@ export class LodgingsAvailabilityComponent implements OnInit, OnDestroy {
     return item.id;
   }
 
+  public add(event: MatChipInputEvent): void {
+    // Add fruit only when MatAutocomplete is not open
+    // To make sure this does not conflict with OptionSelected Event
+    if (!this.matAutocomplete.isOpen) {
+      const input = event.input;
+      const value = event.value as unknown as SelectFieldOption;
+
+      // Add lodging
+      if (value) {
+        this.selectedLodgingOptions.push(value);
+        this.selectedLodgingOptions = removeDuplicates(this.selectedLodgingOptions, 'value');
+      }
+
+      // Reset the input value
+      if (input) {
+        input.value = '';
+      }
+
+      this.lodgingCtrl.setValue(null);
+    }
+  }
+
+  public remove(lodging: SelectFieldOption): void {
+    const found = this.selectedLodgingOptions.find(sl => sl.displayName === lodging.displayName);
+
+    if (found) {
+      this.selectedLodgingOptions = this.selectedLodgingOptions.filter(sl => sl.displayName !== lodging.displayName);
+      this.getAvailableLodgingsDaily();
+    }
+  }
+
+  public selected(event: MatAutocompleteSelectedEvent): void {
+    this.selectedLodgingOptions.push(event.option.value as SelectFieldOption);
+    this.selectedLodgingOptions = removeDuplicates(this.selectedLodgingOptions, 'value');
+    this.lodgingInput.nativeElement.value = '';
+    this.lodgingCtrl.setValue(null);
+    this.getAvailableLodgingsDaily();
+  }
+
   private getLodgings() {
     this.actions.getPaged(this.packagePath, new PagedQuery());
     this.lodgingOptions$ = this.store.get(this.packagePath).pipe(
       map(lodgings => {
         return lodgings.map(x => ({ value: x.object.id, displayName: x.object.name } as SelectFieldOption));
       }),
+      map(los => los.filter(lo => !this.selectedLodgingOptions.find(slo => slo.value === lo.value))), // Don't include already selected options
       defined()
     );
   }
@@ -175,42 +215,4 @@ export class LodgingsAvailabilityComponent implements OnInit, OnDestroy {
     }
     return lodgingOptions;
   }
-
-  public add(event: MatChipInputEvent): void {
-    // Add fruit only when MatAutocomplete is not open
-    // To make sure this does not conflict with OptionSelected Event
-    if (!this.matAutocomplete.isOpen) {
-      const input = event.input;
-      const value = event.value as unknown as SelectFieldOption;
-
-      // Add lodging
-      if (value) {
-        this.selectedLodgingOptions.push(value);
-      }
-
-      // Reset the input value
-      if (input) {
-        input.value = '';
-      }
-
-      this.lodgingCtrl.setValue(null);
-    }
-  }
-
-  public remove(lodging: SelectFieldOption): void {
-    const found = this.selectedLodgingOptions.find(sl => sl.displayName === lodging.displayName);
-
-    if (found) {
-      this.selectedLodgingOptions = this.selectedLodgingOptions.filter(sl => sl.displayName !== lodging.displayName);
-      this.getAvailableLodgingsDaily();
-    }
-  }
-
-  public selected(event: MatAutocompleteSelectedEvent): void {
-    this.selectedLodgingOptions.push(event.option.value as SelectFieldOption);
-    this.lodgingInput.nativeElement.value = '';
-    this.lodgingCtrl.setValue(null);
-    this.getAvailableLodgingsDaily();
-  }
-
 }
