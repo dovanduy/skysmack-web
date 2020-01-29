@@ -124,7 +124,7 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
       map(fields => fields.map(field => field.includeInRequest ? field : this.fh.form.removeControl(field.key))),
       map(() => this.submitted.emit(this.fh)),
       tap(() => this.submitting = false),
-      tap(() => this.closeWarningService.formChanged = true),
+      tap(() => setTimeout(() => { this.closeWarningService.formChanged = true; }, 100)),
     ).subscribe())
   }
 
