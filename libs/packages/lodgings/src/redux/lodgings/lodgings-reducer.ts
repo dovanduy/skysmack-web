@@ -64,14 +64,14 @@ export function lodgingsReducer(state = new LodgingsState(), action: ReduxAction
             const dates = Object.keys(incoming);
             for (let dateIndex = 0; dateIndex < dates.length; dateIndex++) {
                 const date = dates[dateIndex];
-                if (!newState.availableLodgingsDaily[castedAction.meta.stateKey][date]) {
-                    newState.availableLodgingsDaily[castedAction.meta.stateKey][date] = {};
+                if (!current[date]) {
+                    current[date] = {};
                 }
 
                 for (let index = 0; index < castedAction.meta.ids.length; index++) {
                     const id = castedAction.meta.ids[index];
                     if (incoming[date]) {
-                        newState.availableLodgingsDaily[castedAction.meta.stateKey][date][id] = incoming[date].includes(id);
+                        current[date][id] = incoming[date].includes(id);
                     }
                 }
             }

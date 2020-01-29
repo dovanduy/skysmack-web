@@ -10,10 +10,12 @@
         <ng-container *ngFor="let freeLodgingTypes of day.freeLodgingTypes; trackBy: trackById">
           <p *ngIf="freeLodgingTypes.count > 0" style="color:green;">{{ freeLodgingTypes.name }}: {{
             freeLodgingTypes.count }}</p>
-          <p *ngIf="!freeLodgingTypes.count || freeLodgingTypes.count === 0" style="color:black;">
+          <p *ngIf="freeLodgingTypes.count === 0 || freeLodgingTypes.count === '0'" style="color:black;">
             {{ freeLodgingTypes.name }}: {{ freeLodgingTypes.count }}</p>
           <p *ngIf="freeLodgingTypes.count < 0" style="color:red;">{{ freeLodgingTypes.name }}: {{
               freeLodgingTypes.count }}</p>
+          <p *ngIf="freeLodgingTypes.count === undefined || freeLodgingTypes.count === null" style="color:grey;">
+            {{ freeLodgingTypes.name }}: ?</p>
         </ng-container>
       </div>
     </ng-container>

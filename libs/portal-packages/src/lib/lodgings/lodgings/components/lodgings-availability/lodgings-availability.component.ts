@@ -69,6 +69,7 @@ export class LodgingsAvailabilityComponent implements OnInit, OnDestroy {
     this.setCurrentDate(new Date());
     this.getLodgings();
     this.requestPeriod(this.currentSelectedDate);
+    this.getAvailableLodgingsDaily();
     this.setAvailableLodgings();
 
     this.filteredLodgings$ = combineLatest([

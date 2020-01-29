@@ -156,7 +156,7 @@ export class LodgingTypesAvailabilityComponent implements OnInit, OnDestroy {
               return {
                 id: date.split('T')[0] + lodgingTypeName,
                 name: lodgingTypeName,
-                count: (lodgingTypeCount !== null && lodgingTypeCount !== undefined) ? lodgingTypeCount : 0
+                count: lodgingTypeCount
               };
             });
 
