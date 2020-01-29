@@ -44,10 +44,10 @@ export class NgLodgingReservationsReservationsPricingsFieldProvider extends Fiel
                                     disabled: true,
                                     includeInRequest: false,
                                     resultLogic: (valueChanges: StrIndex<any>, fields: Field[], form: FormGroup) => {
-                                        const lodgingTypeId = Number(form.get('lodgingTypeId').value);
-                                        const persons = form.get('persons').value;
-                                        const checkIn = form.get('checkIn').value;
-                                        const checkOut = form.get('checkOut').value;
+                                        const lodgingTypeId = Number(form.get('lodgingTypeId') && form.get('lodgingTypeId').value);
+                                        const persons = form.get('persons') && form.get('persons').value;
+                                        const checkIn = form.get('checkIn') && form.get('checkIn').value;
+                                        const checkOut = form.get('checkOut') && form.get('checkOut').value;
 
                                         if (lodgingTypeId && persons && checkIn && checkOut) {
                                             let queryParameters = new HttpParams({ encoder: new CustomHttpUrlEncodingCodec() });

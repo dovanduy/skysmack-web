@@ -54,15 +54,6 @@ export class NgPersonsFieldsConfig extends DocumentFieldsConfig<Person, number> 
                 order: 3,
                 showColumn: true,
                 sortable: true
-            }),
-
-            new Field({
-                component: DateFieldComponent,
-                value: undefined,
-                key: 'test',
-                order: 3,
-                showColumn: true,
-                sortable: true
             })
         ];
 
