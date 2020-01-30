@@ -105,6 +105,10 @@ export const getConnectedPackageMenuEntries = (packagePath: string, packageTypeI
                     .map(featureOrAdaptorPackage => {
                         let relatedPackagesMenuItems = [];
 
+                        // TODO: Note this functionality should be pulled into its own helper
+                        // function one day, since the current solution forces you do get the
+                        // adapter menu item as well (adaptors may not have routable components)
+                        // + we always want both deps to navigate to each other when activeted (here it will only go from one to another).
                         // Get a menu item that goes from one dependency to another.
                         if (connectAdaptorParentPackages) {
                             const otherPaths = featureOrAdaptorPackage.object.dependencies.filter(path => path !== packagePath);
