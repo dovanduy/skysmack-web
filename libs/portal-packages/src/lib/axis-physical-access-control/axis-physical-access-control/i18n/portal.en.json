@@ -11,7 +11,8 @@
             "LABELS": {
                 "ROUTE": "Route",
                 "USERNAME": "User name",
-                "PASSWORD": "Password"
+                "PASSWORD": "Password",
+                "SKIPVERIFYSSL": "Skip verify SSL check"
             },
             "PLACEHOLDERS": {
                 "ROUTE": "Route",

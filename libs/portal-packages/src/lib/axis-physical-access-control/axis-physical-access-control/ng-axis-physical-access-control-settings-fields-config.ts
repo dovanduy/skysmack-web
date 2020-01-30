@@ -3,7 +3,7 @@ import { FormRule, Field } from '@skysmack/ng-dynamic-forms';
 import { LocalObject } from '@skysmack/framework';
 import { LoadedPackage } from '@skysmack/ng-framework';
 import { FieldsConfig, FieldProviders } from '@skysmack/ng-fields';
-import { StringFieldComponent } from '@skysmack/portal-fields';
+import { StringFieldComponent, BooleanFieldComponent } from '@skysmack/portal-fields';
 import { AxisPhysicalAccessControlSettings, AXIS_PHYSICAL_ACCESS_CONTROL_AREA_KEY } from '@skysmack/ng-axis-physical-access-control';
 import { NgAxisPhysicalAccessControlSettingsValidation } from './ng-axis-physical-access-control-settings-validation';
 
@@ -35,6 +35,12 @@ export class NgAxisPhysicalAccessControlSettingsFieldsConfig extends FieldsConfi
                 component: StringFieldComponent,
                 value: settings ? settings.object.password : false,
                 key: 'password',
+                order: 3
+            }),            
+            new Field({
+                component: BooleanFieldComponent,
+                value: settings ? settings.object.skipVerifySSL : false,
+                key: 'skipVerifySSL',
                 order: 3
             })
         ];
