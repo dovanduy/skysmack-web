@@ -5,9 +5,11 @@ import { MenuItem } from '@skysmack/framework';
 import { Guid } from 'guid-typescript';
 import { Observable } from 'rxjs';
 import { PassCodesPermissions } from '@skysmack/packages-pass-codes';
-import { PassCodesTypeId } from '@skysmack/package-types';
-import { getMenuEntries } from '@skysmack/ng-framework';
+import { PassCodesTypeId, DoorwaysPassCodesTypeId, DoorwaysTypeId } from '@skysmack/package-types';
+import { getMenuEntries, getCombinedMenuEntries, getConnectedPackageMenuEntries } from '@skysmack/ng-framework';
 import { PassCodesIndexComponent } from './pass-codes/components/pass-codes-index/pass-codes-index.component';
+import { DoorwaysPassCodesIndexComponent } from '../doorways-pass-codes/doorways-pass-codes/components/doorways-pass-codes-index/doorways-pass-codes-index.component';
+import { DoorwaysIndexComponent } from '../doorways';
 
 @Injectable({ providedIn: 'root' })
 export class NgPassCodesMenuProvider implements MenuProvider {
@@ -23,7 +25,10 @@ export class NgPassCodesMenuProvider implements MenuProvider {
     };
 
     public getMenuItems(packagePath: string, componentKey: string): Observable<MenuItem[]> {
-        return getMenuEntries<MenuItem>(packagePath, PassCodesTypeId, componentKey, PassCodesIndexComponent.COMPONENT_KEY, this.getPassCodesMenuItems, this.store);
+        return getCombinedMenuEntries<MenuItem>(
+            getMenuEntries<MenuItem>(packagePath, PassCodesTypeId, componentKey, PassCodesIndexComponent.COMPONENT_KEY, this.getPassCodesMenuItems, this.store),
+
+        );
     };
 
     private getPassCodesMenuAreas = () => {
