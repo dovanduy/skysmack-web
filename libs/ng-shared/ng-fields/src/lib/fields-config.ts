@@ -67,7 +67,6 @@ export abstract class FieldsConfig<TRecord, TKey> implements EntityFieldsConfig<
                             return provider.getFields(loadedPackage._package.path, this.area, entity);
                         })
                     ).pipe(
-                        distinctUntilChanged(),
                         map((values: [Field[]]) => {
                             return values.reduce((acc: Field[], cur: Field[]) => acc.concat(cur), []);
                         })

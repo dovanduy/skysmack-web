@@ -125,7 +125,7 @@ export class DynamicFormComponent implements OnInit, OnDestroy {
       map(() => this.submitted.emit(this.fh)),
       tap(() => this.submitting = false),
       tap(() => setTimeout(() => { this.closeWarningService.formChanged = true; }, 100)),
-    ).subscribe())
+    ).subscribe());
   }
 
   /**
