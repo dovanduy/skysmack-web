@@ -26,3 +26,4 @@ export * from './string-array-field/string-array-field.component';
 export * from './key-value-array-field/key-value-array-field.component';
 export * from './boolean-field/boolean-field.component';
 export * from './guid-field/guid-field.component';
+export * from './auto-complete-field/auto-complete-field.component';

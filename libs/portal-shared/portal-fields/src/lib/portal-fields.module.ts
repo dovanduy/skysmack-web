@@ -15,6 +15,7 @@ import { DynamicFormsModule } from '@skysmack/portal-dynamic-forms';
 
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { NgFieldsMenuProvider } from './ng-fields-menu-provider';
 import { MatCheckboxModule } from '@angular/material/checkbox';
@@ -27,7 +28,8 @@ const material = [
   MatDatepickerModule,
   MatMomentDateModule,
   MatSelectModule,
-  MatListModule
+  MatListModule,
+  MatAutocompleteModule
 ];
 
 @NgModule({

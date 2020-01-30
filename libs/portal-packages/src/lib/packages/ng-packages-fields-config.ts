@@ -6,7 +6,7 @@ import { PackagesValidation, NgPackagesStore, NgPackagesActions } from '@skysmac
 import { LoadedPackage } from '@skysmack/ng-framework';
 import { PACKAGES_AREA_KEY, PACKAGES_ADDITIONAL_PATHS } from '@skysmack/packages-skysmack-core';
 import { FieldsConfig, FieldProviders } from '@skysmack/ng-fields';
-import { SelectFieldComponent, PackageDependenciesFieldComponent, StringFieldComponent, HiddenFieldComponent } from '@skysmack/portal-fields';
+import { AutoCompleteFieldComponent, PackageDependenciesFieldComponent, StringFieldComponent, HiddenFieldComponent, SelectFieldComponent } from '@skysmack/portal-fields';
 
 @Injectable({ providedIn: 'root' })
 export class NgPackagesFieldsConfig extends FieldsConfig<Package, string> {
@@ -30,7 +30,7 @@ export class NgPackagesFieldsConfig extends FieldsConfig<Package, string> {
 
         return [
             new SelectField({
-                component: SelectFieldComponent,
+                component: AutoCompleteFieldComponent,
                 value: _package ? _package.object.type : undefined,
                 label: 'Type',
                 key: 'type',
@@ -52,6 +52,31 @@ export class NgPackagesFieldsConfig extends FieldsConfig<Package, string> {
                 showColumn: true,
                 sortable: true
             }),
+
+            // new SelectField({
+            //     component: SelectFieldComponent,
+            //     value: _package ? _package.object.type : undefined,
+            //     label: 'Type',
+            //     key: 'type',
+            //     validators: [Validators.required],
+            //     optionsData$: this.store.getAvailablePackages(loadedPackage._package.path),
+            //     getDependencies: () => { this.actions.getAvailablePackages(loadedPackage._package.path); },
+            //     valueSelector: 'object.type',
+            //     displayModifier: (column: DisplayColumn, _package: LocalObject<Package, number>) => {
+            //         const availablePackage = this.store.getAvailablePackagesAsArray(loadedPackage._package.path).find(ap => ap.object.type === _package.object.type);
+
+            //         if (availablePackage) {
+            //             return availablePackage.object.name;
+            //         }
+
+            //         return 'Update page to view';
+            //     },
+            //     disabled: _package ? true : false,
+            //     order: 1,
+            //     showColumn: true,
+            //     sortable: true
+            // }),
+
 
             new Field({
                 component: PackageDependenciesFieldComponent,
