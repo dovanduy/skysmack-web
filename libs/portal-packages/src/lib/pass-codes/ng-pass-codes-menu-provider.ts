@@ -5,11 +5,9 @@ import { MenuItem } from '@skysmack/framework';
 import { Guid } from 'guid-typescript';
 import { Observable } from 'rxjs';
 import { PassCodesPermissions } from '@skysmack/packages-pass-codes';
-import { PassCodesTypeId, DoorwaysPassCodesTypeId, DoorwaysTypeId } from '@skysmack/package-types';
-import { getMenuEntries, getCombinedMenuEntries, getConnectedPackageMenuEntries } from '@skysmack/ng-framework';
+import { PassCodesTypeId } from '@skysmack/package-types';
+import { getMenuEntries, getCombinedMenuEntries } from '@skysmack/ng-framework';
 import { PassCodesIndexComponent } from './pass-codes/components/pass-codes-index/pass-codes-index.component';
-import { DoorwaysPassCodesIndexComponent } from '../doorways-pass-codes/doorways-pass-codes/components/doorways-pass-codes-index/doorways-pass-codes-index.component';
-import { DoorwaysIndexComponent } from '../doorways';
 
 @Injectable({ providedIn: 'root' })
 export class NgPassCodesMenuProvider implements MenuProvider {
@@ -40,6 +38,11 @@ export class NgPassCodesMenuProvider implements MenuProvider {
             }),
             new MenuArea({
                 area: 'manage',
+                translationPrefix: this.translationPrefix,
+                order: 2
+            }),
+            new MenuArea({
+                area: 'settings',
                 translationPrefix: this.translationPrefix,
                 order: 2
             })
@@ -81,9 +84,9 @@ export class NgPassCodesMenuProvider implements MenuProvider {
                 providedIn: [SIDEBAR]
             }),
             new MenuItem({
-                url: 'settings',
-                displayName: this.translationPrefix + 'SETTINGS',
-                area: 'manage',
+                url: 'settings/limits',
+                displayName: this.translationPrefix + 'LIMIT_SETTINGS',
+                area: 'settings',
                 order: 1,
                 icon: 'add',
                 permissions: [],

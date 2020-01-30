@@ -72,7 +72,8 @@
             "ITEM": "Item",
             "MANAGE": "Manage",
             "ACTIONS": "Actions",
-            "SETTINGS": "Settings"
+            "SETTINGS": "Settings",
+            "LIMIT_SETTINGS": "Limits"
         },
         "NOTIFICATIONS": {
             "GET": {

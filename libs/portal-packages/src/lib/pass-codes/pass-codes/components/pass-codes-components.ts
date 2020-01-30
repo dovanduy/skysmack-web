@@ -17,7 +17,7 @@ export const passCodesRoutes: Routes = [
           { path: 'create', component: PassCodesCreateComponent, pathMatch: 'full' },
           { path: 'edit/:id', component: PassCodesEditComponent, pathMatch: 'full' },
           {
-            path: 'settings', component: SettingsComponent, pathMatch: 'full', data: {
+            path: 'settings/limits', component: SettingsComponent, pathMatch: 'full', data: {
               fieldsConfigToken: 'NgPassCodeLimitSettingsFieldsConfig'
             } as RouteData
           }
