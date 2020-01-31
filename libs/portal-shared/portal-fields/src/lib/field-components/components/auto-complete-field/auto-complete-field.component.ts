@@ -7,13 +7,13 @@ import { FormControl } from '@angular/forms';
 import { Observable, combineLatest } from 'rxjs';
 import { startWith, map, tap } from 'rxjs/operators';
 
+
 @Component({
   selector: 'ss-auto-complete-field',
   templateUrl: './auto-complete-field.component.html'
 })
 export class AutoCompleteFieldComponent extends FieldBaseComponent<SelectField> implements OnInit {
 
-  public recordsAutoCompleteControl = new FormControl();
   public selectedOptionDisplayName: string;
   public filteredRecords$: Observable<LocalObject<any, unknown>[]>;
 
@@ -32,14 +32,9 @@ export class AutoCompleteFieldComponent extends FieldBaseComponent<SelectField> 
         })
       ).subscribe());
 
-      // Disable field if specified
-      if (this.field.disabled) {
-        this.recordsAutoCompleteControl.disable();
-      }
-
       // Activate search
       this.filteredRecords$ = combineLatest(
-        this.recordsAutoCompleteControl.valueChanges.pipe(startWith(undefined)),
+        this.getFormField().valueChanges.pipe(startWith(undefined)),
         this.field.optionsData$
       ).pipe(
         map(([searchInput, records]) => searchInput && searchInput.length > 0 ? this.filter(searchInput, records) : records.slice())
@@ -69,7 +64,6 @@ export class AutoCompleteFieldComponent extends FieldBaseComponent<SelectField> 
   }
 
   public clear(): void {
-    this.recordsAutoCompleteControl.setValue('');
     this.setFieldValue(undefined);
   }
 

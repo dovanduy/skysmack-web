@@ -2,7 +2,7 @@
   <mat-form-field>
     <!-- Input -->
     <input matInput [placeholder]="field.placeholder | translate" [matAutocomplete]="recordsAutoControl"
-      [formControl]="recordsAutoCompleteControl" [value]="selectedOptionDisplayName">
+      [formControlName]="fieldKey" [value]="selectedOptionDisplayName">
 
     <!-- Clear button -->
     <button mat-icon-button matSuffix (click)="clear()" tabindex="-1">
@@ -30,11 +30,6 @@
     </mat-error>
 
   </mat-form-field>
-
-  <!-- Temp -->
-  <!-- <pre>
-    {{ fh.formErrors | json }}
-  </pre> -->
 
   <ss-backend-errors [field]="field"></ss-backend-errors>
 </ng-container>
