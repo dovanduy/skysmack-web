@@ -29,21 +29,19 @@ export function lodgingsReducer(state = new LodgingsState(), action: ReduxAction
             const incoming = castedAction.payload;
             const current = newState.availableLodgings[castedAction.meta.stateKey] ? newState.availableLodgings[castedAction.meta.stateKey] : {};
 
-            const dates = Object.keys(incoming);
-            for (let dateIndex = 0; dateIndex < dates.length; dateIndex++) {
-                const date = dates[dateIndex];
-                if (!current[date]) {
-                    current[date] = {};
+            const ids = Object.keys(incoming);
+            for (let dateIndex = 0; dateIndex < ids.length; dateIndex++) {
+                const id = ids[dateIndex];
+                if (!current[castedAction.meta.dateKey]) {
+                    current[castedAction.meta.dateKey] = {};
                 }
 
                 for (let index = 0; index < castedAction.meta.ids.length; index++) {
-                    const id = castedAction.meta.ids[index];
-                    if (incoming[date]) {
-                        current[castedAction.meta.dateKey] = incoming;
+                    if (incoming[id] !== undefined && incoming[id] !== null) {
+                        current[castedAction.meta.dateKey][id] = incoming[id];
                     }
                 }
             }
-
 
             newState.availableLodgings[castedAction.meta.stateKey] = current;
 
