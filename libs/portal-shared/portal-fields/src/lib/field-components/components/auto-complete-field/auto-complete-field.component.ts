@@ -16,6 +16,7 @@ export class AutoCompleteFieldComponent extends FieldBaseComponent<SelectField> 
 
   public selectedOptionDisplayName: string;
   public filteredRecords$: Observable<LocalObject<any, unknown>[]>;
+  private dataOptions: SelectFieldOption[];
 
   ngOnInit() {
     super.ngOnInit();
@@ -25,6 +26,7 @@ export class AutoCompleteFieldComponent extends FieldBaseComponent<SelectField> 
       // Set selected value
       this.subscriptionHandler.register(this.field.optionsData$.pipe(
         tap((options: SelectFieldOption[]) => {
+          this.dataOptions = options;
           const found = options.find(option => option.value === this.field.value);
           if (found) {
             this.selectedOptionDisplayName = found && found.displayName;
@@ -37,7 +39,17 @@ export class AutoCompleteFieldComponent extends FieldBaseComponent<SelectField> 
         this.getFormField().valueChanges.pipe(startWith(undefined)),
         this.field.optionsData$
       ).pipe(
-        map(([searchInput, records]) => searchInput && searchInput.length > 0 ? this.filter(searchInput, records) : records.slice())
+        map(([searchInput, records]) => {
+
+          // If the search input does not equal a value in the list, the field value has NOT been correctly set.
+          if (!this.inList(searchInput)) {
+            this.getFormField().setErrors({ notInList: true });
+          } else {
+            this.getFormField().setErrors(null);
+          }
+
+          return searchInput && searchInput.length > 0 ? this.filter(searchInput, records) : records.slice();
+        })
       );
 
       this.runAllRulesOfType(DisableUntilValueRule.type, { fields });
@@ -55,6 +67,7 @@ export class AutoCompleteFieldComponent extends FieldBaseComponent<SelectField> 
   }
 
   public selectRecord(event: MatAutocompleteSelectedEvent): void {
+
     this.selectedOptionDisplayName = event.option.viewValue;
     this.setFieldValue(event.option.value);
   }
@@ -72,5 +85,10 @@ export class AutoCompleteFieldComponent extends FieldBaseComponent<SelectField> 
       return options.map(option => ({ option, hit: option.displayName.toLowerCase().indexOf(searchInput.toLowerCase()) })).filter(recordHit => recordHit.hit >= 0).sort((a, b) => a.hit - b.hit).map(recordHit => recordHit.option);
     }
     return options;
+  }
+
+  private inList(selectedValue: string): boolean {
+    const found = this.dataOptions.find(select => select.value === selectedValue);
+    return found ? true : false;
   }
 }
