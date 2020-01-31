@@ -26,15 +26,20 @@ export class AutoCompleteFieldComponent extends FieldBaseComponent<SelectField> 
       this.subscriptionHandler.register(this.field.optionsData$.pipe(
         tap((options: SelectFieldOption[]) => {
           const found = options.find(option => option.value === this.field.value);
-          this.selectedOptionDisplayName = found && found.displayName;
+          if (found) {
+            this.selectedOptionDisplayName = found && found.displayName;
+          }
         })
-      ).subscribe())
+      ).subscribe());
 
+      // Disable field if specified
+      if (this.field.disabled) {
+        this.recordsAutoCompleteControl.disable();
+      }
+
+      // Activate search
       this.filteredRecords$ = combineLatest(
-        this.recordsAutoCompleteControl.valueChanges.pipe(
-          startWith(null),
-          tap(x => console.log(x))
-        ),
+        this.recordsAutoCompleteControl.valueChanges.pipe(startWith(undefined)),
         this.field.optionsData$
       ).pipe(
         map(([searchInput, records]) => searchInput && searchInput.length > 0 ? this.filter(searchInput, records) : records.slice())
@@ -45,7 +50,7 @@ export class AutoCompleteFieldComponent extends FieldBaseComponent<SelectField> 
     }
   }
 
-  public runRulesOnChange(fields: Field[]) {
+  public runRulesOnChange(fields: Field[]): void {
     this.subscriptionHandler.register(this.fh.form.valueChanges.subscribe(() => {
       this.runRules({
         fields,
@@ -61,6 +66,11 @@ export class AutoCompleteFieldComponent extends FieldBaseComponent<SelectField> 
 
   public recordDisplayFn(option: SelectFieldOption): string {
     return option && option.displayName;
+  }
+
+  public clear(): void {
+    this.recordsAutoCompleteControl.setValue('');
+    this.setFieldValue(undefined);
   }
 
   private filter(searchInput: string, options: SelectFieldOption[]): SelectFieldOption[] {

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FieldBaseComponent } from '../field-base-component';
-import { map, take } from 'rxjs/operators';
+import { map, take, tap } from 'rxjs/operators';
 import { combineLatest, Observable } from 'rxjs';
 import { NgPackagesStore } from '@skysmack/ng-packages';
 import { flatten, notNull, AvailablePackage, LocalObject } from '@skysmack/framework';
@@ -49,16 +49,14 @@ export class PackageDependenciesFieldComponent extends FieldBaseComponent<Field>
 
   public createSelectBoxes(): void {
     let lastType = '';
-    const selectedPackageType$ = this.fh.form.valueChanges.pipe(
-      map<any, string>(formValues => {
-        // Prevents endless loop when resetting dependencies field.
-        if (lastType !== formValues['type']) {
-          lastType = formValues['type'];
+    const selectedPackageType$ = this.fh.form.controls['type'].valueChanges.pipe(
+      map<any, string>(typeChanges => {
+        if (lastType !== typeChanges || typeChanges === null) {
+          lastType = typeChanges;
           this.setOtherFieldValue('dependencies', []);
-          return formValues['type'];
+          return typeChanges;
         }
       }),
-      notNull(),
     );
 
     const availablePackages$ = this.packagesStore.getAvailablePackages(this.packagePath);
@@ -69,10 +67,9 @@ export class PackageDependenciesFieldComponent extends FieldBaseComponent<Field>
     ]).pipe(
       map(values => {
         const [selectedPackageType, availablePackages] = values;
-        return availablePackages.filter(availablePackage => availablePackage.object.type === selectedPackageType);
+        return availablePackages.find(availablePackage => availablePackage.object.type === selectedPackageType);
       }),
-      flatten(),
-      map((availablePackage: LocalObject<AvailablePackage, string>) => availablePackage.object.dependencyTypes),
+      map((availablePackage: LocalObject<AvailablePackage, string>) => availablePackage && availablePackage.object.dependencyTypes),
       map(depTypes => {
         // Hide select boxes if there are no dependencies
         depTypes ? this.showBoxes = true : this.showBoxes = false;
@@ -123,7 +120,7 @@ export class PackageDependenciesFieldComponent extends FieldBaseComponent<Field>
             }
           });
         }
-        
+
         return selectBoxes;
       })
     );

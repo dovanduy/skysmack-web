@@ -1,25 +1,16 @@
 <ng-container *ngIf="field" [formGroup]="fh.form">
+  <!-- autocomplete -->
   <mat-form-field>
-
-    <!-- old select -->
-    <!-- <mat-select [id]="fieldKey" [formControlName]="fieldKey" [value]="field.value"
-      [placeholder]="field.placeholder | translate">
-      <ng-container *ngIf="field.extraOptions">
-        <mat-option *ngFor="let opt of field.extraOptions" [value]="opt.value">
-          {{ opt.displayName }}
-        </mat-option>
-      </ng-container>
-      <mat-option *ngFor="let opt of field.optionsData$ | async as options" [value]="opt.value">
-        {{ opt.displayName }}
-      </mat-option>
-    </mat-select> -->
-
-    <!-- autocomplete -->
     <input matInput [placeholder]="field.placeholder | translate" [matAutocomplete]="recordsAutoControl"
-      [formControl]="recordsAutoCompleteControl" [formControlName]="fieldKey">
+      [formControl]="recordsAutoCompleteControl" [value]="selectedOptionDisplayName">
+    <!-- [formControlName]="fieldKey" -->
+
+    <button mat-icon-button matSuffix (click)="clear()" tabindex="-1">
+      <mat-icon tabindex="-1">clear</mat-icon>
+    </button>
 
     <mat-autocomplete #recordsAutoControl="matAutocomplete" (optionSelected)="selectRecord($event)"
-      [displayWith]="recordDisplayFn" autoActiveFirstOption>
+      [displayWith]="recordDisplayFn">
 
       <ng-container *ngIf="field.extraOptions">
         <mat-option *ngFor="let opt of field.extraOptions" [value]="opt.value">
@@ -31,16 +22,11 @@
       </mat-option>
 
     </mat-autocomplete>
-
-
-
-
-
-
-    <mat-error *ngIf="fh.formErrors[fieldKey]">
-      {{ fh.formErrors[fieldKey] | translate }}
-    </mat-error>
   </mat-form-field>
+  <!-- 
+  <pre>
+        {{ fh.formErrors | json }}
+        </pre> -->
 
   <ss-backend-errors [field]="field"></ss-backend-errors>
 
