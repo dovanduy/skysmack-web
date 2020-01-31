@@ -11,7 +11,7 @@
 
     <!-- Autocomplete -->
     <mat-autocomplete #recordsAutoControl="matAutocomplete" (optionSelected)="selectRecord($event)"
-      [displayWith]="recordDisplayFn">
+      [displayWith]="recordDisplayFn" autoActiveFirstOption="true">
       <ng-container *ngIf="field.extraOptions">
         <mat-option *ngFor="let opt of field.extraOptions" [value]="opt.value">
           {{ opt.displayName }}

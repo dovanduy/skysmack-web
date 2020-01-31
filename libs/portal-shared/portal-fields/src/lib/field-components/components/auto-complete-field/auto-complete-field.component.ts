@@ -3,10 +3,8 @@ import { SelectField, DisableUntilValueRule, Field, SelectFieldOption } from '@s
 import { FieldBaseComponent } from '../field-base-component';
 import { LocalObject } from '@skysmack/framework';
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
-import { FormControl } from '@angular/forms';
 import { Observable, combineLatest } from 'rxjs';
 import { startWith, map, tap } from 'rxjs/operators';
-
 
 @Component({
   selector: 'ss-auto-complete-field',
@@ -40,13 +38,14 @@ export class AutoCompleteFieldComponent extends FieldBaseComponent<SelectField> 
         this.field.optionsData$
       ).pipe(
         map(([searchInput, records]) => {
-
           // If the search input does not equal a value in the list, the field value has NOT been correctly set.
-          if (!this.inList(searchInput)) {
-            this.getFormField().setErrors({ notInList: true });
-          } else {
-            this.getFormField().setErrors(null);
-          }
+          setTimeout(() => {
+            if (!this.inList(searchInput)) {
+              this.getFormField().setErrors({ notInList: true });
+            } else {
+              this.getFormField().setErrors(null);
+            }
+          }, 0);
 
           return searchInput && searchInput.length > 0 ? this.filter(searchInput, records) : records.slice();
         })
