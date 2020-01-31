@@ -5,7 +5,6 @@ import { NgLodgingTypesStore, NgLodgingTypesActions } from '@skysmack/ng-lodging
 import { Observable, combineLatest } from 'rxjs';
 import { map, tap, take, filter, startWith } from 'rxjs/operators';
 import { CalendarEvent, EventColor, EventAction } from 'calendar-utils';
-import * as _moment from 'moment';
 import { PagedQuery, defined, SubscriptionHandler, removeDuplicates } from '@skysmack/framework';
 import { SelectFieldOption } from '@skysmack/ng-dynamic-forms';
 import { CalendarMonthViewDay } from 'angular-calendar';
@@ -15,6 +14,7 @@ import { ENTER, COMMA } from '@angular/cdk/keycodes';
 import { MatAutocomplete, MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 import { FormControl } from '@angular/forms';
 import { MatChipInputEvent } from '@angular/material/chips';
+import * as _moment from 'moment';
 const moment = _moment;
 
 @Component({

@@ -5,11 +5,12 @@ import { MenuItem } from '@skysmack/framework';
 import { Guid } from 'guid-typescript';
 import { Observable } from 'rxjs';
 import { getMenuEntries, getCombinedMenuEntries, setConnectedParentPackage, getConnectedPackageMenuEntries, setBackButton } from '@skysmack/ng-framework';
-import { DoorwaysPassCodesTypeId, DoorwaysTypeId } from '@skysmack/package-types';
+import { DoorwaysPassCodesTypeId, DoorwaysTypeId, PassCodesTypeId } from '@skysmack/package-types';
 import { DoorwaysPassCodesIndexComponent } from './doorways-pass-codes/components/doorways-pass-codes-index/doorways-pass-codes-index.component';
 import { DoorwaysIndexComponent } from '../doorways/doorways/components/doorways-index/doorways-index.component';
 import { DoorwaysOptionsIndexComponent } from './doorways-options/components/doorways-options-index/doorways-options-index.component';
 import { DoorwaysPermissions } from '@skysmack/ng-doorways';
+import { PassCodesIndexComponent } from '../pass-codes/pass-codes/components/pass-codes-index/pass-codes-index.component';
 
 @Injectable({ providedIn: 'root' })
 export class NgDoorwaysPassCodesIndexMenuProvider implements MenuProvider {
@@ -52,14 +53,6 @@ export class NgDoorwaysPassCodesIndexMenuProvider implements MenuProvider {
                 this.getDoorwaysPassCodesMenuItems,
                 this.store
             ),
-            getConnectedPackageMenuEntries(
-                packagePath,
-                DoorwaysPassCodesTypeId,
-                DoorwaysTypeId,
-                componentKey,
-                DoorwaysIndexComponent.COMPONENT_KEY,
-                this.store
-            ),
             getMenuEntries<MenuItem>(
                 packagePath,
                 DoorwaysPassCodesTypeId,
@@ -67,6 +60,27 @@ export class NgDoorwaysPassCodesIndexMenuProvider implements MenuProvider {
                 DoorwaysOptionsIndexComponent.COMPONENT_KEY,
                 this.getDoorwaysOptionsMenuItems,
                 this.store
+            ),
+
+            // DWPS for doorways
+            getConnectedPackageMenuEntries(
+                packagePath,
+                DoorwaysPassCodesTypeId,
+                DoorwaysTypeId,
+                componentKey,
+                DoorwaysIndexComponent.COMPONENT_KEY,
+                this.store,
+                true
+            ),
+            // DWPS for passcodes
+            getConnectedPackageMenuEntries(
+                packagePath,
+                DoorwaysPassCodesTypeId,
+                PassCodesTypeId,
+                componentKey,
+                PassCodesIndexComponent.COMPONENT_KEY,
+                this.store,
+                true
             ),
         );
     };
@@ -114,7 +128,8 @@ export class NgDoorwaysPassCodesIndexMenuProvider implements MenuProvider {
                 permissions: [],
                 providedIn: [SIDEBAR, SPEEDDIAL]
             }),
-            setConnectedParentPackage(this.store, packagePath)
+            setConnectedParentPackage(this.store, packagePath, [0]),
+            setConnectedParentPackage(this.store, packagePath, [1])
         ];
     };
     //#endregion

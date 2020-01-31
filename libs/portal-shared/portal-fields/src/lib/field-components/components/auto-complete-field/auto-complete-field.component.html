@@ -1,0 +1,35 @@
+<ng-container *ngIf="field" [formGroup]="fh.form">
+  <mat-form-field>
+    <!-- Input -->
+    <input matInput [placeholder]="field.placeholder | translate" [matAutocomplete]="recordsAutoControl"
+      [formControlName]="fieldKey" [value]="selectedOptionDisplayName">
+
+    <!-- Clear button -->
+    <button mat-icon-button matSuffix (click)="clear()" tabindex="-1">
+      <mat-icon tabindex="-1">clear</mat-icon>
+    </button>
+
+    <!-- Autocomplete -->
+    <mat-autocomplete #recordsAutoControl="matAutocomplete" (optionSelected)="selectRecord($event)"
+      [displayWith]="recordDisplayFn" autoActiveFirstOption="true">
+      <ng-container *ngIf="field.extraOptions">
+        <mat-option *ngFor="let opt of field.extraOptions" [value]="opt.value">
+          {{ opt.displayName }}
+        </mat-option>
+      </ng-container>
+      <mat-option *ngFor="let opt of filteredRecords$ | async" [value]="opt.value">
+        {{ opt.displayName }}
+      </mat-option>
+    </mat-autocomplete>
+
+    <!-- Frontend errors -->
+    <mat-error *ngIf="fh.formErrors[fieldKey]">
+      <ng-container *ngIf="fh.formErrors[fieldKey]">
+        {{ fh.formErrors[fieldKey] | translate }}
+      </ng-container>
+    </mat-error>
+
+  </mat-form-field>
+
+  <ss-backend-errors [field]="field"></ss-backend-errors>
+</ng-container>

@@ -193,7 +193,7 @@ export class LodgingSelectDialogComponent implements OnInit, OnDestroy {
 
     // Get lodging availability ON lodgings search
     const available$ = lodgingPackage$.pipe(
-      switchMap((lodgingPackage) => this.lodgingStore.getAvailableLodgings(lodgingPackage.object.path, this.data.from, this.data.to))
+      switchMap((lodgingPackage) => this.lodgingStore.getAvailableLodgings(lodgingPackage.object.path, this.data.from.split('T')[0], this.data.to.split('T')[0]))
     );
 
     // Create detailed lodgings (used for selection and display) when lodgings OR availability is updated

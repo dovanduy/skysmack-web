@@ -6,7 +6,7 @@ import { Guid } from 'guid-typescript';
 import { Observable } from 'rxjs';
 import { PassCodesPermissions } from '@skysmack/packages-pass-codes';
 import { PassCodesTypeId } from '@skysmack/package-types';
-import { getMenuEntries } from '@skysmack/ng-framework';
+import { getMenuEntries, getCombinedMenuEntries } from '@skysmack/ng-framework';
 import { PassCodesIndexComponent } from './pass-codes/components/pass-codes-index/pass-codes-index.component';
 
 @Injectable({ providedIn: 'root' })
@@ -23,7 +23,10 @@ export class NgPassCodesMenuProvider implements MenuProvider {
     };
 
     public getMenuItems(packagePath: string, componentKey: string): Observable<MenuItem[]> {
-        return getMenuEntries<MenuItem>(packagePath, PassCodesTypeId, componentKey, PassCodesIndexComponent.COMPONENT_KEY, this.getPassCodesMenuItems, this.store);
+        return getCombinedMenuEntries<MenuItem>(
+            getMenuEntries<MenuItem>(packagePath, PassCodesTypeId, componentKey, PassCodesIndexComponent.COMPONENT_KEY, this.getPassCodesMenuItems, this.store),
+
+        );
     };
 
     private getPassCodesMenuAreas = () => {
@@ -35,6 +38,11 @@ export class NgPassCodesMenuProvider implements MenuProvider {
             }),
             new MenuArea({
                 area: 'manage',
+                translationPrefix: this.translationPrefix,
+                order: 2
+            }),
+            new MenuArea({
+                area: 'settings',
                 translationPrefix: this.translationPrefix,
                 order: 2
             })
@@ -76,9 +84,9 @@ export class NgPassCodesMenuProvider implements MenuProvider {
                 providedIn: [SIDEBAR]
             }),
             new MenuItem({
-                url: 'settings',
-                displayName: this.translationPrefix + 'SETTINGS',
-                area: 'manage',
+                url: 'settings/limits',
+                displayName: this.translationPrefix + 'LIMIT_SETTINGS',
+                area: 'settings',
                 order: 1,
                 icon: 'add',
                 permissions: [],

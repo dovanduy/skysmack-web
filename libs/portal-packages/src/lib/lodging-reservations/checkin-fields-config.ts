@@ -57,12 +57,12 @@ export class NgCheckinFieldsConfig extends FieldsConfig<CheckIn, number> {
                 order: 4,
                 showColumn: false,
             }),
-            new Field({
-                component: SignaturePadEditorFieldComponent,
-                key: 'signature',
-                showColumn: false,
-                sortable: false,
-            })
+            // new Field({
+            //     component: SignaturePadEditorFieldComponent,
+            //     key: 'signature',
+            //     showColumn: false,
+            //     sortable: false,
+            // })
         ];
 
         return fields;

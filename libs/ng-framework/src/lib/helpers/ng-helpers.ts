@@ -87,30 +87,59 @@ export const getMenuEntries = <T>(packagePath: string, packageTypeId: string, co
 /**
  * Helper to get menu items pr. connected package. E.g. if Lodgings has 3 LodgingReservations installed, 3 menu items will be returned.
  * Note: Use it in the feature/adaptor providing the items.
- * @param packagePath The current package path
- * @param packageTypeId E.g. LodgingReservationsTypeId
- * @param parentPageTypeId E.g. LodgingsTypeId
+ * @param packagePath The current package path. Needed to find the current package
+ * @param packageTypeId E.g. LodgingReservationsTypeId. Needed to find all adaptors of this type.
+ * @param parentPageTypeId E.g. LodgingsTypeId. Needed to ensure logic only runs when the current package is the parent package.
  * @param componentKey The one being provided from the current index component
  * @param specificParentPackageComponentKey E.g. LodgingReservations must provide the component key from LodgingsIndexComponent
  * @param store The SkysmackStore
  */
-export const getConnectedPackageMenuEntries = (packagePath: string, packageTypeId: string, parentPageTypeId: string, componentKey: string, specificParentPackageComponentKey: string, store: SkysmackStore): Observable<MenuItem[]> => {
+export const getConnectedPackageMenuEntries = (packagePath: string, packageTypeId: string, parentPageTypeId: string, componentKey: string, specificParentPackageComponentKey: string, store: SkysmackStore, connectAdaptorParentPackages?: boolean): Observable<MenuItem[]> => {
     if (componentKey === specificParentPackageComponentKey) {
         return store.getCurrentPackage(packagePath).pipe(
-            filter(_package => _package._package.type === parentPageTypeId),
+            filter(_package => _package._package.type === parentPageTypeId), // Continue if current package === parent package.
             switchMap(() => store.getPackages().pipe(
                 map(_packages => _packages
-                    .filter(_package => _package.object.type === packageTypeId)
-                    .filter(_package => _package.object.dependencies && _package.object.dependencies.includes(packagePath))
-                    .map(_package => new MenuItem({
-                        url: '/' + _package.object.path,
-                        displayName: _package.object.name,
-                        area: 'connected_packages',
-                        order: 1,
-                        icon: 'add',
-                        permissions: [],
-                        providedIn: [SIDEBAR]
-                    }))
+                    .filter(_package => _package.object.type === packageTypeId) // Get all installed adaptors
+                    .filter(_package => _package.object.dependencies && _package.object.dependencies.includes(packagePath)) // Ensure the adaptor is related to the current package
+                    .map(featureOrAdaptorPackage => {
+                        let relatedPackagesMenuItems = [];
+
+                        // TODO: Note this functionality should be pulled into its own helper
+                        // function one day, since the current solution forces you do get the
+                        // adapter menu item as well (adaptors may not have routable components)
+                        // + we always want both deps to navigate to each other when activeted (here it will only go from one to another).
+                        // Get a menu item that goes from one dependency to another.
+                        if (connectAdaptorParentPackages) {
+                            const otherPaths = featureOrAdaptorPackage.object.dependencies.filter(path => path !== packagePath);
+                            relatedPackagesMenuItems = otherPaths.map(path => {
+                                const found = _packages.find(_package => _package.object.path === path);
+                                if (found) {
+                                    return new MenuItem({
+                                        url: '/' + found.object.path,
+                                        displayName: found.object.name,
+                                        area: 'connected_packages',
+                                        order: 1,
+                                        icon: 'add',
+                                        permissions: [],
+                                        providedIn: [SIDEBAR]
+                                    })
+                                }
+                            }).filter(x => x);
+                        }
+
+                        // Menu item going from the parent package to its adaptor.
+                        return [new MenuItem({
+                            url: '/' + featureOrAdaptorPackage.object.path,
+                            displayName: featureOrAdaptorPackage.object.name,
+                            area: 'connected_packages',
+                            order: 1,
+                            icon: 'add',
+                            permissions: [],
+                            providedIn: [SIDEBAR]
+                        })].concat(relatedPackagesMenuItems);
+                    })
+                    .reduce((a, b) => a.concat(b), [])
                 )
             ))
         );
