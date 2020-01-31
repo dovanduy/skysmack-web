@@ -1,5 +1,7 @@
 <ng-container *ngIf="selectBoxes$ | async as selectBoxes">
   <ng-container *ngIf="showBoxes">
+    <p *ngIf="depsMissingMessage" style="color: red;">{{ depsMissingMessage | translate }}</p>
+
     <ng-container *ngFor=" let selectBox of selectBoxes">
       <mat-form-field>
         <mat-select [placeholder]="selectBox.name | translate" [value]="selectBox.selectedValue"

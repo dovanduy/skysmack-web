@@ -5,6 +5,7 @@ export class PackagesValidation extends Validation {
     public formErrors = {
         name: '',
         description: '',
+        dependencies: '',
         path: '',
         type: ''
     };
@@ -15,6 +16,9 @@ export class PackagesValidation extends Validation {
         },
         description: {
             required: '',
+        },
+        dependencies: {
+            depsMissing: ''
         },
         path: {
             required: '',
