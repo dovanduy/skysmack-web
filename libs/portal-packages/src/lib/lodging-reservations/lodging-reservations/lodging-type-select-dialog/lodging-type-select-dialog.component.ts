@@ -6,7 +6,7 @@ import { LodgingType, DetailedLodgingType } from '@skysmack/packages-lodgings';
 import { Observable, combineLatest, of } from 'rxjs';
 import { getPackageDendencyAsStream, toDateString } from '@skysmack/ng-framework';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
-import { map, switchMap, startWith, tap, take } from 'rxjs/operators';
+import { map, switchMap, startWith, tap, take, skip, delay } from 'rxjs/operators';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormControl, FormGroup } from '@angular/forms';
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete'
@@ -44,7 +44,8 @@ export class LodgingTypeSelectDialogComponent implements OnInit {
           once1 = true;
         }
         return this.lodgingTypesStore.get(lodgingPackage.object.path);
-      })
+      }),
+      skip(1)
     );
 
     // Set autocomplete default value
@@ -74,12 +75,12 @@ export class LodgingTypeSelectDialogComponent implements OnInit {
       lodgingPackage$,
       lodgingTypeIds$
     ]).pipe(
+      delay(100), // Ensures the getAvailableLodgingTypesCount is finished before showing result.
       switchMap(([lodgingPackage, lodgingTypeIds]) => {
         // CheckIn and CheckOut will be strings on create, Date objects on edit. Be sure to request availability as a string formatted yyyy-mm-dd
         const checkIn = toDateString(this.data.form.get('checkIn').value);
         const checkOut = toDateString(this.data.form.get('checkOut').value);
         const packagePath = lodgingPackage.object.path;
-
         if (!once2) {
           this.lodgingTypesActions.getAvailableLodgingTypesCount(packagePath, checkIn, checkOut, lodgingTypeIds);
           once2 = true;
