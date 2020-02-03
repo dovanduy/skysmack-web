@@ -1,0 +1,50 @@
+{
+    "ACCESS_CONTROLLERS": {
+        "FORM": {
+            "LABELS": {
+                "ROUTE": "Route",
+                "USERNAME": "User name",
+                "PASSWORD": "Password",
+                "SKIPVERIFYSSL": "Skip verify SSL"
+            },
+            "PLACEHOLDERS": {
+                "ROUTE": "Route",
+                "USERNAME": "User name",
+                "PASSWORD": "Password",
+                "SKIPVERIFYSSL": "Skip verify SSL"
+            },
+            "VALIDATION": {
+                "ROUTE": {
+                    "REQUIRED": "Route is required."
+                },
+                "USERNAME": {
+                    "REQUIRED": "User name is required."
+                },
+                "PASSWORD": {
+                    "REQUIRED": "Password is required."
+                },
+                "SKIPVERIFYSSL": {
+                    "REQUIRED": "Skip verify SSL is required."
+                }
+            }
+        },
+        "CREATE": {
+            "CREATE": "Create",
+            "BUTTON_CREATE": "Create"
+        },
+        "EDIT": {
+            "EDIT": "Edit",
+            "BUTTON_EDIT": "Update"
+        },
+        "INDEX": {
+            "TITLE_EXTRAS": "(Access Controllers)",
+            "CREATE": "Create",
+            "EDIT": "Edit",
+            "DELETE": "Delete",
+            "MANAGE": "Manage",
+            "ACTIONS": "Actions",
+            "SETTINGS": "Settings",
+            "TYPES": "Types"
+        }
+    }
+}

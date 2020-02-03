@@ -18,7 +18,8 @@ export class NgAccessControllersValidation extends Validation {
             required: ''
         },
         password: {
-            required: ''
+            required: '',
+            invalidPassword: ''
         },
         skipVerifySSL: {
             required: ''

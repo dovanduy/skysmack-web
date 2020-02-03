@@ -1,4 +1,5 @@
 export * from './access-points/index';
+export * from './access-controllers/index';
 
 export * from './ng-axis-physical-access-control-index-menu-provider';
 export * from './axis-physical-access-control.module';

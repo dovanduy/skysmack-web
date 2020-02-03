@@ -5,6 +5,7 @@
             "ACTIONS": "Actions",
             "SETTINGS": "Settings",
             "ACCESS_POINTS": "Access points",
+            "ACCESS_CONTROLLERS": "Access controllers",
             "VAPIX_CONNECTION_SETTINGS": "Connection settings"
         },
         "FORM": {

@@ -14,6 +14,7 @@ import { accessPointsComponents, accessPointsEntryComponents } from './access-po
 import { NgAxisPhysicalAccessControlModule } from '@skysmack/ng-axis-physical-access-control';
 import { axisPhysicalAccessControlComponents, axisPhysicalAccessControlEntryComponents } from './axis-physical-access-control/components';
 import { NgAxisPhysicalAccessControlSettingsFieldsConfig } from './axis-physical-access-control/ng-axis-physical-access-control-settings-fields-config';
+import { accessControllersComponents, accessControllersEntryComponents } from './access-controllers';
 
 @NgModule({
   imports: [
@@ -30,11 +31,13 @@ import { NgAxisPhysicalAccessControlSettingsFieldsConfig } from './axis-physical
   exports: [],
   declarations: [
     ...accessPointsComponents,
-    ...axisPhysicalAccessControlComponents
+    ...axisPhysicalAccessControlComponents,
+    ...accessControllersComponents
   ],
   entryComponents: [
     ...accessPointsEntryComponents,
-    ...axisPhysicalAccessControlEntryComponents
+    ...axisPhysicalAccessControlEntryComponents,
+    ...accessControllersEntryComponents
   ],
   providers: [
     { provide: 'NgAxisPhysicalAccessControlSettingsFieldsConfig', useClass: NgAxisPhysicalAccessControlSettingsFieldsConfig },
