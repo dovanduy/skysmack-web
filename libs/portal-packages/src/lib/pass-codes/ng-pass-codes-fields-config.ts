@@ -1,13 +1,16 @@
 import { Injectable } from '@angular/core';
 import { Validators } from '@angular/forms';
-import { LocalObject, LocalObjectStatus } from '@skysmack/framework';
+import { LocalObject, LocalObjectStatus, DisplayColumn } from '@skysmack/framework';
 import { PassCode, PASS_CODES_AREA_KEY, PASS_CODES_ADDITIONAL_PATHS } from '@skysmack/packages-pass-codes';
 
 import { NgPassCodesValidation } from '@skysmack/ng-pass-codes';
-import { NgFieldStore, LoadedPackage } from '@skysmack/ng-framework';
+import { NgFieldStore, LoadedPackage, convertObservableToBehaviorSubject } from '@skysmack/ng-framework';
 import { FormRule, Field } from '@skysmack/ng-dynamic-forms';
 import { DocumentFieldsConfig, StringFieldComponent, HiddenFieldComponent, CheckboxFieldComponent, DateTimeFieldComponent, RecurringExpressionFieldComponent } from '@skysmack/portal-fields';
 import { FieldProviders } from '@skysmack/ng-fields';
+import cronstrue from 'cronstrue/i18n';
+import { TranslationRedux } from '@skysmack/ng-translation';
+import { take } from 'rxjs/operators';
 
 @Injectable({ providedIn: 'root' })
 export class NgPassCodesFieldsConfig extends DocumentFieldsConfig<PassCode, number> {
@@ -18,6 +21,7 @@ export class NgPassCodesFieldsConfig extends DocumentFieldsConfig<PassCode, numb
     constructor(
         public fieldProviders: FieldProviders,
         public fieldsStore: NgFieldStore,
+        private translationRedux: TranslationRedux
     ) {
         super(fieldProviders, fieldsStore, PASS_CODES_ADDITIONAL_PATHS);
     }
@@ -38,7 +42,6 @@ export class NgPassCodesFieldsConfig extends DocumentFieldsConfig<PassCode, numb
                 component: StringFieldComponent,
                 value: entity ? entity.object.description : undefined,
                 key: 'description',
-                validators: [Validators.required],
                 order: 2,
                 showColumn: true,
                 sortable: true
@@ -65,9 +68,23 @@ export class NgPassCodesFieldsConfig extends DocumentFieldsConfig<PassCode, numb
             }),
 
             new Field({
-                component: StringFieldComponent,
+                component: RecurringExpressionFieldComponent,
                 value: entity ? entity.object.expression : undefined,
                 key: 'expression',
+                displayModifier: (column: DisplayColumn, providedEntity: LocalObject<any, any>) => {
+                    const exp = providedEntity.object.expression;
+                    const expression = exp.expression
+                    const language = convertObservableToBehaviorSubject(this.translationRedux.getLanguage(), 'en').getValue();
+
+                    if (Number(exp.cronStringFormat) === 3 && typeof expression === 'string') {
+                        const result = (expression as string).slice(0, expression.length - 4);
+                        return cronstrue.toString(result, { use24HourTimeFormat: true, locale: language });
+                    } else if (typeof expression === 'string') {
+                        return cronstrue.toString(expression, { use24HourTimeFormat: true, locale: language });
+                    } else {
+                        return '';
+                    }
+                },
                 validators: [Validators.required],
                 order: 2,
                 showColumn: true,
