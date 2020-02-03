@@ -86,10 +86,6 @@ export class AssignmentsAllIndexComponent implements OnInit, OnDestroy {
     this.assignmentsActions.get(this.packagePath, this.from, this.due);
   }
 
-  public trackByLocalId(_index: number, item: LocalObject<any, any>) {
-    return item ? item.localId : undefined;
-  }
-
   public updateStatus(event: { action: () => AssignmentStatus, _this: AssignmentsAllIndexComponent, value?: LocalObject<Assignment, AssignmentKey> }): void {
     const assignment: Assignment = event.value && event.value.object;
     const status: AssignmentStatus = event.action();
@@ -124,7 +120,11 @@ export class AssignmentsAllIndexComponent implements OnInit, OnDestroy {
   }
 
   public trackById(item: LocalObject<Assignment, number>) {
-    return item.object.id;
+    return item && item.object && item.object.id;
+  }
+
+  public trackByLocalId(_index: number, item: LocalObject<any, any>) {
+    return item ? item.localId : undefined;
   }
 
   private initDates(): void {
