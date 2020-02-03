@@ -18,7 +18,9 @@
                 "LOCKOUT": "Lockout",
                 "USER": "User",
                 "PASSWORD": "Password",
-                "SIGNIN": "Sign in"
+                "SIGNIN": "Sign in",
+                "EMAIL": "Email",
+                "TEMPLATE_PACKAGE": "Template Package"
             }
         }
     }

@@ -10,3 +10,5 @@ export * from './ng-lockout-settings-validation';
 export * from './ng-user-settings-validation';
 export * from './ng-password-settings-validation';
 export * from './ng-sign-in-settings-validation';
+export * from './ng-email-settings-validation';
+export * from './ng-template-package-settings-validation';

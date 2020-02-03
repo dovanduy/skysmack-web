@@ -24,6 +24,8 @@ import { PortalFieldsModule } from '@skysmack/portal-fields';
 import { applicationsComponents } from './identity-applications/components/applications-components';
 import { NgIdentitiesMenuProvider } from './ng-identities-menu-provider';
 import { clientsComponents } from './clients/components/clients-component';
+import { NgEmailSettingsFieldsConfig } from './ng-email-settings-fields-config';
+import { NgTemplatePackageSettingsFieldsConfig } from './ng-template-package-settings-fields-config';
 
 @NgModule({
   imports: [
@@ -56,7 +58,9 @@ import { clientsComponents } from './clients/components/clients-component';
     { provide: 'NgLockoutSettingsFieldsConfig', useClass: NgLockoutSettingsFieldsConfig },
     { provide: 'NgUserSettingsFieldsConfig', useClass: NgUserSettingsFieldsConfig },
     { provide: 'NgPasswordSettingsFieldsConfig', useClass: NgPasswordSettingsFieldsConfig },
-    { provide: 'NgSignInSettingsFieldsConfig', useClass: NgSignInSettingsFieldsConfig }
+    { provide: 'NgSignInSettingsFieldsConfig', useClass: NgSignInSettingsFieldsConfig },
+    { provide: 'NgEmailSettingsFieldsConfig', useClass: NgEmailSettingsFieldsConfig },
+    { provide: 'NgTemplatePackageSettingsFieldsConfig', useClass: NgTemplatePackageSettingsFieldsConfig }
   ]
 })
 export class IdentitiesModule {

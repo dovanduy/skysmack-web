@@ -14,7 +14,12 @@
                 "MAXFAILEDACCESSATTEMPTS": "Max failed access attempts",
                 "DEFAULTLOCKOUTTIMESPAN": "Default lockout time span",
                 "REQUIRECONFIRMEDEMAIL": "Require confirmed email",
-                "REQUIRECONFIRMEDPHONENUMBER": "Require confirmed phone number"
+                "REQUIRECONFIRMEDPHONENUMBER": "Require confirmed phone number",
+                "ADDRESS": "Address",
+                "DISPLAYNAME": "Display name",
+                "TEMPLATEPACKAGEPATH": "Template package path",
+                "CONFIRMEMAILTEMPLATEID": "Confirm email template",
+                "RESETPASSWORDTEMPLATEID": "Reset password template"
             },
             "PLACEHOLDERS": {
                 "ALLOWEDUSERNAMECHARACTERS": "Allowed user name characters",
@@ -29,7 +34,12 @@
                 "MAXFAILEDACCESSATTEMPTS": "Max failed access attempts",
                 "DEFAULTLOCKOUTTIMESPAN": "Default lockout time span",
                 "REQUIRECONFIRMEDEMAIL": "Require confirmed email",
-                "REQUIRECONFIRMEDPHONENUMBER": "Require confirmed phone number"
+                "REQUIRECONFIRMEDPHONENUMBER": "Require confirmed phone number",
+                "ADDRESS": "Address",
+                "DISPLAYNAME": "Display name",
+                "TEMPLATEPACKAGEPATH": "Template package path",
+                "CONFIRMEMAILTEMPLATEID": "Confirm email template",
+                "RESETPASSWORDTEMPLATEID": "Reset password template"
             },
             "VALIDATION": {}
         },

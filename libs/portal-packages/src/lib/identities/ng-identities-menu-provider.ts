@@ -241,6 +241,28 @@ export class NgIdentitiesMenuProvider implements MenuProvider {
                     IdentitiesPermissions.getSignInSettings
                 ],
                 providedIn: [SIDEBAR]
+            }),
+            new MenuItem({
+                url: 'settings/email',
+                displayName: this.identitiesTranslationPrefix + 'AVAILABLE_SETTINGS.EMAIL',
+                area: 'settings',
+                order: 2,
+                icon: 'group_add',
+                permissions: [
+                    // IdentitiesPermissions.getSignInSettings
+                ],
+                providedIn: [SIDEBAR]
+            }),
+            new MenuItem({
+                url: 'settings/template-package',
+                displayName: this.identitiesTranslationPrefix + 'AVAILABLE_SETTINGS.TEMPLATE_PACKAGE',
+                area: 'settings',
+                order: 2,
+                icon: 'group_add',
+                permissions: [
+                    // IdentitiesPermissions.getSignInSettings
+                ],
+                providedIn: [SIDEBAR]
             })
         ];
     }

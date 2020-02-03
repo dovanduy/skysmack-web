@@ -31,6 +31,16 @@ export const identitiesRoutes: Routes = [
         } as RouteData
       },
       {
+        path: 'settings/email', component: SettingsComponent, pathMatch: 'full', data: {
+          fieldsConfigToken: 'NgEmailSettingsFieldsConfig'
+        } as RouteData
+      },
+      {
+        path: 'settings/template-package', component: SettingsComponent, pathMatch: 'full', data: {
+          fieldsConfigToken: 'NgTemplatePackageSettingsFieldsConfig'
+        } as RouteData
+      },
+      {
         path: 'change-password', component: ChangePasswordComponent
       },
     ],
