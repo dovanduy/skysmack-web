@@ -7,7 +7,6 @@ import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { PassCode } from '@skysmack/packages-pass-codes';
 import { Observable } from 'rxjs';
 import { SummaryBaseComponent } from '@skysmack/portal-fields';
-import { tap } from 'rxjs/operators';
 
 @Component({
   selector: 'ss-pass-codes-lodging-reservations-summary',
