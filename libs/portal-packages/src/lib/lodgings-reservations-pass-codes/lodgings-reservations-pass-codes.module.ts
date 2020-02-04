@@ -10,7 +10,6 @@ import { DynamicFormsModule } from '@skysmack/portal-dynamic-forms';
 import { PortalFieldsModule } from '@skysmack/portal-fields';
 import { SettingsModule } from '@skysmack/portal-settings';
 import { lodgingsReservationsPassCodesComponents, lodgingsReservationsPassCodesEntryComponents } from './lodgings-reservations-pass-codes/components/lodgings-reservations-pass-codes-components';
-import { NgLodgingsReservationsPassCodesIndexMenuProvider } from './ng-lodgings-reservations-pass-codes-index-menu-provider';
 import { NgLodgingReservationsModule } from '@skysmack/ng-lodging-reservations';
 
 @NgModule({
@@ -38,13 +37,10 @@ export class LodgingsReservationsPassCodesModule {
   constructor(
     // Make entry components available
     coalescingResolver: CoalescingComponentFactoryResolver,
-    localResolver: ComponentFactoryResolver,
-    ngMenuProviders: NgMenuProviders,
-    ngLodgingsReservationsPassCodesIndexMenuProvider: NgLodgingsReservationsPassCodesIndexMenuProvider
+    localResolver: ComponentFactoryResolver
   ) {
 
     // Make entry components available
     coalescingResolver.registerResolver(localResolver);
-    ngMenuProviders.add(ngLodgingsReservationsPassCodesIndexMenuProvider);
   }
 }
