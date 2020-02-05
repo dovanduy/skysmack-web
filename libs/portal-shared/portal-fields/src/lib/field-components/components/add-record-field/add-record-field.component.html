@@ -8,8 +8,11 @@
         <h3 mat-subheader>Added</h3>
         <mat-list-item *ngFor="let record of added; let i = index">
           <h4 mat-line> {{ record[field.displaySelector] }} </h4>
-          <!-- Note: Mat icon button is not used here on purpose: Icon buttons won't right align in mat lists. -->
-          <mat-icon mat-list-icon (click)="remove(i)" style="cursor: pointer;">clear</mat-icon>
+          <button mat-icon-button (click)="remove(i)">
+            <mat-icon>
+              clear
+            </mat-icon>
+          </button>
         </mat-list-item>
       </mat-list>
     </ng-container>
