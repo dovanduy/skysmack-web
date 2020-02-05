@@ -37,8 +37,8 @@ export class NgPersonsLodgingReservationsFieldProvider extends FieldProvider {
         this.register = {};
         if (area === LODGING_RESERVATIONS_AREA_KEY) {
             return this.skysmackStore.getPackages().pipe(
-                map(packages => packages.filter(_package => _package.object.type === PersonsLodgingReservationsTypeId && _package.object.dependencies[1] === packagePath)),
-                switchMap(packages => {
+                switchMap(allPackages => {
+                    const packages = allPackages.filter(_package => _package.object.type === PersonsLodgingReservationsTypeId && _package.object.dependencies[1] === packagePath);
                     if (packages && packages.length > 0) {
                         const extendedData = entity ? entity.object['extendedData'] : undefined;
 
@@ -58,12 +58,14 @@ export class NgPersonsLodgingReservationsFieldProvider extends FieldProvider {
                                 this.register[personsPackagePath] = true;
                             }
 
+                            const personsPackage = allPackages.find(_p => _p.object.path === personsPackagePath);
+
                             return this.settingsStore.get<PersonsLodgingReservationsSettings>(depPackagePath, 'persons-reservations').pipe(
                                 map(settings => {
 
                                     const addField = new AddField({
                                         component: AddRecordFieldComponent,
-                                        addTitle: 'Add persons',
+                                        addTitle: 'Add person',
                                         displaySelector: 'displayName',
                                         actions: this.personsActions,
                                         store: this.personsStore,
@@ -82,8 +84,8 @@ export class NgPersonsLodgingReservationsFieldProvider extends FieldProvider {
                                         key: 'extendedData__' + personsPackagePath + '.attach',
                                         optionsData$: this.personsStore.get(personsPackagePath),
                                         displayNameSelector: 'object.displayName',
-                                        label: personsPackagePath,
-                                        placeholder: personsPackagePath,
+                                        label: personsPackage.object.name,
+                                        placeholder: personsPackage.object.name,
                                         includeInDetails: false
                                     });
 
