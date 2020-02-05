@@ -22,7 +22,11 @@
             "PLACEHOLDERS": {
                 "TITLE": "Title",
                 "BODY": "Body",
-                "DATAROUTES": "Data routes"
+				"DATAROUTES": {
+                    "TITLE": "Data routes",
+                    "KEY": "Template key",
+                    "VALUE": "Route"
+                }
             },
             "VALIDATION": {}
         }

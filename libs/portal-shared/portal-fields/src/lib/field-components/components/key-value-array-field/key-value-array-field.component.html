@@ -1,11 +1,11 @@
 <ng-container *ngIf="field" [formGroup]="fh.form">
-  <h3>Key-Value pairs</h3>
+<h3>{{ field.placeholder + '.TITLE' | translate }}</h3>
   <mat-form-field>
-    <input matInput type="text" placeholder="Key" #keyInput />
+    <input matInput type="text" [placeholder]="field.placeholder + '.KEY' | translate" #keyInput />
   </mat-form-field>
 
   <mat-form-field>
-    <input matInput type="text" placeholder="Value" #valueInput />
+    <input matInput type="text" [placeholder]="field.placeholder + '.VALUE' | translate" #valueInput />
   </mat-form-field>
 
   <button mat-raised-button (click)="add()">Add</button>

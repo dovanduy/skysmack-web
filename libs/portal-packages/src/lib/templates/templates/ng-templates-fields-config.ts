@@ -24,9 +24,11 @@ export class NgTemplatesFieldsConfig extends FieldsConfig<Template, number> {
     }
 
     protected getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<Template, number>): Field[] {
+        console.log('getEntityFields');
         let dataRouteArray = [];
         if (entity && entity.object.dataRoutes) {
-            dataRouteArray = Object.keys(entity.object.dataRoutes).map(key => ({ key, value: entity.object.dataRoutes[key] }));
+            const dataRoutes = JSON.parse(JSON.stringify(entity.object.dataRoutes));
+            dataRouteArray = Object.keys(dataRoutes).map(key => ({ key, value: dataRoutes[key] }));
         }
 
         const fields = [
