@@ -1,11 +1,9 @@
 <!-- Show pass codes here -->
 <ng-container *ngIf="passCodes$ | async as passCodes">
-    <h2>Pass codes</h2>
-
+    <mat-card-title [translate]="'LODGING_RESERVATIONS.PASS_CODES.TITLE'"></mat-card-title>
     <ng-container *ngIf="passCodesPackagePath$ | async as passCodesPackagePath">
         <ng-container *ngFor="let passCode of passCodes">
-            <a [routerLink]="['/', passCodesPackagePath, 'details', passCode.object.id]">{{ passCode.object.code }} -
-                valid: {{ passCode.object.validFrom  }} to {{ passCode.object.validTo  }}</a>
+            <a [routerLink]="['/', passCodesPackagePath, 'details', passCode.object.id]" [translate]="'LODGING_RESERVATIONS.PASS_CODES.VALID'" [translateParams]="{code: passCode.object.code, validFrom: passCode.object.validFrom, validTo: passCode.object.validTo }"></a>
             <br />
         </ng-container>
     </ng-container>

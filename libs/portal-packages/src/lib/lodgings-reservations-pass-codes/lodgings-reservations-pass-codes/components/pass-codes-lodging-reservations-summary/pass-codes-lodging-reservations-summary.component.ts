@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
-import { LocalObject } from '@skysmack/framework';
+import { LocalObject, toLocalObject } from '@skysmack/framework';
 import { NgLodgingReservationsActions, NgLodgingReservationsStore } from '@skysmack/ng-lodging-reservations';
 import { Router } from '@angular/router';
 import { NgPassCodesActions, NgPassCodesStore } from '@skysmack/ng-pass-codes';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
 import { PassCode } from '@skysmack/packages-pass-codes';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { SummaryBaseComponent } from '@skysmack/portal-fields';
 
 @Component({

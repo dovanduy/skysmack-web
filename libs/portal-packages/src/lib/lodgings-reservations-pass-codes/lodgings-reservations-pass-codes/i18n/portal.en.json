@@ -1,0 +1,8 @@
+{
+    "LODGING_RESERVATIONS": {
+        "PASS_CODES": {
+            "TITLE": "Pass Codes",
+            "VALID": "{{code}} - valid: {{validFrom}} to {{validTo}}"
+        }
+    }
+}
