@@ -10,11 +10,16 @@
 
   <button mat-raised-button (click)="add()">Add</button>
 
-  <p *ngFor="let input of inputs"><span style="font-weight:bold;">Key:</span> {{ input.key }}, <span
-      style="font-weight:bold;">Value:</span> {{ input.value }} <mat-icon style="cursor:pointer"
-      (click)="remove(input.id)">
-      delete</mat-icon>
-  </p>
+<mat-list>
+  <mat-list-item *ngFor="let input of inputs">
+    <span matLine> <span class="mat-body p-r-5"><b>{{ input.key }}</b></span><span class="mat-small">{{ input.value }}</span></span>
+    <button mat-icon-button (click)="remove(input.id)">
+      <mat-icon>
+      close
+    </mat-icon>
+    </button>
+  </mat-list-item>
+</mat-list>
 
   <ss-backend-errors [field]="field"></ss-backend-errors>
 
