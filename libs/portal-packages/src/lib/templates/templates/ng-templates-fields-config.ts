@@ -2,25 +2,26 @@ import { Injectable } from '@angular/core';
 import { LocalObject, LocalObjectStatus, HttpMethod } from '@skysmack/framework';
 import { Template, TEMPLATES_AREA_KEY, TEMPLATES_ADDITIONAL_PATHS } from '@skysmack/packages-templates';
 import { NgTemplatesValidation } from '@skysmack/ng-templates';
-import { LoadedPackage } from '@skysmack/ng-framework';
+import { LoadedPackage, NgFieldStore } from '@skysmack/ng-framework';
 import { Validators } from '@angular/forms';
 import { FormRule, Field, SelectField } from '@skysmack/ng-dynamic-forms';
 import { FieldsConfig, FieldProviders } from '@skysmack/ng-fields';
-import { StringFieldComponent, HiddenFieldComponent, SelectFieldComponent, KeyValueArrayFieldComponent } from '@skysmack/portal-fields';
+import { StringFieldComponent, HiddenFieldComponent, SelectFieldComponent, KeyValueArrayFieldComponent, DocumentFieldsConfig } from '@skysmack/portal-fields';
 import { of } from 'rxjs';
 import { WYSIWYGEditorFieldComponent } from '../../wysiwyg';
 
 @Injectable({ providedIn: 'root' })
-export class NgTemplatesFieldsConfig extends FieldsConfig<Template, number> {
+export class NgTemplatesFieldsConfig extends DocumentFieldsConfig<Template, number> {
     public validation = new NgTemplatesValidation();
     public area = TEMPLATES_AREA_KEY;
     public formRules: FormRule[] = [
     ];
 
     constructor(
-        public fieldProviders: FieldProviders
+        public fieldProviders: FieldProviders,
+        public fieldsStore: NgFieldStore
     ) {
-        super(fieldProviders, TEMPLATES_ADDITIONAL_PATHS);
+        super(fieldProviders, fieldsStore, TEMPLATES_ADDITIONAL_PATHS);
     }
 
     protected getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<Template, number>): Field[] {
