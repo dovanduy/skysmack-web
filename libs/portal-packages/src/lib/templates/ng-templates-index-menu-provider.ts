@@ -51,6 +51,11 @@ export class NgTemplatesIndexMenuProvider implements MenuProvider {
                 area: 'actions',
                 translationPrefix: this.templatesTranslationPrefix,
                 order: 1
+            }),
+            new MenuArea({
+                area: 'manage',
+                translationPrefix: this.templatesTranslationPrefix,
+                order: 2
             })
         ];
     };
@@ -72,6 +77,22 @@ export class NgTemplatesIndexMenuProvider implements MenuProvider {
                     TemplatesPermissions.addTemplates
                 ],
                 providedIn: [SIDEBAR, SPEEDDIAL]
+            }),
+            new MenuItem({
+                url: `/${packagePath}/fields`,
+                displayName: this.templatesTranslationPrefix + 'FIELDS',
+                area: 'manage',
+                hotkeyOptions: {
+                    keyCode: 70,
+                    altKey: true,
+                    action: `/${packagePath}/fields`
+                },
+                order: 2,
+                icon: 'short_text',
+                permissions: [
+                    //TemplatesPermissions.findTemplatesFields
+                ],
+                providedIn: [SIDEBAR]
             })
         ];
     };
