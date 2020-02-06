@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Type } from '@angular/core';
 import { LocalObject, LocalObjectStatus, HttpMethod } from '@skysmack/framework';
 import { Template, TEMPLATES_AREA_KEY, TEMPLATES_ADDITIONAL_PATHS } from '@skysmack/packages-templates';
 import { NgTemplatesValidation } from '@skysmack/ng-templates';
@@ -68,4 +68,15 @@ export class NgTemplatesFieldsConfig extends DocumentFieldsConfig<Template, numb
 
         return fields;
     }
+        
+    protected getComponentFromDynamicFieldType(type: string): Type<any> {
+        if (type === 'Liquid String') {
+            return StringFieldComponent;
+        } else if (type === 'Liquid HTML String') {
+            return WYSIWYGEditorFieldComponent;
+        } else {
+            return super.getComponentFromDynamicFieldType(type);
+        }        
+    }
+
 }
