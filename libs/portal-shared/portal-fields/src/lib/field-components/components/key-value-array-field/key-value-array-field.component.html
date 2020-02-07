@@ -1,15 +1,17 @@
 <ng-container *ngIf="field" [formGroup]="fh.form">
-<h3>{{ field.placeholder + '.TITLE' | translate }}</h3>
-<mat-list>
-  <mat-list-item *ngFor="let input of inputs">
-    <span matLine><span class="mat-body p-r-5"><b>{{ input.key }} </b></span> <span class="mat-small">{{ input.value }}</span></span>
-    <button mat-icon-button (click)="remove(input.id)">
-      <mat-icon>
-      close
-    </mat-icon>
-    </button>
-  </mat-list-item>
-</mat-list>
+  <h3>{{ field.placeholder + '.TITLE' | translate }}</h3>
+  <mat-list cdkDropList #todoList="cdkDropList" [cdkDropListData]="inputs" [cdkDropListConnectedTo]="[doneList]"
+    class="example-list" (cdkDropListDropped)="drop($event)">
+    <mat-list-item style="cursor: move;" *ngFor="let input of inputs" cdkDrag>
+      <span class="input" matLine><span class="mat-body p-r-5"><b>{{ input.key }} </b></span> <span
+          class="mat-small">{{ input.value }}</span></span>
+      <button mat-icon-button (click)="remove(input.id)">
+        <mat-icon>
+          close
+        </mat-icon>
+      </button>
+    </mat-list-item>
+  </mat-list>
 
   <mat-form-field>
     <input matInput type="text" [placeholder]="field.placeholder + '.KEY' | translate" #keyInput />
