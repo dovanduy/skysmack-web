@@ -27,3 +27,8 @@
 .cdk-drop-list-dragging .example-box:not(.cdk-drag-placeholder) {
   transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
 }
+
+.edit-key-values {
+  max-width: 200px;
+  margin-right: 20px;
+}

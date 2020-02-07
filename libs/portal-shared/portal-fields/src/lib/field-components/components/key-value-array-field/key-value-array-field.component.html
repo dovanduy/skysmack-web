@@ -2,15 +2,46 @@
   <h3>{{ field.placeholder + '.TITLE' | translate }}</h3>
   <mat-list cdkDropList #todoList="cdkDropList" [cdkDropListData]="inputs" [cdkDropListConnectedTo]="[doneList]"
     class="example-list" (cdkDropListDropped)="drop($event)">
-    <mat-list-item style="cursor: move;" *ngFor="let input of inputs" cdkDrag>
-      <span class="input" matLine><span class="mat-body p-r-5"><b>{{ input.key }} </b></span> <span
-          class="mat-small">{{ input.value }}</span></span>
-      <button mat-icon-button (click)="remove(input.id)">
-        <mat-icon>
-          close
-        </mat-icon>
-      </button>
-    </mat-list-item>
+
+    <ng-container *ngFor="let input of inputs">
+
+      <!-- Show inputs -->
+      <mat-list-item *ngIf="!editKeyValues" style="cursor: move;" cdkDrag>
+        <span class="input" matLine><span class="mat-body p-r-5"><b>{{ input.key }} </b></span> <span
+            class="mat-small">{{ input.value }}</span></span>
+        <button mat-icon-button (click)="toggleEditKeyValues()">
+          <mat-icon>
+            edit
+          </mat-icon>
+        </button>
+
+        <button mat-icon-button (click)="remove(input.id)">
+          <mat-icon>
+            close
+          </mat-icon>
+        </button>
+
+      </mat-list-item>
+
+      <!-- Edit inputs -->
+      <ng-container *ngIf="editKeyValues">
+        <mat-form-field class="edit-key-values">
+          <input matInput type="text" placeholder="Key" [value]="input.key" (valueChange)="()">
+        </mat-form-field>
+
+        <mat-form-field class="edit-key-values">
+          <input matInput type="text" placeholder="Value" [value]="input.key">
+        </mat-form-field>
+
+        <button mat-icon-button (click)="toggleEditKeyValues()">
+          <mat-icon>
+            checkmark
+          </mat-icon>
+        </button>
+        <br />
+      </ng-container>
+
+    </ng-container>
   </mat-list>
 
   <mat-form-field>

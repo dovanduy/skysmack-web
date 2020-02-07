@@ -13,6 +13,7 @@ export class KeyValueArrayFieldComponent extends FieldBaseComponent<Field> imple
   @ViewChild('keyInput', { static: false }) public keyInput: ElementRef;
   @ViewChild('valueInput', { static: false }) public valueInput: ElementRef;
 
+  public editKeyValues: boolean;
   public inputs: { id: string, key: string, value: string }[] = [];
 
   ngOnInit() {
@@ -27,7 +28,7 @@ export class KeyValueArrayFieldComponent extends FieldBaseComponent<Field> imple
           value: element.value
         });
       }
-      this.setFieldValue(this.inputs.map(x => ({ key: x.key, value: x.value })));
+      this.setFieldValue(this.inputs.map(x => ({ key: x.key, value: x.value, id: x.id })));
     }
     // this.inputs = this.field.value ? this.field.value : [];
     // this.inputs.map(input => input.id = Guid.create().toString());
@@ -66,5 +67,13 @@ export class KeyValueArrayFieldComponent extends FieldBaseComponent<Field> imple
     }
 
     this.setFieldValue(this.inputs);
+  }
+
+  public toggleEditKeyValues() {
+    this.editKeyValues = !this.editKeyValues;
+  }
+
+  public test(args) {
+    console.log(args);
   }
 }
