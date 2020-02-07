@@ -1,6 +1,6 @@
 <ng-container *ngIf="field" [formGroup]="fh.form">
   <h3>{{ field.placeholder + '.TITLE' | translate }}</h3>
-  <mat-list cdkDropList #todoList="cdkDropList" [cdkDropListData]="inputs" [cdkDropListConnectedTo]="[doneList]"
+  <mat-list cdkDropList #todoList="cdkDropList" [cdkDropListData]="inputs"
     class="example-list" (cdkDropListDropped)="drop($event)">
 
     <ng-container *ngFor="let input of inputs">
@@ -26,7 +26,7 @@
       <!-- Edit inputs -->
       <ng-container *ngIf="editKeyValues">
         <mat-form-field class="edit-key-values">
-          <input matInput type="text" placeholder="Key" [value]="input.key" (valueChange)="()">
+          <input matInput type="text" placeholder="Key" [value]="input.key">
         </mat-form-field>
 
         <mat-form-field class="edit-key-values">
