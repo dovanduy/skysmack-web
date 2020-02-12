@@ -26,6 +26,7 @@ export * from './phones-type';
 export * from './3cx-type';
 export * from './siteminder-type';
 export * from './webhooks-type';
+export * from './workflows-type';
 export * from './templates-type';
 export * from './cors-type';
 export * from './pass-codes-type';

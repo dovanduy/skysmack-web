@@ -110,6 +110,9 @@
       "@skysmack/packages-webhooks": [
         "./dist/@skysmack/packages-webhooks"
       ],
+      "@skysmack/packages-workflows": [
+        "./dist/@skysmack/packages-workflows"
+      ],
       "@skysmack/packages-templates": [
         "./dist/@skysmack/packages-templates"
       ],
@@ -199,6 +202,9 @@
       ],
       "@skysmack/ng-webhooks": [
         "libs/ng-packages/ng-webhooks"
+      ],
+      "@skysmack/ng-workflows": [
+        "libs/ng-packages/ng-workflows"
       ],
       "@skysmack/ng-templates": [
         "libs/ng-packages/ng-templates"

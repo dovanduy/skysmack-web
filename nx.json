@@ -62,6 +62,9 @@
     "packages-webhooks": {
       "tags": []
     },
+    "packages-workflows": {
+      "tags": []
+    },
     "packages-templates": {
       "tags": []
     },
@@ -204,6 +207,9 @@
       "tags": []
     },
     "ng-webhooks": {
+      "tags": []
+    },
+    "ng-workflows": {
       "tags": []
     },
     "ng-templates": {

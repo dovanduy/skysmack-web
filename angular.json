@@ -512,6 +512,39 @@
         }
       }
     },
+    "packages-workflows": {
+      "root": "libs/packages/packages-workflows",
+      "sourceRoot": "libs/packages/packages-workflows/src",
+      "projectType": "library",
+      "prefix": "skysmack",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/packages/packages-workflows/tsconfig.lib.json",
+              "libs/packages/packages-workflows/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/packages/packages-workflows/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/packages/packages-workflows/jest.config.js",
+            "tsConfig": "libs/packages/packages-workflows/tsconfig.spec.json"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/schematics:component": {
+          "styleext": "scss"
+        }
+      }
+    },
     "packages-templates": {
       "root": "libs/packages/packages-templates",
       "sourceRoot": "libs/packages/packages-templates/src",
@@ -2420,6 +2453,40 @@
             "jestConfig": "libs/ng-packages/ng-webhooks/jest.config.js",
             "tsConfig": "libs/ng-packages/ng-webhooks/tsconfig.spec.json",
             "setupFile": "libs/ng-packages/ng-webhooks/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "ng-workflows": {
+      "projectType": "library",
+      "root": "libs/ng-packages/ng-workflows",
+      "sourceRoot": "libs/ng-packages/ng-workflows/src",
+      "prefix": "skysmack",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/ng-packages/ng-workflows/tsconfig.lib.json",
+              "libs/ng-packages/ng-workflows/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/ng-packages/ng-workflows/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/ng-packages/ng-workflows/jest.config.js",
+            "tsConfig": "libs/ng-packages/ng-workflows/tsconfig.spec.json",
+            "setupFile": "libs/ng-packages/ng-workflows/src/test-setup.ts"
           }
         }
       },

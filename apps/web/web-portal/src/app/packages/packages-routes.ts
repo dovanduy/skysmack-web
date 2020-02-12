@@ -32,6 +32,7 @@ import { lodgingsReservationsPassCodeRoute } from './lodgings-reservations-pass-
 import { axisPhysicalAccessControlRoute } from './axis-physical-access-control-package-manifest';
 import { invoicesPersonsRoute } from './invoices-persons-package-manifest';
 import { invoicesLodgingReservationsRoute } from './invoices-lodging-reservations-package-manifest';
+import { workflowsRoute } from './workflows-package-manifest';
 
 export const packagesRoutes = [
     packagesRoute,
@@ -58,6 +59,7 @@ export const packagesRoutes = [
     phonesRoute,
     PBX_3CXRoute,
     webhooksRoute,
+    workflowsRoute,
     templatesRoute,
     corsRoute,
     passCodesRoute,

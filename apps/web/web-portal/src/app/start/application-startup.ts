@@ -41,6 +41,7 @@ import { loadLodgingsReservationsPassCodePackage } from '../packages/lodgings-re
 import { loadAxisPhysicalAccessControlPackage } from '../packages/axis-physical-access-control-package-manifest';
 import { loadInvoicesPersonsPackage } from '../packages/invoices-persons-package-manifest';
 import { loadInvoicesLodgingReservationsPackage } from '../packages/invoices-lodging-reservations-package-manifest';
+import { loadWorkflowsPackage } from '../packages/workflows-package-manifest';
 
 export function configureSkysmack(actions: NgSkysmackActions) {
     return () => actions.getSkysmack();
@@ -90,7 +91,8 @@ export const packageLoaders = [
     { provide: APP_INITIALIZER, useFactory: loadLodgingsDoorwaysPackage, deps: [PackageLoader], multi: true },
     { provide: APP_INITIALIZER, useFactory: loadLodgingsReservationsPassCodePackage, deps: [PackageLoader], multi: true },
     { provide: APP_INITIALIZER, useFactory: loadAxisPhysicalAccessControlPackage, deps: [PackageLoader], multi: true },
-    { provide: APP_INITIALIZER, useFactory: loadInvoicesPersonsPackage, deps: [PackageLoader], multi: true }
+    { provide: APP_INITIALIZER, useFactory: loadInvoicesPersonsPackage, deps: [PackageLoader], multi: true },
+    { provide: APP_INITIALIZER, useFactory: loadWorkflowsPackage, deps: [PackageLoader], multi: true }
 ];
 
 export const injectionTokens = [

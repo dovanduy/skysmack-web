@@ -80,6 +80,9 @@
       "@skysmack/packages-webhooks": [
         "libs/packages/webhooks/public_api.ts"
       ],
+      "@skysmack/packages-workflows": [
+        "libs/packages/workflows/public_api.ts"
+      ],
       "@skysmack/packages-templates": [
         "libs/packages/templates/public_api.ts"
       ],
@@ -214,6 +217,9 @@
       ],
       "@skysmack/ng-webhooks": [
         "libs/ng-packages/ng-webhooks/src/public_api.ts"
+      ],
+      "@skysmack/ng-workflows": [
+        "libs/ng-packages/ng-workflows/src/public_api.ts"
       ],
       "@skysmack/ng-templates": [
         "libs/ng-packages/ng-templates/src/public_api.ts"
