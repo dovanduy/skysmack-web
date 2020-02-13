@@ -4,6 +4,7 @@ import { WorkflowsCreateComponent } from './workflows-create/workflows-create.co
 import { WorkflowsEditComponent } from './workflows-edit/workflows-edit.component';
 import { SettingsComponent } from '@skysmack/portal-settings';
 import { RouteData } from '@skysmack/framework';
+import { DefinitionsIndexComponent } from './definitions-index/definitions-index.component';
 
 export const workflowsRoutes: Routes = [
   {
@@ -16,7 +17,10 @@ export const workflowsRoutes: Routes = [
           fieldsConfigToken: 'NgWorkflowSettingsFieldsConfig'
         } as RouteData
       }
-    ]
+    ]    
+  },
+  {
+    path: 'definitions', component: DefinitionsIndexComponent
   }
 ];
 
@@ -24,6 +28,7 @@ export const workflowsComponents: any[] = [
   WorkflowsIndexComponent,
   WorkflowsCreateComponent,
   WorkflowsEditComponent,
+  DefinitionsIndexComponent
 ];
 
 export const workflowsEntryComponents = [
