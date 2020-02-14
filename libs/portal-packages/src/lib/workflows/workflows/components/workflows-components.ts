@@ -5,6 +5,7 @@ import { WorkflowsEditComponent } from './workflows-edit/workflows-edit.componen
 import { SettingsComponent } from '@skysmack/portal-settings';
 import { RouteData } from '@skysmack/framework';
 import { DefinitionsIndexComponent } from './definitions-index/definitions-index.component';
+import { DefinitionsCreateComponent } from './definitions-create/definitions-create.component';
 
 export const workflowsRoutes: Routes = [
   {
@@ -20,7 +21,10 @@ export const workflowsRoutes: Routes = [
     ]    
   },
   {
-    path: 'definitions', component: DefinitionsIndexComponent
+    path: 'definitions', component: DefinitionsIndexComponent    
+  },
+  { 
+    path: 'definitions/create', component: DefinitionsCreateComponent, pathMatch: 'full'
   }
 ];
 
@@ -28,7 +32,8 @@ export const workflowsComponents: any[] = [
   WorkflowsIndexComponent,
   WorkflowsCreateComponent,
   WorkflowsEditComponent,
-  DefinitionsIndexComponent
+  DefinitionsIndexComponent,
+  DefinitionsCreateComponent
 ];
 
 export const workflowsEntryComponents = [

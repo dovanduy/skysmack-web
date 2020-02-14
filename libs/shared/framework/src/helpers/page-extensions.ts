@@ -8,11 +8,11 @@ export class PageExtensions {
     public static mergeOrAddPage<TKey>(existingPages: StrIndex<LocalPageTypes<TKey>> = {}, newPage: PageResponse<TKey>, loadingState: LoadingState = LoadingState.OK): StrIndex<LocalPageTypes<TKey>> {
         let currentPageType = existingPages[newPage.query];
         if (!currentPageType || currentPageType === null) {
-            currentPageType = new LocalPageTypes({
-                totalCount: newPage.totalCount
-            });
+            currentPageType = new LocalPageTypes();
             existingPages[newPage.query] = currentPageType;
-        } else {
+        } 
+        
+        if (newPage.totalCount || newPage.totalCount === 0) {
             currentPageType.totalCount = newPage.totalCount;
         }
 

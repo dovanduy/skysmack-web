@@ -24,7 +24,8 @@
     "@skysmack/portal-dynamic-forms": "*",
     "@skysmack/portal-ui": "*",
     "@skysmack/portal-settings": "*",
-    "swagger-ui": "3.23.1"
+    "swagger-ui": "3.23.1",
+    "@elsa-workflows/elsa-workflow-designer": "~0.0.61"
   },
   "main": "./lib/public_api.js",
   "types": "./lib/public_api.d.ts",

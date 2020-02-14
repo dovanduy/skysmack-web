@@ -1,4 +1,4 @@
-import { NgModule, ComponentFactoryResolver } from '@angular/core';
+import { NgModule, ComponentFactoryResolver, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { WorkflowsRoutingModule } from './workflows-routing.module';
@@ -10,6 +10,7 @@ import { CoalescingComponentFactoryResolver } from '@skysmack/ng-framework';
 import { DynamicFormsModule } from '@skysmack/portal-dynamic-forms';
 import { PortalFieldsModule } from '@skysmack/portal-fields';
 import { NgWorkflowsIndexMenuProvider } from './ng-workflows-index-menu-provider';
+import { NgDefinitionsIndexMenuProvider }from './ng-definitions-index-menu-provider';
 import { NgWorkflowSettingsFieldsConfig } from './workflows/ng-workflows-settings-fields-config';
 import { SettingsModule } from '@skysmack/portal-settings';
 
@@ -33,7 +34,8 @@ import { SettingsModule } from '@skysmack/portal-settings';
   ],
   providers: [
     { provide: 'NgWorkflowSettingsFieldsConfig', useClass: NgWorkflowSettingsFieldsConfig },
-  ]
+  ],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
 export class WorkflowsModule {
   constructor(
@@ -41,11 +43,13 @@ export class WorkflowsModule {
     coalescingResolver: CoalescingComponentFactoryResolver,
     localResolver: ComponentFactoryResolver,
     ngMenuProviders: NgMenuProviders,
-    ngWorkflowsIndexMenuProvider: NgWorkflowsIndexMenuProvider
+    ngWorkflowsIndexMenuProvider: NgWorkflowsIndexMenuProvider,
+    ngDefinitionsIndexMenuProvider: NgDefinitionsIndexMenuProvider
   ) {
 
     // Make entry components available
     coalescingResolver.registerResolver(localResolver);
     ngMenuProviders.add(ngWorkflowsIndexMenuProvider);
+    ngMenuProviders.add(ngDefinitionsIndexMenuProvider);
   }
 }
