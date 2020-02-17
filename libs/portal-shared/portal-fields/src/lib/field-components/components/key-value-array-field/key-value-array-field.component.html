@@ -1,20 +1,59 @@
 <ng-container *ngIf="field" [formGroup]="fh.form">
-  <h3>Key-Value pairs</h3>
+  <h3>{{ field.placeholder + '.TITLE' | translate }}</h3>
+  <mat-list cdkDropList #todoList="cdkDropList" [cdkDropListData]="inputs"
+    class="example-list" (cdkDropListDropped)="drop($event)">
+
+    <ng-container *ngFor="let input of inputs">
+
+      <!-- Show inputs -->
+      <mat-list-item *ngIf="!editKeyValues" style="cursor: move;" cdkDrag>
+        <span class="input" matLine><span class="mat-body p-r-5"><b>{{ input.key }} </b></span> <span
+            class="mat-small">{{ input.value }}</span></span>
+        <button mat-icon-button (click)="toggleEditKeyValues()">
+          <mat-icon>
+            edit
+          </mat-icon>
+        </button>
+
+        <button mat-icon-button (click)="remove(input.id)">
+          <mat-icon>
+            close
+          </mat-icon>
+        </button>
+
+      </mat-list-item>
+
+      <!-- Edit inputs -->
+      <ng-container *ngIf="editKeyValues">
+        <mat-form-field class="edit-key-values">
+          <input matInput type="text" placeholder="Key" [value]="input.key">
+        </mat-form-field>
+
+        <mat-form-field class="edit-key-values">
+          <input matInput type="text" placeholder="Value" [value]="input.key">
+        </mat-form-field>
+
+        <button mat-icon-button (click)="toggleEditKeyValues()">
+          <mat-icon>
+            checkmark
+          </mat-icon>
+        </button>
+        <br />
+      </ng-container>
+
+    </ng-container>
+  </mat-list>
+
   <mat-form-field>
-    <input matInput type="text" placeholder="Key" #keyInput />
+    <input matInput type="text" [placeholder]="field.placeholder + '.KEY' | translate" #keyInput />
   </mat-form-field>
 
   <mat-form-field>
-    <input matInput type="text" placeholder="Value" #valueInput />
+    <input matInput type="text" [placeholder]="field.placeholder + '.VALUE' | translate" #valueInput />
   </mat-form-field>
 
   <button mat-raised-button (click)="add()">Add</button>
 
-  <p *ngFor="let input of inputs"><span style="font-weight:bold;">Key:</span> {{ input.key }}, <span
-      style="font-weight:bold;">Value:</span> {{ input.value }} <mat-icon style="cursor:pointer"
-      (click)="remove(input.id)">
-      delete</mat-icon>
-  </p>
 
   <ss-backend-errors [field]="field"></ss-backend-errors>
 

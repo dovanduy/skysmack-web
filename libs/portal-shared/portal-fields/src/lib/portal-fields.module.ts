@@ -21,6 +21,7 @@ import { NgFieldsMenuProvider } from './ng-fields-menu-provider';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSelectModule } from '@angular/material/select';
 import { MatListModule } from '@angular/material/list';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 const material = [
   MatCheckboxModule,
@@ -29,7 +30,8 @@ const material = [
   MatMomentDateModule,
   MatSelectModule,
   MatListModule,
-  MatAutocompleteModule
+  MatAutocompleteModule,
+  DragDropModule
 ];
 
 @NgModule({

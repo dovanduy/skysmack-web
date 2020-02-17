@@ -31,17 +31,17 @@ export class TemplatesEditComponent extends RecordFormComponent<TemplatesAppStat
     this.setEditFields();
   }
 
-  protected create(fh: FormHelper) {
-    fh.formValid(() => {
-      const localObject = this.extractFormValues(fh);
+  // protected create(fh: FormHelper) {
+  //   fh.formValid(() => {
+  //     const localObject = this.extractFormValues(fh);
 
 
 
-      this.editorItem ? localObject.localId = this.editorItem.localId : localObject.localId = localObject.localId;
-      this.actions.add([localObject], this.packagePath);
-      this.editorNavService.hideEditorNav();
-    });
-  }
+  //     this.editorItem ? localObject.localId = this.editorItem.localId : localObject.localId = localObject.localId;
+  //     this.actions.add([localObject], this.packagePath);
+  //     this.editorNavService.hideEditorNav();
+  //   });
+  // }
 
   protected update(fh: FormHelper) {
     fh.formValid(() => {
