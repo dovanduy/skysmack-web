@@ -52,16 +52,7 @@
     </ng-container>
   </mat-list>
 
-  <mat-form-field>
-    <input matInput type="text" [placeholder]="field.placeholder + '.KEY' | translate" #keyInput />
-  </mat-form-field>
-
-  <mat-form-field>
-    <input matInput type="text" [placeholder]="field.placeholder + '.VALUE' | translate" #valueInput />
-  </mat-form-field>
-
   <button mat-raised-button (click)="add()">Add</button>
-
 
   <ss-backend-errors [field]="field"></ss-backend-errors>
 

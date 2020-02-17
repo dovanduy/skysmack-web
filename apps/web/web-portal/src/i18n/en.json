@@ -184,30 +184,6 @@
 			"TYPES": "Types"
 		}
 	},
-	"AXIS_PHYSICAL_ACCESS_CONTROL": {
-		"INDEX": {
-			"MANAGE": "Manage",
-			"ACTIONS": "Actions",
-			"SETTINGS": "Settings",
-			"ACCESS_POINTS": "Access points",
-			"ACCESS_CONTROLLERS": "Access controllers",
-			"VAPIX_CONNECTION_SETTINGS": "Connection settings"
-		},
-		"FORM": {
-			"LABELS": {
-				"ROUTE": "Route",
-				"USERNAME": "User name",
-				"PASSWORD": "Password",
-				"SKIPVERIFYSSL": "Skip verify SSL check"
-			},
-			"PLACEHOLDERS": {
-				"ROUTE": "Route",
-				"USERNAME": "User name",
-				"PASSWORD": "Password"
-			},
-			"VALIDATION": {}
-		}
-	},
 	"ACCESS_POINTS": {
 		"FORM": {
 			"LABELS": {
@@ -244,6 +220,30 @@
 			"ACTIONS": "Actions",
 			"SETTINGS": "Settings",
 			"TYPES": "Types"
+		}
+	},
+	"AXIS_PHYSICAL_ACCESS_CONTROL": {
+		"INDEX": {
+			"MANAGE": "Manage",
+			"ACTIONS": "Actions",
+			"SETTINGS": "Settings",
+			"ACCESS_POINTS": "Access points",
+			"ACCESS_CONTROLLERS": "Access controllers",
+			"VAPIX_CONNECTION_SETTINGS": "Connection settings"
+		},
+		"FORM": {
+			"LABELS": {
+				"ROUTE": "Route",
+				"USERNAME": "User name",
+				"PASSWORD": "Password",
+				"SKIPVERIFYSSL": "Skip verify SSL check"
+			},
+			"PLACEHOLDERS": {
+				"ROUTE": "Route",
+				"USERNAME": "User name",
+				"PASSWORD": "Password"
+			},
+			"VALIDATION": {}
 		}
 	},
 	"CORS": {
@@ -3284,10 +3284,10 @@
 				"TITLE": "Title",
 				"BODY": "Body",
 				"DATAROUTES": {
-                    "TITLE": "Data routes",
-                    "KEY": "Template key",
-                    "VALUE": "Route"
-                }
+					"TITLE": "Data routes",
+					"KEY": "Template key",
+					"VALUE": "Route"
+				}
 			},
 			"VALIDATION": {
 				"NAME": {
@@ -4163,6 +4163,11 @@
 		"EDIT": {
 			"EDITING": "Editing",
 			"BUTTON_EDIT": "Update"
+		},
+		"FIELDS": {
+			"KEY_VALUES_ARRAY_FIELD": {
+				"MISSING_VALUES": "Please fill all inputs."
+			}
 		},
 		"MISC": {
 			"GENERATE_GUID": "Generate GUID"

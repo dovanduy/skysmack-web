@@ -23,6 +23,7 @@ import { KeyValueArrayFieldComponent } from './components/key-value-array-field/
 import { BooleanFieldComponent } from './components/boolean-field/boolean-field.component';
 import { GuidFieldComponent } from './components/guid-field/guid-field.component';
 import { AutoCompleteFieldComponent } from './components';
+import { AddValueArrayDialogComponent } from './components/key-value-array-field/add-key-value-dialog/add-key-value-dialog.component';
 
 export const dynamicFieldComponents = [
     CheckboxFieldComponent,
@@ -49,5 +50,6 @@ export const dynamicFieldComponents = [
     KeyValueArrayFieldComponent,
     BooleanFieldComponent,
     GuidFieldComponent,
-    AutoCompleteFieldComponent
+    AutoCompleteFieldComponent,
+    AddValueArrayDialogComponent
 ];

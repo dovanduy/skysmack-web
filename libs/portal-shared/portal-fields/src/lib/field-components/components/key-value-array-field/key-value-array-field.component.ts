@@ -3,6 +3,9 @@ import { FieldBaseComponent } from '../field-base-component';
 import { Field } from '@skysmack/ng-dynamic-forms';
 import { Guid } from 'guid-typescript';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
+import { MatDialog } from '@angular/material/dialog';
+import { AddValueArrayDialogComponent } from './add-key-value-dialog/add-key-value-dialog.component';
+import { tap } from 'rxjs/operators';
 
 @Component({
   selector: 'ss-key-value-array-field',
@@ -16,6 +19,12 @@ export class KeyValueArrayFieldComponent extends FieldBaseComponent<Field> imple
   public editKeyValues: boolean;
   public inputs: { id: string, key: string, value: string }[] = [];
   public editInputs: { id: string, key: string, value: string }[] = [];
+
+  constructor(
+    private dialog: MatDialog
+  ) {
+    super();
+  }
 
   ngOnInit() {
     super.ngOnInit();
@@ -31,24 +40,24 @@ export class KeyValueArrayFieldComponent extends FieldBaseComponent<Field> imple
       }
       this.setFieldValue(this.inputs.map(x => ({ key: x.key, value: x.value, id: x.id })));
     }
-    // this.inputs = this.field.value ? this.field.value : [];
-    // this.inputs.map(input => input.id = Guid.create().toString());
   }
 
   public add() {
-    const key = this.keyInput.nativeElement.value;
-    const value = this.valueInput.nativeElement.value;
+    this.subscriptionHandler.register(this.dialog.open(AddValueArrayDialogComponent, {
+      minWidth: 320,
+      data: this.field
+    }).afterClosed().pipe(
+      tap(input => {
+        if (input && input.key && input.value) {
+          this.inputs.push({
+            id: Guid.create().toString(),
+            ...input
+          });
 
-    this.inputs.push({
-      id: Guid.create().toString(),
-      key,
-      value
-    });
-
-    this.keyInput.nativeElement.value = '';
-    this.valueInput.nativeElement.value = '';
-
-    this.setFieldValue(this.inputs.map(x => ({ key: x.key, value: x.value })));
+          this.setFieldValue(this.inputs.map(x => ({ key: x.key, value: x.value })));
+        }
+      })
+    ).subscribe());
   }
 
   public remove(id: string) {

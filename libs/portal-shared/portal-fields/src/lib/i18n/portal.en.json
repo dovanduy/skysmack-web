@@ -14,6 +14,11 @@
             "EDITING": "Editing",
             "BUTTON_EDIT": "Update"
         },
+        "FIELDS": {
+            "KEY_VALUES_ARRAY_FIELD": {
+                "MISSING_VALUES": "Please fill all inputs."
+            }
+        },
         "MISC": {
             "GENERATE_GUID": "Generate GUID"
         },
