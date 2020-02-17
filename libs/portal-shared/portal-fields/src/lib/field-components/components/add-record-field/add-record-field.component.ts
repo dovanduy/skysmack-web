@@ -4,7 +4,9 @@ import { AddField } from '@skysmack/ng-fields';
 import { FormHelper, Field } from '@skysmack/ng-dynamic-forms';
 import { Observable } from 'rxjs';
 import { NgSkysmackStore } from '@skysmack/ng-skysmack';
-import { switchMap } from 'rxjs/operators';
+import { switchMap, tap } from 'rxjs/operators';
+import { MatDialog } from '@angular/material/dialog';
+import { AddRecordDialogComponent } from './add-record-dialog/add-record-dialog.component';
 
 @Component({
   selector: 'ss-add-record-field',
@@ -12,41 +14,40 @@ import { switchMap } from 'rxjs/operators';
 })
 export class AddRecordFieldComponent extends FieldBaseComponent<AddField> implements OnInit {
 
-  public addFields$: Observable<Field[]>;
-  public adding: boolean;
   public added: any[] = [];
 
-  constructor(public skysmackStore: NgSkysmackStore) {
+  constructor(
+    public skysmackStore: NgSkysmackStore,
+    private dialog: MatDialog
+  ) {
     super();
   }
 
   ngOnInit() {
     super.ngOnInit();
-    const addField = this.field as AddField;
-    this.addFields$ = this.skysmackStore.getCurrentPackage(addField.packagePath).pipe(
-      switchMap(loadedPackage => addField.fieldsConfig.getFields(loadedPackage))
-    );
   }
 
-  public toggleAdding() {
-    this.adding = !this.adding;
-  }
+  public add() {
+    this.subscriptionHandler.register(this.dialog.open(AddRecordDialogComponent, {
+      minWidth: 320,
+      data: this.field
+    }).afterClosed().pipe(
+      tap((postedValues: any) => {
+        if (postedValues) {
+          console.log(postedValues);
+          let currentValues = this.getFieldValue();
 
-  public onAddSubmit(fh: FormHelper) {
-    fh.formValid(() => {
-      const postedValues = fh.form.getRawValue();
-      let currentValues = this.getFieldValue();
+          if (!currentValues) {
+            currentValues = [];
+          }
 
-      if (!currentValues) {
-        currentValues = [];
-      }
+          currentValues.push(postedValues);
 
-      currentValues.push(postedValues);
-
-      this.added = currentValues;
-      this.setFieldValue(currentValues);
-      this.toggleAdding();
-    });
+          this.added = currentValues;
+          this.setFieldValue(currentValues);
+        }
+      })
+    ).subscribe());
   }
 
   public remove(index: number) {

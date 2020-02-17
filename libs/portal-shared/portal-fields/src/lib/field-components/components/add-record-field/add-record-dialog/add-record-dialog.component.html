@@ -1,0 +1,12 @@
+<h3 mat-dialog-title>{{ 'FIELD.FIELDS.ADD_RECORD_FIELD.ADDING' | translate }}</h3>
+
+<div mat-dialog-content>
+  <ss-dynamic-form *ngIf="addFields$" [fields$]="addFields$" [validation]="field.fieldsConfig.validation"
+    [rules]="this.field.fieldsConfig.formRules" [buttonText]="'UI.BUTTONS.BUTTON_ADD' | translate"
+    (submitted)="onAddSubmit($event)" [removeCloseButton]="true">
+  </ss-dynamic-form>
+</div>
+
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close [mat-dialog-close]="true">Cancel</button>
+</mat-dialog-actions>

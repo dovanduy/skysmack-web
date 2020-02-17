@@ -17,6 +17,9 @@
         "FIELDS": {
             "KEY_VALUES_ARRAY_FIELD": {
                 "MISSING_VALUES": "Please fill all inputs."
+            },
+            "ADD_RECORD_FIELD": {
+                "ADDING": "Adding"
             }
         },
         "MISC": {
