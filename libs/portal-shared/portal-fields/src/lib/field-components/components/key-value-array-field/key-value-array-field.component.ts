@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, OnChanges } from '@angular/core';
 import { FieldBaseComponent } from '../field-base-component';
 import { Field } from '@skysmack/ng-dynamic-forms';
 import { Guid } from 'guid-typescript';
@@ -15,6 +15,7 @@ export class KeyValueArrayFieldComponent extends FieldBaseComponent<Field> imple
 
   public editKeyValues: boolean;
   public inputs: { id: string, key: string, value: string }[] = [];
+  public editInputs: { id: string, key: string, value: string }[] = [];
 
   ngOnInit() {
     super.ngOnInit();
@@ -70,10 +71,34 @@ export class KeyValueArrayFieldComponent extends FieldBaseComponent<Field> imple
   }
 
   public toggleEditKeyValues() {
+    if (!this.editKeyValues) {
+      // Start editing
+      this.editInputs = JSON.parse(JSON.stringify(this.inputs)); // Clone values.
+    } else {
+      // Close and reset
+      this.editInputs = [];
+    }
+
     this.editKeyValues = !this.editKeyValues;
   }
 
-  public test(args) {
-    console.log(args);
+  public submitKeyValueChanges() {
+    this.inputs = this.editInputs.map(x => ({ id: x.id, key: x.key, value: x.value }));
+    this.setFieldValue(this.inputs);
+    this.toggleEditKeyValues();
+  }
+
+  public keyChanged(id: string, change: string) {
+    const found = this.editInputs.find(x => x.id === id);
+    if (found) {
+      found.key = change;
+    }
+  }
+
+  public valueChanged(id: string, change: string) {
+    const found = this.editInputs.find(x => x.id === id);
+    if (found) {
+      found.value = change;
+    }
   }
 }
