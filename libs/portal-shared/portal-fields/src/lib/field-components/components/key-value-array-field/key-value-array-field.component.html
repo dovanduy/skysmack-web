@@ -1,5 +1,43 @@
 <ng-container *ngIf="field" [formGroup]="fh.form">
-  <h3>{{ field.placeholder + '.TITLE' | translate }}</h3>
+
+  <!-- Title area-->
+  <div class="title-area">
+
+    <!-- Title -->
+    <h3>{{ field.placeholder + '.TITLE' | translate }}</h3>
+
+    <!-- Edit button -->
+    <ng-container *ngIf="!editKeyValues">
+      <button mat-icon-button (click)="add()">
+        <mat-icon>
+          add
+        </mat-icon>
+      </button>
+
+      <button mat-icon-button *ngIf="inputs && inputs.length > 0" (click)="toggleEditKeyValues()">
+        <mat-icon>
+          edit
+        </mat-icon>
+      </button>
+    </ng-container>
+
+    <ng-container *ngIf="editKeyValues">
+      <button mat-icon-button (click)="submitKeyValueChanges()">
+        <mat-icon>
+          checkmark
+        </mat-icon>
+      </button>
+
+      <button mat-icon-button (click)="toggleEditKeyValues()">
+        <mat-icon>
+          close
+        </mat-icon>
+      </button>
+    </ng-container>
+
+  </div>
+
+  <!-- List -->
   <mat-list cdkDropList #todoList="cdkDropList" [cdkDropListData]="inputs" class="example-list"
     (cdkDropListDropped)="drop($event)">
 
@@ -9,11 +47,6 @@
       <mat-list-item *ngIf="!editKeyValues" style="cursor: move;" cdkDrag>
         <span class="input" matLine><span class="mat-body p-r-5"><b>{{ input.key }} </b></span> <span
             class="mat-small">{{ input.value }}</span></span>
-        <button mat-icon-button (click)="toggleEditKeyValues()">
-          <mat-icon>
-            edit
-          </mat-icon>
-        </button>
 
         <button mat-icon-button (click)="remove(input.id)">
           <mat-icon>
@@ -35,24 +68,12 @@
             (change)="valueChanged(input.id, $event.target.value)">
         </mat-form-field>
 
-        <button mat-icon-button (click)="submitKeyValueChanges()">
-          <mat-icon>
-            checkmark
-          </mat-icon>
-        </button>
-
-        <button mat-icon-button (click)="toggleEditKeyValues()">
-          <mat-icon>
-            close
-          </mat-icon>
-        </button>
         <br />
       </ng-container>
 
     </ng-container>
   </mat-list>
 
-  <button mat-raised-button (click)="add()">Add</button>
 
   <ss-backend-errors [field]="field"></ss-backend-errors>
 

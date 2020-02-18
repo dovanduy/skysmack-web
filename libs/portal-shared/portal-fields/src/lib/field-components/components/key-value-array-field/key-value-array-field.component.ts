@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef, OnChanges } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { FieldBaseComponent } from '../field-base-component';
 import { Field } from '@skysmack/ng-dynamic-forms';
 import { Guid } from 'guid-typescript';
