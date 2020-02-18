@@ -1463,6 +1463,122 @@
         }
       }
     },
+    "hotel-booking-example": {
+      "projectType": "application",
+      "schematics": {
+        "@nrwl/workspace:component": {
+          "style": "scss"
+        }
+      },
+      "root": "apps/example-apps/hotel-booking-example",
+      "sourceRoot": "apps/example-apps/hotel-booking-example/src",
+      "prefix": "skysmack",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/example-apps/hotel-booking-example",
+            "index": "apps/example-apps/hotel-booking-example/src/index.html",
+            "main": "apps/example-apps/hotel-booking-example/src/main.ts",
+            "polyfills": "apps/example-apps/hotel-booking-example/src/polyfills.ts",
+            "tsConfig": "apps/example-apps/hotel-booking-example/tsconfig.app.json",
+            "preserveSymlinks": false,
+            "assets": [
+              "apps/example-apps/hotel-booking-example/src/favicon.ico",
+              "apps/example-apps/hotel-booking-example/src/assets",
+              "apps/example-apps/hotel-booking-example/src/manifest.json",
+              {
+                "glob": "**/*",
+                "input": "apps/example-apps/hotel-booking-example/src/i18n/",
+                "output": "/i18n/"
+              },
+              {
+                "glob": "*.png",
+                "input": "apps/example-apps/hotel-booking-example/src/",
+                "output": "/"
+              },
+              {
+                "glob": "robots.txt",
+                "input": "apps/example-apps/hotel-booking-example/src",
+                "output": "/"
+              }
+            ],
+            "styles": [
+              "apps/example-apps/hotel-booking-example/src/styles.scss"
+            ],
+            "scripts": [],
+            "es5BrowserSupport": true,
+            "vendorSourceMap": true
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/example-apps/hotel-booking-example/src/environments/environment.ts",
+                  "with": "apps/example-apps/hotel-booking-example/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ],
+              "serviceWorker": true,
+              "ngswConfigPath": "apps/example-apps/hotel-booking-example/src/ngsw-config.json"
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "hotel-booking-example:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "hotel-booking-example:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "hotel-booking-example:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/example-apps/hotel-booking-example/tsconfig.app.json",
+              "apps/example-apps/hotel-booking-example/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/example-apps/hotel-booking-example/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/example-apps/hotel-booking-example/jest.config.js",
+            "tsConfig": "apps/example-apps/hotel-booking-example/tsconfig.spec.json",
+            "setupFile": "apps/example-apps/hotel-booking-example/src/test-setup.ts"
+          }
+        }
+      }
+    },
     "web-commercial": {
       "projectType": "application",
       "schematics": {

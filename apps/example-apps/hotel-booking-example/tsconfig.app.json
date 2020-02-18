@@ -1,0 +1,17 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "../../../dist/out-tsc/apps/example-apps/hotel-booking-example",
+    "types": []
+  },
+  "angularCompilerOptions": {
+    "enableIvy": false
+  },
+  "exclude": [
+    "src/test-setup.ts",
+    "**/*.spec.ts"
+  ],
+  "include": [
+    "**/*.ts"
+  ]
+}

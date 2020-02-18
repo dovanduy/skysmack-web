@@ -1,0 +1,24 @@
+{
+    "dir": "ltr",
+    "lang": "en",
+    "name": "Skysmack Cloud",
+    "short_name": "Skysmack",
+    "orientation": "any",
+    "start_url": "/account/login?utm_source=webapp",
+    "scope": "/",
+    "icons": [
+        {
+            "src": "//cdn.skysmack.net/assets/icons/android-chrome-192x192.png?v=Kmnj8bBO5w",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "//cdn.skysmack.net/assets/icons/android-chrome-512x512.png?v=Kmnj8bBO5w",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ],
+    "theme_color": "#2c89a0",
+    "background_color": "#2c89a0",
+    "display": "standalone"
+}

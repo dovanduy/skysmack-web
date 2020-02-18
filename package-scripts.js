@@ -44,6 +44,10 @@ module.exports = {
         minify: "gulp minify-commercial"
       }
     },
+    hotelBooking: {
+      // Run local dev server
+      default: 'ng serve hotel-booking-example',
+    },
     nrwl: {
       // Default runs update for easier command line. May need to be changed if more commands are added.
       default: 'nps nrwl.update',
