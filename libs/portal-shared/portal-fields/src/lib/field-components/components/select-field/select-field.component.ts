@@ -13,12 +13,20 @@ export class SelectFieldComponent extends FieldBaseComponent<SelectField> implem
     if (this.field) {
       const fields = this.fields;
       this.runAllRulesOfType(DisableUntilValueRule.type, { fields });
+      this.runRulesOnce(fields);
       this.runRulesOnChange(fields);
     }
   }
 
+  private runRulesOnce(fields: Field[]) {
+    this.runRules({
+      fields,
+      selectedValue: this.getFieldValue(),
+    });
+  }
+
   public runRulesOnChange(fields: Field[]) {
-    this.subscriptionHandler.register(this.fh.form.valueChanges.subscribe(() => {
+    this.subscriptionHandler.register(this.getFormField().valueChanges.subscribe(() => {
       this.runRules({
         fields,
         selectedValue: this.getFieldValue(),

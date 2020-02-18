@@ -23,7 +23,6 @@ export abstract class FieldBaseComponent<TField extends Field> implements Dynami
     public initted: boolean;
 
     ngOnInit() {
-        console.log('base init', this.field.key);
     }
 
     ngOnDestroy() {
