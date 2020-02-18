@@ -18,7 +18,8 @@ export class NgTemplatePackageSettingsFieldsConfig extends FieldsConfig<Template
     public validation = new NgTemplatePackageSettingsValidation();
     public area = OAUTH2_AREA_KEY;
     public formRules: FormRule[] = [
-        new ReplaceSelectFieldStreamRule(['templatePackagePath'], this.templatesStore, this.templatesActions)
+        // DON'T PLACE FORM RULES HERE.
+        // Use array in below function setFormRules()
     ];
 
     constructor(
@@ -31,6 +32,7 @@ export class NgTemplatePackageSettingsFieldsConfig extends FieldsConfig<Template
     }
 
     protected getEntityFields(loadedPackage: LoadedPackage, settings?: LocalObject<TemplatePackageSettings, unknown>): Field[] {
+        this.setFormRules();
 
         const fields = [
             new SelectField({
@@ -67,5 +69,13 @@ export class NgTemplatePackageSettingsFieldsConfig extends FieldsConfig<Template
         ];
 
         return fields;
+    }
+
+    private setFormRules() {
+        setTimeout(() => { // Prevents expression changed error
+            this.formRules = [
+                new ReplaceSelectFieldStreamRule(['templatePackagePath'], this.templatesStore, this.templatesActions)
+            ];
+        }, 0);
     }
 }

@@ -18,6 +18,8 @@ export class ReplaceSelectFieldStreamRule extends FormRule {
     }
 
     protected rule(deps: { fields: Field[], selectedValue: string }) {
+        const { fields, selectedValue } = deps;
+
         if (this.first) {
             this.first = false;
         } else {
@@ -30,16 +32,18 @@ export class ReplaceSelectFieldStreamRule extends FormRule {
         }
 
         // Get email templates for selected package
-        this.templatesActions.getPaged(deps.selectedValue, new PagedQuery());
-        const result$ = this.templatesStore.get(deps.selectedValue);
+        if (selectedValue) {
+            this.templatesActions.getPaged(selectedValue, new PagedQuery());
+        }
+        const result$ = this.templatesStore.get(selectedValue);
 
-        const confirmEmailTemplateField = this.getField(deps.fields, 'confirmEmailTemplateId') as SelectField;
+        const confirmEmailTemplateField = this.getField(fields, 'confirmEmailTemplateId') as SelectField;
         confirmEmailTemplateField.optionsData$ = result$.pipe(
             debounceTime(0),
             confirmEmailTemplateField.dataToOptions()
         );
 
-        const resetPasswordTemplateField = this.getField(deps.fields, 'resetPasswordTemplateId') as SelectField;
+        const resetPasswordTemplateField = this.getField(fields, 'resetPasswordTemplateId') as SelectField;
         resetPasswordTemplateField.optionsData$ = result$.pipe(
             debounceTime(0),
             confirmEmailTemplateField.dataToOptions()
