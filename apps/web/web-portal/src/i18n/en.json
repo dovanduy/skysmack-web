@@ -136,6 +136,54 @@
 			"ERROR": "An error occured with access policy rules {{ id }}. Correct and try again."
 		}
 	},
+	"ACCESS_CONTROLLERS": {
+		"FORM": {
+			"LABELS": {
+				"ROUTE": "Route",
+				"USERNAME": "User name",
+				"PASSWORD": "Password",
+				"SKIPVERIFYSSL": "Skip verify SSL"
+			},
+			"PLACEHOLDERS": {
+				"ROUTE": "Route",
+				"USERNAME": "User name",
+				"PASSWORD": "Password",
+				"SKIPVERIFYSSL": "Skip verify SSL"
+			},
+			"VALIDATION": {
+				"ROUTE": {
+					"REQUIRED": "Route is required."
+				},
+				"USERNAME": {
+					"REQUIRED": "User name is required."
+				},
+				"PASSWORD": {
+					"REQUIRED": "Password is required."
+				},
+				"SKIPVERIFYSSL": {
+					"REQUIRED": "Skip verify SSL is required."
+				}
+			}
+		},
+		"CREATE": {
+			"CREATE": "Create",
+			"BUTTON_CREATE": "Create"
+		},
+		"EDIT": {
+			"EDIT": "Edit",
+			"BUTTON_EDIT": "Update"
+		},
+		"INDEX": {
+			"TITLE_EXTRAS": "(Access Controllers)",
+			"CREATE": "Create",
+			"EDIT": "Edit",
+			"DELETE": "Delete",
+			"MANAGE": "Manage",
+			"ACTIONS": "Actions",
+			"SETTINGS": "Settings",
+			"TYPES": "Types"
+		}
+	},
 	"ACCESS_POINTS": {
 		"FORM": {
 			"LABELS": {
@@ -196,54 +244,6 @@
 				"PASSWORD": "Password"
 			},
 			"VALIDATION": {}
-		}
-	},
-	"ACCESS_CONTROLLERS": {
-		"FORM": {
-			"LABELS": {
-				"ROUTE": "Route",
-				"USERNAME": "User name",
-				"PASSWORD": "Password",
-				"SKIPVERIFYSSL": "Skip verify SSL"
-			},
-			"PLACEHOLDERS": {
-				"ROUTE": "Route",
-				"USERNAME": "User name",
-				"PASSWORD": "Password",
-				"SKIPVERIFYSSL": "Skip verify SSL"
-			},
-			"VALIDATION": {
-				"ROUTE": {
-					"REQUIRED": "Route is required."
-				},
-				"USERNAME": {
-					"REQUIRED": "User name is required."
-				},
-				"PASSWORD": {
-					"REQUIRED": "Password is required."
-				},
-				"SKIPVERIFYSSL": {
-					"REQUIRED": "Skip verify SSL is required."
-				}
-			}
-		},
-		"CREATE": {
-			"CREATE": "Create",
-			"BUTTON_CREATE": "Create"
-		},
-		"EDIT": {
-			"EDIT": "Edit",
-			"BUTTON_EDIT": "Update"
-		},
-		"INDEX": {
-			"TITLE_EXTRAS": "(Access Controllers)",
-			"CREATE": "Create",
-			"EDIT": "Edit",
-			"DELETE": "Delete",
-			"MANAGE": "Manage",
-			"ACTIONS": "Actions",
-			"SETTINGS": "Settings",
-			"TYPES": "Types"
 		}
 	},
 	"CORS": {
@@ -3332,7 +3332,8 @@
 			"MANAGE": "Manage",
 			"ACTIONS": "Actions",
 			"SETTINGS": "Settings",
-			"TYPES": "Types"
+			"TYPES": "Types",
+			"FIELDS": "Fields"
 		},
 		"SETTINGS": {},
 		"QUEUE": {
@@ -3344,6 +3345,105 @@
 		"ENTITY_ACTION_PROVIDER": {
 			"ENTITY_ACTION": {
 				"TEMPLATE": "Card payment"
+			}
+		},
+		"FIELDS": {
+			"INDEX": "Index"
+		}
+	},
+	"WEBHOOKS": {
+		"FORM": {
+			"LABELS": {
+				"NAME": "Name",
+				"CONNECTIONSTRING": "Connection string",
+				"CONNECTION": "Connection",
+				"DESCRIPTION": "Description",
+				"CLIENTID": "Client",
+				"WEBHOOKID": "Webhook",
+				"AMOUNT": "Amount",
+				"INVOICEID": "Invoice ID",
+				"CURRENCYCODE": "Currency",
+				"ENABLED": "Enabled",
+				"URL": "Url",
+				"HTTPMETHOD": "HTTP method",
+				"CUSTOMHEADERS": "Custom headers",
+				"PACKAGEPATH": "Package path",
+				"SOURCE": "Source",
+				"EVENTTYPE": "Event type"
+			},
+			"PLACEHOLDERS": {
+				"NAME": "Name",
+				"CONNECTIONSTRING": "Connection string",
+				"CONNECTION": "Connection",
+				"DESCRIPTION": "Description",
+				"CLIENTID": "Client",
+				"WEBHOOKID": "Webhook",
+				"AMOUNT": "Amount",
+				"INVOICEID": "Invoice ID",
+				"CURRENCYCODE": "Currency",
+				"ENABLED": "Enabled",
+				"URL": "Url",
+				"HTTPMETHOD": "HTTP method",
+				"CUSTOMHEADERS": "Custom headers",
+				"PACKAGEPATH": "Package path",
+				"SOURCE": "Source",
+				"EVENTTYPE": "Event type"
+			},
+			"VALIDATION": {
+				"NAME": {
+					"REQUIRED": "Name is required."
+				},
+				"CONNECTIONSTRING": {
+					"REQUIRED": "Connection string is required."
+				},
+				"CONNECTION": {
+					"REQUIRED": "Connection is required."
+				},
+				"CLIENTID": {
+					"REQUIRED": "Client is required."
+				},
+				"WEBHOOKID": {
+					"REQUIRED": "Webhook is required."
+				},
+				"AMOUNT": {
+					"REQUIRED": "Amount is required."
+				},
+				"INVOICEID": {
+					"REQUIRED": "Invoice ID is required."
+				},
+				"CURRENCYCODE": {
+					"REQUIRED": "Currency is required."
+				}
+			}
+		},
+		"CREATE": {
+			"CREATE": "Create",
+			"BUTTON_CREATE": "Create"
+		},
+		"EDIT": {
+			"EDIT": "Edit",
+			"BUTTON_EDIT": "Edit"
+		},
+		"INDEX": {
+			"TITLE_EXTRAS": "(Webhooks)",
+			"CREATE": "Create",
+			"EDIT": "Edit",
+			"DELETE": "Delete",
+			"MANAGE": "Manage",
+			"ACTIONS": "Actions",
+			"SETTINGS": "Settings",
+			"TYPES": "Types"
+		},
+		"SETTINGS": {},
+		"QUEUE": {
+			"ADDING": "Adding webhook {{ name }}",
+			"UPDATING": "Updating webhook {{ name }}",
+			"DELETING": "Deleting webhook {{ name }}",
+			"ERROR": "An error occured with webhook {{ name }}. Correct and try again."
+		},
+		"ENTITY_ACTION_PROVIDER": {
+			"ENTITY_ACTION": {
+				"WEBHOOK": "Card payment"
 			}
 		}
 	},
@@ -3661,102 +3761,6 @@
 		"ENTITY_ACTION_PROVIDER": {
 			"ENTITY_ACTION": {
 				"TERMINAL_PAYMENT": "Card payment"
-			}
-		}
-	},
-	"WEBHOOKS": {
-		"FORM": {
-			"LABELS": {
-				"NAME": "Name",
-				"CONNECTIONSTRING": "Connection string",
-				"CONNECTION": "Connection",
-				"DESCRIPTION": "Description",
-				"CLIENTID": "Client",
-				"WEBHOOKID": "Webhook",
-				"AMOUNT": "Amount",
-				"INVOICEID": "Invoice ID",
-				"CURRENCYCODE": "Currency",
-				"ENABLED": "Enabled",
-				"URL": "Url",
-				"HTTPMETHOD": "HTTP method",
-				"CUSTOMHEADERS": "Custom headers",
-				"PACKAGEPATH": "Package path",
-				"SOURCE": "Source",
-				"EVENTTYPE": "Event type"
-			},
-			"PLACEHOLDERS": {
-				"NAME": "Name",
-				"CONNECTIONSTRING": "Connection string",
-				"CONNECTION": "Connection",
-				"DESCRIPTION": "Description",
-				"CLIENTID": "Client",
-				"WEBHOOKID": "Webhook",
-				"AMOUNT": "Amount",
-				"INVOICEID": "Invoice ID",
-				"CURRENCYCODE": "Currency",
-				"ENABLED": "Enabled",
-				"URL": "Url",
-				"HTTPMETHOD": "HTTP method",
-				"CUSTOMHEADERS": "Custom headers",
-				"PACKAGEPATH": "Package path",
-				"SOURCE": "Source",
-				"EVENTTYPE": "Event type"
-			},
-			"VALIDATION": {
-				"NAME": {
-					"REQUIRED": "Name is required."
-				},
-				"CONNECTIONSTRING": {
-					"REQUIRED": "Connection string is required."
-				},
-				"CONNECTION": {
-					"REQUIRED": "Connection is required."
-				},
-				"CLIENTID": {
-					"REQUIRED": "Client is required."
-				},
-				"WEBHOOKID": {
-					"REQUIRED": "Webhook is required."
-				},
-				"AMOUNT": {
-					"REQUIRED": "Amount is required."
-				},
-				"INVOICEID": {
-					"REQUIRED": "Invoice ID is required."
-				},
-				"CURRENCYCODE": {
-					"REQUIRED": "Currency is required."
-				}
-			}
-		},
-		"CREATE": {
-			"CREATE": "Create",
-			"BUTTON_CREATE": "Create"
-		},
-		"EDIT": {
-			"EDIT": "Edit",
-			"BUTTON_EDIT": "Edit"
-		},
-		"INDEX": {
-			"TITLE_EXTRAS": "(Webhooks)",
-			"CREATE": "Create",
-			"EDIT": "Edit",
-			"DELETE": "Delete",
-			"MANAGE": "Manage",
-			"ACTIONS": "Actions",
-			"SETTINGS": "Settings",
-			"TYPES": "Types"
-		},
-		"SETTINGS": {},
-		"QUEUE": {
-			"ADDING": "Adding webhook {{ name }}",
-			"UPDATING": "Updating webhook {{ name }}",
-			"DELETING": "Deleting webhook {{ name }}",
-			"ERROR": "An error occured with webhook {{ name }}. Correct and try again."
-		},
-		"ENTITY_ACTION_PROVIDER": {
-			"ENTITY_ACTION": {
-				"WEBHOOK": "Card payment"
 			}
 		}
 	},

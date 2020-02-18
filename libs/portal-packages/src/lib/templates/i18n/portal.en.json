@@ -5,7 +5,8 @@
             "EDIT": "Edit",
             "DELETE": "Delete",
             "MANAGE": "Manage",
-            "ACTIONS": "Actions"
+            "ACTIONS": "Actions",
+            "FIELDS": "Fields"
         },
         "CREATE": {
             "BUTTON_CREATE": "Create"
@@ -22,7 +23,7 @@
             "PLACEHOLDERS": {
                 "TITLE": "Title",
                 "BODY": "Body",
-				"DATAROUTES": {
+                "DATAROUTES": {
                     "TITLE": "Data routes",
                     "KEY": "Template key",
                     "VALUE": "Route"

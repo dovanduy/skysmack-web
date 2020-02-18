@@ -25,7 +25,6 @@ export class NgTemplatesFieldsConfig extends DocumentFieldsConfig<Template, numb
     }
 
     protected getEntityFields(loadedPackage: LoadedPackage, entity?: LocalObject<Template, number>): Field[] {
-        console.log('getEntityFields');
         let dataRouteArray = [];
         if (entity && entity.object.dataRoutes) {
             const dataRoutes = JSON.parse(JSON.stringify(entity.object.dataRoutes));
@@ -68,7 +67,7 @@ export class NgTemplatesFieldsConfig extends DocumentFieldsConfig<Template, numb
 
         return fields;
     }
-        
+
     protected getComponentFromDynamicFieldType(type: string): Type<any> {
         if (type === 'Liquid String') {
             return StringFieldComponent;
@@ -76,7 +75,7 @@ export class NgTemplatesFieldsConfig extends DocumentFieldsConfig<Template, numb
             return WYSIWYGEditorFieldComponent;
         } else {
             return super.getComponentFromDynamicFieldType(type);
-        }        
+        }
     }
 
 }
