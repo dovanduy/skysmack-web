@@ -10,7 +10,7 @@ export class HotelBookingApiDomain implements ApiDomain {
         if (environment.production) {
             this.domain = 'https://api.skysmack.com';
         } else {
-            this.domain = 'http://localhost:52678';
+            this.domain = `http://${environment.subdomain}.skysmack-io.test:2000`;
         }
     }
 }

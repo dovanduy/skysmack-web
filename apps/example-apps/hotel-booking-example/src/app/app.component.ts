@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation, OnInit, OnDestroy } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'skysmack-app',
@@ -6,14 +6,6 @@ import { Component, ViewEncapsulation, OnInit, OnDestroy } from '@angular/core';
   styleUrls: ['./app.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class AppComponent implements OnInit, OnDestroy {
+export class AppComponent {
 
-  constructor(
-  ) { }
-
-  ngOnInit() {
-  }
-
-  ngOnDestroy() {
-  }
 }

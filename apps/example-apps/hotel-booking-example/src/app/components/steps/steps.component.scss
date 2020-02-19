@@ -1,0 +1,17 @@
+@import '../../../../../../../assets/scss/_includes.scss';
+
+.steps {
+    display: flex;
+}
+
+.step {
+    width: 25%;
+    height: 150px;
+    background-color: turquoise;
+    border: 1px solid grey;
+    display: block;
+}
+
+.current-step {
+    background-color: blue; 
+}
