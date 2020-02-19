@@ -12,6 +12,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatListModule } from '@angular/material/list';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
+import { MatCardModule, MatCard } from '@angular/material/card';
 import { MatSelectModule } from '@angular/material/select';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatInputModule } from '@angular/material/input';
@@ -24,9 +25,7 @@ import { NgSkysmackModule, NgSkysmackEpics } from '@skysmack/ng-skysmack';
 import { SKYSMACK_REDUCER_KEY, skysmackReducer } from '@skysmack/packages-skysmack-core';
 import { GuestsComponent } from './components/guests/guests.component';
 import { DatesComponent } from './components/dates/dates.component';
-import { LodgingsComponent } from './components/lodgings/lodgings.component';
 import { SummaryComponent } from './components/summary/summary.component';
-import { StepsComponent } from './components/steps/steps.component';
 import { SharedModule } from './modules/shared.module';
 
 const material = [
@@ -36,7 +35,7 @@ const material = [
   MatProgressBarModule,
   MatInputModule,
   MatSnackBarModule,
-  MatSelectModule
+  MatSelectModule,
 ];
 
 const skysmackModules = [
@@ -88,7 +87,6 @@ const skysmackModules = [
     SummaryComponent
   ],
   exports: [
-    StepsComponent
   ],
   entryComponents: [],
   providers: [
@@ -104,7 +102,6 @@ export class AppModule {
     reduxOfflineConfiguration: ReduxOfflineConfiguration,
     skysmackEpics: NgSkysmackEpics
   ) {
-    console.log('1');
     configureRedux(ngRedux, ngReduxRouter, reduxOfflineConfiguration);
     registerRedux(SKYSMACK_REDUCER_KEY, skysmackReducer, skysmackEpics);
   }

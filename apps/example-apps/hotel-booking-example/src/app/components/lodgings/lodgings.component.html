@@ -2,4 +2,46 @@
 
 <div class="page">
     <h1>Lodgings</h1>
+    <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group"
+        (change)="displayTypeChanged($event)" [selected]="LodgingTypes">
+        <mat-radio-button class="example-radio-button" value="lodgingTypes" #LodgingTypes>
+            Lodging types
+        </mat-radio-button>
+        <br />
+        <mat-radio-button class="example-radio-button" value="lodgings">
+            Lodgings
+        </mat-radio-button>
+    </mat-radio-group>
+
+    <!-- Lodgings types-->
+    <div class="lodgings" *ngIf="displayType === 'lodgingTypes'">
+        <ng-container *ngIf="lodgingTypes$ | async as lodgingTypes">
+            <mat-card *ngFor="let lodgingType of lodgingTypes" (click)="">
+                <mat-card-title>{{ lodgingType.object.name }}</mat-card-title>
+            </mat-card>
+
+            <ng-container *ngIf="lodgingTypes.length === 0">
+                <h2>There are currently no lodgings available.</h2>
+            </ng-container>
+        </ng-container>
+    </div>
+
+    <!-- Lodgings -->
+    <div class="lodgings" *ngIf="displayType === 'lodgings'">
+        <ng-container *ngIf="lodgings$ | async as lodgings">
+            <mat-card *ngFor="let lodging of lodgings">
+                <mat-card-title>{{ lodging.object.name }}</mat-card-title>
+                <mat-card-content>
+                    <p>Type: {{ lodging.object?.lodgingType?.object.name }}</p>
+                </mat-card-content>
+            </mat-card>
+
+            <ng-container *ngIf="lodgings.length === 0">
+                <h2>There are currently no lodgings available.</h2>
+            </ng-container>
+        </ng-container>
+    </div>
+
+
+
 </div>
