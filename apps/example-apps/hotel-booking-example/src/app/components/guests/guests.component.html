@@ -3,20 +3,22 @@
 <div class="page">
     <h1>Guests</h1>
 
-    <mat-form-field>
-        <mat-select placeholder="Adults">
+    <mat-form-field *ngFor="let room of rooms$ | async; let index = index">
+        <mat-select placeholder="Adults" [value]="room.numberOfPeople">
             <mat-option *ngFor="let opt of adultOptions" [value]="opt.value">
                 {{ opt.displayName }}
             </mat-option>
         </mat-select>
     </mat-form-field>
 
-    <mat-form-field>
-        <mat-select placeholder="Children">
-            <mat-option *ngFor="let opt of childrenOptions" [value]="opt.value">
+    <button mat-raised-button color="primary" (click)="addRoom()">Add room</button>
+
+    <!-- <mat-form-field>
+        <mat-select placeholder="Adults">
+            <mat-option *ngFor="let opt of adultOptions" [value]="opt.value">
                 {{ opt.displayName }}
             </mat-option>
         </mat-select>
-    </mat-form-field>
+    </mat-form-field> -->
 
 </div>

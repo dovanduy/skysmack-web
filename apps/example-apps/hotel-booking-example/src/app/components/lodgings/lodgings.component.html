@@ -16,7 +16,7 @@
     <!-- Lodgings types-->
     <div class="lodgings" *ngIf="displayType === 'lodgingTypes'">
         <ng-container *ngIf="lodgingTypes$ | async as lodgingTypes">
-            <mat-card *ngFor="let lodgingType of lodgingTypes" (click)="">
+            <mat-card *ngFor="let lodgingType of lodgingTypes">
                 <mat-card-title>{{ lodgingType.object.name }}</mat-card-title>
             </mat-card>
 
