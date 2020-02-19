@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { NgLodgingsStore, NgLodgingsActions } from '@skysmack/ng-lodgings';
 import { environment } from '../../../environments/environment';
 import { PagedQuery } from '@skysmack/framework';
-import { tap } from 'rxjs/operators';
+import { tap, take } from 'rxjs/operators';
 import { BookingBaseComponent } from '../booking-base';
 import { BookingService } from '../../services/booking.service';
 import { BookingSteps } from '../../models/booking-steps';
@@ -28,7 +28,8 @@ export class LodgingsComponent extends BookingBaseComponent implements OnInit, O
 
     this.lodgingsActions.getPaged(environment.lodgingsPath, new PagedQuery());
     this.lodgingsStore.get(environment.lodgingsPath).pipe(
-      tap(x => console.log(x))
+      tap(x => console.log(x)),
+      take(1)
     ).subscribe();
   }
 

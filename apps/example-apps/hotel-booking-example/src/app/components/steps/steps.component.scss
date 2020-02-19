@@ -5,13 +5,22 @@
 }
 
 .step {
+    display: flex;
+    justify-content: center;
+
     width: 25%;
     height: 150px;
-    background-color: turquoise;
-    border: 1px solid grey;
-    display: block;
+    background-color: #4db8ff;
+    border-left: 1px solid blanchedalmond;
+    border-right: 1px solid blanchedalmond;
+    cursor: pointer;
 }
 
 .current-step {
-    background-color: blue; 
+    background-color: #0099ff; 
+}
+
+.step-title {
+    align-self: center;
+    font-size: 32px;
 }

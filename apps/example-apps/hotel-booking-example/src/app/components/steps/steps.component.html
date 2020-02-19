@@ -1,13 +1,21 @@
 <div class="steps">
     <div class="step" [routerLink]="['/', 'guests']" (click)="setCurrentStep(steps.Guests)"
-        [ngClass]="currentStep === steps.Guests ? 'current-step' : ''"></div>
+        [ngClass]="currentStep === steps.Guests ? 'current-step' : ''">
+        <span class="step-title">Guests</span>
+    </div>
 
     <div class="step" [routerLink]="['/', 'date']" (click)="setCurrentStep(steps.Date)"
-        [ngClass]="currentStep === steps.Date ? 'current-step' : ''"></div>
+        [ngClass]="currentStep === steps.Date ? 'current-step' : ''">
+        <span class="step-title">Date</span>
+    </div>
 
     <div class="step" [routerLink]="['/', 'lodgings']" (click)="setCurrentStep(steps.Lodgings)"
-        [ngClass]="currentStep  === steps.Lodgings ? 'current-step' : ''"></div>
+        [ngClass]="currentStep  === steps.Lodgings ? 'current-step' : ''">
+        <span class="step-title">Lodgings</span>
+    </div>
 
     <div class="step" [routerLink]="['/', 'summary']" (click)="setCurrentStep(steps.Summary)"
-        [ngClass]="currentStep  === steps.Summary ? 'current-step' : ''"></div>
+        [ngClass]="currentStep  === steps.Summary ? 'current-step' : ''">
+        <span class="step-title">Summary</span>
+    </div>
 </div>

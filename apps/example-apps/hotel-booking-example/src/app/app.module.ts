@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, SystemJsNgModuleLoader } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { RouterModule, PreloadAllModules } from '@angular/router';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -12,13 +12,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatListModule } from '@angular/material/list';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
+import { MatSelectModule } from '@angular/material/select';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
 import { hotelBookingApplicationStartup } from './hotel-booking-application-startup';
 import { NgReduxModule, NgRedux } from '@angular-redux/store';
 import { NgReduxRouterModule, NgReduxRouter } from '@angular-redux/router';
-import { NgLodgingsModule } from '@skysmack/ng-lodgings';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { NgSkysmackModule, NgSkysmackEpics } from '@skysmack/ng-skysmack';
 import { SKYSMACK_REDUCER_KEY, skysmackReducer } from '@skysmack/packages-skysmack-core';
@@ -27,7 +27,7 @@ import { DatesComponent } from './components/dates/dates.component';
 import { LodgingsComponent } from './components/lodgings/lodgings.component';
 import { SummaryComponent } from './components/summary/summary.component';
 import { StepsComponent } from './components/steps/steps.component';
-
+import { SharedModule } from './modules/shared.module';
 
 const material = [
   MatListModule,
@@ -35,12 +35,12 @@ const material = [
   MatIconModule,
   MatProgressBarModule,
   MatInputModule,
-  MatSnackBarModule
+  MatSnackBarModule,
+  MatSelectModule
 ];
 
 const skysmackModules = [
   NgSkysmackModule,
-  NgLodgingsModule
 ];
 
 @NgModule({
@@ -63,14 +63,15 @@ const skysmackModules = [
         component: DatesComponent
       },
       {
-        path: 'lodgings',
-        component: LodgingsComponent
-      },
-      {
         path: 'summary',
         component: SummaryComponent
       },
+      {
+        path: 'lodgings',
+        loadChildren: './modules/ng_lodgings_wrapper.module#NgLodgingsWrapperModule',
+      }
     ]),
+    SharedModule,
     ...skysmackModules,
     BrowserAnimationsModule,
     NgReduxModule,
@@ -84,8 +85,9 @@ const skysmackModules = [
     AppComponent,
     GuestsComponent,
     DatesComponent,
-    LodgingsComponent,
-    SummaryComponent,
+    SummaryComponent
+  ],
+  exports: [
     StepsComponent
   ],
   entryComponents: [],
@@ -100,8 +102,9 @@ export class AppModule {
     ngRedux: NgRedux<any>,
     ngReduxRouter: NgReduxRouter,
     reduxOfflineConfiguration: ReduxOfflineConfiguration,
-    skysmackEpics: NgSkysmackEpics,
+    skysmackEpics: NgSkysmackEpics
   ) {
+    console.log('1');
     configureRedux(ngRedux, ngReduxRouter, reduxOfflineConfiguration);
     registerRedux(SKYSMACK_REDUCER_KEY, skysmackReducer, skysmackEpics);
   }
